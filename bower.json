@@ -1,0 +1,18 @@
+{
+  "name": "pw-ui",
+  "dependencies": {
+    "normalize.css": "3.x",
+    "angular": "~1.5.0",
+    "angular-animate": "~1.5.0",
+    "angular-aria": "~1.5.0",
+    "angular-messages": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-material": "1.x",
+    "angular-recaptcha": "2.3.x",
+    "zxcvbn": "~4.2.0",
+    "angular-zxcvbn": "~3.x"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.5.0"
+  }
+}

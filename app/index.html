@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" ng-app="password">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <title ng-bind="(title ? title + ' - ' : '') + 'Password Management'">
+        Password Management
+    </title>
+
+    <!-- build:css styles/libs.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/password.css -->
+    <link rel="stylesheet" href="password.css">
+    <link rel="stylesheet" href="html/md-input.css">
+    <link rel="stylesheet" href="change/strength-word.css">
+    <link rel="stylesheet" href="change/strength-meter.css">
+    <link rel="stylesheet" href="change/password-advice.css">
+    <link rel="stylesheet" href="change/password-requirements.css">
+    <link rel="stylesheet" href="forgot/forgot.css">
+    <!-- endbuild -->
+</head>
+<!-- added layout here to ensure 'display: flex' so md-content will
+     scroll under md-toolbar -->
+<body layout="row">
+    <pw-nav layout="column"></pw-nav>
+
+    <!-- flex here will ensure the toolbar expands full width of
+         screen -->
+    <main layout="column" flex>
+        <md-toolbar class="md-toolbar-tools">
+            <pw-nav-toggle></pw-nav-toggle>
+
+            <img hide-gt-sm src="images/logo.png" alt="logo" />
+
+            <span flex></span>
+
+            <pw-return-to></pw-return-to>
+        </md-toolbar>
+
+        <md-content ng-view layout="column" layout-align="start start"
+                    layout-padding flex>
+            <p>loading...</p>
+        </md-content>
+    </main>
+
+<!-- build:js scripts/lib.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-recaptcha/release/angular-recaptcha.js"></script>
+<script src="bower_components/zxcvbn/dist/zxcvbn.js"></script>
+<script src="bower_components/angular-zxcvbn/dist/angular-zxcvbn.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- google's recaptcha script must be loaded AFTER the angular-recaptcha lib -->
+<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+
+
+<!-- build:js scripts/password.js -->
+<!--<script src="analytics/ga.js"></script>-->
+<script src="password.module.js"></script>
+<script src="password.config.js"></script>
+<script src="password.route.js"></script>
+<!--<script src="analytics/analytics.module.js"></script>-->
+<!--<script src="analytics/analytics.config.js"></script>-->
+<!--<script src="analytics/analytics.run.js"></script>-->
+<script src="title/title.module.js"></script>
+<script src="title/title.run.js"></script>
+<script src="data/data.module.js"></script>
+<script src="data/data.config.js"></script>
+<script src="data/data.constant.js"></script>
+<script src="data/data.service.js"></script>
+<script src="html/html.module.js"></script>
+<script src="html/autofocus.directive.js"></script>
+<script src="html/md-input-container.directive.js"></script>
+<script src="nav/nav.module.js"></script>
+<script src="nav/nav.directive.js"></script>
+<script src="nav/nav-toggle.directive.js"></script>
+<script src="nav/returnTo.service.js"></script>
+<script src="nav/return-to.run.js"></script>
+<script src="nav/return-to.directive.js"></script>
+<script src="welcome/welcome.module.js"></script>
+<script src="welcome/welcome.route.js"></script>
+<script src="welcome/welcome.controller.js"></script>
+<script src="forgot/forgot.module.js"></script>
+<script src="forgot/recaptcha.constant.js"></script>
+<script src="forgot/recaptcha.service.js"></script>
+<script src="forgot/forgot.route.js"></script>
+<script src="forgot/forgot.controller.js"></script>
+<script src="recovery/recovery.module.js"></script>
+<script src="recovery/recovery.route.js"></script>
+<script src="recovery/recovery.controller.js"></script>
+<script src="change/change.module.js"></script>
+<script src="change/change.route.js"></script>
+<script src="change/change.controller.js"></script>
+<script src="change/constraints.directive.js"></script>
+<script src="change/password-advice.directive.js"></script>
+<script src="change/password-requirements.directive.js"></script>
+<script src="change/must-match.directive.js"></script>
+<script src="change/strength-meter.directive.js"></script>
+<script src="change/strength-word.directive.js"></script>
+<script src="profile/profile.module.js"></script>
+<script src="profile/profile.route.js"></script>
+<script src="profile/profile.controller.js"></script>
+<!-- endbuild -->
+
+</body>
+</html>

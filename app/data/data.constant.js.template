@@ -1,0 +1,7 @@
+(function () {
+    'use strict';
+
+    angular
+        .module('password.data')
+        .constant('DATA_API_BASE_URL', '@@apiBaseUrl'); // <@@apiBaseUrl> being derived from Gruntfile in the 'replace' target.
+})();

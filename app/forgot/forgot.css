@@ -1,0 +1,11 @@
+md-input-container .pw-help {
+    /* settings taken from md-errors-spacer and md-char-counter because
+       this text needed to be in the smae location as the md-char-counter
+       without all the built-in functionality, e.g., turning red wasn't
+       appropriate here.
+    */
+    text-align: right;
+    float: right;
+    padding-top: 3px;
+    padding-right: 2px;
+}

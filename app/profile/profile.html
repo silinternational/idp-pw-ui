@@ -1,0 +1,106 @@
+<md-list>
+    <md-list-item layout="column" layout-align="center start">
+        <h2 class="md-display-2">
+            {{ vm.user.name }}
+        </h2>
+
+        <p class="md-body-1">
+            <strong class="md-body-2">
+                Username:
+            </strong>
+
+            {{ vm.user.uname }}
+        </p>
+
+        <p class="md-body-1">
+            <strong class="md-body-2">
+                Primary email:
+            </strong>
+
+            {{ vm.user.email }}
+        </p>
+    </md-list-item>
+
+    <md-divider></md-divider>
+
+    <md-list-item>
+        <h3 class="md-display-1 avoid-text-button-overlap">
+            Password
+        </h3>
+
+        <md-button ng-click="vm.navigate('change')"
+                   class="md-secondary md-primary md-raised">
+            Change
+        </md-button>
+    </md-list-item>
+
+    <md-list-item layout="column" layout-align="center start"
+                  class="md-body-1">
+        <p>
+            Last changed {{ vm.user.pwchanged | date:'medium' }}
+        </p>
+
+        <p>
+            Expires in 6 months
+        </p>
+    </md-list-item>
+
+    <md-divider></md-divider>
+
+    <md-list-item>
+        <h3 class="md-display-1 avoid-text-button-overlap">
+            Recovery methods
+        </h3>
+
+        <md-button ng-click="vm.add()"
+                   class="md-secondary md-primary md-raised">
+            Add
+        </md-button>
+    </md-list-item>
+
+    <md-list-item layout="column" layout-align="center start"
+                  class="md-body-1">
+        <p>
+            Additional password recovery methods can be useful during
+            verification when your primary email address is not accessible.
+        </p>
+    </md-list-item>
+
+    <md-subheader class="md-no-sticky">Email</md-subheader>
+
+    <md-list-item ng-repeat="_method in vm.methods | filter: vm.isEmail">
+        <md-icon md-svg-src="images/md-icons/ic_email_24px.svg"
+                 class="md-avatar-icon">
+        </md-icon>
+
+        <p class="md-body-1 avoid-text-icon-overlap">
+            {{ _method.email}}
+        </p>
+
+        <md-button ng-click="vm.delete(_method)"
+                   class="md-icon-button md-secondary"
+                   aria-label="Delete">
+            <md-icon md-svg-src="images/md-icons/ic_delete_24px.svg">
+            </md-icon>
+        </md-button>
+    </md-list-item>
+
+    <md-subheader class="md-no-sticky">Phone</md-subheader>
+
+    <md-list-item ng-repeat="_method in vm.methods | filter: vm.isPhone">
+        <md-icon md-svg-src="images/md-icons/ic_phone_24px.svg"
+                 class="md-avatar-icon">
+        </md-icon>
+
+        <p class="md-body-1 avoid-text-icon-overlap">
+            {{ _method.phone}}
+        </p>
+
+        <md-button ng-click="vm.delete(_method)"
+                   class="md-icon-button md-secondary"
+                   aria-label="Delete">
+            <md-icon md-svg-src="images/md-icons/ic_delete_24px.svg">
+            </md-icon>
+        </md-button>
+    </md-list-item>
+</md-list>

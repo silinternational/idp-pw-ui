@@ -1,0 +1,43 @@
+{
+  "name": "pw-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/silinternational/pw-ui.git"
+  },
+  "devDependencies": {
+    "grunt": "0.x",
+    "grunt-contrib-clean": "0.x",
+    "grunt-contrib-concat": "0.x",
+    "grunt-contrib-connect": "0.x",
+    "grunt-contrib-copy": "0.x",
+    "grunt-contrib-cssmin": "0.x",
+    "grunt-contrib-htmlmin": "0.x",
+    "grunt-contrib-imagemin": "0.x",
+    "grunt-contrib-jshint": "0.x",
+    "grunt-contrib-uglify": "0.x",
+    "grunt-contrib-watch": "0.x",
+    "grunt-filerev": "0.x",
+    "grunt-html2js": "0.x",
+    "grunt-karma": "0.x",
+    "grunt-newer": "0.x",
+    "grunt-ng-annotate": "0.x",
+    "grunt-replace": "0.x",
+    "grunt-usemin": "3.x",
+    "grunt-wiredep": "1.x",
+    "jasmine-core": "2.x",
+    "jshint-stylish": "0.x",
+    "karma": "0.x",
+    "karma-chrome-launcher": "0.x",
+    "karma-firefox-launcher": "0.x",
+    "karma-ie-launcher": "0.x",
+    "karma-jasmine": "0.x",
+    "karma-ng-html2js-preprocessor": "0.x",
+    "karma-phantomjs-launcher": "1.x",
+    "load-grunt-tasks": "0.x",
+    "phantomjs-prebuilt": "2.x",
+    "time-grunt": "0.x"
+  },
+  "scripts": {
+    "postinstall": "bower install"
+  }
+}

@@ -1,0 +1,44 @@
+pw-strength-meter figure {
+    margin: initial; /* no need for all the margin built-in by normalize */
+    font-size: 2em;
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+    border: 0.25em solid rgba(0,0,0,0.03);
+    transform: rotate(-45deg);
+}
+
+pw-strength-meter figure figcaption {
+    transform: rotate(45deg);
+}
+
+pw-strength-meter figure[score=''] {
+    border: initial;
+}
+
+pw-strength-meter figure[score='0'] {
+    color: red;
+}
+
+pw-strength-meter figure[score='1'] {
+    color: red;
+    border-right-color: red;
+}
+
+pw-strength-meter figure[score='2'] {
+    color: olivedrab;
+    border-right-color: olivedrab;
+    border-bottom-color: olivedrab;
+}
+
+pw-strength-meter figure[score='3'] {
+    color: olivedrab;
+    border-right-color: olivedrab;
+    border-bottom-color: olivedrab;
+    border-left-color: olivedrab;
+}
+
+pw-strength-meter figure[score='4'] {
+    color: olivedrab;
+    border-color: olivedrab;
+}
