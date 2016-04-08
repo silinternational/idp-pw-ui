@@ -1,5 +1,6 @@
 {
   "name": "pw-ui",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/silinternational/pw-ui.git"
