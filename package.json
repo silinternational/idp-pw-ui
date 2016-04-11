@@ -13,7 +13,7 @@
     "grunt-contrib-copy": "0.x",
     "grunt-contrib-cssmin": "0.x",
     "grunt-contrib-htmlmin": "0.x",
-    "grunt-contrib-imagemin": "0.x",
+    "grunt-contrib-imagemin": "1.x",
     "grunt-contrib-jshint": "0.x",
     "grunt-contrib-uglify": "0.x",
     "grunt-contrib-watch": "0.x",

@@ -30,7 +30,7 @@
                 angular.isString(queryString.token)) {
 
                 $mdDialog.show({
-                    templateUrl: '/change/verification-status.html',
+                    templateUrl: 'change/verification-status.html',
                     escapeToClose: false
                 });
 

@@ -34,7 +34,7 @@
 
         function showAdvice() {
             $mdDialog.show({
-                templateUrl: '/change/password-advice-dialog.html',
+                templateUrl: 'change/password-advice-dialog.html',
                 controller: PasswordAdviceController,
                 bindToController: true,
                 controllerAs: 'vm',

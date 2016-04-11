@@ -38,7 +38,7 @@
             var email = '******@sil.org';
 
             $mdDialog.show({
-                templateUrl: '/forgot/forgot-status.html',
+                templateUrl: 'forgot/forgot-status.html',
                 controller: ForgotController,
                 controllerAs: 'vm',
                 bindToController: true,

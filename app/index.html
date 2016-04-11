@@ -69,11 +69,18 @@
 <!-- google's recaptcha script must be loaded AFTER the angular-recaptcha lib -->
 <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
 
+<!-- build:js scripts/password.env.js -->
+<!-- must appear before any files that rely on its config's and remain
+     available as a separate file so config's can be swapped out without a
+     complete application rebuild. -->
+<script src="password.env.js"></script>
+<!-- endbuild -->
 
-<!-- build:js scripts/password.js -->
+
+    <!-- build:js scripts/password.js -->
 <!--<script src="analytics/ga.js"></script>-->
 <script src="password.module.js"></script>
-<script src="password.config.js"></script>
+<script src="password.config.theme.js"></script>
 <script src="password.route.js"></script>
 <!--<script src="analytics/analytics.module.js"></script>-->
 <!--<script src="analytics/analytics.config.js"></script>-->

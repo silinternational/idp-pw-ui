@@ -5,6 +5,7 @@
         .module('password', [
             'ngMaterial',
             'ngRoute',
+            /*@@DIST-TEMPLATE-CACHE*/
             //'password.analytics',
             'password.title',
             'password.nav',
@@ -13,6 +14,5 @@
             'password.recovery',
             'password.change',
             'password.profile'
-            /*@@DIST-TEMPLATE-CACHE*/
         ]);
 })();
