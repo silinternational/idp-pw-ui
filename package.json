@@ -1,9 +1,9 @@
 {
-  "name": "pw-ui",
+  "name": "idp-pw-ui",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/silinternational/pw-ui.git"
+    "url": "https://github.com/silinternational/idp-pw-ui.git"
   },
   "devDependencies": {
     "grunt": "0.x",

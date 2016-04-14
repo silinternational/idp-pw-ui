@@ -1,5 +1,5 @@
 {
-  "name": "pw-ui",
+  "name": "idp-pw-ui",
   "dependencies": {
     "normalize.css": "3.x",
     "angular": "~1.5.0",
