@@ -51,14 +51,14 @@
                     .ok('Yes')
                     .cancel('No')
                 ).then(function handleOk() {
-                    moveToProfilePage();
+                    navigateToProfilePage();
                 });
             } else {
-                moveToProfilePage();
+                navigateToProfilePage();
             }
         }
 
-        function moveToProfilePage() {
+        function navigateToProfilePage() {
             $location.url('profile');
         }
 
@@ -74,7 +74,7 @@
                 ).then(function handleUserResponse() {
                     // TODO: may need to give the user an option to return to
                     // their original destination or proceed to their profile
-                    moveToProfilePage();
+                    navigateToProfilePage();
                 });
             }
         }
