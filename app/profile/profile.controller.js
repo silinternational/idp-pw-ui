@@ -5,14 +5,10 @@
         .module('password.profile')
         .controller('ProfileController', ProfileController);
 
-    function ProfileController($location) {
+    function ProfileController(userService, $location) {
         var vm = this;
 
-        vm.user = {
-            name: 'Jane Doe',
-            uname: 'jane_doe',
-            email: 'jane_doe@sil.org'
-        };
+        vm.user = userService.user;
         vm.methods = [
             {
                 email: 'jane_doe@jaars.org'

@@ -5,6 +5,7 @@
         .module('password.profile', [
             'ngMaterial',
             'ngRoute',
-            'ngMessages'
+            'ngMessages',
+            'password.auth'
         ]);
 })();

@@ -17,15 +17,13 @@
         };
     }
 
-    function NavController($location, $mdSidenav) {
+    function NavController(userService, $location, $mdSidenav) {
         var vm = this;
 
-        vm.user = {};
+        vm.user = userService.user;
 
         vm.navigate = navigate;
         vm.closeNav = closeNav;
-        vm.login = login;
-        vm.logout = logout;
 
         activate();
 
@@ -42,20 +40,6 @@
 
         function closeNav() {
             $mdSidenav('sidenav').close();
-        }
-
-        function login() {
-            vm.user.isAuthenticated = true;
-            vm.user.name = 'Jane Doe';
-
-            navigate('profile');
-        }
-
-        function logout() {
-            vm.user.isAuthenticated = false;
-            vm.user.name = '';
-
-            navigate('welcome');
         }
     }
 })();

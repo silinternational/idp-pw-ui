@@ -3,6 +3,7 @@
 
     angular
         .module('password.nav', [
-            'ngMaterial'
+            'ngMaterial',
+            'password.auth'
         ]);
 })();
