@@ -7,6 +7,7 @@
             'ngRoute',
             'ngMessages',
             'password.html',
-            'zxcvbn'
+            'zxcvbn',
+            'password.data'
         ]);
 })();

@@ -5,12 +5,13 @@
         .module('password.change')
         .controller('ChangeController', ChangeController);
 
-    function ChangeController($mdDialog, $location, $timeout) {
+    function ChangeController($mdDialog, $location, $timeout, dataService) {
         var vm = this;
 
         vm.pw = '';
         vm.pwagain = '';
         vm.strength = {};
+        vm.pwConstraints = {};
 
         vm.change = change;
         vm.cancel = cancel;
@@ -21,6 +22,11 @@
 
         function activate() {
             checkForIncomingToken();
+
+            dataService.get('config')
+              .then(function (response) {
+                  vm.pwConstraints = response.data.password;
+              });
         }
 
         function checkForIncomingToken() {
