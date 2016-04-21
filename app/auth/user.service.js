@@ -15,7 +15,6 @@
             promise = null,
             service = {
                 user: user,
-                promise: promise,
                 getUser: getUser,
                 login: login,
                 logout: logout
@@ -75,8 +74,6 @@
                                                true                  :
                                                false;
                         
-                        user.name = user.first_name + ' ' + user.last_name;
-
                         deferred.resolve(user);
                     });
             }

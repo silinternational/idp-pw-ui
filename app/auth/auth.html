@@ -1,4 +1,4 @@
-<h1>{{ vm.user.name }}</h1>
+<h1>{{ vm.user.first_name + ' ' + vm.user.last_name }}</h1>
 
 <md-button ng-if="vm.user.isAuthenticated" ng-click="vm.logout()">
     <md-icon md-svg-src="images/md-icons/ic_person_24px.svg"></md-icon>
