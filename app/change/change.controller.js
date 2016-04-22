@@ -5,12 +5,13 @@
         .module('password.change')
         .controller('ChangeController', ChangeController);
 
-    function ChangeController($mdDialog, $location, $timeout) {
+    function ChangeController($mdDialog, $location, $timeout, dataService) {
         var vm = this;
 
         vm.pw = '';
         vm.pwagain = '';
         vm.strength = {};
+        vm.pwConstraints = {};
 
         vm.change = change;
         vm.cancel = cancel;
@@ -21,6 +22,11 @@
 
         function activate() {
             checkForIncomingToken();
+
+            dataService.get('config')
+              .then(function (response) {
+                  vm.pwConstraints = response.data.password;
+              });
         }
 
         function checkForIncomingToken() {
@@ -51,14 +57,14 @@
                     .ok('Yes')
                     .cancel('No')
                 ).then(function handleOk() {
-                    moveToProfilePage();
+                    navigateToProfilePage();
                 });
             } else {
-                moveToProfilePage();
+                navigateToProfilePage();
             }
         }
 
-        function moveToProfilePage() {
+        function navigateToProfilePage() {
             $location.url('profile');
         }
 
@@ -74,7 +80,7 @@
                 ).then(function handleUserResponse() {
                     // TODO: may need to give the user an option to return to
                     // their original destination or proceed to their profile
-                    moveToProfilePage();
+                    navigateToProfilePage();
                 });
             }
         }

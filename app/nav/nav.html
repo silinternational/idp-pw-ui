@@ -14,24 +14,10 @@
     </md-toolbar>
 
     <md-content layout="column" flex>
-        <md-toolbar class="md-toolbar-tools md-accent"
-                    layout="row"
-                    layout-align="space-between center">
-            <h1>{{ vm.user.name }}</h1>
-
-            <md-button ng-if="vm.user.isAuthenticated"
-                       ng-click="vm.logout()">
-                <md-icon md-svg-src="images/md-icons/ic_person_24px.svg">
-                </md-icon>
-                Logout
-            </md-button>
-
-            <md-button ng-if="! vm.user.isAuthenticated"
-                       ng-click="vm.login()">
-                <md-icon md-svg-src="images/md-icons/ic_person_outline_24px.svg">
-                </md-icon>
-                Login
-            </md-button>
+        <md-toolbar class="md-toolbar-tools md-accent">
+            <pw-auth layout="row" layout-align="space-between center"
+                     flex>
+            </pw-auth>
         </md-toolbar>
 
         <md-list flex>

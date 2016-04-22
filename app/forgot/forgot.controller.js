@@ -4,27 +4,24 @@
     angular
         .module('password.forgot')
         .controller('ForgotController', ForgotController);
-
+    
     function ForgotController($mdDialog, $location, $timeout,
-                              recaptchaService) {
-        var vm = this;
-        var inactivityTimer = null;
+                              resolvedConfig) {
+        var vm = this,
+            recaptchaResponse = '',
+            inactivityTimer = null;
 
         vm.username = '';
-        vm.recaptchaSiteKey = recaptchaService.getSiteKey();
-        vm.recaptchaAnswered = recaptchaService.setVerificationResponse;
-        vm.anotherSent = false;
+        vm.recaptchaSiteKey = resolvedConfig.data.recaptchaKey;
         vm.idpName = '';
         vm.usernameHint = '';
 
+        vm.recaptchaAnswered = recaptchaAnswered;
         vm.submit = submit;
-        vm.cancel = cancel;
-        vm.alternate = alternate;
-        vm.resend = resend;
 
         activate();
 
-        ///////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
 
         function activate() {
             // TODO: to be retrieved from config API
@@ -32,14 +29,16 @@
             vm.usernameHint = 'IdP username, e.g., first_last';
         }
 
-        function submit() {
-            console.info(recaptchaService.getVerificationResponse());
+        function recaptchaAnswered(response) {
+            recaptchaResponse = response;
+        }
 
+        function submit() {
             var email = '******@sil.org';
 
             $mdDialog.show({
                 templateUrl: 'forgot/forgot-status.html',
-                controller: ForgotController,
+                controller: 'ForgotStatusController',
                 controllerAs: 'vm',
                 bindToController: true,
                 locals: {
@@ -51,7 +50,6 @@
         }
 
         function startInactivityTimer() {
-
             inactivityTimer = $timeout(navigateToHome, 60000);
         }
 
@@ -69,20 +67,6 @@
 
         function killInactivityTimer() {
             $timeout.cancel(inactivityTimer);
-        }
-
-        function alternate() {
-            $mdDialog.hide();
-
-            $location.url('recovery');
-        }
-
-        function resend() {
-            vm.anotherSent = true;
-        }
-
-        function cancel() {
-            $mdDialog.cancel();
         }
     }
 })();

@@ -5,10 +5,11 @@
         .module('password.welcome')
         .controller('WelcomeController', WelcomeController);
 
-    function WelcomeController($location, $window) {
+    function WelcomeController($location, userService) {
         var vm = this;
 
         vm.navigate = navigate;
+        vm.login = login;
 
         activate();
 
@@ -18,15 +19,11 @@
         }
 
         function navigate(url) {
-            if (isFullyQualifiedUrl(url)) {
-                $window.location.href = url;
-            } else {
-                $location.url(url);
-            }
+            $location.url(url);
         }
 
-        function isFullyQualifiedUrl(url) {
-            return url.indexOf('//') !== -1;
+        function login() {
+            userService.login();
         }
     }
 })();

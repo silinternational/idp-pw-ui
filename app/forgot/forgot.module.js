@@ -7,6 +7,7 @@
             'ngMaterial',
             'ngMessages',
             'password.html',
-            'vcRecaptcha'
+            'vcRecaptcha',
+            'password.data'
         ]);
 })();

@@ -27,6 +27,7 @@
                 Cannot remember?
                 <md-tooltip md-direction="top">
                     Please contact the help desk.
+                    <!--TODO: integrate /config call data here-->
                 </md-tooltip>
             </span>
         </section>
@@ -36,6 +37,7 @@
         <p class="md-caption">
             Please check the box below:
         </p>
+
         <div vc-recaptcha
              on-success="vm.recaptchaAnswered(response)"
              key="vm.recaptchaSiteKey">

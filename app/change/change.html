@@ -10,8 +10,9 @@
             <label for="password">Enter new password</label>
 
             <input type="password" ng-model="vm.pw" zxcvbn="vm.strength"
-                   zx-min-score="2" required pw-constraints
-                   autofocus name="password" id="password">
+                   zx-min-score="{{ vm.pwConstraints.zxcvbn.minScore }}"
+                   pw-constraints
+                   required autofocus name="password" id="password">
 
             <ng-messages for="vm.changeForm.password.$error" role="alert"
                          layout="column">
@@ -60,8 +61,28 @@
 
     <section layout="column" layout-align="start center">
         <pw-password-requirements class="md-body-1">
+            <pw-password-requirement ng-if="vm.pwConstraints.minLength.enabled"
+                                     error="vm.changeForm.password.$error.minLength">
+                Must be at least {{ vm.pwConstraints.minLength.value }} characters long.
+            </pw-password-requirement>
+            <pw-password-requirement ng-if="vm.pwConstraints.maxLength.enabled"
+                                     error="vm.changeForm.password.$error.maxLength">
+                Must be no more than {{ vm.pwConstraints.maxLength.value }} characters long.
+            </pw-password-requirement>
+            <pw-password-requirement ng-if="vm.pwConstraints.minNum.enabled"
+                                     error="vm.changeForm.password.$error.minNum">
+                Must have at least {{ vm.pwConstraints.minNum.value }} numbers.
+            </pw-password-requirement>
+            <pw-password-requirement ng-if="vm.pwConstraints.minSpecial.enabled"
+                                     error="vm.changeForm.password.$error.minSpecial">
+                Must have at least {{ vm.pwConstraints.minSpecial.value }} special characters.
+            </pw-password-requirement>
+            <pw-password-requirement ng-if="vm.pwConstraints.minUpper.enabled"
+                                     error="vm.changeForm.password.$error.minUpper">
+                Must have at least {{ vm.pwConstraints.minUpper.value }} uppercase characters.
+            </pw-password-requirement>
             <pw-password-requirement error="vm.changeForm.password.$error.passwordStrength">
-                Must have a minimum password strength of 2.
+                Must have a minimum password strength of {{ vm.pwConstraints.zxcvbn.minScore }}.
             </pw-password-requirement>
         </pw-password-requirements>
 
