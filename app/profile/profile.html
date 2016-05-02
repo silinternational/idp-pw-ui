@@ -52,7 +52,7 @@
             Recovery methods
         </h3>
 
-        <md-button ng-click="vm.add()"
+        <md-button ng-click="vm.navigate('recovery-method/add')"
                    class="md-secondary md-primary md-raised">
             Add
         </md-button>
@@ -68,13 +68,14 @@
 
     <md-subheader class="md-no-sticky">Email</md-subheader>
 
-    <md-list-item ng-repeat="_method in vm.methods | filter: vm.isEmail">
+    <md-list-item ng-repeat="_method in vm.methods |
+                             filter: { type: 'email' }">
         <md-icon md-svg-src="images/md-icons/ic_email_24px.svg"
                  class="md-avatar-icon">
         </md-icon>
 
         <p class="md-body-1 avoid-text-icon-overlap">
-            {{ _method.email}}
+            {{ _method.value }}
         </p>
 
         <md-button ng-click="vm.delete(_method)"
@@ -87,13 +88,14 @@
 
     <md-subheader class="md-no-sticky">Phone</md-subheader>
 
-    <md-list-item ng-repeat="_method in vm.methods | filter: vm.isPhone">
+    <md-list-item ng-repeat="_method in vm.methods |
+                             filter: { type: 'phone' }">
         <md-icon md-svg-src="images/md-icons/ic_phone_24px.svg"
                  class="md-avatar-icon">
         </md-icon>
 
         <p class="md-body-1 avoid-text-icon-overlap">
-            {{ _method.phone}}
+            {{ _method.value}}
         </p>
 
         <md-button ng-click="vm.delete(_method)"

@@ -36,10 +36,10 @@ describe('user service', function () {
         expect(serviceUnderTest.user.isAuthenticated).toBeDefined();
     });
 
-    it('should base authentication status on an id property', function () {
+    it('should base authentication status on an idp_username property', function () {
         expect(serviceUnderTest.user.isAuthenticated).toBeFalsy();
 
-        stubUserData.id = 123;
+        stubUserData.idp_username = 123;
 
         $httpBackend.flush();
 

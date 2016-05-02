@@ -17,7 +17,7 @@ describe('auth directive', function () {
 
             $httpBackend.whenGET(/images/).respond('<svg></svg>'); // mocks md-icon svg request
 
-            elementUnderTest = $compile('<dm-auth></dm-auth>')($rootScope);
+            elementUnderTest = $compile('<pw-auth></pw-auth>')($rootScope);
         });
     });
 
@@ -27,7 +27,7 @@ describe('auth directive', function () {
         });
 
         it('no name should be shown', function () {
-            expect(elementUnderTest.find('h1').text()).toBe('');
+            expect(elementUnderTest.find('h1').text()).toBe(' ');
         });
 
         it('should provide a login link', function () {
@@ -37,14 +37,15 @@ describe('auth directive', function () {
 
     describe('for authenticated users, ', function () {
         beforeEach(function () {
-            stubUser.id = 123;
-            stubUser.name = 'YHWH';
+            stubUser.idp_username = 'stubUsername';
+            stubUser.first_name = 'stubFirst';
+            stubUser.last_name = 'stubLast';
 
             $httpBackend.flush();
         });
 
         it('should should show user\'s name', function () {
-            expect(elementUnderTest.find('h1').text()).toBe('YHWH');
+            expect(elementUnderTest.find('h1').text()).toBe('stubFirst stubLast');
         });
 
         it('should provide a logout link', function () {
