@@ -21,8 +21,6 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            vm.user.pwchanged = new Date(); //TODO: need the data for this one.
-            
             dataService
               .get('method')
               .then(function getMethods(response) {
@@ -40,7 +38,6 @@
               .then(function () {
                   $route.reload();
               });
-
         }
     }
 })();
