@@ -24,6 +24,8 @@
 
         function cancel() {
             $mdDialog.cancel();
+
+            $location.url('/');
         }
 
         function alternate() {
