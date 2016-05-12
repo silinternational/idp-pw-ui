@@ -5,7 +5,8 @@
         .module('password.forgot')
         .controller('ForgotStatusController', ForgotStatusController);
 
-    function ForgotStatusController($mdDialog, $location, sentTo) {
+    function ForgotStatusController($mdDialog, $location, sentTo,
+                                    resetId, dataService) {
         var vm = this;
 
         vm.anotherSent = false;
@@ -35,6 +36,13 @@
         }
 
         function resend() {
+            dataService
+              .put('reset/' + resetId + '/resend')
+              .then(handleSuccessfulResend);
+//TODO: need error handling for bad PUT
+        }
+
+        function handleSuccessfulResend() {
             vm.anotherSent = true;
         }
     }

@@ -6,15 +6,15 @@
         .controller('ForgotController', ForgotController);
     
     function ForgotController($mdDialog, $location, $timeout,
-                              resolvedConfig) {
+                              resolvedConfig, dataService) {
         var vm = this,
             recaptchaResponse = '',
             inactivityTimer = null;
 
         vm.username = '';
         vm.recaptchaSiteKey = resolvedConfig.data.recaptchaKey;
-        vm.idpName = '';
-        vm.usernameHint = '';
+        vm.idpName = resolvedConfig.data.idpName;
+        vm.usernameHint = resolvedConfig.data.idpUsernameHint;
 
         vm.recaptchaAnswered = recaptchaAnswered;
         vm.submit = submit;
@@ -24,9 +24,6 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            // TODO: to be retrieved from config API
-            vm.idpName = 'IdP'; 
-            vm.usernameHint = 'IdP username, e.g., first_last';
         }
 
         function recaptchaAnswered(response) {
@@ -34,20 +31,33 @@
         }
 
         function submit() {
-            var email = '******@sil.org';
+            dataService
+              .post('reset', {
+                  username: vm.username,
+                  verification_token: recaptchaResponse
+              })
+              .then(handleSuccessfulReset);
+//TODO: need error handling for bad POST
+        }
 
-            $mdDialog.show({
+        function handleSuccessfulReset(response) {
+            var primaryEmail = response.data.methods[0].value;
+
+            $mdDialog
+              .show({
                 templateUrl: 'forgot/forgot-status.html',
                 controller: 'ForgotStatusController',
                 controllerAs: 'vm',
                 locals: {
-                    sentTo: email
+                    sentTo: primaryEmail,
+                    resetId: response.data.uid
                 }
-            }).then(killInactivityTimer, resetPage);
+              })
+              .then(killInactivityTimer, resetPage);
 
             startInactivityTimer();
         }
-
+        
         function startInactivityTimer() {
             inactivityTimer = $timeout(navigateToHome, 60000);
         }
