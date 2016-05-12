@@ -24,11 +24,15 @@
         }
 
         function buildFullyQualifiedUrl(url) {
-            if (url.indexOf('//') === -1) {
+            if (isNotFullyQualifiedAlready(url)) {
                 return DATA_API_BASE_URL + url;
             }
 
             return url;
+        }
+
+        function isNotFullyQualifiedAlready(url) {
+            return url.indexOf('//') === -1;
         }
 
         function get(url) {
