@@ -6,6 +6,7 @@
             'ngMaterial',
             'ngRoute',
             'ngMessages',
-            'password.html'
+            'password.html',
+            'password.data'
         ]);
 })();

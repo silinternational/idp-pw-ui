@@ -5,44 +5,39 @@
         .module('password.profile')
         .controller('ProfileController', ProfileController);
 
-    function ProfileController(userService, $location) {
+    function ProfileController(userService, $location, dataService,
+                               $route) {
         var vm = this;
 
         vm.user = userService.user;
-        vm.methods = [
-            {
-                email: 'jane_doe@jaars.org'
-            },
-            {
-                email: 'jane_doe@wycliffe.org'
-            },
-            {
-                phone: '(555) 555-1212'
-            }
-        ];
+        vm.methods = [];
 
         vm.navigate = navigate;
-        vm.isEmail = isEmail;
-        vm.isPhone = isPhone;
+        vm.delete = remove;
+
 
         activate();
 
-        ///////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
 
         function activate() {
-            vm.user.pwchanged = new Date();
+            dataService
+              .get('method')
+              .then(function getMethods(response) {
+                  vm.methods = response.data;
+              });
         }
 
         function navigate(url) {
             $location.url(url);
         }
 
-        function isEmail(method) {
-            return angular.isDefined(method.email);
-        }
-
-        function isPhone(method) {
-            return angular.isDefined(method.phone);
+        function remove(method) {
+            dataService
+              .delete('method/' + method.id)
+              .then(function () {
+                  $route.reload();
+              });
         }
     }
 })();

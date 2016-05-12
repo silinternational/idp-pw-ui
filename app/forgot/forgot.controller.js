@@ -40,7 +40,6 @@
                 templateUrl: 'forgot/forgot-status.html',
                 controller: 'ForgotStatusController',
                 controllerAs: 'vm',
-                bindToController: true,
                 locals: {
                     sentTo: email
                 }
