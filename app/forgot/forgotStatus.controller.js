@@ -5,10 +5,11 @@
         .module('password.forgot')
         .controller('ForgotStatusController', ForgotStatusController);
 
-    function ForgotStatusController($mdDialog, $location) {
+    function ForgotStatusController($mdDialog, $location, sentTo) {
         var vm = this;
 
         vm.anotherSent = false;
+        vm.sentTo = sentTo;
 
         vm.cancel = cancel;
         vm.alternate = alternate;
