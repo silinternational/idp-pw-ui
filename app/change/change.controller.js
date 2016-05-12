@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('password.change')
-        .controller('ChangeController', ChangeController);
+      .module('password.change')
+      .controller('ChangeController', ChangeController);
 
     function ChangeController($mdDialog, $location, $timeout, dataService) {
         var vm = this;
@@ -33,7 +33,7 @@
             var queryString = $location.search();
 
             if (angular.isString(queryString.id) &&
-                angular.isString(queryString.token)) {
+              angular.isString(queryString.token)) {
 
                 $mdDialog.show({
                     templateUrl: 'change/verification-status.html',
@@ -48,41 +48,32 @@
 
         function cancel() {
             if (vm.changeForm.$dirty) {
-                $mdDialog.show(
-                  // TODO: may need to move content into template for i18n
-                  // purposes.
-                  $mdDialog.confirm()
-                    .title('Are you sure?')
-                    .textContent('Would you like to discard your changes?')
-                    .ok('Yes')
-                    .cancel('No')
-                ).then(function handleOk() {
-                    navigateToProfilePage();
+                $mdDialog.show({
+                    templateUrl: 'change/discard-changes-dialog.html',
+                    controller: 'DiscardChangesDialogController',
+                    controllerAs: 'vm'
                 });
             } else {
-                navigateToProfilePage();
+                $location.url('profile');
             }
-        }
-
-        function navigateToProfilePage() {
-            $location.url('profile');
         }
 
         function change() {
-            // TODO: may need to move content into template for i18n
-            // purposes.
-            if (! vm.changeForm.$invalid) {
-                $mdDialog.show(
-                  $mdDialog.alert()
-                    .title('Password status')
-                    .textContent('Password changed successfully.')
-                    .ok('Ok')
-                ).then(function handleUserResponse() {
-                    // TODO: may need to give the user an option to return to
-                    // their original destination or proceed to their profile
-                    navigateToProfilePage();
-                });
-            }
+//TODO: ensure the form is valid first? if (!vm.changeForm.$invalid)
+            dataService
+              .put('password', {
+                  password: vm.pw
+              })
+              .then(handleSuccessfulPasswordChange);
+//TODO: need error handling for bad PUT            
+        }
+        
+        function handleSuccessfulPasswordChange() {
+            $mdDialog.show({
+                templateUrl: 'change/password-status-dialog.html',
+                controller: 'PasswordStatusDialogController',
+                controllerAs: 'vm'
+            });
         }
     }
 })();
