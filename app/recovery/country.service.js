@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('password.recovery')
-        .factory('countryService', countryService);
+      .module('password.recovery')
+      .factory('countryService', countryService);
 
     function countryService() {
         var countries = null,

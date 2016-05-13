@@ -1,19 +1,18 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.nav')
-        .directive('pwNavToggle', pwNavToggle);
+      .module('password.nav')
+      .directive('pwNavToggle', pwNavToggle);
 
     function pwNavToggle() {
         return {
-            restrict : 'E',
+            restrict: 'E',
             controller: NavToggleController,
             controllerAs: 'vm',
             bindToController: true,
-            scope : {
-            },
-            templateUrl : 'nav/nav-toggle.html'
+            scope: {},
+            templateUrl: 'nav/nav-toggle.html'
         };
     }
 
@@ -24,7 +23,7 @@
 
         ///////////////////////////////////////////////////////////////////////
 
-        function openNav(){
+        function openNav() {
             $mdSidenav('sidenav').open();
         }
     }

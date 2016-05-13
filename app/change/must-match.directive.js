@@ -1,13 +1,13 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.change')
-        .directive('pwMustMatch', pwMustMatch);
+      .module('password.change')
+      .directive('pwMustMatch', pwMustMatch);
 
     function pwMustMatch() {
         return {
-            restrict : 'A',
+            restrict: 'A',
             require: 'ngModel',
             scope: {
                 otherPw: '@pwMustMatch'

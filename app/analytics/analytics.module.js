@@ -1,8 +1,8 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.analytics', [
-            'angularytics'
-        ]);
+      .module('password.analytics', [
+          'angularytics'
+      ]);
 })();

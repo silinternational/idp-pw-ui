@@ -1,19 +1,18 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.nav')
-        .directive('pwNav', pwNav);
+      .module('password.nav')
+      .directive('pwNav', pwNav);
 
     function pwNav() {
         return {
-            restrict : 'E',
+            restrict: 'E',
             controller: NavController,
             controllerAs: 'vm',
             bindToController: true,
-            scope : {
-            },
-            templateUrl : 'nav/nav.html'
+            scope: {},
+            templateUrl: 'nav/nav.html'
         };
     }
 

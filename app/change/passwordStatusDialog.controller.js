@@ -2,13 +2,13 @@
     'use strict';
 
     angular
-        .module('password.change')
-        .controller('PasswordStatusDialogController', 
-                     PasswordStatusDialogController);
+      .module('password.change')
+      .controller('PasswordStatusDialogController',
+        PasswordStatusDialogController);
 
     function PasswordStatusDialogController($mdDialog, $location) {
         var vm = this;
-        
+
         vm.ok = ok;
 
         activate();

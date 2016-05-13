@@ -6,9 +6,8 @@
       .factory('returnToService', returnToService);
 
     function returnToService() {
-        var url = null;
-
-        var service = {
+        var url = null,
+            service = {
                 url: url
             };
 

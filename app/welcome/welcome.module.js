@@ -1,10 +1,10 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.welcome', [
-            'password.auth',
-            'ngMaterial',
-            'ngRoute'
-        ]);
+      .module('password.welcome', [
+          'password.auth',
+          'ngMaterial',
+          'ngRoute'
+      ]);
 })();

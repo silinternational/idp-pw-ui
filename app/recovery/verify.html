@@ -14,10 +14,11 @@
 
     <md-dialog-content class="md-dialog-content" layout="column"
                        layout-align="start center">
-        <p  ng-if="vm.anotherSent" class="md-body-1">
-            Another verification code has been sent, please enter it below.
+        <p ng-if="vm.anotherSent" class="md-body-1">
+            Another verification code has been sent, please enter it
+            below.
         </p>
-        <p  ng-if="! vm.anotherSent" class="md-body-1">
+        <p ng-if="! vm.anotherSent" class="md-body-1">
             Please enter the verification code you have received.
         </p>
 
@@ -33,14 +34,16 @@
                        ng-model="vm.verificationCode"
                        required
                        md-autofocus>
-                <ng-messages for="vm.verificationForm.verificationCode.$error"
-                             role="alert">
+                <ng-messages
+                        for="vm.verificationForm.verificationCode.$error"
+                        role="alert">
                     <ng-message when="required">
                         Required.
                     </ng-message>
                     <ng-message when="incorrect">
-                        {{  vm.message }}
+                        {{ vm.message }}
                     </ng-message>
+                </ng-messages>
             </md-input-container>
         </form>
     </md-dialog-content>

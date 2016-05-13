@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('password.profile')
-        .controller('ProfileController', ProfileController);
+      .module('password.profile')
+      .controller('ProfileController', ProfileController);
 
     function ProfileController(userService, $location, dataService,
                                $route) {

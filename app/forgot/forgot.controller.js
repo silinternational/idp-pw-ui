@@ -2,9 +2,9 @@
     'use strict';
 
     angular
-        .module('password.forgot')
-        .controller('ForgotController', ForgotController);
-    
+      .module('password.forgot')
+      .controller('ForgotController', ForgotController);
+
     function ForgotController($mdDialog, $location, $timeout,
                               resolvedConfig, dataService) {
         var vm = this,
@@ -46,19 +46,19 @@
 
             $mdDialog
               .show({
-                templateUrl: 'forgot/forgot-status.html',
-                controller: 'ForgotStatusController',
-                controllerAs: 'vm',
-                locals: {
-                    sentTo: primaryEmail,
-                    resetId: response.data.uid
-                }
+                  templateUrl: 'forgot/forgot-status.html',
+                  controller: 'ForgotStatusController',
+                  controllerAs: 'vm',
+                  locals: {
+                      sentTo: primaryEmail,
+                      resetId: response.data.uid
+                  }
               })
               .then(killInactivityTimer, resetPage);
 
             startInactivityTimer();
         }
-        
+
         function startInactivityTimer() {
             inactivityTimer = $timeout(navigateToHome, 60000);
         }

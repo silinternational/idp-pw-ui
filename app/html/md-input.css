@@ -1,7 +1,7 @@
 /* users weren't exactly sure where the input was since there was no
    border. */
 md-input-container input.md-input {
-    background-color: rgba(0,0,0,0.015);
+    background-color: rgba(0, 0, 0, 0.015);
     border-radius: 2px;
 }
 

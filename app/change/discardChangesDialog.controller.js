@@ -2,13 +2,13 @@
     'use strict';
 
     angular
-        .module('password.change')
-        .controller('DiscardChangesDialogController',
-                     DiscardChangesDialogController);
+      .module('password.change')
+      .controller('DiscardChangesDialogController',
+        DiscardChangesDialogController);
 
     function DiscardChangesDialogController($mdDialog, $location) {
         var vm = this;
-        
+
         vm.yes = yes;
         vm.no = no;
 

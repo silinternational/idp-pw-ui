@@ -2,13 +2,13 @@
     'use strict';
 
     angular
-        .module('password.recovery')
-        .controller('AddMethodController', AddMethodController);
+      .module('password.recovery')
+      .controller('AddMethodController', AddMethodController);
 
     function AddMethodController($mdDialog, $location, countryService,
                                  dataService) {
         var vm = this;
-        
+
         vm.newRecoveryMethod = {
             type: 'email',
             value: ''
@@ -64,11 +64,10 @@
         }
 
         function add() {
-            dataService.post('method', vm.newRecoveryMethod)
+            dataService
+              .post('method', vm.newRecoveryMethod)
               .then(function (response) {
-                  var method = response.data;
-                  
-                  showCodeVerificationDialog(method);
+                  showCodeVerificationDialog(response.data);
               }, function (response) {
                   console.error(response);
               });

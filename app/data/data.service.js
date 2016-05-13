@@ -2,17 +2,17 @@
     'use strict';
 
     angular
-        .module('password.data')
-        .factory('dataService', dataService);
+      .module('password.data')
+      .factory('dataService', dataService);
 
     function dataService($http, DATA_API_BASE_URL) {
         var service = {
-                get: get,
-                put: put,
-                post: post,
-                delete: remove,
-                baseUrl: baseUrl
-            };
+            get: get,
+            put: put,
+            post: post,
+            delete: remove,
+            baseUrl: baseUrl
+        };
 
         activate();
 

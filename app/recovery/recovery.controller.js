@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('password.recovery')
-        .controller('RecoveryController', RecoveryController);
+      .module('password.recovery')
+      .controller('RecoveryController', RecoveryController);
 
     function RecoveryController($location, $mdDialog, dataService) {
         var vm = this;

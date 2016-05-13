@@ -1,9 +1,9 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.change')
-        .config(configureChangeRoutes);
+      .module('password.change')
+      .config(configureChangeRoutes);
 
     function configureChangeRoutes($routeProvider) {
         $routeProvider.when('/change', {

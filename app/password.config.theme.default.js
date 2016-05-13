@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('password')
-        .config(configureApp);
+      .module('password')
+      .config(configureApp);
 
     function configureApp($mdThemingProvider) {
         configureTheme($mdThemingProvider);

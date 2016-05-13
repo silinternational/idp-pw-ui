@@ -1,9 +1,9 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.auth')
-        .directive('pwAuth', pwAuth);
+      .module('password.auth')
+      .directive('pwAuth', pwAuth);
 
     function pwAuth() {
         return {

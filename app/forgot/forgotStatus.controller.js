@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('password.forgot')
-        .controller('ForgotStatusController', ForgotStatusController);
+      .module('password.forgot')
+      .controller('ForgotStatusController', ForgotStatusController);
 
     function ForgotStatusController($mdDialog, $location, sentTo,
                                     resetId, dataService) {

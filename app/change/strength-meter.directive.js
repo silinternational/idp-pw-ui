@@ -1,13 +1,13 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.change')
-        .directive('pwStrengthMeter', pwStrengthMeter);
+      .module('password.change')
+      .directive('pwStrengthMeter', pwStrengthMeter);
 
     function pwStrengthMeter() {
         return {
-            restrict : 'E',
+            restrict: 'E',
             controller: StrengthMeterController,
             bindToController: true,
             controllerAs: 'vm',
@@ -29,7 +29,7 @@
 
             function activate() {
                 $scope.$watch('vm.pwInput.$viewValue',
-                              checkScoreApplicability);
+                  checkScoreApplicability);
             }
 
             function checkScoreApplicability() {

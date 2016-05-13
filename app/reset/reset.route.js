@@ -1,9 +1,9 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.reset')
-        .config(configureResetRoutes);
+      .module('password.reset')
+      .config(configureResetRoutes);
 
     function configureResetRoutes($routeProvider) {
         $routeProvider.when('/reset/:resetId/verify/:verificationCode', {

@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('password.change')
-        .directive('pwConstraints', pwConstraints);
+      .module('password.change')
+      .directive('pwConstraints', pwConstraints);
 
     function pwConstraints(dataService) {
         var pwConstraints = {};
@@ -26,11 +26,11 @@
         }
 
         function addValidators(scope, el, attrs, ngModel) {
-            ngModel.$validators.minLength  = minLength;
-            ngModel.$validators.maxLength  = maxLength;
-            ngModel.$validators.minNum     = minNum;
+            ngModel.$validators.minLength = minLength;
+            ngModel.$validators.maxLength = maxLength;
+            ngModel.$validators.minNum = minNum;
             ngModel.$validators.minSpecial = minSpecial;
-            ngModel.$validators.minUpper   = minUpper;
+            ngModel.$validators.minUpper = minUpper;
         }
 
         function minLength(modelValue, viewValue) {
@@ -44,7 +44,7 @@
         function minNum(modelValue, viewValue) {
             return validate('minNum', viewValue);
         }
-        
+
         function minSpecial(modelValue, viewValue) {
             return validate('minSpecial', viewValue);
         }
@@ -55,7 +55,7 @@
 
         function validate(rule, value) {
             return pwConstraints.hasOwnProperty(rule) &&
-                   new RegExp(pwConstraints[rule].pattern).test(value);
+              new RegExp(pwConstraints[rule].pattern).test(value);
         }
     }
 })();

@@ -1,9 +1,9 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.profile')
-        .config(configureProfileRoutes);
+      .module('password.profile')
+      .config(configureProfileRoutes);
 
     function configureProfileRoutes($routeProvider) {
         $routeProvider.when('/profile', {

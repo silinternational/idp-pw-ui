@@ -1,8 +1,8 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.title', [
-            'ngRoute'
-        ]);
+      .module('password.title', [
+          'ngRoute'
+      ]);
 })();

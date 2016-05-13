@@ -4,7 +4,7 @@ pw-strength-meter figure {
     height: 2em;
     width: 2em;
     border-radius: 50%;
-    border: 0.25em solid rgba(0,0,0,0.03);
+    border: 0.25em solid rgba(0, 0, 0, 0.03);
     transform: rotate(-45deg);
 }
 
