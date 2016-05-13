@@ -32,8 +32,8 @@
 
         function showCodeVerificationDialog(method) {
             $mdDialog.show({
-                templateUrl: 'recovery/verify.html',
-                controller: 'VerifyController',
+                templateUrl: 'recovery/verify-dialog.html',
+                controller: 'VerifyDialogController',
                 controllerAs: 'vm',
                 locals: {
                     method: method

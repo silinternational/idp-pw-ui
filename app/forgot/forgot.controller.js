@@ -37,28 +37,31 @@
                   username: vm.username,
                   verification_token: recaptchaResponse
               })
-              .then(handleSuccessfulReset);
-//TODO: need error handling for bad POST
+              .then(reset, failed);
         }
 
-        function handleSuccessfulReset(response) {
+        function reset(response) {
             var primaryEmail = response.data.methods[0].value;
 
             $mdDialog
               .show({
-                  templateUrl: 'forgot/forgot-status.html',
-                  controller: 'ForgotStatusController',
+                  templateUrl: 'forgot/forgot-status-dialog.html',
+                  controller: 'ForgotStatusDialogController',
                   controllerAs: 'vm',
                   locals: {
                       sentTo: primaryEmail,
                       resetId: response.data.uid
                   }
               })
-              .then(killInactivityTimer, resetPage);
+              .then(killInactivityTimer, reInitializePage);
 
             startInactivityTimer();
         }
 
+        function failed () {
+            //TODO: need error handling for bad POST
+        }
+        
         function startInactivityTimer() {
             inactivityTimer = $timeout(navigateToHome, 60000);
         }
@@ -69,7 +72,7 @@
             $location.url('/');
         }
 
-        function resetPage() {
+        function reInitializePage() {
             killInactivityTimer();
 
             vm.username = '';

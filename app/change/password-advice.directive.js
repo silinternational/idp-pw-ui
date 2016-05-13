@@ -23,7 +23,6 @@
         var vm = this;
 
         vm.showAdvice = showAdvice;
-        vm.hideAdvice = hideAdvice;
 
         activate();
 
@@ -32,23 +31,16 @@
         function activate() {
         }
 
-//TODO: rethink this design, don't like the reuse of the controller
-// and prefer the DI approach for these dialogues.
         function showAdvice() {
             $mdDialog.show({
                 templateUrl: 'change/password-advice-dialog.html',
-                controller: PasswordAdviceController,
-                bindToController: true,
+                controller: 'PasswordAdviceDialogController',
                 controllerAs: 'vm',
                 locals: {
                     warning: vm.warning,
                     suggestions: vm.suggestions
                 }
             });
-        }
-
-        function hideAdvice() {
-            $mdDialog.hide();
         }
     }
 })();

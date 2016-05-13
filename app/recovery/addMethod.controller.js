@@ -30,28 +30,16 @@
             vm.selectedCountry = vm.countries[0];
         }
 
-        //TODO: this cancel behavior checking for dirty is also in the
-        // change controller...probably time to make this a directive
         function cancel() {
             if (vm.addMethodForm.$dirty) {
-                $mdDialog.show(
-                  // TODO: may need to move content into template for i18n
-                  // purposes.
-                  $mdDialog.confirm()
-                    .title('Are you sure?')
-                    .textContent('Would you like to discard your changes?')
-                    .ok('Yes')
-                    .cancel('No')
-                ).then(function handleOk() {
-                    navigateToProfilePage();
+                $mdDialog.show({
+                    templateUrl: 'recovery/discard-changes-dialog.html',
+                    controller: 'DiscardMethodChangesDialogController',
+                    controllerAs: 'vm'
                 });
             } else {
-                navigateToProfilePage();
+                $location.url('profile');
             }
-        }
-
-        function navigateToProfilePage() {
-            $location.url('profile');
         }
 
         function addPhone() {
@@ -75,8 +63,8 @@
 
         function showCodeVerificationDialog(method) {
             $mdDialog.show({
-                templateUrl: 'recovery/verify.html',
-                controller: 'VerifyController',
+                templateUrl: 'recovery/verify-dialog.html',
+                controller: 'VerifyDialogController',
                 controllerAs: 'vm',
                 locals: {
                     method: method

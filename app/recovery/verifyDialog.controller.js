@@ -3,9 +3,9 @@
 
     angular
       .module('password.recovery')
-      .controller('VerifyController', VerifyController);
+      .controller('VerifyDialogController', VerifyDialogController);
 
-    function VerifyController($location, $mdDialog, method, dataService) {
+    function VerifyDialogController($mdDialog, method, dataService) {
         var vm = this;
 
         vm.verificationForm = null;
@@ -30,6 +30,8 @@
 
         function resendCode() {
             vm.verificationCode = null;
+
+            //TODO: need api call for resend here.
             vm.anotherSent = true;
         }
 
@@ -38,23 +40,19 @@
               .put('method/' + method.id, {
                   code: vm.verificationCode
               })
-              .then(verificationSucceeded, verificationFailed);
+              .then(verified, invalid);
         }
 
-        function verificationSucceeded() {
-            // TODO: may need to move content into template for i18n
-            // purposes.
-            $mdDialog.show(
-              $mdDialog.alert()
-                .title('Update successful')
-                .textContent('New recovery method added.')
-                .ok('Ok')
-            ).then(function handleUserResponse() {
-                $location.url('profile');
+        function verified() {
+            $mdDialog.show({
+                templateUrl: 'recovery/method-status-dialog.html',
+                controller: 'MethodStatusDialogController',
+                controllerAs: 'vm'
             });
         }
 
-        function verificationFailed(response) {
+        function invalid(response) {
+            //TODO: need error handling
             vm.verificationForm.verificationCode.$setValidity('incorrect', false);
             vm.message = response.data.message;
         }
