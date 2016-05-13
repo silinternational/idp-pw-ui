@@ -38,12 +38,15 @@
         function resend() {
             dataService
               .put('reset/' + resetId + '/resend')
-              .then(handleSuccessfulResend);
-//TODO: need error handling for bad PUT
+              .then(sent, failed);
         }
 
-        function handleSuccessfulResend() {
+        function sent() {
             vm.anotherSent = true;
+        }
+
+        function failed () {
+            //TODO: need error handling
         }
     }
 })();
