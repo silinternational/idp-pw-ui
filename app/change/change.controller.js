@@ -5,12 +5,11 @@
       .module('password.change')
       .controller('ChangeController', ChangeController);
 
-    function ChangeController($mdDialog, $location, $timeout, dataService) {
+    function ChangeController($mdDialog, $location, dataService,
+                              resolvedUser) {
         var vm = this;
 
         vm.pw = '';
-        vm.pwagain = '';
-        vm.strength = {};
         vm.pwConstraints = {};
 
         vm.change = change;
@@ -21,28 +20,19 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            checkForIncomingToken();
+            if (resolvedUser.isAuthenticated) {
+                dataService
+                  .get('config')
+                  .then(function (response) {
+                      vm.pwConstraints = response.data.password;
+                  });
 
-            dataService.get('config')
-              .then(function (response) {
-                  vm.pwConstraints = response.data.password;
-              });
-        }
-
-        function checkForIncomingToken() {
-            var queryString = $location.search();
-
-            if (angular.isString(queryString.id) &&
-              angular.isString(queryString.token)) {
-
+            } else {
                 $mdDialog.show({
-                    templateUrl: 'change/verification-status.html',
-                    escapeToClose: false
+                    templateUrl: 'change/not-authorized-dialog.html',
+                    controller: 'NotAuthorizedDialogController',
+                    controllerAs: 'vm'
                 });
-
-                $timeout(function () {
-                    $mdDialog.hide();
-                }, 2000);
             }
         }
 
@@ -64,16 +54,20 @@
               .put('password', {
                   password: vm.pw
               })
-              .then(handleSuccessfulPasswordChange);
-//TODO: need error handling for bad PUT            
+              .then(changed, failed);
         }
-        
-        function handleSuccessfulPasswordChange() {
+
+        function changed() {
             $mdDialog.show({
                 templateUrl: 'change/password-status-dialog.html',
                 controller: 'PasswordStatusDialogController',
                 controllerAs: 'vm'
             });
+        }
+
+        function failed(response) {
+            //TODO: need error handling for bad PUT            
+            console.error(response);
         }
     }
 })();

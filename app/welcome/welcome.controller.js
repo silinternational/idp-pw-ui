@@ -2,10 +2,10 @@
     'use strict';
 
     angular
-        .module('password.welcome')
-        .controller('WelcomeController', WelcomeController);
+      .module('password.welcome')
+      .controller('WelcomeController', WelcomeController);
 
-    function WelcomeController($location, userService) {
+    function WelcomeController($location, resolvedUser, userService) {
         var vm = this;
 
         vm.navigate = navigate;
@@ -13,9 +13,12 @@
 
         activate();
 
-        ///////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
 
         function activate() {
+            if (resolvedUser.isAuthenticated) {
+                $location.url('profile');
+            }
         }
 
         function navigate(url) {

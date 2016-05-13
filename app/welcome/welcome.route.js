@@ -10,7 +10,14 @@
             title: 'Welcome',
             templateUrl: 'welcome/welcome.html',
             controller: 'WelcomeController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                'resolvedUser': getUser
+            }
         });
+
+        function getUser(userService) {
+            return userService.getUser();
+        }
     }
 })();

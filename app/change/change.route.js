@@ -10,7 +10,14 @@
             title: 'Change password',
             templateUrl: 'change/change.html',
             controller: 'ChangeController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                'resolvedUser': getUser
+            }
         });
+
+        function getUser(userService) {
+            return userService.getUser();
+        }
     }
 })();
