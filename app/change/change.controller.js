@@ -49,25 +49,32 @@
         }
 
         function change() {
-//TODO: ensure the form is valid first? if (!vm.changeForm.$invalid)
-            dataService
-              .put('password', {
-                  password: vm.pw
-              })
-              .then(changed, failed);
+            if (vm.changeForm.$valid) {
+                dataService
+                  .put('password', {
+                      password: vm.pw
+                  })
+                  .then(changed, failed);
+            }
         }
 
         function changed() {
             $mdDialog.show({
-                templateUrl: 'change/password-status-dialog.html',
-                controller: 'PasswordStatusDialogController',
+                templateUrl: 'change/password-status-dialog-ok.html',
+                controller: 'PasswordStatusDialogOkController',
                 controllerAs: 'vm'
             });
         }
 
         function failed(response) {
-            //TODO: need error handling for bad PUT            
-            console.error(response);
+            $mdDialog.show({
+                templateUrl: 'change/password-status-dialog-failed.html',
+                controller: 'PasswordStatusDialogFailedController',
+                controllerAs: 'vm',
+                locals: {
+                    message: response //TODO: set correct field when API is finished
+                }
+            });
         }
     }
 })();

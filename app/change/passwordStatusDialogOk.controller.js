@@ -3,10 +3,10 @@
 
     angular
       .module('password.change')
-      .controller('PasswordStatusDialogController',
-        PasswordStatusDialogController);
+      .controller('PasswordStatusDialogOkController',
+                   PasswordStatusDialogOkController);
 
-    function PasswordStatusDialogController($mdDialog, $location) {
+    function PasswordStatusDialogOkController($mdDialog, $location) {
         var vm = this;
 
         vm.ok = ok;
