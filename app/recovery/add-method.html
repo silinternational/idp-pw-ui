@@ -71,9 +71,7 @@
     </section>
 
     <section layout="row" layout-align="space-between start">
-        <md-button ng-click="vm.cancel()" class="md-accent md-raised">
-            Cancel
-        </md-button>
+        <pw-safe-cancel></pw-safe-cancel>
 
         <md-button ng-click="vm.newRecoveryMethod.type === 'phone' ?
                              vm.addPhone() : vm.add()"

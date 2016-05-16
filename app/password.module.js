@@ -19,3 +19,5 @@
           'password.reset'
       ]);
 })();
+//TODO: need to review the lcoation of these and make sure they are
+// in the right lcoation...some may belong lower.

@@ -5,19 +5,18 @@
       .module('password.recovery')
       .controller('AddMethodController', AddMethodController);
 
-    function AddMethodController($mdDialog, $location, countryService,
-                                 dataService, failedDialogService) {
+    function AddMethodController($location, countryService, dataService,
+                                 failedDialogService) {
         var vm = this;
 
         vm.newRecoveryMethod = {
             type: 'email',
             value: ''
         };
-        vm.addMethodForm = {};
+        vm.addMethodForm = null;
         vm.selectedCountry = null;
         vm.countries = [];
 
-        vm.cancel = cancel;
         vm.addPhone = addPhone;
         vm.add = add;
 
@@ -28,18 +27,6 @@
         function activate() {
             vm.countries = countryService.getCountries();
             vm.selectedCountry = vm.countries[0];
-        }
-
-        function cancel() {
-            if (vm.addMethodForm.$dirty) {
-                $mdDialog.show({
-                    templateUrl: 'recovery/discard-changes-dialog.html',
-                    controller: 'DiscardMethodChangesDialogController',
-                    controllerAs: 'vm'
-                });
-            } else {
-                $location.url('profile');
-            }
         }
 
         function addPhone() {
