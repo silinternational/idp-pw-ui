@@ -3,9 +3,9 @@
 
     angular
       .module('password.forgot')
-      .controller('ForgotStatusDialogController', ForgotStatusDialogController);
+      .controller('ForgotStatusDialogOkController', ForgotStatusDialogOkController);
 
-    function ForgotStatusDialogController($mdDialog, $location, sentTo,
+    function ForgotStatusDialogOkController($mdDialog, $location, sentTo,
                                           resetId, dataService) {
         var vm = this;
 

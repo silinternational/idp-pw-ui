@@ -44,8 +44,8 @@
 
             $mdDialog
               .show({
-                  templateUrl: 'forgot/forgot-status-dialog.html',
-                  controller: 'ForgotStatusDialogController',
+                  templateUrl: 'forgot/forgot-status-dialog-ok.html',
+                  controller: 'ForgotStatusDialogOkController',
                   controllerAs: 'vm',
                   locals: {
                       sentTo: primaryEmail,
@@ -57,8 +57,15 @@
             startInactivityTimer();
         }
 
-        function failed () {
-            //TODO: need error handling for bad POST
+        function failed (response) {
+            $mdDialog.show({
+                templateUrl: 'forgot/forgot-status-dialog-failed.html',
+                controller: 'ForgotStatusDialogFailedController',
+                controllerAs: 'vm',
+                locals: {
+                    error: response.data
+                }
+            });
         }
         
         function startInactivityTimer() {
