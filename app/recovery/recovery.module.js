@@ -7,6 +7,7 @@
           'ngRoute',
           'ngMessages',
           'password.html',
-          'password.data'
+          'password.data',
+          'password.fail'
       ]);
 })();

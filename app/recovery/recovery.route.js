@@ -18,6 +18,12 @@
               templateUrl: 'recovery/add-method.html',
               controller: 'AddMethodController',
               controllerAs: 'vm'
+          })
+          .when('/recovery-method/verify/:methodId', {
+              title: 'Verify code',
+              templateUrl: 'recovery/verify.html',
+              controller: 'VerifyController',
+              controllerAs: 'vm'
           });
     }
 })();

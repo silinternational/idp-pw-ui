@@ -6,10 +6,11 @@
       .controller('ForgotController', ForgotController);
 
     function ForgotController($mdDialog, $location, $timeout,
-                              resolvedConfig, dataService) {
+                              resolvedConfig, dataService,
+                              failedDialogService) {
         var vm = this,
-            recaptchaResponse = '',
-            inactivityTimer = null;
+          recaptchaResponse = '',
+          inactivityTimer = null;
 
         vm.username = '';
         vm.recaptchaSiteKey = resolvedConfig.data.recaptchaKey;
@@ -57,17 +58,11 @@
             startInactivityTimer();
         }
 
-        function failed (response) {
-            $mdDialog.show({
-                templateUrl: 'forgot/forgot-status-dialog-failed.html',
-                controller: 'ForgotStatusDialogFailedController',
-                controllerAs: 'vm',
-                locals: {
-                    error: response.data
-                }
-            });
+        function failed(response) {
+            failedDialogService
+              .open('Attempt to reset password failed.', response.data);
         }
-        
+
         function startInactivityTimer() {
             inactivityTimer = $timeout(navigateToHome, 60000);
         }

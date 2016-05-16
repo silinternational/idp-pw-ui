@@ -2,13 +2,14 @@
     'use strict';
 
     angular
-      .module('password.forgot')
-      .controller('ForgotStatusDialogFailedController',
-                   ForgotStatusDialogFailedController);
+      .module('password.fail')
+      .controller('FailedDialogController',
+                   FailedDialogController);
 
-    function ForgotStatusDialogFailedController($mdDialog, error) {
+    function FailedDialogController($mdDialog, summary, error) {
         var vm = this;
 
+        vm.summary = summary;
         vm.error = error;
 
         vm.ok = ok;

@@ -6,7 +6,7 @@
       .controller('AddMethodController', AddMethodController);
 
     function AddMethodController($mdDialog, $location, countryService,
-                                 dataService) {
+                                 dataService, failedDialogService) {
         var vm = this;
 
         vm.newRecoveryMethod = {
@@ -54,22 +54,21 @@
         function add() {
             dataService
               .post('method', vm.newRecoveryMethod)
-              .then(function (response) {
-                  showCodeVerificationDialog(response.data);
-              }, function (response) {
-                  console.error(response);
-              });
+              .then(added, failed);
         }
 
-        function showCodeVerificationDialog(method) {
-            $mdDialog.show({
-                templateUrl: 'recovery/verify-dialog.html',
-                controller: 'VerifyDialogController',
-                controllerAs: 'vm',
-                locals: {
-                    method: method
-                }
-            });
+        function added(response) {
+            verify(response.data);
+        }
+
+        function failed(response) {
+            failedDialogService
+              .open('Attempt to add recovery method failed.',
+                    response.data);
+        }
+
+        function verify(method) {
+            $location.url('recovery-method/verify/' + method.id);
         }
     }
 }());

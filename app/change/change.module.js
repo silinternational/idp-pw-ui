@@ -9,6 +9,7 @@
           'password.html',
           'zxcvbn',
           'password.data',
-          'password.auth'
+          'password.auth',
+          'password.fail'
       ]);
 })();

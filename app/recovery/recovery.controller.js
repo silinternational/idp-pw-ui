@@ -32,7 +32,7 @@
 
         function showCodeVerificationDialog(method) {
             $mdDialog.show({
-                templateUrl: 'recovery/verify-dialog.html',
+                templateUrl: 'recovery/verify.html',
                 controller: 'VerifyDialogController',
                 controllerAs: 'vm',
                 locals: {

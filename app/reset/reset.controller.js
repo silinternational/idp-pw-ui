@@ -27,6 +27,8 @@
         }
 
         function invalid() {
+//TODO: inspect failure to distinguis between an invalid code and a system
+//      failure.            
             vm.verification = 'invalid';
         }
     }

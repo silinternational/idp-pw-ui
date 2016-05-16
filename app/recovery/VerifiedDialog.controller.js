@@ -3,10 +3,10 @@
 
     angular
       .module('password.recovery')
-      .controller('MethodStatusDialogController',
-                   MethodStatusDialogController);
+      .controller('VerifiedDialogController',
+                   VerifiedDialogController);
 
-    function MethodStatusDialogController($mdDialog, $location) {
+    function VerifiedDialogController($mdDialog, $location) {
         var vm = this;
 
         vm.ok = ok;

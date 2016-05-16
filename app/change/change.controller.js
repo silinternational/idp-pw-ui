@@ -6,7 +6,7 @@
       .controller('ChangeController', ChangeController);
 
     function ChangeController($mdDialog, $location, dataService,
-                              resolvedUser) {
+                              resolvedUser, failedDialogService) {
         var vm = this;
 
         vm.pw = '';
@@ -67,14 +67,8 @@
         }
 
         function failed(response) {
-            $mdDialog.show({
-                templateUrl: 'change/password-status-dialog-failed.html',
-                controller: 'PasswordStatusDialogFailedController',
-                controllerAs: 'vm',
-                locals: {
-                    message: response //TODO: set correct field when API is finished
-                }
-            });
+            failedDialogService
+              .open('Attempt to change password failed.', response.data);
         }
     }
 })();

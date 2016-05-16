@@ -8,6 +8,7 @@
           'ngMessages',
           'password.html',
           'vcRecaptcha',
-          'password.data'
+          'password.data',
+          'password.fail'
       ]);
 })();

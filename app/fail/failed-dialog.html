@@ -1,16 +1,16 @@
-<md-dialog aria-label="Status update">
+<md-dialog aria-label="Failure occurred">
     <md-toolbar class="md-toolbar-tools md-warn">
-        <h2>Password status</h2>
+        <h2>{{ vm.error.name }}</h2>
     </md-toolbar>
 
     <md-dialog-content layout="column"
                        class="md-dialog-content md-body-1">
         <p>
-            Password changed failed.
+            {{ vm.summary }}
         </p>
 
         <blockquote>
-            {{ vm.message }}
+            {{ vm.error.message }}
         </blockquote>
     </md-dialog-content>
 
