@@ -24,7 +24,6 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-//TODO: if the user is logged in send them to change
         }
 
         function recaptchaAnswered(response) {
