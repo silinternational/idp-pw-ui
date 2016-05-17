@@ -19,7 +19,7 @@
         };
     }
 
-    function PasswordAdviceController($mdDialog) {
+    function PasswordAdviceController(dialogService) {
         var vm = this;
 
         vm.showAdvice = showAdvice;
@@ -32,15 +32,8 @@
         }
 
         function showAdvice() {
-            $mdDialog.show({
-                templateUrl: 'change/password-advice-dialog.html',
-                controller: 'PasswordAdviceDialogController',
-                controllerAs: 'vm',
-                locals: {
-                    warning: vm.warning,
-                    suggestions: vm.suggestions
-                }
-            });
+            dialogService
+              .advice(vm.warning, vm.suggestions);
         }
     }
 })();

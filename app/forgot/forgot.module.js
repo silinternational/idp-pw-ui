@@ -9,6 +9,6 @@
           'password.html',
           'vcRecaptcha',
           'password.data',
-          'password.fail'
+          'password.dialog'
       ]);
 })();

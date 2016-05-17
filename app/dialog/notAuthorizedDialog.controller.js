@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-      .module('password.recovery')
-      .controller('VerifiedDialogController',
-                   VerifiedDialogController);
+      .module('password.dialog')
+      .controller('NotAuthorizedDialogController',
+                   NotAuthorizedDialogController);
 
-    function VerifiedDialogController($mdDialog, $location) {
+    function NotAuthorizedDialogController($mdDialog, $location) {
         var vm = this;
 
         vm.ok = ok;
@@ -21,7 +21,7 @@
         function ok() {
             $mdDialog.hide();
 
-            $location.url('profile');
+            $location.url('welcome');
         }
     }
 })();

@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-      .module('password.forgot')
-      .controller('ForgotStatusDialogOkController', ForgotStatusDialogOkController);
+      .module('password.dialog')
+      .controller('ResetDialogController', ResetDialogController);
 
-    function ForgotStatusDialogOkController($mdDialog, $location, sentTo,
-                                          resetId, dataService) {
+    function ResetDialogController($mdDialog, $location, sentTo, resetId,
+                                   dataService) {
         var vm = this;
 
         vm.anotherSent = false;
@@ -42,6 +42,7 @@
         }
 
         function sent() {
+            //TODO: make sure dialog stays open
             vm.anotherSent = true;
         }
 

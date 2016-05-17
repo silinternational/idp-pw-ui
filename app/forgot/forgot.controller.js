@@ -7,15 +7,13 @@
 
     function ForgotController($mdDialog, $location, $timeout,
                               resolvedConfig, dataService,
-                              failedDialogService) {
+                              dialogService) {
         var vm = this,
-          recaptchaResponse = '',
-          inactivityTimer = null;
+            recaptchaResponse = '',
+            inactivityTimer = null;
 
         vm.username = '';
-        vm.recaptchaSiteKey = resolvedConfig.data.recaptchaKey;
-        vm.idpName = resolvedConfig.data.idpName;
-        vm.usernameHint = resolvedConfig.data.idpUsernameHint;
+        vm.config = resolvedConfig.data;
 
         vm.recaptchaAnswered = recaptchaAnswered;
         vm.submit = submit;
@@ -42,25 +40,17 @@
 
         function reset(response) {
             var primaryEmail = response.data.methods[0].value;
-
-            $mdDialog
-              .show({
-                  templateUrl: 'forgot/forgot-status-dialog-ok.html',
-                  controller: 'ForgotStatusDialogOkController',
-                  controllerAs: 'vm',
-                  locals: {
-                      sentTo: primaryEmail,
-                      resetId: response.data.uid
-                  }
-              })
+            
+            dialogService
+              .reset(primaryEmail, response.data.uid)
               .then(killInactivityTimer, reInitializePage);
 
             startInactivityTimer();
         }
 
         function failed(response) {
-            failedDialogService
-              .open('Attempt to reset password failed.', response.data);
+            dialogService
+              .fail('Attempt to reset password failed.', response.data);
         }
 
         function startInactivityTimer() {

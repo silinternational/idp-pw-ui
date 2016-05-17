@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-      .module('password.fail', [
+      .module('password.dialog', [
           'ngMaterial'
       ]);
 })();

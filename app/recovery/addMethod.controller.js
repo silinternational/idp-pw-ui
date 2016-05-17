@@ -6,7 +6,7 @@
       .controller('AddMethodController', AddMethodController);
 
     function AddMethodController($location, countryService, dataService,
-                                 failedDialogService) {
+                                 dialogService) {
         var vm = this;
 
         vm.newRecoveryMethod = {
@@ -49,8 +49,8 @@
         }
 
         function failed(response) {
-            failedDialogService
-              .open('Attempt to add recovery method failed.',
+            dialogService
+              .fail('Attempt to add recovery method failed.',
                     response.data);
         }
 

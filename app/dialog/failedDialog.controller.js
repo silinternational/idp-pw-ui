@@ -2,12 +2,15 @@
     'use strict';
 
     angular
-      .module('password.change')
-      .controller('PasswordStatusDialogOkController',
-                   PasswordStatusDialogOkController);
+      .module('password.dialog')
+      .controller('FailedDialogController',
+                   FailedDialogController);
 
-    function PasswordStatusDialogOkController($mdDialog, $location) {
+    function FailedDialogController($mdDialog, summary, error) {
         var vm = this;
+
+        vm.summary = summary;
+        vm.error = error;
 
         vm.ok = ok;
 
@@ -20,8 +23,6 @@
 
         function ok() {
             $mdDialog.hide();
-
-            $location.url('profile');
         }
     }
 })();

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-      .module('password.change')
+      .module('password.dialog')
       .controller('PasswordAdviceDialogController',
                    PasswordAdviceDialogController);
 

@@ -8,7 +8,6 @@
           /*@@DIST-TEMPLATE-CACHE*/
           //'password.analytics',
           'password.title',
-          'password.fail',
           'password.progress',
           'password.nav',
           'password.welcome',

@@ -5,8 +5,8 @@
       .module('password.recovery')
       .controller('VerifyController', VerifyController);
 
-    function VerifyController($mdDialog, $routeParams, dataService,
-                              failedDialogService, $route) {
+    function VerifyController($routeParams, dataService, dialogService, 
+                              $route) {
         var vm = this;
 
         vm.verificationForm = null;
@@ -40,8 +40,8 @@
 
         function failed(response) {
 //TODO: needs to be tested
-            failedDialogService
-              .open('Attempt to resend verification code failed.',
+            dialogService
+              .fail('Attempt to resend verification code failed.',
                     response.data);
         }
 
@@ -54,17 +54,14 @@
         }
 
         function verified() {
-            $mdDialog
-              .show({
-                  templateUrl: 'recovery/verified-dialog.html',
-                  controller: 'VerifiedDialogController',
-                  controllerAs: 'vm'
-              });
+            dialogService
+              .update('Your code was accepted and your new recovery ' +
+                      'method has been added.');
         }
 
         function invalid(response) {
-            failedDialogService
-              .open('Incorrect verification code.', response.data);
+            dialogService
+              .fail('Incorrect verification code.', response.data);
         }
     }
 }());

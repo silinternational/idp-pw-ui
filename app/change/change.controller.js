@@ -5,15 +5,13 @@
       .module('password.change')
       .controller('ChangeController', ChangeController);
 
-    function ChangeController($mdDialog, $location, dataService,
-                              resolvedUser, failedDialogService) {
+    function ChangeController(dataService, resolvedUser, dialogService) {
         var vm = this;
 
         vm.pw = '';
         vm.pwConstraints = {};
 
         vm.change = change;
-        vm.cancel = cancel;
 
         activate();
 
@@ -28,23 +26,7 @@
                   });
 
             } else {
-                $mdDialog.show({
-                    templateUrl: 'change/not-authorized-dialog.html',
-                    controller: 'NotAuthorizedDialogController',
-                    controllerAs: 'vm'
-                });
-            }
-        }
-
-        function cancel() {
-            if (vm.changeForm.$dirty) {
-                $mdDialog.show({
-                    templateUrl: 'change/discard-changes-dialog.html',
-                    controller: 'DiscardChangesDialogController',
-                    controllerAs: 'vm'
-                });
-            } else {
-                $location.url('profile');
+                dialogService.notAuthorized();
             }
         }
 
@@ -59,16 +41,13 @@
         }
 
         function changed() {
-            $mdDialog.show({
-                templateUrl: 'change/password-status-dialog-ok.html',
-                controller: 'PasswordStatusDialogOkController',
-                controllerAs: 'vm'
-            });
+            dialogService
+              .update('Password changed successfully.');
         }
 
         function failed(response) {
-            failedDialogService
-              .open('Attempt to change password failed.', response.data);
+            dialogService
+              .fail('Attempt to change password failed.', response.data);
         }
     }
 })();
