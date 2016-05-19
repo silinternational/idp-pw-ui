@@ -11,6 +11,7 @@
 
         vm.user = userService.user;
         vm.methods = [];
+        vm.config = {};
 
         vm.navigate = navigate;
         vm.delete = remove;
@@ -21,6 +22,12 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
+            dataService
+              .get('config')
+              .then(function getMethods(response) {
+                  vm.config = response.data;
+              });
+
             dataService
               .get('method')
               .then(function getMethods(response) {
