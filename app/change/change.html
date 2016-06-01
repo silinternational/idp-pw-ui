@@ -65,12 +65,6 @@
                 characters long.
             </pw-password-requirement>
             <pw-password-requirement
-                    ng-if="vm.pwConstraints.maxLength.enabled"
-                    error="vm.changeForm.password.$error.maxLength">
-                Must be no more than {{ vm.pwConstraints.maxLength.value
-                }} characters long.
-            </pw-password-requirement>
-            <pw-password-requirement
                     ng-if="vm.pwConstraints.minNum.enabled"
                     error="vm.changeForm.password.$error.minNum">
                 Must have at least {{ vm.pwConstraints.minNum.value }}
