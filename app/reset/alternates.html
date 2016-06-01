@@ -1,0 +1,39 @@
+<header>
+    <h2 class="md-headline">
+        {{ title }}
+    </h2>
+</header>
+
+<md-content layout="column" layout-align="start start" layout-fill>
+    <md-list>
+        <pw-alternate-list-items
+                header="Send code to my primary email"
+                methods="vm.primary"
+                icon="images/md-icons/ic_email_24px.svg">
+        </pw-alternate-list-items>
+
+        <pw-alternate-list-items
+                header="Send code to an alternate email"
+                methods="vm.emails"
+                icon="images/md-icons/ic_email_24px.svg">
+        </pw-alternate-list-items>
+
+        <pw-alternate-list-items
+                header="Send code in a text message"
+                methods="vm.phones"
+                icon="images/md-icons/ic_phone_24px.svg">
+        </pw-alternate-list-items>
+
+        <pw-alternate-list-items
+                header="Email my spouse the code"
+                methods="vm.spouse"
+                icon="images/md-icons/ic_email_24px.svg">
+        </pw-alternate-list-items>
+
+        <pw-alternate-list-items
+                header="Email my supervisor the code"
+                methods="vm.super"
+                icon="images/md-icons/ic_email_24px.svg">
+        </pw-alternate-list-items>
+    </md-list>
+</md-content>

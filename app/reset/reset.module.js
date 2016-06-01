@@ -5,6 +5,7 @@
       .module('password.reset', [
           'ngMaterial',
           'ngRoute',
-          'password.data'
+          'password.data',
+          'password.dialog'
       ]);
 })();

@@ -6,14 +6,14 @@
       .controller('ResetDialogController', ResetDialogController);
 
     function ResetDialogController($mdDialog, $location, sentTo, resetId,
-                                   dataService) {
+                                   dataService, dialogService) {
         var vm = this;
 
         vm.anotherSent = false;
         vm.sentTo = sentTo;
 
         vm.cancel = cancel;
-        vm.alternate = alternate;
+        vm.alternates = alternates;
         vm.resend = resend;
 
         activate();
@@ -29,10 +29,10 @@
             $location.url('/');
         }
 
-        function alternate() {
+        function alternates() {
             $mdDialog.hide();
 
-            $location.url('recovery');
+            $location.url('reset/' + resetId + '/verify/alternates');
         }
 
         function resend() {
@@ -46,8 +46,9 @@
             vm.anotherSent = true;
         }
 
-        function failed () {
-            //TODO: need error handling
+        function failed (response) {
+            dialogService
+              .fail('Unable to resend verification.', response.data);
         }
     }
 })();
