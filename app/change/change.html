@@ -11,13 +11,21 @@
 
             <input type="password" ng-model="vm.pw" zxcvbn="vm.strength"
                    zx-min-score="{{ vm.pwConstraints.zxcvbn.minScore }}"
-                   pw-constraints
-                   required autofocus name="password" id="password">
+                   pw-constraints required autofocus name="password"
+                   ng-maxlength="{{ vm.pwConstraints.maxLength.enabled ?
+                                    vm.pwConstraints.maxLength.value   :
+                                    -1
+                                 }}"
+                   id="password">
 
             <ng-messages for="vm.changeForm.password.$error" role="alert"
                          layout="column">
                 <ng-message when="required">
                     Required.
+                </ng-message>
+                <ng-message when="maxlength">
+                    No more than {{ vm.pwConstraints.maxLength.value }}
+                    characters long.
                 </ng-message>
             </ng-messages>
 
@@ -64,6 +72,12 @@
                 Must be at least {{ vm.pwConstraints.minLength.value }}
                 characters long.
             </pw-password-requirement>
+            <!--<pw-password-requirement-->
+                    <!--ng-if="vm.pwConstraints.maxLength.enabled"-->
+                    <!--error="vm.changeForm.password.$error.maxLength">-->
+                <!--Must be no more than {{ vm.pwConstraints.maxLength.value-->
+                <!--}} characters long.-->
+            <!--</pw-password-requirement>-->
             <pw-password-requirement
                     ng-if="vm.pwConstraints.minNum.enabled"
                     error="vm.changeForm.password.$error.minNum">
