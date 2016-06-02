@@ -11,7 +11,8 @@
             update: update,
             notAuthorized: notAuthorized,
             advice: advice,
-            reset: reset
+            reset: reset,
+            help: help
         };
 
         activate();
@@ -78,6 +79,17 @@
                       resetId: resetId
                   }
               });
+        }
+
+        function help(helpInfo) {
+            return $mdDialog.show({
+                templateUrl: 'dialog/help.html',
+                controller: 'HelpDialogController',
+                controllerAs: 'vm',
+                locals: {
+                    helpInfo: helpInfo
+                }
+            });
         }
     }
 })();

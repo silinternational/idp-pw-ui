@@ -17,6 +17,7 @@
 
         vm.recaptchaAnswered = recaptchaAnswered;
         vm.submit = submit;
+        vm.help = help;
 
         activate();
 
@@ -36,6 +37,10 @@
                   verification_token: recaptchaResponse
               })
               .then(reset, failed);
+        }
+
+        function help() {
+            dialogService.help(vm.config.support);
         }
 
         function reset(response) {

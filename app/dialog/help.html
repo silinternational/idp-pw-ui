@@ -1,0 +1,26 @@
+<md-dialog aria-label="Help desk">
+    <md-toolbar class="md-toolbar-tools">
+        <h2>Help</h2>
+
+        <span flex></span>
+
+        <md-button class="md-icon-button" ng-click="vm.close()">
+            <md-icon md-svg-src="images/md-icons/ic_close_24px.svg"
+                     aria-label="Close dialog">
+            </md-icon>
+        </md-button>
+    </md-toolbar>
+
+    <md-dialog-content class="md-dialog-content">
+        <p ng-repeat="(_key, _value) in vm.helpInfo">
+            <span class="md-body-2">{{ _key | uppercase }}:</span>
+            <span class="md-body-1">{{ _value }}</span>
+        </p>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-click="vm.close()" class="md-primary">
+            Ok
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
