@@ -9,11 +9,14 @@
                                   dialogService) {
         var vm = this;
 
+        vm.allMethods = [];
         vm.phones = [];
         vm.emails = [];
         vm.super = [];
         vm.spouse = [];
         vm.primary = [];
+
+        vm.getHelp = getHelp;
         
         activate();
 
@@ -22,11 +25,13 @@
         function activate() {
             dataService
               .get('reset/' + $routeParams.resetId)
-              .then(retrieved, failedToRetrieve);
+              .then(retrievedMethods, failedToRetrieveMethods);
         }
 
-        function retrieved(response) {
-            response.data.methods.forEach(function (method) {
+        function retrievedMethods(response) {
+            vm.allMethods = response.data.methods;
+
+            vm.allMethods.forEach(function (method) {
                 switch (method.type) {
                     case 'primary'   : vm.primary.push(method); break;
                     case 'phone'     : vm.phones.push(method) ; break;
@@ -37,9 +42,26 @@
             });
         }
 
-        function failedToRetrieve(response) {
+        function failedToRetrieveMethods(response) {
             dialogService
               .fail('Unable to retrieve alternate methods.',
+                    response.data);
+        }
+
+        function getHelp() {
+            dataService
+              .get('config')
+              .then(retrievedConfig, failedToRetrieveConfig);
+        }
+
+        function retrievedConfig(response) {
+            dialogService
+              .help(response.data.support);
+        }
+
+        function failedToRetrieveConfig(response) {
+            dialogService
+              .fail('Unable to retrieve help information.',
                     response.data);
         }
     }
