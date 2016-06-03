@@ -32,13 +32,11 @@
         </ng-messages>
     </md-input-container>
 
-    <section ng-if="vm.newRecoveryMethod.type === 'phone'" layout="row">
-        <!-- TODO: couldn't figure out a better way to keep the input
-             from resizing when something is entered.  Width is the
-             length of the longest country name -->
-        <md-input-container style="width: 30ch;">
+    <section ng-if="vm.newRecoveryMethod.type === 'phone'"
+             layout-gt-xs="row" layout-align-gt-xs="start start">
+        <md-input-container >
             <label>Country code</label>
-            <md-select ng-model="vm.selectedCountry" autofocus
+            <md-select ng-model="vm.selectedCountry"
                        ng-model-options="{trackBy: '$value.code'}">
                 <md-option ng-repeat="_country in vm.countries"
                            ng-value="_country">
@@ -46,8 +44,6 @@
                 </md-option>
             </md-select>
         </md-input-container>
-
-        <span flex="5"><!-- spacer --></span>
 
         <!-- TODO: couldn't figure out a better way to keep the input
              from resizing when something is entered.  Width is the
@@ -58,7 +54,7 @@
                  https://en.wikipedia.org/wiki/E.164 -->
             <input type="tel" ng-model="vm.newRecoveryMethod.value"
                    required minlength="8" maxlength="14" id="phone"
-                   name="phone">
+                   name="phone" autofocus>
             <ng-messages for="vm.addMethodForm.phone.$error" role="alert">
                 <ng-message when="required">
                     Required.
@@ -70,8 +66,10 @@
         </md-input-container>
     </section>
 
-    <section layout="row" layout-align="space-between start">
+    <section layout="row" layout-align="start center">
         <pw-safe-cancel></pw-safe-cancel>
+
+        <span flex></span>
 
         <md-button ng-click="vm.newRecoveryMethod.type === 'phone' ?
                              vm.addPhone() : vm.add()"
