@@ -12,7 +12,8 @@
             notAuthorized: notAuthorized,
             advice: advice,
             reset: reset,
-            help: help
+            help: help,
+            areYouSure: areYouSure
         };
 
         activate();
@@ -35,7 +36,7 @@
                 }
             });
         }
-        
+
         function update(message) {
             $mdDialog.show({
                 templateUrl: 'dialog/updated-dialog.html',
@@ -48,7 +49,7 @@
             });
 
         }
-        
+
         function notAuthorized() {
             $mdDialog.show({
                 templateUrl: 'dialog/not-authorized-dialog.html',
@@ -56,7 +57,7 @@
                 controllerAs: 'vm'
             });
         }
-        
+
         function advice(warning, suggestions) {
             $mdDialog.show({
                 templateUrl: 'dialog/password-advice-dialog.html',
@@ -71,25 +72,36 @@
 
         function reset(primaryEmail, resetId) {
             return $mdDialog.show({
-                  templateUrl: 'dialog/reset.html',
-                  controller: 'ResetDialogController',
-                  controllerAs: 'vm',
-                  locals: {
-                      sentTo: primaryEmail,
-                      resetId: resetId
-                  }
-              });
+                       templateUrl: 'dialog/reset-dialog.html',
+                       controller: 'ResetDialogController',
+                       controllerAs: 'vm',
+                       locals: {
+                           sentTo: primaryEmail,
+                           resetId: resetId
+                       }
+                   });
         }
 
         function help(helpInfo) {
-            return $mdDialog.show({
-                templateUrl: 'dialog/help.html',
+            $mdDialog.show({
+                templateUrl: 'dialog/help-dialog.html',
                 controller: 'HelpDialogController',
                 controllerAs: 'vm',
                 locals: {
                     helpInfo: helpInfo
                 }
             });
+        }
+
+        function areYouSure(question) {
+            return $mdDialog.show({
+                       templateUrl: 'dialog/are-you-sure-dialog.html',
+                       controller: 'AreYouSureDialogController',
+                       controllerAs: 'vm',
+                       locals: {
+                           question: question
+                       }
+                   });
         }
     }
 })();

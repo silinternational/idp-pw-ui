@@ -6,7 +6,7 @@
       .controller('ProfileController', ProfileController);
 
     function ProfileController(userService, $location, dataService,
-                               $route) {
+                               $route, dialogService) {
         var vm = this;
 
         vm.user = userService.user;
@@ -40,11 +40,22 @@
         }
 
         function remove(method) {
-            dataService
-              .delete('method/' + method.id)
-              .then(function () {
-                  $route.reload();
+            dialogService
+              .areYouSure('Would you like to remove this recovery method permanently?')
+              .then(function yes() {
+                  dataService
+                    .delete('method/' + method.id)
+                    .then(deleted, failed);
               });
+        }
+
+        function deleted() {
+            $route.reload();
+        }
+
+        function failed(response) {
+            dialogService
+              .fail('Unable to remove recovery method.', response.data);
         }
     }
 })();
