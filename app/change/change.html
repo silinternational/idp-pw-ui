@@ -43,7 +43,13 @@
             <label for="pwagain">Enter new password (again)</label>
 
             <input type="password" ng-model="vm.pwagain" name="pwagain"
-                   required pw-must-match="{{ vm.pw }}" id="pwagain">
+                   required pw-must-match="{{ vm.pw }}" id="pwagain"
+                   ng-disabled="! vm.pw">
+
+            <md-tooltip md-direction="top" ng-if="! vm.pw">
+                You must enter an acceptable password first.
+            </md-tooltip>
+
             <ng-messages for="vm.changeForm.pwagain.$error" role="alert">
                 <ng-message when="required">
                     Required.
