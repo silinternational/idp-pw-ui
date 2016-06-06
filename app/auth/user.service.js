@@ -35,7 +35,7 @@
             if (user.cached) {
                 // In order to keep the API consistent a promise needed
                 // to be resolved after it was returned so this will add
-                // a slight delay to ensure the method reutrns before the
+                // a slight delay to ensure the method returns before the
                 // promise is resolved.
                 $timeout(function () {
                     deferred.resolve(user);
