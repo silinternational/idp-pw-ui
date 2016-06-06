@@ -12,7 +12,7 @@
             bindToController: true,
             controllerAs: 'vm',
             scope: {
-                score: '=',
+                strength: '=',
                 pwInput: '='
             },
             templateUrl: 'change/strength-meter.html'
@@ -38,7 +38,7 @@
                 // undefined for the situation where no password has been
                 // entered helps with the styling.
                 if (vm.pwInput.$viewValue === '') {
-                    vm.score = undefined;
+                    vm.strength.score = undefined;
                 }
             }
         }

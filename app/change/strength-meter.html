@@ -3,11 +3,12 @@
     </pw-strength-word>
 
     <figure layout="row" layout-align="center center"
-            score="{{ vm.score }}">
-        <figcaption>{{ vm.score }}</figcaption>
+            score="{{ vm.strength.score }}">
+        <figcaption>{{ vm.strength.score }}</figcaption>
     </figure>
 
-    <!--<pw-strength-meter score="vm.strength.score"-->
-                       <!--pw-input="vm.changeForm.password">-->
-    <!--</pw-strength-meter>-->
+    <pw-password-advice warning="vm.strength.feedback.warning"
+                        suggestions="vm.strength.feedback.suggestions"
+                        class="md-caption">
+    </pw-password-advice>
 </section>

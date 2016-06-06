@@ -98,12 +98,12 @@
             </pw-password-requirement>
             <pw-password-requirement
                     error="vm.changeForm.password.$error.passwordStrength">
-                Must have a minimum password strength of {{
-                vm.pwConstraints.zxcvbn.minScore }}.
+                Must have a minimum password strength of
+                {{ vm.pwConstraints.zxcvbn.minScore }}.
             </pw-password-requirement>
         </pw-password-requirements>
 
-        <pw-strength-meter score="vm.strength.score"
+        <pw-strength-meter strength="vm.strength"
                            pw-input="vm.changeForm.password">
         </pw-strength-meter>
     </section>
