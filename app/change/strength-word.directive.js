@@ -19,13 +19,11 @@
 
         //////////////////////////////////////////////////////////////////
 
-        function StrengthWordController($scope, $window) {
+        function StrengthWordController($scope) {
             var vm = this;
 
             vm.strengthWord = 'N/A';
-
-            vm.seeExplanation = seeExplanation;
-
+            
             activate();
 
             //////////////////////////////////////////////////////////////
@@ -54,11 +52,6 @@
                     default:
                         vm.strengthWord = 'N/A';
                 }
-            }
-
-            function seeExplanation() {
-                $window.open('https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation',
-                  '_blank');
             }
         }
     }
