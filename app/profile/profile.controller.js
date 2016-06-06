@@ -10,7 +10,10 @@
         var vm = this;
 
         vm.user = userService.user;
-        vm.methods = [];
+        vm.method = {
+            'emails': [],
+            'phones': []
+        };
         vm.config = {};
 
         vm.navigate = navigate;
@@ -24,15 +27,26 @@
         function activate() {
             dataService
               .get('config')
-              .then(function getMethods(response) {
+              .then(function extractConfig(response) {
                   vm.config = response.data;
               });
 
             dataService
               .get('method')
-              .then(function getMethods(response) {
-                  vm.methods = response.data;
+              .then(extractMethods);
+        }
+
+        function extractMethods(response) {
+            var allMethods = response.data;
+
+            allMethods
+              .forEach(function (method) {
+                  switch (method.type) {
+                      case 'email': vm.method.emails.push(method); break;
+                      case 'phone': vm.method.phones.push(method);
+                  }
               });
+
         }
 
         function navigate(url) {
@@ -41,7 +55,8 @@
 
         function remove(method) {
             dialogService
-              .areYouSure('Would you like to remove this recovery method permanently?')
+              .areYouSure('Would you like to remove this recovery ' +
+                          'method permanently?')
               .then(function yes() {
                   dataService
                     .delete('method/' + method.id)
