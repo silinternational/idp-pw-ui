@@ -13,7 +13,7 @@
             inactivityTimer = null;
 
         vm.username = '';
-        vm.config = resolvedConfig.data;
+        vm.config = resolvedConfig;
 
         vm.recaptchaAnswered = recaptchaAnswered;
         vm.submit = submit;

@@ -6,7 +6,7 @@
       .controller('AlternatesController', AlternatesController);
 
     function AlternatesController(dataService, $routeParams,
-                                  dialogService) {
+                                  dialogService, configService) {
         var vm = this;
 
         vm.allMethods = [];
@@ -49,20 +49,8 @@
         }
 
         function getHelp() {
-            dataService
-              .get('config')
-              .then(retrievedConfig, failedToRetrieveConfig);
-        }
-
-        function retrievedConfig(response) {
             dialogService
-              .help(response.data.support);
-        }
-
-        function failedToRetrieveConfig(response) {
-            dialogService
-              .fail('Unable to retrieve help information.',
-                    response.data);
+              .help(configService.config.support);
         }
     }
 })();

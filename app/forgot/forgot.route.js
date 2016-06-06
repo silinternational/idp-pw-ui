@@ -22,8 +22,8 @@
 
         //////////////////////////////////////////////////////////////////
         
-        function getConfig(dataService) {
-            return dataService.get('config');
+        function getConfig(configService) {
+            return configService.getConfig();
         }
     }
 })();

@@ -5,11 +5,12 @@
       .module('password.change')
       .controller('ChangeController', ChangeController);
 
-    function ChangeController(dataService, resolvedUser, dialogService) {
+    function ChangeController(dataService, resolvedUser, configService,
+                              dialogService) {
         var vm = this;
 
         vm.pw = '';
-        vm.pwConstraints = {};
+        vm.config = configService.config;
 
         vm.change = change;
 
@@ -18,14 +19,7 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            if (resolvedUser.isAuthenticated) {
-                dataService
-                  .get('config')
-                  .then(function (response) {
-                      vm.pwConstraints = response.data.password;
-                  });
-
-            } else {
+            if (! resolvedUser.isAuthenticated) {
                 dialogService.notAuthorized();
             }
         }

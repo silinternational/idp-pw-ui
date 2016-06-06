@@ -5,8 +5,8 @@
       .module('password.change')
       .directive('pwConstraints', pwConstraints);
 
-    function pwConstraints(dataService) {
-        var pwConstraints = {};
+    function pwConstraints(configService) {
+        var config = configService.config;
 
         activate();
 
@@ -19,10 +19,6 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            dataService.get('config')
-              .then(function (response) {
-                  pwConstraints = response.data.password;
-              });
         }
 
         function addValidators(scope, el, attrs, ngModel) {
@@ -54,8 +50,8 @@
         }
 
         function validate(rule, value) {
-            return pwConstraints.hasOwnProperty(rule) &&
-              new RegExp(pwConstraints[rule].pattern).test(value);
+            return config.password.hasOwnProperty(rule) &&
+                   new RegExp(config.password[rule].pattern).test(value);
         }
     }
 })();

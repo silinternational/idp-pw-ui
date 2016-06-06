@@ -5,8 +5,8 @@
       .module('password.profile')
       .controller('ProfileController', ProfileController);
 
-    function ProfileController(userService, $location, dataService,
-                               $route, dialogService) {
+    function ProfileController(userService, configService, $location, 
+                               dataService, $route, dialogService) {
         var vm = this;
 
         vm.user = userService.user;
@@ -14,7 +14,7 @@
             'emails': [],
             'phones': []
         };
-        vm.config = {};
+        vm.config = configService.config;
 
         vm.navigate = navigate;
         vm.delete = remove;
@@ -25,12 +25,6 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            dataService
-              .get('config')
-              .then(function extractConfig(response) {
-                  vm.config = response.data;
-              });
-
             dataService
               .get('method')
               .then(extractMethods);
