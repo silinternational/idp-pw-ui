@@ -5,14 +5,12 @@
       .module('password.dialog')
       .controller('ResetDialogController', ResetDialogController);
 
-    function ResetDialogController($mdDialog, $location, sentTo, resetId,
+    function ResetDialogController($location, sentTo, resetId,
                                    dataService, dialogService) {
         var vm = this;
 
-        vm.anotherSent = false;
         vm.sentTo = sentTo;
 
-        vm.cancel = cancel;
         vm.alternates = alternates;
         vm.resend = resend;
 
@@ -23,15 +21,7 @@
         function activate() {
         }
 
-        function cancel() {
-            $mdDialog.cancel();
-
-            $location.url('/');
-        }
-
         function alternates() {
-            $mdDialog.hide();
-
             $location.url('reset/' + resetId + '/verify/alternates');
         }
 
@@ -41,9 +31,11 @@
               .then(sent, failed);
         }
 
-        function sent() {
-            //TODO: make sure dialog stays open
-            vm.anotherSent = true;
+        function sent(response) {
+            var primaryEmail = response.data.methods[0].value;
+
+            dialogService
+              .reset(primaryEmail, response.data.uid);
         }
 
         function failed (response) {

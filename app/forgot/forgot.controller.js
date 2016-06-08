@@ -5,12 +5,10 @@
       .module('password.forgot')
       .controller('ForgotController', ForgotController);
 
-    function ForgotController($mdDialog, $location, $timeout,
-                              resolvedConfig, dataService,
+    function ForgotController(resolvedConfig, dataService,
                               dialogService) {
         var vm = this,
-            recaptchaResponse = '',
-            inactivityTimer = null;
+            recaptchaResponse = '';
 
         vm.username = '';
         vm.config = resolvedConfig;
@@ -47,35 +45,12 @@
             var primaryEmail = response.data.methods[0].value;
             
             dialogService
-              .reset(primaryEmail, response.data.uid)
-              .then(killInactivityTimer, reInitializePage);
-
-            startInactivityTimer();
+              .reset(primaryEmail, response.data.uid);
         }
 
         function failed(response) {
             dialogService
               .fail('Attempt to reset password failed.', response.data);
-        }
-
-        function startInactivityTimer() {
-            inactivityTimer = $timeout(navigateToHome, 60000);
-        }
-
-        function navigateToHome() {
-            $mdDialog.hide();
-
-            $location.url('/');
-        }
-
-        function reInitializePage() {
-            killInactivityTimer();
-
-            vm.username = '';
-        }
-
-        function killInactivityTimer() {
-            $timeout.cancel(inactivityTimer);
         }
     }
 })();

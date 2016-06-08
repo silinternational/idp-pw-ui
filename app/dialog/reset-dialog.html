@@ -1,30 +1,12 @@
 <md-dialog aria-label="Status update">
     <md-toolbar class="md-toolbar-tools">
         <h2>Password reset email sent</h2>
-
-        <span flex></span>
-
-        <md-button class="md-icon-button" ng-click="vm.cancel()">
-            <md-icon md-svg-src="images/md-icons/ic_close_24px.svg"
-                     aria-label="Close dialog">
-            </md-icon>
-        </md-button>
     </md-toolbar>
 
     <md-dialog-content class="md-dialog-content md-body-1">
         <p>
-            We have sent
-
-            <span ng-switch="vm.anotherSent">
-                <strong ng-switch-when="true" class="md-body-2">
-                    another
-                </strong>
-                <span ng-switch-default>
-                    a
-                </span>
-            </span>
-
-            reset password email to the following email address:
+            We have sent a reset password email to the following email
+            address:
         </p>
 
         <p class="md-body-2" flex-offset="5">
@@ -32,14 +14,18 @@
         </p>
 
         <p>
-            Click the link in the
-            email to set your new password.
+            Click the link in the email to set your new password.
         </p>
+
+        <md-divider></md-divider>
 
         <p>
             If you don’t currently have access to this email account,
             please use
-            <a href="" ng-click="vm.alternates()">alternate methods</a>
+
+            <a href="" ng-click="vm.alternates()">
+                alternate methods</a>
+
             for verification.
         </p>
 

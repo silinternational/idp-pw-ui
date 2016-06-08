@@ -72,15 +72,16 @@
         }
 
         function reset(primaryEmail, resetId) {
-            return $mdDialog.show({
-                       templateUrl: 'dialog/reset-dialog.html',
-                       controller: 'ResetDialogController',
-                       controllerAs: 'vm',
-                       locals: {
-                           sentTo: primaryEmail,
-                           resetId: resetId
-                       }
-                   });
+            $mdDialog.show({
+               templateUrl: 'dialog/reset-dialog.html',
+               controller: 'ResetDialogController',
+               controllerAs: 'vm',
+               locals: {
+                   sentTo: primaryEmail,
+                   resetId: resetId
+               },
+               escapeToClose: false
+           });
         }
 
         function help(helpInfo) {
