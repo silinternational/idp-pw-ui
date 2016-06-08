@@ -3,10 +3,9 @@
 
     angular
       .module('password.dialog')
-      .controller('UpdatedDialogController',
-                   UpdatedDialogController);
+      .controller('UpdatedDialogController', UpdatedDialogController);
 
-    function UpdatedDialogController($mdDialog, $location, message) {
+    function UpdatedDialogController($location, message) {
         var vm = this;
 
         vm.message = message;
@@ -21,8 +20,6 @@
         }
 
         function ok() {
-            $mdDialog.hide();
-
             $location.url('profile');
         }
     }
