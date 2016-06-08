@@ -48,7 +48,7 @@
                 Last changed:
             </strong>
 
-            {{ vm.user.password.last_changed | date:'medium' }}
+            {{ vm.user.password_meta.last_changed | date:'medium' }}
         </p>
 
         <p class="md-body-1">
@@ -56,7 +56,7 @@
                 Expires:
             </strong>
 
-            {{ vm.user.password.expires | date:'medium' }}
+            {{ vm.user.password_meta.expires | date:'medium' }}
         </p>
     </md-list-item>
 
