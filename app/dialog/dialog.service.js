@@ -54,7 +54,8 @@
             $mdDialog.show({
                 templateUrl: 'dialog/not-authorized-dialog.html',
                 controller: 'NotAuthorizedDialogController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                escapeToClose: false
             });
         }
 
