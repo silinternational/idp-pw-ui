@@ -10,7 +10,14 @@
             title: 'Profile',
             templateUrl: 'profile/profile.html',
             controller: 'ProfileController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                'resolvedUser': getUser
+            }
         });
+
+        function getUser(userService) {
+            return userService.getUser();
+        }
     }
 })();

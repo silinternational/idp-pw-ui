@@ -66,8 +66,14 @@
             return angular.isDefined(user.idp_username);
         }
 
-        function login() {
-            $window.location = dataService.baseUrl() + 'auth/login';
+        function login(returnToUrl) {
+            var loginUrl = dataService.baseUrl() + 'auth/login';
+
+            if (returnToUrl) {
+                loginUrl += '?ReturnTo=' + returnToUrl;
+            }
+
+            $window.location = loginUrl;
         }
 
         function logout() {

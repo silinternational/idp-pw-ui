@@ -5,11 +5,11 @@
       .module('password.profile')
       .controller('ProfileController', ProfileController);
 
-    function ProfileController(userService, configService, $location, 
-                               dataService, $route, dialogService) {
+    function ProfileController(configService, $location, dataService, 
+                               $route, dialogService, resolvedUser) {
         var vm = this;
 
-        vm.user = userService.user;
+        vm.user = resolvedUser;
         vm.method = {
             'emails': [],
             'phones': []
@@ -25,9 +25,14 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            dataService
-              .get('method')
-              .then(extractMethods);
+            if (resolvedUser.isAuthenticated) {
+                dataService
+                  .get('method')
+                  .then(extractMethods);
+            } else {
+                dialogService.notAuthorized();
+            }
+
         }
 
         function extractMethods(response) {

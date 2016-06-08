@@ -6,10 +6,10 @@
       .controller('NotAuthorizedDialogController',
                    NotAuthorizedDialogController);
 
-    function NotAuthorizedDialogController($mdDialog, $location) {
+    function NotAuthorizedDialogController(userService, $location) {
         var vm = this;
 
-        vm.ok = ok;
+        vm.login = login;
 
         activate();
 
@@ -18,10 +18,8 @@
         function activate() {
         }
 
-        function ok() {
-            $mdDialog.hide();
-
-            $location.url('welcome');
+        function login() {
+            userService.login($location.url());
         }
     }
 })();
