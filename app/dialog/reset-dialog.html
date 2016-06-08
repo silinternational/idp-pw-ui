@@ -12,7 +12,7 @@
     </md-toolbar>
 
     <md-dialog-content class="md-dialog-content md-body-1">
-        <p class="md-body-2">
+        <p>
             We have sent
 
             <span ng-switch="vm.anotherSent">
@@ -24,13 +24,23 @@
                 </span>
             </span>
 
-            reset password email to {{ vm.sentTo }}. Click the link in the
+            reset password email to the following email address:
+        </p>
+
+        <p class="md-body-2" flex-offset="5">
+            {{ vm.sentTo }}
+        </p>
+
+        <p>
+            Click the link in the
             email to set your new password.
         </p>
 
         <p>
             If you don’t currently have access to this email account,
-            please use alternate methods for verification.
+            please use
+            <a href="" ng-click="vm.alternates()">alternate methods</a>
+            for verification.
         </p>
 
         <p>
