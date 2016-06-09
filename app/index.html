@@ -30,22 +30,22 @@
 <!-- added layout here to ensure 'display: flex' so md-content will
      scroll under md-toolbar -->
 <body layout="row">
-<pw-nav layout="column"></pw-nav>
-
 <!-- flex here will ensure the toolbar expands full width of
      screen -->
 <main layout="column" flex>
     <md-toolbar class="md-toolbar-tools">
-        <pw-nav-toggle></pw-nav-toggle>
-
-        <img hide-gt-sm src="images/logo.png" alt="logo"/>
+        <img src="images/logo.png" alt="logo"/>
 
         <span flex></span>
 
         <pw-return-to></pw-return-to>
+
+        <span flex></span>
+
+        <pw-auth layout="row" layout-align="start center"></pw-auth>
     </md-toolbar>
 
-    <md-content ng-view layout="column" layout-align="start start"
+    <md-content ng-view layout="column" layout-align="start center"
                 layout-padding flex>
         <p>loading...</p>
     </md-content>
@@ -112,8 +112,6 @@
 <script src="html/autofocus.directive.js"></script>
 <script src="html/md-input-container.directive.js"></script>
 <script src="nav/nav.module.js"></script>
-<script src="nav/nav.directive.js"></script>
-<script src="nav/nav-toggle.directive.js"></script>
 <script src="nav/returnTo.service.js"></script>
 <script src="nav/return-to.run.js"></script>
 <script src="nav/return-to.directive.js"></script>

@@ -1,80 +1,83 @@
-<header>
-    <h2 class="md-headline">
-        {{ title }}
-    </h2>
-</header>
+<section layout="column">
+    <header>
+        <h2 class="md-headline">
+            {{ title }}
+        </h2>
+    </header>
 
-<form name="vm.addMethodForm" layout="column" class="md-body-1"
-      layout-margin>
-    <p>What kind of recovery method would you like to add?</p>
+    <form name="vm.addMethodForm" layout="column" class="md-body-1"
+          layout-margin>
+        <p>What kind of recovery method would you like to add?</p>
 
-    <md-radio-group ng-model="vm.newRecoveryMethod.type"
-                    ng-change="vm.newRecoveryMethod.value = null">
-        <md-radio-button value="email" class="md-primary">
-            Email
-        </md-radio-button>
-        <md-radio-button value="phone">
-            Phone
-        </md-radio-button>
-    </md-radio-group>
+        <md-radio-group ng-model="vm.newRecoveryMethod.type"
+                        ng-change="vm.newRecoveryMethod.value = null">
+            <md-radio-button value="email" class="md-primary">
+                Email
+            </md-radio-button>
+            <md-radio-button value="phone">
+                Phone
+            </md-radio-button>
+        </md-radio-group>
 
-    <md-input-container ng-if="vm.newRecoveryMethod.type === 'email'">
-        <label for="email">Email address</label>
-        <input type="email" ng-model="vm.newRecoveryMethod.value"
-               autofocus required id="email" name="email">
-        <ng-messages for="vm.addMethodForm.email.$error" role="alert">
-            <ng-message when="required">
-                Required.
-            </ng-message>
-            <ng-message when="email">
-                Not a valid email address.
-            </ng-message>
-        </ng-messages>
-    </md-input-container>
-
-    <section ng-if="vm.newRecoveryMethod.type === 'phone'"
-             layout-gt-xs="row" layout-align-gt-xs="start start">
-        <md-input-container >
-            <label>Country code</label>
-            <md-select ng-model="vm.selectedCountry"
-                       ng-model-options="{trackBy: '$value.code'}">
-                <md-option ng-repeat="_country in vm.countries"
-                           ng-value="_country">
-                    {{ _country.name }}
-                </md-option>
-            </md-select>
-        </md-input-container>
-
-        <!-- TODO: couldn't figure out a better way to keep the input
-             from resizing when something is entered.  Width is the
-             length of the longest phone number that could be input -->
-        <md-input-container style="width: 30ch">
-            <label for="phone">Phone number</label>
-            <!-- min and maxlengths based upon
-                 https://en.wikipedia.org/wiki/E.164 -->
-            <input type="tel" ng-model="vm.newRecoveryMethod.value"
-                   required minlength="8" maxlength="14" id="phone"
-                   name="phone" autofocus>
-            <ng-messages for="vm.addMethodForm.phone.$error" role="alert">
+        <md-input-container ng-if="vm.newRecoveryMethod.type === 'email'">
+            <label for="email">Email address</label>
+            <input type="email" ng-model="vm.newRecoveryMethod.value"
+                   autofocus required id="email" name="email">
+            <ng-messages for="vm.addMethodForm.email.$error" role="alert">
                 <ng-message when="required">
                     Required.
                 </ng-message>
-                <ng-message when-exp="['minlength', 'maxlength']">
-                    Invalid number.
+                <ng-message when="email">
+                    Not a valid email address.
                 </ng-message>
             </ng-messages>
         </md-input-container>
-    </section>
 
-    <section layout="row" layout-align="start center">
-        <pw-safe-cancel></pw-safe-cancel>
+        <section ng-if="vm.newRecoveryMethod.type === 'phone'"
+                 layout-gt-xs="row" layout-align-gt-xs="start start">
+            <md-input-container>
+                <label>Country code</label>
+                <md-select ng-model="vm.selectedCountry"
+                           ng-model-options="{trackBy: '$value.code'}">
+                    <md-option ng-repeat="_country in vm.countries"
+                               ng-value="_country">
+                        {{ _country.name }}
+                    </md-option>
+                </md-select>
+            </md-input-container>
 
-        <span flex></span>
+            <!-- TODO: couldn't figure out a better way to keep the input
+                 from resizing when something is entered.  Width is the
+                 length of the longest phone number that could be input -->
+            <md-input-container style="width: 30ch">
+                <label for="phone">Phone number</label>
+                <!-- min and maxlengths based upon
+                     https://en.wikipedia.org/wiki/E.164 -->
+                <input type="tel" ng-model="vm.newRecoveryMethod.value"
+                       required minlength="8" maxlength="14" id="phone"
+                       name="phone" autofocus>
+                <ng-messages for="vm.addMethodForm.phone.$error"
+                             role="alert">
+                    <ng-message when="required">
+                        Required.
+                    </ng-message>
+                    <ng-message when-exp="['minlength', 'maxlength']">
+                        Invalid number.
+                    </ng-message>
+                </ng-messages>
+            </md-input-container>
+        </section>
 
-        <md-button ng-click="vm.newRecoveryMethod.type === 'phone' ?
-                             vm.addPhone() : vm.add()"
-                   class="md-primary md-raised">
-            Add
-        </md-button>
-    </section>
-</form>
+        <section layout="row" layout-align="start center">
+            <pw-safe-cancel></pw-safe-cancel>
+
+            <span flex></span>
+
+            <md-button ng-click="vm.newRecoveryMethod.type === 'phone' ?
+                                 vm.addPhone()                         :
+                                 vm.add()" class="md-primary md-raised">
+                Add
+            </md-button>
+        </section>
+    </form>
+</section>

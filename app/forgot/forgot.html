@@ -1,51 +1,54 @@
-<header>
-    <h2 class="md-headline">
-        {{ title }}
-    </h2>
-</header>
+<section layout="column">
+    <header>
+        <h2 class="md-headline">
+            {{ title }}
+        </h2>
+    </header>
 
-<p class="md-body-1">
-    Enter your {{ vm.config.idpName }} username below and we will send you an
-    email with instructions to reset your password.
-</p>
+    <p class="md-body-1">
+        Enter your {{ vm.config.idpName }} username below and we will send
+        you an
+        email with instructions to reset your password.
+    </p>
 
-<form name="vm.forgotForm" layout="column">
-    <md-input-container>
-        <label for="username">{{ vm.config.idpUsernameHint }}</label>
+    <form name="vm.forgotForm" layout="column">
+        <md-input-container>
+            <label for="username">{{ vm.config.idpUsernameHint }}</label>
 
-        <input type="text" ng-model="vm.username" name="username"
-               required autofocus id="username">
+            <input type="text" ng-model="vm.username" name="username"
+                   required autofocus id="username">
 
-        <section>
-            <ng-messages for="vm.forgotForm.username.$error">
-                <ng-message when="required">
-                    This is required.
-                </ng-message>
-            </ng-messages>
+            <section>
+                <ng-messages for="vm.forgotForm.username.$error">
+                    <ng-message when="required">
+                        This is required.
+                    </ng-message>
+                </ng-messages>
 
             <span ng-click="vm.help()" class="pw-help md-caption">
                 Not sure what it is?
             </span>
+            </section>
+        </md-input-container>
+
+        <md-input-container layout="column">
+            <p class="md-caption">
+                In order to ensure you are a human, please check the box
+                below:
+            </p>
+
+            <div vc-recaptcha
+                 on-success="vm.recaptchaAnswered(response)"
+                 key="vm.config.recaptchaKey">
+            </div>
+        </md-input-container>
+
+        <section layout="row" layout-align="end center">
+            <md-button ng-click="vm.submit()"
+                       ng-disabled="vm.forgotForm.$invalid"
+                       class="md-primary md-raised">
+                Continue
+            </md-button>
         </section>
-    </md-input-container>
-
-    <md-input-container layout="column">
-        <p class="md-caption">
-            In order to ensure you are a human, please check the box
-            below:
-        </p>
-
-        <div vc-recaptcha
-             on-success="vm.recaptchaAnswered(response)"
-             key="vm.config.recaptchaKey">
-        </div>
-    </md-input-container>
-
-    <section layout="row" layout-align="end center">
-        <md-button ng-click="vm.submit()"
-                   ng-disabled="vm.forgotForm.$invalid"
-                   class="md-primary md-raised">
-            Continue
-        </md-button>
-    </section>
-</form>
+    </form>
+</section>

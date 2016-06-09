@@ -6,13 +6,17 @@
       .run(lookForParameter);
 
     function lookForParameter($rootScope, returnToService, $location) {
-        $rootScope.$on('$locationChangeStart', function () {
+        $rootScope.$on('$locationChangeStart', checkForReturnToUrl);
+
+        //////////////////////////////////////////////////////////////////
+
+        function checkForReturnToUrl() {
             var queryString = $location.search();
 
             if (queryString.returnTo &&
-              angular.isString(queryString.returnTo)) {
+                angular.isString(queryString.returnTo)) {
                 returnToService.url = queryString.returnTo;
             }
-        });
+        }
     }
 })();

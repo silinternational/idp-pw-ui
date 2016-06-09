@@ -26,10 +26,6 @@ describe('auth directive', function () {
             $httpBackend.flush();
         });
 
-        it('no name should be shown', function () {
-            expect(elementUnderTest.find('h1').text()).toBe(' ');
-        });
-
         it('should provide a login link', function () {
             expect(elementUnderTest.find('button').text()).toMatch(/Login/);
         });
@@ -38,14 +34,8 @@ describe('auth directive', function () {
     describe('for authenticated users, ', function () {
         beforeEach(function () {
             stubUser.idp_username = 'stubUsername';
-            stubUser.first_name = 'stubFirst';
-            stubUser.last_name = 'stubLast';
 
             $httpBackend.flush();
-        });
-
-        it('should should show user\'s name', function () {
-            expect(elementUnderTest.find('h1').text()).toBe('stubFirst stubLast');
         });
 
         it('should provide a logout link', function () {
