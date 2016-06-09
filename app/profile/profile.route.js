@@ -11,13 +11,7 @@
             templateUrl: 'profile/profile.html',
             controller: 'ProfileController',
             controllerAs: 'vm',
-            resolve: {
-                'resolvedUser': getUser
-            }
+            protected: true
         });
-
-        function getUser(userService) {
-            return userService.getUser();
-        }
     }
 })();

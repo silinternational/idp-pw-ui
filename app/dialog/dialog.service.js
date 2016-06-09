@@ -9,7 +9,6 @@
         var service = {
             fail: fail,
             update: update,
-            notAuthorized: notAuthorized,
             advice: advice,
             reset: reset,
             help: help,
@@ -46,16 +45,6 @@
                     message: message
                 }
 
-            });
-
-        }
-
-        function notAuthorized() {
-            $mdDialog.show({
-                templateUrl: 'dialog/not-authorized-dialog.html',
-                controller: 'NotAuthorizedDialogController',
-                controllerAs: 'vm',
-                escapeToClose: false
             });
         }
 

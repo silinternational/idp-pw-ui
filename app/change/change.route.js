@@ -11,13 +11,7 @@
             templateUrl: 'change/change.html',
             controller: 'ChangeController',
             controllerAs: 'vm',
-            resolve: {
-                'resolvedUser': getUser
-            }
+            protected: true
         });
-
-        function getUser(userService) {
-            return userService.getUser();
-        }
     }
 })();

@@ -5,8 +5,7 @@
       .module('password.change')
       .controller('ChangeController', ChangeController);
 
-    function ChangeController(dataService, resolvedUser, configService,
-                              dialogService) {
+    function ChangeController(dataService, configService, dialogService) {
         var vm = this;
 
         vm.pw = '';
@@ -19,9 +18,6 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            if (! resolvedUser.isAuthenticated) {
-                dialogService.notAuthorized();
-            }
         }
 
         function change() {

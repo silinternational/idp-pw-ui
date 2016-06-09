@@ -4,7 +4,6 @@
     angular
       .module('password.dialog', [
           'ngMaterial',
-          'password.data',
-          'password.auth'
+          'password.data'
       ]);
 })();
