@@ -21,7 +21,9 @@
             <label for="email">Email address</label>
             <input type="email" ng-model="vm.newRecoveryMethod.value"
                    autofocus required id="email" name="email">
-            <ng-messages for="vm.addMethodForm.email.$error" role="alert">
+            <ng-messages for="vm.addMethodForm.email.$error" role="alert"
+                         md-auto-hide="false"
+                         ng-show="vm.addMethodForm.email.$touched">
                 <ng-message when="required">
                     Required.
                 </ng-message>
@@ -55,7 +57,8 @@
                        required minlength="8" maxlength="14" id="phone"
                        name="phone" autofocus>
                 <ng-messages for="vm.addMethodForm.phone.$error"
-                             role="alert">
+                             role="alert" md-auto-hide="false"
+                             ng-show="vm.addMethodForm.phone.$touched">
                     <ng-message when="required">
                         Required.
                     </ng-message>

@@ -19,9 +19,11 @@
                        id="password">
 
                 <ng-messages for="vm.changeForm.password.$error"
-                             role="alert"
-                             layout="column">
-                    <ng-message when="required">
+                             role="alert" layout="row"
+                             layout-align="start center"
+                             md-auto-hide="false">
+                    <ng-message when="required"
+                                ng-show="vm.changeForm.password.$touched">
                         Required.
                     </ng-message>
                     <ng-message when="maxlength">
@@ -29,13 +31,14 @@
                         {{ vm.config.password.maxLength.value }}
                         characters long.
                     </ng-message>
-                </ng-messages>
 
-                <pw-password-advice warning="vm.strength.feedback.warning"
-                                    suggestions="vm.strength.feedback.suggestions"
-                                    class="md-caption" layout="row"
-                                    layout-align="end center">
-                </pw-password-advice>
+                    <span flex></span>
+
+                    <pw-password-advice warning="vm.strength.feedback.warning"
+                                        suggestions="vm.strength.feedback.suggestions"
+                                        class="md-caption">
+                    </pw-password-advice>
+                </ng-messages>
             </md-input-container>
 
             <!-- TODO: couldn't figure out a better way to keep the input
@@ -53,7 +56,8 @@
                 </md-tooltip>
 
                 <ng-messages for="vm.changeForm.pwagain.$error"
-                             role="alert">
+                             role="alert" md-auto-hide="false"
+                             ng-show="vm.changeForm.pwagain.$touched">
                     <ng-message when="required">
                         Required.
                     </ng-message>
