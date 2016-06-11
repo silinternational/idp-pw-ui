@@ -2,5 +2,8 @@
     'use strict';
 
     angular
-      .module('password.data', []);
+      .module('password.data', [
+          'ngMaterial',
+          'ngRoute'
+      ]);
 })();

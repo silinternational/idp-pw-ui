@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-      .module('password.progress')
+      .module('password.data')
       .factory('progressIndicatorService', progressIndicatorService);
 
     function progressIndicatorService($rootScope, dataService, $mdDialog) {
@@ -48,7 +48,7 @@
         function manageIndicator() {
             if (apiRequests > 0 && !isIndicatorOn) {
                 $mdDialog.show({
-                    templateUrl: 'progress/progress-indicator.html',
+                    templateUrl: 'data/progress-indicator.html',
                     escapeToClose: false
                 });
 
