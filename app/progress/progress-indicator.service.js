@@ -5,7 +5,7 @@
       .module('password.progress')
       .factory('progressIndicatorService', progressIndicatorService);
 
-    function progressIndicatorService(dataService, $mdDialog) {
+    function progressIndicatorService($rootScope, dataService, $mdDialog) {
         var apiRequests = 0,
             isIndicatorOn = false,
             service = {
@@ -20,6 +20,9 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
+            // just in case there are any open dialogs from other views
+            // that did not get closed yet.
+            $rootScope.$on('$routeChangeStart', $mdDialog.hide);
         }
 
         function queue(url) {
@@ -50,7 +53,7 @@
                 });
 
                 isIndicatorOn = true;
-            } else if (apiRequests < 1) {
+            } else if (apiRequests < 1 && isIndicatorOn) {
                 $mdDialog.hide();
 
                 isIndicatorOn = false;

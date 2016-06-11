@@ -4,6 +4,7 @@
     angular
       .module('password.progress', [
           'password.data',
-          'ngMaterial'
+          'ngMaterial',
+          'ngRoute'
       ]);
 })();
