@@ -14,6 +14,7 @@ describe('user service', function () {
         });
 
         $httpBackend.expectGET(/user\/me/).respond(stubUserData);
+        $httpBackend.expectGET(/data\/progress-indicator.html/).respond(200);
     });
 
     afterEach(function () {
