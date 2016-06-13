@@ -8,6 +8,7 @@
           'ngMessages',
           'password.auth',
           'password.data', 
-          'password.dialog'
+          'password.dialog',
+          'password.html'
       ]);
 })();
