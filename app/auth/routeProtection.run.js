@@ -20,6 +20,8 @@
         }
 
         function authorize() {
+            // used injector here instead of simple parameter injection to
+            // avoid minification issues
             return $injector
                      .get('userService')
                      .getUser()
