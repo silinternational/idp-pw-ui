@@ -11,11 +11,12 @@
         below.
     </p>
 
-    <form name="vm.verificationForm">
+    <form name="vm.verificationForm" layout="column"
+          layout-align="start center">
         <!-- TODO: couldn't figure out a better way to keep the input
              from resizing when something is entered.  Width is the
-             length of the longest phone number that could be input -->
-        <md-input-container style="width: 30ch">
+             length of the longest code -->
+        <md-input-container style="width: 20ch">
             <label>Code</label>
 
             <input type="text" name="verificationCode"
@@ -29,7 +30,7 @@
             </ng-messages>
         </md-input-container>
 
-        <section layout="row" layout-align="start center">
+        <section layout="row" layout-align="start center" layout-fill>
             <md-button ng-click="vm.resendCode()" tabindex="-1"
                        class="md-raised md-accent">
                 Resend
