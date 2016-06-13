@@ -5,7 +5,7 @@
       .module('password.auth')
       .run(establishRouteProtection);
 
-    function establishRouteProtection($rootScope, $mdDialog) {
+    function establishRouteProtection($rootScope, $mdDialog, $injector) {
         $rootScope.$on('$routeChangeStart', protect);
         $rootScope.$on('$routeChangeError', defend);
 
@@ -14,13 +14,14 @@
         function protect(event, targetRoute) {
             if (targetRoute.protected) {
                 targetRoute.resolve = targetRoute.resolve || {};
-                
+
                 targetRoute.resolve.authorizer = authorize;
             }
         }
 
-        function authorize(userService) {
-            return userService
+        function authorize() {
+            return $injector
+                     .get('userService')
                      .getUser()
                      .then(function (user) {
                          if (! user.isAuthenticated) {
