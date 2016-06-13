@@ -4,8 +4,8 @@
     angular
       .module('password', [
           'ngMaterial',
-          'ngRoute',
           /*@@DIST-TEMPLATE-CACHE*/
+          'ngRoute',
           //'password.analytics',
           'password.title',
           'password.nav',
