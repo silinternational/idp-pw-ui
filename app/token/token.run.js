@@ -7,5 +7,14 @@
 
     function grabToken($location, tokenService) {
         tokenService.setApiToken($location.search().access_token);
+
+        cleanUrl();
+
+        //////////////////////////////////////////////////////////////////
+        
+        function cleanUrl() {
+            $location.search('');
+        }
     }
+
 })();
