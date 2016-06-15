@@ -5,7 +5,7 @@
       .module('password.data')
       .factory('dataService', dataService);
 
-    function dataService($http, DATA_API_BASE_URL) {
+    function dataService($http, DATA_API_BASE_URL, tokenService) {
         var service = {
             get: get,
             put: put,
@@ -21,18 +21,11 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-        }
-
-        function buildFullyQualifiedUrl(url) {
-            if (isNotFullyQualifiedAlready(url)) {
-                return DATA_API_BASE_URL + url;
-            }
-
-            return url;
-        }
-
-        function isNotFullyQualifiedAlready(url) {
-            return url.indexOf('//') === -1;
+            $http
+              .defaults
+              .headers
+              .common
+              .Authorization = 'Bearer ' + tokenService.getToken();
         }
 
         function get(url) {
@@ -53,6 +46,18 @@
 
         function baseUrl() {
             return DATA_API_BASE_URL;
+        }
+
+        function buildFullyQualifiedUrl(url) {
+            if (isNotFullyQualifiedAlready(url)) {
+                return DATA_API_BASE_URL + url;
+            }
+
+            return url;
+        }
+
+        function isNotFullyQualifiedAlready(url) {
+            return url.indexOf('//') === -1;
         }
     }
 })();

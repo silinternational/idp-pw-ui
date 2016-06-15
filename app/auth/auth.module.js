@@ -4,6 +4,7 @@
     angular
       .module('password.auth', [
           'password.data',
-          'ngMaterial'
+          'ngMaterial',
+          'password.token'
       ]);
 })();

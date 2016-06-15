@@ -10,14 +10,17 @@
      * mechanism is in place in the form of the publicly provided user
      * object.  It will be loaded on app bootstrap.
      */
-    function userService($q, dataService, $timeout, $window) {
-        var user = {},
-          service = {
-              user: user,
-              getUser: getUser,
-              login: login,
-              logout: logout
-          };
+    function userService($q, dataService, $timeout, $window, 
+                         tokenService) {
+        var user = {
+                isAuthenticated: false
+            },
+            service = {
+                user: user,
+                getUser: getUser,
+                login: login,
+                logout: logout
+            };
 
         activate();
 
@@ -38,46 +41,58 @@
                 // a slight delay to ensure the method returns before the
                 // promise is resolved.
                 $timeout(function () {
-                    deferred.resolve(user);
+                    resolvePromise();
                 });
             } else {
                 dataService
                   .get('user/me')
-                  .then(function (response) {
-                      // need to maintain original reference for consumers
-                      // relying on userService.user.
-                      angular.copy(response.data, user);
-
-                      if (isAuthenticated(response.data)) {
-                          user.cached = new Date();
-                      }
-
-                      // convenience API for consumers
-                      user.isAuthenticated = isAuthenticated(response.data);
-
-                      deferred.resolve(user);
-                  });
+                  .then(retrieved, failed)
+                  .finally(resolvePromise);
             }
 
             return deferred.promise;
-        }
 
-        function isAuthenticated(user) {
-            return angular.isDefined(user.idp_username);
+            //////////////////////////////////////////////////////////////
+
+            function retrieved(response) {
+                // need to maintain original reference for consumers
+                // relying on userService.user.
+                angular.copy(response.data, user);
+
+                if (angular.isDefined(response.data.idp_username)) {
+                    user.cached = new Date();
+                    user.isAuthenticated = true;
+                }
+            }
+
+            function failed() {
+                user.isAuthenticated = false;
+                user.cached = null;
+            }
+
+            function resolvePromise() {
+                deferred.resolve(user);
+            }
         }
 
         function login(returnToUrl) {
-            var loginUrl = dataService.baseUrl() + 'auth/login';
+            var loginUrl = dataService.baseUrl() + 
+                           'auth/login?client_id=' + 
+                           tokenService.getClientKey();
 
             if (returnToUrl) {
-                loginUrl += '?ReturnTo=' + returnToUrl;
+                loginUrl += '&ReturnTo=' + returnToUrl;
             }
 
             $window.location = loginUrl;
         }
 
         function logout() {
-            $window.location = dataService.baseUrl() + 'auth/logout';
+            $window.location = dataService.baseUrl() +
+                               'auth/logout?access_token=' + 
+                               tokenService.getToken();
+
+            tokenService.clear();
         }
     }
 })();

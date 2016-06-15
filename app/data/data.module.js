@@ -4,6 +4,7 @@
     angular
       .module('password.data', [
           'ngMaterial',
-          'ngRoute'
+          'ngRoute',
+          'password.token'
       ]);
 })();
