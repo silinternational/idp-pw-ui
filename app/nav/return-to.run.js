@@ -6,6 +6,7 @@
       .run(lookForParameter);
 
     function lookForParameter($rootScope, returnToService, $location) {
+        //TODO: is it really necessary to do this on every route change?
         $rootScope.$on('$locationChangeStart', checkForReturnToUrl);
 
         //////////////////////////////////////////////////////////////////
