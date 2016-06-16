@@ -5,7 +5,7 @@
       .module('password.welcome')
       .controller('WelcomeController', WelcomeController);
 
-    function WelcomeController($location, resolvedUser, userService) {
+    function WelcomeController($location, userService) {
         var vm = this;
 
         vm.navigate = navigate;
@@ -16,9 +16,13 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            if (resolvedUser.isAuthenticated) {
-                $location.url('profile');
-            }
+            userService
+              .getUser()
+              .then(function (user) {
+                  if (user.isAuthenticated) {
+                      $location.url('profile');
+                  }
+              });
         }
 
         function navigate(url) {

@@ -15,6 +15,7 @@
         var user = {
                 isAuthenticated: false
             },
+            deferred = false,
             service = {
                 user: user,
                 getUser: getUser,
@@ -33,21 +34,23 @@
         }
 
         function getUser() {
-            var deferred = $q.defer();
+            if (! deferred) {
+                deferred = $q.defer();
 
-            if (user.cached) {
-                // In order to keep the API consistent a promise needed
-                // to be resolved after it was returned so this will add
-                // a slight delay to ensure the method returns before the
-                // promise is resolved.
-                $timeout(function () {
-                    resolvePromise();
-                });
-            } else {
-                dataService
-                  .get('user/me')
-                  .then(retrieved, failed)
-                  .finally(resolvePromise);
+                if (user.cached) {
+                    // In order to keep the API consistent a promise needed
+                    // to be resolved after it was returned so this will add
+                    // a slight delay to ensure the method returns before the
+                    // promise is resolved.
+                    $timeout(function () {
+                        resolvePromise();
+                    });
+                } else {
+                    dataService
+                      .get('user/me')
+                      .then(retrieved, failed)
+                      .finally(resolvePromise);
+                }
             }
 
             return deferred.promise;
