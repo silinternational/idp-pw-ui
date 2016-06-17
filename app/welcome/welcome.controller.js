@@ -30,7 +30,7 @@
         }
 
         function login() {
-            userService.login();
+            userService.login('/change');
         }
     }
 })();
