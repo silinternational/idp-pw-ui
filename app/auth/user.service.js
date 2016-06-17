@@ -5,19 +5,8 @@
       .module('password.auth')
       .factory('userService', userService);
 
-    /*
-     * This service is used all over the application so a caching
-     * mechanism is in place in the form of the publicly provided user
-     * object.  It will be loaded on app bootstrap.
-     */
-    function userService($q, dataService, $timeout, $window, 
-                         tokenService) {
-        var user = {
-                isAuthenticated: false
-            },
-            deferred = false,
-            service = {
-                user: user,
+    function userService($q, dataService, $window, tokenService) {
+        var service = {
                 getUser: getUser,
                 login: login,
                 logout: logout
@@ -30,57 +19,37 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            getUser();
         }
 
         function getUser() {
-            if (! deferred) {
-                deferred = $q.defer();
+            var deferred = $q.defer();
 
-                if (user.cached) {
-                    // In order to keep the API consistent a promise needed
-                    // to be resolved after it was returned so this will add
-                    // a slight delay to ensure the method returns before the
-                    // promise is resolved.
-                    $timeout(function () {
-                        resolvePromise();
-                    });
-                } else {
-                    dataService
-                      .get('user/me')
-                      .then(retrieved, failed)
-                      .finally(resolvePromise);
-                }
-            }
+            dataService
+              .get('user/me')
+              .then(retrieved, failed);
 
             return deferred.promise;
 
             //////////////////////////////////////////////////////////////
-
+            
             function retrieved(response) {
-                // need to maintain original reference for consumers
-                // relying on userService.user.
-                angular.copy(response.data, user);
-
-                if (angular.isDefined(response.data.idp_username)) {
-                    user.cached = new Date();
-                    user.isAuthenticated = true;
-                }
-            }
-
-            function failed() {
-                user.isAuthenticated = false;
-                user.cached = null;
-            }
-
-            function resolvePromise() {
+                var user = response.data;
+                
+                user.isAuthenticated = angular.isDefined(response
+                                                           .data
+                                                           .idp_username);
+                
                 deferred.resolve(user);
+            }
+
+            function failed(response) {
+                deferred.reject(response);
             }
         }
 
         function login(returnToUrl) {
-            var loginUrl = dataService.baseUrl() + 
-                           'auth/login?client_id=' + 
+            var loginUrl = dataService.baseUrl() +
+                           'auth/login?client_id=' +
                            tokenService.getClientKey();
 
             if (returnToUrl) {
@@ -92,7 +61,7 @@
 
         function logout() {
             $window.location = dataService.baseUrl() +
-                               'auth/logout?access_token=' + 
+                               'auth/logout?access_token=' +
                                tokenService.getToken();
 
             tokenService.clear();

@@ -5,26 +5,31 @@
       .module('password.profile')
       .controller('ProfileController', ProfileController);
 
-    function ProfileController(userService, configService, $location, 
-                               dataService, $route, dialogService) {
+    function ProfileController(userService, $location, dataService,
+                               $route, dialogService, config) {
         var vm = this;
 
-        vm.user = userService.user;
+        vm.user = null;
         vm.method = {
             'emails': [],
             'phones': []
         };
-        vm.config = configService.config;
+        vm.config = config;
 
         vm.navigate = navigate;
         vm.delete = remove;
-
-
+        
         activate();
 
         //////////////////////////////////////////////////////////////////
 
         function activate() {
+            userService
+              .getUser()
+              .then(function (user) {
+                  vm.user = user;
+              });
+
             dataService
               .get('method')
               .then(extractMethods);
@@ -51,11 +56,15 @@
             dialogService
               .areYouSure('Would you like to remove this recovery ' +
                           'method permanently?')
-              .then(function yes() {
-                  dataService
-                    .delete('method/' + method.id)
-                    .then(deleted, failed);
-              });
+              .then(yes);
+
+            //////////////////////////////////////////////////////////////
+            
+            function yes() {
+                dataService
+                  .delete('method/' + method.id)
+                  .then(deleted, failed);
+            }
         }
 
         function deleted() {

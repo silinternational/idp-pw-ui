@@ -6,7 +6,7 @@
       .controller('ResetDialogController', ResetDialogController);
 
     function ResetDialogController($location, sentTo, resetId,
-                                   dataService, dialogService) {
+                                   dataService, dialogService, $mdDialog) {
         var vm = this;
 
         vm.sentTo = sentTo;
@@ -22,10 +22,14 @@
         }
 
         function alternates() {
+            $mdDialog.hide();
+
             $location.url('reset/' + resetId + '/verify/alternates');
         }
 
         function resend() {
+            $mdDialog.hide();
+
             dataService
               .put('reset/' + resetId + '/resend')
               .then(sent, failed);

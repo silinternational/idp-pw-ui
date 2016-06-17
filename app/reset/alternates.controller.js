@@ -5,8 +5,8 @@
       .module('password.reset')
       .controller('AlternatesController', AlternatesController);
 
-    function AlternatesController(dataService, $routeParams,
-                                  dialogService, configService) {
+    function AlternatesController(dataService, $routeParams, config,
+                                  dialogService) {
         var vm = this;
 
         vm.allMethods = [];
@@ -49,8 +49,7 @@
         }
 
         function getHelp() {
-            dialogService
-              .help(configService.config.support);
+            dialogService.help(config.support);
         }
     }
 })();

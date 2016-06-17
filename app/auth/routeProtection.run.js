@@ -5,7 +5,7 @@
       .module('password.auth')
       .run(establishRouteProtection);
 
-    function establishRouteProtection($rootScope, $mdDialog, $injector) {
+    function establishRouteProtection($rootScope, userService) {
         $rootScope.$on('$routeChangeStart', protect);
         $rootScope.$on('$routeChangeError', defend);
 
@@ -20,26 +20,24 @@
         }
 
         function authorize() {
-            // used injector here instead of simple parameter injection to
-            // avoid minification issues
-            return $injector
-                     .get('userService')
+            return userService
                      .getUser()
-                     .then(function (user) {
-                         if (! user.isAuthenticated) {
-                             throw new IntruderError();
-                         }
-                     });
+                     .then(retrieved, failed);
+        }
+
+        function retrieved(user) {
+            if (! user.isAuthenticated) {
+                throw new IntruderError();
+            }
+        }
+
+        function failed() {
+            throw new IntruderError();
         }
 
         function defend(event, targetRoute, currentRoute, error) {
             if (error instanceof IntruderError) {
-                $mdDialog.show({
-                    templateUrl: 'auth/not-authorized-dialog.html',
-                    controller: 'NotAuthorizedDialogController',
-                    controllerAs: 'vm',
-                    escapeToClose: false
-                });
+                userService.login(targetRoute.originalPath);
             }
         }
 

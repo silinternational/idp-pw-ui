@@ -5,13 +5,12 @@
       .module('password.forgot')
       .controller('ForgotController', ForgotController);
 
-    function ForgotController(resolvedConfig, dataService,
-                              dialogService) {
+    function ForgotController(dataService, dialogService, config) {
         var vm = this,
             recaptchaResponse = '';
 
         vm.username = '';
-        vm.config = resolvedConfig;
+        vm.config = config;
 
         vm.recaptchaAnswered = recaptchaAnswered;
         vm.submit = submit;

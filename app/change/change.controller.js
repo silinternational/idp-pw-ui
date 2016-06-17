@@ -5,11 +5,11 @@
       .module('password.change')
       .controller('ChangeController', ChangeController);
 
-    function ChangeController(dataService, configService, dialogService) {
+    function ChangeController(dataService, dialogService, config) {
         var vm = this;
 
         vm.pw = '';
-        vm.config = configService.config;
+        vm.config = config;
 
         vm.change = change;
 

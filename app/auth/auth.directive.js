@@ -19,7 +19,7 @@
     function AuthController(userService) {
         var vm = this;
 
-        vm.user = userService.user;
+        vm.isAuthenticated = false;
         vm.login = login;
         vm.logout = logout;
 
@@ -28,6 +28,11 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
+            userService
+              .getUser()
+              .then(function (user) {
+                  vm.isAuthenticated = user.isAuthenticated;
+              });
         }
 
         function login() {

@@ -5,9 +5,7 @@
       .module('password.change')
       .directive('pwConstraints', pwConstraints);
 
-    function pwConstraints(configService) {
-        var config = configService.config;
-
+    function pwConstraints(config) {
         activate();
 
         return {
@@ -50,7 +48,8 @@
         }
 
         function validate(rule, value) {
-            return config.password.hasOwnProperty(rule) &&
+            return config.password &&
+                   config.password.hasOwnProperty(rule) &&
                    new RegExp(config.password[rule].pattern).test(value);
         }
     }
