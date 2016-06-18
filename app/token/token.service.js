@@ -34,8 +34,10 @@
         }
 
         function setApiToken(token) {
-            $window.sessionStorage
-              .setItem('apiToken', token);
+            if (token &&
+                $window.sessionStorage.getItem('apiToken') !== token) {
+                $window.sessionStorage.setItem('apiToken', token);
+            }
         }
 
         function getClientKey() {
