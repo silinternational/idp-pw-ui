@@ -5,9 +5,8 @@
       .module('password.data')
       .factory('progressIndicatorService', progressIndicatorService);
 
-    function progressIndicatorService($rootScope, dataService, $mdDialog) {
-        var apiRequests = 0,
-            isIndicatorOn = false,
+    function progressIndicatorService(dataService, $mdDialog) {
+        var apiRequests = [],
             service = {
                 queue: queue,
                 dequeue: dequeue
@@ -20,44 +19,33 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            // just in case there are any open dialogs from other views
-            // that did not get closed yet.
-            $rootScope.$on('$routeChangeStart', $mdDialog.hide);
         }
 
         function queue(url) {
             if (isApiCall(url)) {
-                apiRequests++;
+                if (apiRequests.length === 0) {
+                    $mdDialog.show({
+                        templateUrl: 'data/progress-indicator.html',
+                        escapeToClose: false
+                    });
+                }
 
-                manageIndicator();
+                apiRequests.push(url);
             }
         }
 
         function dequeue(url) {
             if (isApiCall(url)) {
-                apiRequests--;
+                apiRequests.pop();
 
-                manageIndicator();
+                if (apiRequests.length === 0) {
+                    $mdDialog.hide();
+                }
             }
         }
 
         function isApiCall(url) {
             return url.indexOf(dataService.baseUrl()) !== -1;
-        }
-
-        function manageIndicator() {
-            if (apiRequests > 0 && !isIndicatorOn) {
-                $mdDialog.show({
-                    templateUrl: 'data/progress-indicator.html',
-                    escapeToClose: false
-                });
-
-                isIndicatorOn = true;
-            } else if (apiRequests < 1 && isIndicatorOn) {
-                $mdDialog.hide();
-
-                isIndicatorOn = false;
-            }
         }
     }
 })();
