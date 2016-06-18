@@ -36,7 +36,7 @@
         }
 
         function login() {
-            userService.login();
+            userService.login('/profile');
         }
 
         function logout() {
