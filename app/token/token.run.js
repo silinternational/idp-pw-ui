@@ -6,15 +6,16 @@
       .run(grabToken);
 
     function grabToken($location, tokenService) {
-        tokenService.setApiToken($location.search().access_token);
+        if ($location.search().access_token) {
+            tokenService.setApiToken($location.search().access_token);
 
-        cleanUrl();
+            cleanUrl();
+        }
 
         //////////////////////////////////////////////////////////////////
-        
+
         function cleanUrl() {
             $location.search('');
         }
     }
-
 })();

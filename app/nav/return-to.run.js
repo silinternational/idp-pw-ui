@@ -5,19 +5,9 @@
       .module('password.nav')
       .run(lookForParameter);
 
-    function lookForParameter($rootScope, returnToService, $location) {
-        //TODO: is it really necessary to do this on every route change?
-        $rootScope.$on('$locationChangeStart', checkForReturnToUrl);
+    function lookForParameter(returnToService, $location) {
+        var queryString = $location.search();
 
-        //////////////////////////////////////////////////////////////////
-
-        function checkForReturnToUrl() {
-            var queryString = $location.search();
-
-            if (queryString.returnTo &&
-                angular.isString(queryString.returnTo)) {
-                returnToService.url = queryString.returnTo;
-            }
-        }
+        returnToService.url = queryString.returnTo;
     }
 })();
