@@ -35,13 +35,19 @@
         </p>
     </md-dialog-content>
 
-    <md-dialog-actions layout="row" layout-align="space-between center">
+    <md-dialog-actions layout="row">
         <md-button ng-click="vm.alternates()" class="md-accent">
             Use alternate methods
         </md-button>
 
-        <md-button ng-click="vm.resend()" class="md-primary">
+        <md-button ng-click="vm.resend()" class="md-warn">
             Resend
+        </md-button>
+
+        <span flex></span>
+
+        <md-button ng-click="vm.done()" class="md-primary" tabindex="1">
+            Done
         </md-button>
     </md-dialog-actions>
 </md-dialog>

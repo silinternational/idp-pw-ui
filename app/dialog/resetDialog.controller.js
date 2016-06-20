@@ -13,6 +13,7 @@
 
         vm.alternates = alternates;
         vm.resend = resend;
+        vm.done = done;
 
         activate();
 
@@ -42,9 +43,15 @@
               .reset(primaryEmail, response.data.uid);
         }
 
-        function failed (response) {
+        function failed(response) {
             dialogService
               .fail('Unable to resend verification.', response.data);
+        }
+        
+        function done() {
+            $mdDialog.hide();
+            
+            $location.url('/');
         }
     }
 })();
