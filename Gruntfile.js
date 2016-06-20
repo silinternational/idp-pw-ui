@@ -116,7 +116,10 @@ module.exports = function (grunt) {
                 index: '<%= passwordConfig.dist.root %>/index.html',
                 js: {
                     all: '<%= passwordConfig.dist.root %>/scripts/*.js',
-                    app: '<%= passwordConfig.dist.root %>/scripts/password.*.js',
+                    app: [
+                        '<%= passwordConfig.dist.root %>/scripts/password.env.*.js',
+                        '<%= passwordConfig.dist.root %>/scripts/password.*.js'
+                    ],
                     lib: '<%= passwordConfig.dist.root %>/scripts/lib.*.js'
                 }
             }
