@@ -34,6 +34,8 @@
                   verification_token: recaptchaResponse
               })
               .then(reset, failed);
+
+            dialogService.progress();
         }
 
         function help() {

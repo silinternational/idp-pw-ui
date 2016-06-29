@@ -5,7 +5,8 @@
       .module('password.reset')
       .controller('ResetController', ResetController);
 
-    function ResetController(dataService, $routeParams) {
+    function ResetController(dataService, $routeParams, dialogService,
+                             $mdDialog) {
         var vm = this;
 
         vm.verification = 'pending';
@@ -19,7 +20,10 @@
               .put('reset/' + $routeParams.resetId + '/validate', {
                   code: $routeParams.verificationCode
               })
-              .then(valid, invalid);
+              .then(valid, invalid)
+              .finally($mdDialog.hide);
+
+            dialogService.progress();
         }
 
         function valid() {

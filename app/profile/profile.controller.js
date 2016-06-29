@@ -6,7 +6,7 @@
       .controller('ProfileController', ProfileController);
 
     function ProfileController(userService, $location, dataService,
-                               $route, dialogService, config) {
+                               $route, dialogService, config, $mdDialog) {
         var vm = this;
 
         vm.user = null;
@@ -32,7 +32,10 @@
 
             dataService
               .get('method')
-              .then(extractMethods);
+              .then(extractMethods)
+              .finally($mdDialog.hide);
+
+            dialogService.progress();
         }
 
         function extractMethods(response) {
@@ -63,7 +66,10 @@
             function yes() {
                 dataService
                   .delete('method/' + method.id)
-                  .then(deleted, failed);
+                  .then(deleted, failed)
+                  .finally($mdDialog.hide);
+
+                dialogService.progress();
             }
         }
 

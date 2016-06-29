@@ -6,7 +6,7 @@
       .controller('AlternatesController', AlternatesController);
 
     function AlternatesController(dataService, $routeParams, config,
-                                  dialogService) {
+                                  dialogService, $mdDialog) {
         var vm = this;
 
         vm.allMethods = [];
@@ -25,7 +25,10 @@
         function activate() {
             dataService
               .get('reset/' + $routeParams.resetId)
-              .then(retrievedMethods, failedToRetrieveMethods);
+              .then(retrievedMethods, failedToRetrieveMethods)
+              .finally($mdDialog.hide);
+
+            dialogService.progress();
         }
 
         function retrievedMethods(response) {

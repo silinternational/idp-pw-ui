@@ -38,7 +38,6 @@ describe('data service', function () {
 
     it('should handle relative GET\'s properly', function () {
         $httpBackend.expectGET(stubApiHost + 'api/call').respond();
-        $httpBackend.expectGET(/data\/progress-indicator.html/).respond(200);
 
         serviceUnderTest.get('api/call');
 

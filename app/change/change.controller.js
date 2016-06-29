@@ -27,6 +27,8 @@
                       password: vm.pw
                   })
                   .then(changed, failed);
+
+                dialogService.progress();
             }
         }
 

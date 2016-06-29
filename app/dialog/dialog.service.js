@@ -12,7 +12,8 @@
             advice: advice,
             reset: reset,
             help: help,
-            areYouSure: areYouSure
+            areYouSure: areYouSure,
+            progress: progress
         };
 
         activate();
@@ -93,6 +94,13 @@
                            question: question
                        }
                    });
+        }
+
+        function progress() {
+            $mdDialog.show({
+                templateUrl: 'dialog/progress-dialog.html',
+                escapeToClose: false
+            });
         }
     }
 })();
