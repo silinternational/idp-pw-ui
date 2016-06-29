@@ -12,7 +12,7 @@
     </p>
 
     <form name="vm.verificationForm" layout="column"
-          layout-align="start center">
+          layout-align="start center" autocomplete="off">
         <!-- TODO: couldn't figure out a better way to keep the input
              from resizing when something is entered.  Width is the
              length of the longest code -->
@@ -20,7 +20,8 @@
             <label>Code</label>
 
             <input type="text" name="verificationCode"
-                   ng-model="vm.verificationCode" required autofocus>
+                   ng-model="vm.verificationCode" required autofocus
+                   autocomplete="off">
             <ng-messages
                     for="vm.verificationForm.verificationCode.$error"
                     role="alert">

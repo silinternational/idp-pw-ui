@@ -4,7 +4,7 @@
     </h2>
 
     <section layout="row" layout-margin>
-        <form name="vm.changeForm" layout="column">
+        <form name="vm.changeForm" layout="column" autocomplete="off">
             <md-input-container>
                 <label for="password">Enter new password</label>
 
@@ -15,8 +15,7 @@
                        ng-maxlength="{{ vm.config.password.maxLength.enabled ?
                                         vm.config.password.maxLength.value   :
                                         -1
-                                     }}"
-                       id="password">
+                                     }}" id="password" autocomplete="off">
 
                 <ng-messages for="vm.changeForm.password.$error"
                              role="alert" layout="row"
@@ -49,7 +48,8 @@
 
                 <input type="password" ng-model="vm.pwagain"
                        name="pwagain" required pw-must-match="{{ vm.pw }}"
-                       id="pwagain" ng-disabled="! vm.pw">
+                       id="pwagain" ng-disabled="! vm.pw"
+                       autocomplete="off">
 
                 <md-tooltip md-direction="top" ng-if="! vm.pw">
                     You must enter an acceptable password first.

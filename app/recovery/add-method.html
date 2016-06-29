@@ -4,7 +4,7 @@
     </h2>
 
     <form name="vm.addMethodForm" layout="column" class="md-body-1"
-          layout-margin>
+          layout-margin autocomplete="off">
         <p>What kind of recovery method would you like to add?</p>
 
         <md-radio-group ng-model="vm.newRecoveryMethod.type"
@@ -19,8 +19,11 @@
 
         <md-input-container ng-if="vm.newRecoveryMethod.type === 'email'">
             <label for="email">Email address</label>
+
             <input type="email" ng-model="vm.newRecoveryMethod.value"
-                   autofocus required id="email" name="email">
+                   autofocus required id="email" name="email"
+                   autocomplete="off">
+
             <ng-messages for="vm.addMethodForm.email.$error" role="alert"
                          md-auto-hide="false"
                          ng-show="vm.addMethodForm.email.$touched">
@@ -37,6 +40,7 @@
                  layout-gt-xs="row" layout-align-gt-xs="start start">
             <md-input-container>
                 <label>Country code</label>
+
                 <md-select ng-model="vm.selectedCountry"
                            ng-model-options="{trackBy: '$value.code'}">
                     <md-option ng-repeat="_country in vm.countries"
@@ -55,7 +59,8 @@
                      https://en.wikipedia.org/wiki/E.164 -->
                 <input type="tel" ng-model="vm.newRecoveryMethod.value"
                        required minlength="8" maxlength="14" id="phone"
-                       name="phone" autofocus>
+                       name="phone" autofocus autocomplete="off">
+
                 <ng-messages for="vm.addMethodForm.phone.$error"
                              role="alert" md-auto-hide="false"
                              ng-show="vm.addMethodForm.phone.$touched">

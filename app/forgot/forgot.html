@@ -9,12 +9,13 @@
         email with instructions to reset your password.
     </p>
 
-    <form name="vm.forgotForm" layout="column">
+    <form name="vm.forgotForm" layout="column" autocomplete="off">
         <md-input-container>
             <label for="username">{{ vm.config.idpUsernameHint }}</label>
 
             <input type="text" ng-model="vm.username" name="username"
-                   required autofocus id="username">
+                   required autofocus id="username"
+                   autocomplete="username">
 
             <section>
                 <ng-messages for="vm.forgotForm.username.$error">
