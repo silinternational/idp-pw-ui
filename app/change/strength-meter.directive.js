@@ -23,6 +23,8 @@
         function StrengthMeterController($scope) {
             var vm = this;
 
+            vm.strength = vm.strength || {};
+
             activate();
 
             //////////////////////////////////////////////////////////////
