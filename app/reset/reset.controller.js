@@ -6,7 +6,7 @@
       .controller('ResetController', ResetController);
 
     function ResetController(dataService, $routeParams, dialogService,
-                             $mdDialog) {
+                             $mdDialog, tokenService) {
         var vm = this;
 
         vm.verification = 'pending';
@@ -18,7 +18,8 @@
         function activate() {
             dataService
               .put('reset/' + $routeParams.resetId + '/validate', {
-                  code: $routeParams.verificationCode
+                  code: $routeParams.verificationCode,
+                  client_id: tokenService.getClientKey()
               })
               .then(valid, invalid)
               .finally($mdDialog.hide);
@@ -26,8 +27,10 @@
             dialogService.progress();
         }
 
-        function valid() {
+        function valid(response) {
             vm.verification = 'valid';
+            
+            tokenService.setApiToken(response.data.access_token);
         }
 
         function invalid() {

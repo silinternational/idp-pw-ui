@@ -21,31 +21,40 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            $http
-              .defaults
-              .headers
-              .common
-              .Authorization = 'Bearer ' + tokenService.getToken();
         }
 
         function get(url) {
-            return $http.get(buildFullyQualifiedUrl(url));
+            return $http.get(buildFullyQualifiedUrl(url),
+                             getConfig());
         }
 
         function put(url, data) {
-            return $http.put(buildFullyQualifiedUrl(url), data);
+            return $http.put(buildFullyQualifiedUrl(url),
+                             data,
+                             getConfig());
         }
 
         function post(url, data) {
-            return $http.post(buildFullyQualifiedUrl(url), data);
+            return $http.post(buildFullyQualifiedUrl(url),
+                              data,
+                              getConfig());
         }
 
         function remove(url) {
-            return $http.delete(buildFullyQualifiedUrl(url));
+            return $http.delete(buildFullyQualifiedUrl(url),
+                                getConfig());
         }
 
         function baseUrl() {
             return DATA_API_BASE_URL;
+        }
+
+        function getConfig() {
+            return {
+                headers: {
+                    Authorization: 'Bearer ' + tokenService.getToken()
+                }
+            };
         }
 
         function buildFullyQualifiedUrl(url) {

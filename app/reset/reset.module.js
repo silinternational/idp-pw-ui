@@ -7,6 +7,7 @@
           'ngRoute',
           'password.data',
           'password.dialog',
-          'password.html'
+          'password.html',
+          'password.token'
       ]);
 })();
