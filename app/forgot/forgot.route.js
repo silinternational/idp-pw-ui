@@ -1,9 +1,9 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.forgot')
-        .config(configureForgotRoutes);
+      .module('password.forgot')
+      .config(configureForgotRoutes);
 
     function configureForgotRoutes($routeProvider) {
         $routeProvider.when('/forgot', {

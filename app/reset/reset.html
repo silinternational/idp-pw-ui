@@ -1,0 +1,31 @@
+<section layout="column">
+    <h2 class="md-headline">
+        Reset password
+    </h2>
+
+    <p ng-switch="vm.verification" class="md-body-1">
+        <span ng-switch-when="valid">
+            Your code has been verified, you are now required to change
+            your password.
+        </span>
+        <span ng-switch-when="invalid">
+            Your code was invalid, you will need try again.
+        </span>
+        <span ng-switch-default>
+            Your code is being verified.
+        </span>
+    </p>
+
+    <section ng-if="vm.verification !== 'pending'" layout="row"
+             layout-align="end center">
+        <md-button ng-if="vm.verification === 'valid'" autofocus
+                   ng-href="#/change" class="md-primary md-raised">
+            Change my password
+        </md-button>
+
+        <md-button ng-if="vm.verification === 'invalid'"
+                   ng-href="#/forgot" class="md-primary md-raised">
+            Try again
+        </md-button>
+    </section>
+</section>

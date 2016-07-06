@@ -2,14 +2,10 @@
 
 module.exports = function (grunt) {
     grunt.registerTask('default', [
-        'targetEnv:dev',
+        'init',
         'test:app',
         'serve'
     ]);
-
-    grunt.registerTask('targetEnv', 'generate environment-specific files from templates', function (env) {
-        grunt.task.run('replace:' + env);
-    });
 
     grunt.registerTask('test', 'tests the app in different states, e.g., app or dist forms', function (appState) {
         grunt.task.run('jshint:testFiles');
@@ -18,6 +14,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('dist', [
         'clean',
+        'init',
         'wiredep',
         'jshint:appFiles',
         'useminPrepare',
@@ -96,20 +93,6 @@ module.exports = function (grunt) {
                 spec: [
                     '<%= passwordConfig.app.root %>/*.spec.js',
                     '<%= passwordConfig.app.root %>/!(bower_components)/**/*.spec.js'
-                ],
-                templated: [
-                    {
-                        src: '<%= passwordConfig.app.root %>/data/data.constant.js.template',
-                        dest: '<%= passwordConfig.app.root %>/data/data.constant.js'
-                    },
-                    {
-                        src: '<%= passwordConfig.app.root %>/analytics/ga.js.template',
-                        dest: '<%= passwordConfig.app.root %>/analytics/ga.js'
-                    },
-                    {
-                        src: '<%= passwordConfig.app.root %>/forgot/recaptcha.constant.js.template',
-                        dest: '<%= passwordConfig.app.root %>/forgot/recaptcha.constant.js'
-                    }
                 ]
             }
         },
@@ -133,7 +116,10 @@ module.exports = function (grunt) {
                 index: '<%= passwordConfig.dist.root %>/index.html',
                 js: {
                     all: '<%= passwordConfig.dist.root %>/scripts/*.js',
-                    app: '<%= passwordConfig.dist.root %>/scripts/password.*.js',
+                    app: [
+                        '<%= passwordConfig.dist.root %>/scripts/password.env.*.js',
+                        '<%= passwordConfig.dist.root %>/scripts/password.*.js'
+                    ],
                     lib: '<%= passwordConfig.dist.root %>/scripts/lib.*.js'
                 }
             }
@@ -168,6 +154,28 @@ module.exports = function (grunt) {
         }
     };
 
+    grunt.registerTask('init', 'ensure theme-specific files are in place', function () {
+        if (! grunt.file.exists(appConfig.app.root + '/favicon.ico')) {
+            grunt.file.copy(appConfig.app.root + '/favicon.default.ico',
+              appConfig.app.root + '/favicon.ico');
+        }
+
+        if (! grunt.file.exists(appConfig.app.root + '/images/logo.png')) {
+            grunt.file.copy(appConfig.app.root + '/images/logo.default.png',
+              appConfig.app.root + '/images/logo.png');
+        }
+
+        if (! grunt.file.exists(appConfig.app.root + '/password.env.js')) {
+            grunt.file.copy(appConfig.app.root + '/password.env.default.js',
+              appConfig.app.root + '/password.env.js');
+        }
+
+        if (! grunt.file.exists(appConfig.app.root + '/password.config.theme.js')) {
+            grunt.file.copy(appConfig.app.root + '/password.config.theme.default.js',
+              appConfig.app.root + '/password.config.theme.js');
+        }
+    });
+
     require('load-grunt-tasks')(grunt);
 
     require('time-grunt')(grunt);
@@ -176,36 +184,6 @@ module.exports = function (grunt) {
         passwordConfig: appConfig,
 
         replace: {
-            dev: {
-                options: {
-                    variables: {
-                        'apiBaseUrl': '//pw-api.local/',
-                        'recaptchaSiteKey': '6LdYcRITAAAAAKuaWqKI38mMn7zLrK8pOBeztGO2',
-                        'gaId': ''
-                    }
-                },
-                files: appConfig.app.files.templated
-            },
-            staging: {
-                options: {
-                    variables: {
-                        'apiBaseUrl': '//pw-api.gtis.guru/',
-                        'recaptchaSiteKey': '',
-                        'gaId': ''
-                    }
-                },
-                files: appConfig.app.files.templated
-            },
-            prod: {
-                options: {
-                    variables: {
-                        'apiBaseUrl': '//pw-api.sil.org/',
-                        'recaptchaSiteKey': '',
-                        'gaId': ''
-                    }
-                },
-                files: appConfig.app.files.templated
-            },
             templateCache: {
                 src: appConfig.tmp.files.app,
                 options: {

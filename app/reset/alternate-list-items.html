@@ -1,0 +1,23 @@
+<md-subheader ng-if="vm.methods.length > 0" class="md-no-sticky">
+    {{ vm.header }}
+</md-subheader>
+
+<md-list-item ng-repeat="_method in vm.methods" layout="row"
+              layout-align="start center">
+    <md-icon md-svg-src="{{ vm.icon }}" class="md-avatar-icon"></md-icon>
+
+    <p class="md-body-1 avoid-text-button-overlap">
+        {{ _method.value }}
+    </p>
+
+    <md-button ng-click="vm.send(_method)"
+               class="md-icon-button md-secondary" aria-label="Send code">
+        <md-tooltip md-direction="left">
+            <span>
+                Send code
+            </span>
+        </md-tooltip>
+
+        <md-icon md-svg-src="images/md-icons/ic_send_24px.svg"></md-icon>
+    </md-button>
+</md-list-item>

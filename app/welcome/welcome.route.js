@@ -1,9 +1,9 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.welcome')
-        .config(configureWelcomeRoutes);
+      .module('password.welcome')
+      .config(configureWelcomeRoutes);
 
     function configureWelcomeRoutes($routeProvider) {
         $routeProvider.when('/welcome', {

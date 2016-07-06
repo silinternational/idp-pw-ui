@@ -2,10 +2,10 @@
     'use strict';
 
     angular
-        .module('password.analytics')
-        .run(initialize);
+      .module('password.analytics')
+      .run(initialize);
 
-        function initialize(Angularytics) {
-            Angularytics.init();
-        }
+    function initialize(Angularytics) {
+        Angularytics.init();
+    }
 })();

@@ -1,0 +1,45 @@
+<section layout="column">
+    <h2 class="md-headline">
+        {{ title }}
+    </h2>
+
+    <md-list ng-if="vm.allMethods.length > 0">
+        <pw-alternate-list-items
+                header="Send code to my primary email"
+                methods="vm.primary"
+                icon="images/md-icons/ic_email_24px.svg">
+        </pw-alternate-list-items>
+
+        <pw-alternate-list-items
+                header="Send code to an alternate email"
+                methods="vm.emails"
+                icon="images/md-icons/ic_email_24px.svg">
+        </pw-alternate-list-items>
+
+        <pw-alternate-list-items
+                header="Send code in a text message"
+                methods="vm.phones"
+                icon="images/md-icons/ic_phone_24px.svg">
+        </pw-alternate-list-items>
+
+        <pw-alternate-list-items
+                header="Email my spouse the code"
+                methods="vm.spouse"
+                icon="images/md-icons/ic_email_24px.svg">
+        </pw-alternate-list-items>
+
+        <pw-alternate-list-items
+                header="Email my supervisor the code"
+                methods="vm.super"
+                icon="images/md-icons/ic_email_24px.svg">
+        </pw-alternate-list-items>
+    </md-list>
+
+    <p ng-if="vm.allMethods.length === 0" class="md-body-1">
+        No alternate recovery methods currently available for you.
+
+        <md-button ng-click="vm.getHelp()" class="md-primary md-raised">
+            Contact Support
+        </md-button>
+    </p>
+</section>

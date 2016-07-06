@@ -4,7 +4,7 @@ pw-strength-meter figure {
     height: 2em;
     width: 2em;
     border-radius: 50%;
-    border: 0.25em solid rgba(0,0,0,0.03);
+    border: 0.25em solid rgba(0, 0, 0, 0.03);
     transform: rotate(-45deg);
 }
 
@@ -17,12 +17,12 @@ pw-strength-meter figure[score=''] {
 }
 
 pw-strength-meter figure[score='0'] {
-    color: red;
+    color: rgb(213,0,0); /* md error color md-warn */
 }
 
 pw-strength-meter figure[score='1'] {
-    color: red;
-    border-right-color: red;
+    color: rgb(213,0,0); /* md error color md-warn */
+    border-right-color: rgb(213,0,0); /* md error color md-warn */
 }
 
 pw-strength-meter figure[score='2'] {

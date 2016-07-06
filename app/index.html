@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="favicon.ico"/>
 
     <title ng-bind="(title ? title + ' - ' : '') + 'Password Management'">
         Password Management
@@ -21,7 +21,6 @@
     <!-- build:css styles/password.css -->
     <link rel="stylesheet" href="password.css">
     <link rel="stylesheet" href="html/md-input.css">
-    <link rel="stylesheet" href="change/strength-word.css">
     <link rel="stylesheet" href="change/strength-meter.css">
     <link rel="stylesheet" href="change/password-advice.css">
     <link rel="stylesheet" href="change/password-requirements.css">
@@ -31,26 +30,26 @@
 <!-- added layout here to ensure 'display: flex' so md-content will
      scroll under md-toolbar -->
 <body layout="row">
-    <pw-nav layout="column"></pw-nav>
+<!-- flex here will ensure the toolbar expands full width of
+     screen -->
+<main layout="column" flex>
+    <md-toolbar class="md-toolbar-tools">
+        <img src="images/logo.png" alt="logo"/>
 
-    <!-- flex here will ensure the toolbar expands full width of
-         screen -->
-    <main layout="column" flex>
-        <md-toolbar class="md-toolbar-tools">
-            <pw-nav-toggle></pw-nav-toggle>
+        <span flex></span>
 
-            <img hide-gt-sm src="images/logo.png" alt="logo" />
+        <pw-return-to></pw-return-to>
 
-            <span flex></span>
+        <span flex></span>
 
-            <pw-return-to></pw-return-to>
-        </md-toolbar>
+        <pw-auth layout="row" layout-align="start center"></pw-auth>
+    </md-toolbar>
 
-        <md-content ng-view layout="column" layout-align="start start"
-                    layout-padding flex>
-            <p>loading...</p>
-        </md-content>
-    </main>
+    <md-content ng-view layout="column" layout-align="start center"
+                layout-padding flex>
+        <p class="md-body-1">loading...</p>
+    </md-content>
+</main>
 
 <!-- build:js scripts/lib.js -->
 <!-- bower:js -->
@@ -67,43 +66,69 @@
 <!-- endbuild -->
 
 <!-- google's recaptcha script must be loaded AFTER the angular-recaptcha lib -->
-<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"
+        async defer></script>
+
+<!-- build:js scripts/password.env.js -->
+<!-- must appear before any files that rely on its config's and remain
+     available as a separate file so config's can be swapped out without a
+     complete application rebuild. -->
+<script src="password.env.js"></script>
+<!-- endbuild -->
 
 
 <!-- build:js scripts/password.js -->
 <!--<script src="analytics/ga.js"></script>-->
 <script src="password.module.js"></script>
-<script src="password.config.js"></script>
+<script src="password.config.theme.js"></script>
 <script src="password.route.js"></script>
 <!--<script src="analytics/analytics.module.js"></script>-->
 <!--<script src="analytics/analytics.config.js"></script>-->
 <!--<script src="analytics/analytics.run.js"></script>-->
 <script src="title/title.module.js"></script>
 <script src="title/title.run.js"></script>
+<script src="token/token.module.js"></script>
+<script src="token/token.service.js"></script>
+<script src="token/token.run.js"></script>
 <script src="data/data.module.js"></script>
 <script src="data/data.config.js"></script>
 <script src="data/data.constant.js"></script>
 <script src="data/data.service.js"></script>
+<script src="data/config.service.js"></script>
+<script src="data/cache.config.js"></script>
+<script src="dialog/dialog.module.js"></script>
+<script src="dialog/dialog.service.js"></script>
+<script src="dialog/failedDialog.controller.js"></script>
+<script src="dialog/updatedDialog.controller.js"></script>
+<script src="dialog/passwordAdviceDialog.controller.js"></script>
+<script src="dialog/resetDialog.controller.js"></script>
+<script src="dialog/helpDialog.controller.js"></script>
+<script src="dialog/areYouSureDialog.controller.js"></script>
+<script src="auth/auth.module.js"></script>
+<script src="auth/user.service.js"></script>
+<script src="auth/auth.directive.js"></script>
+<script src="auth/routeProtection.run.js"></script>
 <script src="html/html.module.js"></script>
 <script src="html/autofocus.directive.js"></script>
 <script src="html/md-input-container.directive.js"></script>
 <script src="nav/nav.module.js"></script>
-<script src="nav/nav.directive.js"></script>
-<script src="nav/nav-toggle.directive.js"></script>
 <script src="nav/returnTo.service.js"></script>
 <script src="nav/return-to.run.js"></script>
 <script src="nav/return-to.directive.js"></script>
 <script src="welcome/welcome.module.js"></script>
 <script src="welcome/welcome.route.js"></script>
 <script src="welcome/welcome.controller.js"></script>
+<script src="button/button.module.js"></script>
+<script src="button/safeCancel.directive.js"></script>
+<script src="button/discardChangesDialog.controller.js"></script>
 <script src="forgot/forgot.module.js"></script>
-<script src="forgot/recaptcha.constant.js"></script>
-<script src="forgot/recaptcha.service.js"></script>
 <script src="forgot/forgot.route.js"></script>
 <script src="forgot/forgot.controller.js"></script>
 <script src="recovery/recovery.module.js"></script>
 <script src="recovery/recovery.route.js"></script>
-<script src="recovery/recovery.controller.js"></script>
+<script src="recovery/verify.controller.js"></script>
+<script src="recovery/country.service.js"></script>
+<script src="recovery/addMethod.controller.js"></script>
 <script src="change/change.module.js"></script>
 <script src="change/change.route.js"></script>
 <script src="change/change.controller.js"></script>
@@ -116,6 +141,11 @@
 <script src="profile/profile.module.js"></script>
 <script src="profile/profile.route.js"></script>
 <script src="profile/profile.controller.js"></script>
+<script src="reset/reset.module.js"></script>
+<script src="reset/reset.route.js"></script>
+<script src="reset/reset.controller.js"></script>
+<script src="reset/alternates.controller.js"></script>
+<script src="reset/alternateListItems.directive.js"></script>
 <!-- endbuild -->
 
 </body>

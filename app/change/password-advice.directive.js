@@ -1,29 +1,28 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.change')
-        .directive('pwPasswordAdvice', pwPasswordAdvice);
+      .module('password.change')
+      .directive('pwPasswordAdvice', pwPasswordAdvice);
 
     function pwPasswordAdvice() {
         return {
-            restrict : 'E',
+            restrict: 'E',
             controller: PasswordAdviceController,
             controllerAs: 'vm',
             bindToController: true,
-            scope : {
+            scope: {
                 warning: '=',
                 suggestions: '='
             },
-            templateUrl : 'change/password-advice.html'
+            templateUrl: 'change/password-advice.html'
         };
     }
 
-    function PasswordAdviceController($mdDialog) {
+    function PasswordAdviceController(dialogService) {
         var vm = this;
 
         vm.showAdvice = showAdvice;
-        vm.hideAdvice = hideAdvice;
 
         activate();
 
@@ -33,20 +32,8 @@
         }
 
         function showAdvice() {
-            $mdDialog.show({
-                templateUrl: '/change/password-advice-dialog.html',
-                controller: PasswordAdviceController,
-                bindToController: true,
-                controllerAs: 'vm',
-                locals: {
-                    warning: vm.warning,
-                    suggestions: vm.suggestions
-                }
-            });
-        }
-
-        function hideAdvice() {
-            $mdDialog.hide();
+            dialogService
+              .advice(vm.warning, vm.suggestions);
         }
     }
 })();

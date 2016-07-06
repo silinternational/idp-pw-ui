@@ -1,0 +1,29 @@
+<md-dialog aria-label="Are you sure?">
+    <md-toolbar class="md-toolbar-tools md-warn">
+        <h2>Are you sure?</h2>
+
+        <span flex></span>
+
+        <md-button class="md-icon-button" ng-click="vm.cancel()">
+            <md-icon md-svg-src="images/md-icons/ic_close_24px.svg"
+                     aria-label="Close dialog">
+            </md-icon>
+        </md-button>
+    </md-toolbar>
+
+    <md-dialog-content class="md-dialog-content md-body-1">
+        <p>
+            {{ vm.question }}
+        </p>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row" layout-align="space-between center">
+        <md-button ng-click="vm.cancel()" class="md-accent">
+            No
+        </md-button>
+
+        <md-button ng-click="vm.yes()" class="md-warn">
+            Yes
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

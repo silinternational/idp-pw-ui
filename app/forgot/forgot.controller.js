@@ -2,87 +2,56 @@
     'use strict';
 
     angular
-        .module('password.forgot')
-        .controller('ForgotController', ForgotController);
+      .module('password.forgot')
+      .controller('ForgotController', ForgotController);
 
-    function ForgotController($mdDialog, $location, $timeout,
-                              recaptchaService) {
-        var vm = this;
-        var inactivityTimer = null;
+    function ForgotController(dataService, dialogService, config) {
+        var vm = this,
+            recaptchaResponse = '';
 
         vm.username = '';
-        vm.recaptchaSiteKey = recaptchaService.getSiteKey();
-        vm.recaptchaAnswered = recaptchaService.setVerificationResponse;
-        vm.anotherSent = false;
-        vm.idpName = '';
-        vm.usernameHint = '';
+        vm.config = config;
 
+        vm.recaptchaAnswered = recaptchaAnswered;
         vm.submit = submit;
-        vm.cancel = cancel;
-        vm.alternate = alternate;
-        vm.resend = resend;
+        vm.help = help;
 
         activate();
 
-        ///////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////
 
         function activate() {
-            // TODO: to be retrieved from config API
-            vm.idpName = 'IdP'; 
-            vm.usernameHint = 'IdP username, e.g., first_last';
+        }
+
+        function recaptchaAnswered(response) {
+            recaptchaResponse = response;
         }
 
         function submit() {
-            console.info(recaptchaService.getVerificationResponse());
+            dataService
+              .post('reset', {
+                  username: vm.username,
+                  verification_token: recaptchaResponse
+              })
+              .then(reset, failed);
 
-            var email = '******@sil.org';
-
-            $mdDialog.show({
-                templateUrl: '/forgot/forgot-status.html',
-                controller: ForgotController,
-                controllerAs: 'vm',
-                bindToController: true,
-                locals: {
-                    sentTo: email
-                }
-            }).then(killInactivityTimer, resetPage);
-
-            startInactivityTimer();
+            dialogService.progress();
         }
 
-        function startInactivityTimer() {
-
-            inactivityTimer = $timeout(navigateToHome, 60000);
+        function help() {
+            dialogService.help(vm.config.support);
         }
 
-        function navigateToHome() {
-            $mdDialog.hide();
-
-            $location.url('/');
+        function reset(response) {
+            var primaryEmail = response.data.methods[0].value;
+            
+            dialogService
+              .reset(primaryEmail, response.data.uid);
         }
 
-        function resetPage() {
-            killInactivityTimer();
-
-            vm.username = '';
-        }
-
-        function killInactivityTimer() {
-            $timeout.cancel(inactivityTimer);
-        }
-
-        function alternate() {
-            $mdDialog.hide();
-
-            $location.url('recovery');
-        }
-
-        function resend() {
-            vm.anotherSent = true;
-        }
-
-        function cancel() {
-            $mdDialog.cancel();
+        function failed(response) {
+            dialogService
+              .fail('Attempt to reset password failed.', response.data);
         }
     }
 })();

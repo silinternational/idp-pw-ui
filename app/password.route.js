@@ -1,9 +1,9 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password')
-        .config(configureRoutes);
+      .module('password')
+      .config(configureRoutes);
 
     function configureRoutes($routeProvider) {
         $routeProvider.otherwise({

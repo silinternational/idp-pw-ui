@@ -1,0 +1,22 @@
+<md-dialog aria-label="Failure occurred">
+    <md-toolbar class="md-toolbar-tools md-warn">
+        <h2>{{ vm.error.name }}</h2>
+    </md-toolbar>
+
+    <md-dialog-content layout="column"
+                       class="md-dialog-content md-body-1">
+        <p>
+            {{ vm.summary }}
+        </p>
+
+        <blockquote>
+            {{ vm.error.message }}
+        </blockquote>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-click="vm.ok()" class="md-primary">
+            Ok
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

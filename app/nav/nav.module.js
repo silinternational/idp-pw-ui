@@ -1,8 +1,7 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('password.nav', [
-            'ngMaterial'
-        ]);
+      .module('password.nav', [
+      ]);
 })();

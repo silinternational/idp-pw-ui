@@ -24,7 +24,7 @@ describe('data service', function () {
         $httpBackend.verifyNoOutstandingExpectation();
     });
 
-    it('should supply a base url', function() {
+    it('should supply a base url', function () {
         expect(serviceUnderTest.baseUrl()).toBe(stubApiHost);
     });
 

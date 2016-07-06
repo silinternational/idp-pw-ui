@@ -1,0 +1,53 @@
+<md-dialog aria-label="Status update">
+    <md-toolbar class="md-toolbar-tools">
+        <h2>Password reset email sent</h2>
+    </md-toolbar>
+
+    <md-dialog-content class="md-dialog-content md-body-1">
+        <p>
+            We have sent a reset password email to the following email
+            address:
+        </p>
+
+        <p class="md-body-2" flex-offset="5">
+            {{ vm.sentTo }}
+        </p>
+
+        <p>
+            Click the link in the email to set your new password.
+        </p>
+
+        <md-divider></md-divider>
+
+        <p>
+            If you don’t currently have access to this email account,
+            please use
+
+            <a href="" ng-click="vm.alternates()">
+                alternate methods</a>
+
+            for verification.
+        </p>
+
+        <p>
+            Didn't receive the email yet? Please check your spam folder,
+            or click Resend to send the email again.
+        </p>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <md-button ng-click="vm.alternates()" class="md-accent">
+            Use alternate methods
+        </md-button>
+
+        <md-button ng-click="vm.resend()" class="md-warn">
+            Resend
+        </md-button>
+
+        <span flex></span>
+
+        <md-button ng-click="vm.done()" class="md-primary" tabindex="1">
+            Done
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

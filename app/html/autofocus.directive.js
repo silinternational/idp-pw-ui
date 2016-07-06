@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('password.html')
-        .directive('autofocus', autofocus);
+      .module('password.html')
+      .directive('autofocus', autofocus);
 
     /*
      This is meant to address the differences between a true page load in the HTML5 spec

@@ -8,17 +8,8 @@
     function returnToService() {
         var url = null;
 
-        var service = {
-                url: url
-            };
-
-        activate();
-
-        return service;
-
-        ///////////////////////////////////////////////////////////////////////
-
-        function activate() {
-        }
+        return {
+            url: url
+        };
     }
 })();

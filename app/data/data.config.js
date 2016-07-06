@@ -2,10 +2,10 @@
     'use strict';
 
     angular
-        .module('password.data')
-        .config(configureData);
+      .module('password.data')
+      .config(configureDataCalls);
 
-        function configureData($httpProvider) {
-            $httpProvider.defaults.withCredentials = true;  //TODO: is this needed?
-        }
+    function configureDataCalls($httpProvider) {
+        $httpProvider.defaults.withCredentials = true;
+    }
 })();

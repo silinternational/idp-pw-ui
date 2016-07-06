@@ -1,0 +1,9 @@
+<md-button ng-if="vm.isAuthenticated" ng-click="vm.logout()">
+    <md-icon md-svg-src="images/md-icons/ic_person_24px.svg"></md-icon>
+    Logout
+</md-button>
+
+<md-button ng-if="! vm.isAuthenticated" ng-click="vm.login()">
+    <md-icon md-svg-src="images/md-icons/ic_person_outline_24px.svg"></md-icon>
+    Login
+</md-button>
