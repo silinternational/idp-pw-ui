@@ -5,7 +5,8 @@
       .module('password.forgot')
       .controller('ForgotController', ForgotController);
 
-    function ForgotController(dataService, dialogService, config) {
+    function ForgotController(dataService, dialogService, config,
+                              vcRecaptchaService) {
         var vm = this,
             recaptchaResponse = '';
 
@@ -52,6 +53,8 @@
         function failed(response) {
             dialogService
               .fail('Attempt to reset password failed.', response.data);
+
+            vcRecaptchaService.reload();
         }
     }
 })();
