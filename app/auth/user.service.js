@@ -6,10 +6,12 @@
       .factory('userService', userService);
 
     function userService($q, dataService, $window, tokenService) {
-        var service = {
+        var authenticated = false,
+            service = {
                 getUser: getUser,
                 login: login,
-                logout: logout
+                logout: logout,
+                isAuthenticated: isAuthenticated
             };
 
         activate();
@@ -39,6 +41,8 @@
                                                            .data
                                                            .idp_username);
                 
+                authenticated = user.isAuthenticated;
+                
                 deferred.resolve(user);
             }
 
@@ -65,6 +69,10 @@
                                tokenService.getToken();
 
             tokenService.clear();
+        }
+        
+        function isAuthenticated() {
+            return authenticated;
         }
     }
 })();
