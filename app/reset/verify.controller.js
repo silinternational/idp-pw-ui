@@ -6,7 +6,7 @@
       .controller('VerifyController', VerifyController);
 
     function VerifyController(dataService, $routeParams, dialogService,
-                             $mdDialog, tokenService) {
+                             $mdDialog, tokenService, $location) {
         var vm = this;
 
         vm.verification = 'pending';
@@ -28,9 +28,9 @@
         }
 
         function valid(response) {
-            vm.verification = 'valid';
-            
             tokenService.setApiToken(response.data.access_token);
+
+            $location.url('change');
         }
 
         function invalid() {
