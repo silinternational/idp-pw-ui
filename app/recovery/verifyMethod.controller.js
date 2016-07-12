@@ -3,17 +3,15 @@
 
     angular
       .module('password.recovery')
-      .controller('VerifyController', VerifyController);
+      .controller('VerifyMethodController', VerifyMethodController);
 
-    function VerifyController($routeParams, dataService, dialogService, 
-                              $route) {
+    function VerifyMethodController($routeParams, dataService,
+                                    dialogService) {
         var vm = this;
 
         vm.verificationForm = null;
         vm.verificationCode = null;
-        vm.anotherSent = false;
 
-        vm.resendCode = resendCode;
         vm.verify = verify;
 
         activate();
@@ -21,28 +19,6 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-        }
-
-        function resendCode() {
-            vm.verificationCode = null;
-
-            dataService
-              .put('method/' + $routeParams.methodId + '/resend')
-              .then(sent, failed);
-        }
-
-        function sent() {
-//TODO: needs to be tested
-            vm.anotherSent = true;
-
-            $route.reload();
-        }
-
-        function failed(response) {
-//TODO: needs to be tested
-            dialogService
-              .fail('Attempt to resend verification code failed.',
-                    response.data);
         }
 
         function verify() {

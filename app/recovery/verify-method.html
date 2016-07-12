@@ -3,10 +3,7 @@
         {{ title }}
     </h2>
 
-    <p ng-if="vm.anotherSent" class="md-body-1">
-        Another verification code has been sent, please enter it below.
-    </p>
-    <p ng-if="! vm.anotherSent" class="md-body-1">
+    <p class="md-body-1">
         You should have received a verification code, please enter it
         below.
     </p>
@@ -31,14 +28,7 @@
             </ng-messages>
         </md-input-container>
 
-        <section layout="row" layout-align="start center" layout-fill>
-            <md-button ng-click="vm.resendCode()" tabindex="-1"
-                       class="md-raised md-accent">
-                Resend
-            </md-button>
-
-            <span flex></span>
-
+        <section layout="row" layout-align="end center" layout-fill>
             <md-button ng-click="vm.verify()"
                        class="md-raised md-primary">
                 Verify
