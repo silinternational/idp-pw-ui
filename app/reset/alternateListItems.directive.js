@@ -36,12 +36,13 @@
         function send(method) {
             dataService
               .put('reset/' + $routeParams.resetId, method)
-              .then(sent, failedToSend);
+              .then(function sent() {
+                  dialogService.verify(method.value);
+              }, failedToSend);
+
+            dialogService.progress();
         }
 
-        function sent() {
-            //TODO: what's next?
-        }
 
         function failedToSend(response) {
             dialogService

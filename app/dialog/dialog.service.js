@@ -13,7 +13,8 @@
             reset: reset,
             help: help,
             areYouSure: areYouSure,
-            progress: progress
+            progress: progress,
+            verify: verify
         };
 
         activate();
@@ -100,6 +101,17 @@
             $mdDialog.show({
                 templateUrl: 'dialog/progress-dialog.html',
                 escapeToClose: false
+            });
+        }
+
+        function verify(sentTo) {
+            $mdDialog.show({
+                templateUrl: 'dialog/verify-dialog.html',
+                controller: 'VerifyDialogController',
+                controllerAs: 'vm',
+                locals: {
+                    sentTo: sentTo
+                }
             });
         }
     }

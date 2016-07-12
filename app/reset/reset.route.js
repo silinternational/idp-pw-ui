@@ -14,9 +14,9 @@
               controllerAs: 'vm'
           })
           .when('/reset/:resetId/verify/:verificationCode', {
-              title: 'Reset password',
-              templateUrl: 'reset/reset.html',
-              controller: 'ResetController',
+              title: 'Verify reset code',
+              templateUrl: 'reset/verify.html',
+              controller: 'VerifyController',
               controllerAs: 'vm'
           });
     }

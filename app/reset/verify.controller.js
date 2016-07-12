@@ -3,9 +3,9 @@
 
     angular
       .module('password.reset')
-      .controller('ResetController', ResetController);
+      .controller('VerifyController', VerifyController);
 
-    function ResetController(dataService, $routeParams, dialogService,
+    function VerifyController(dataService, $routeParams, dialogService,
                              $mdDialog, tokenService) {
         var vm = this;
 
@@ -34,8 +34,6 @@
         }
 
         function invalid() {
-//TODO: inspect failure to distinguis between an invalid code and a system
-//      failure.            
             vm.verification = 'invalid';
         }
     }
