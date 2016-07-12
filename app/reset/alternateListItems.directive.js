@@ -43,7 +43,6 @@
             dialogService.progress();
         }
 
-
         function failedToSend(response) {
             dialogService
               .fail('Unable to send verification.', response.data);
