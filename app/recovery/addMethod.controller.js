@@ -6,7 +6,7 @@
       .controller('AddMethodController', AddMethodController);
 
     function AddMethodController($location, countryService, dataService,
-                                 dialogService, $mdDialog) {
+                                 dialogService) {
         var vm = this;
 
         vm.newRecoveryMethod = {
@@ -42,7 +42,7 @@
             dataService
               .post('method', vm.newRecoveryMethod)
               .then(added, failed)
-              .finally($mdDialog.hide);
+              .finally(dialogService.close);
             
             dialogService.progress();
         }

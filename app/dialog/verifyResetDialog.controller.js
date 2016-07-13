@@ -5,9 +5,8 @@
       .module('password.dialog')
       .controller('VerifyResetDialogController', VerifyResetDialogController);
 
-    function VerifyResetDialogController(sentTo, $mdDialog, verifyService,
-                                         $routeParams, dialogService,
-                                         $location) {
+    function VerifyResetDialogController(sentTo, verifyService, $location,
+                                         $routeParams, dialogService) {
         var vm = this;
 
         vm.sentTo = sentTo;
@@ -24,12 +23,12 @@
         }
 
         function verify() {
-            $mdDialog.hide();
+            dialogService.close();
 
             verifyService
               .verifyReset($routeParams.resetId, vm.verificationCode)
               .then(valid, invalid)
-              .finally($mdDialog.hide);
+              .finally(dialogService.close);
 
             dialogService.progress();
         }
@@ -43,7 +42,7 @@
         }
 
         function cancel() {
-            $mdDialog.hide();
+            dialogService.close();
         }
     }
 })();

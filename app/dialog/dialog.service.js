@@ -7,6 +7,7 @@
 
     function dialogService($mdDialog) {
         var service = {
+            close: close,
             fail: fail,
             update: update,
             advice: advice,
@@ -26,6 +27,10 @@
         function activate() {
         }
 
+        function close() {
+            $mdDialog.hide();
+        }
+        
         function fail(summary, error) {
             $mdDialog.show({
                 templateUrl: 'dialog/failed-dialog.html',
