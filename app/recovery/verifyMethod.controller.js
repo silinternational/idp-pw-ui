@@ -5,11 +5,10 @@
       .module('password.recovery')
       .controller('VerifyMethodController', VerifyMethodController);
 
-    function VerifyMethodController($routeParams, dataService,
+    function VerifyMethodController($routeParams, verifyService,
                                     dialogService) {
         var vm = this;
 
-        vm.verificationForm = null;
         vm.verificationCode = null;
 
         vm.verify = verify;
@@ -22,10 +21,8 @@
         }
 
         function verify() {
-            dataService
-              .put('method/' + $routeParams.methodId, {
-                  code: vm.verificationCode
-              })
+            verifyService
+              .verifyMethod($routeParams.methodId, vm.verificationCode)
               .then(verified, invalid);
         }
 
@@ -35,9 +32,9 @@
                       'method has been added.');
         }
 
-        function invalid(response) {
+        function invalid(error) {
             dialogService
-              .fail('Incorrect verification code.', response.data);
+              .fail('Incorrect verification code.', error);
         }
     }
 }());

@@ -17,7 +17,8 @@
 
         function activate() {
             verifyService
-              .verify($routeParams.verificationCode)
+              .verifyReset($routeParams.resetId,
+                           $routeParams.verificationCode)
               .then(valid, invalid)
               .finally($mdDialog.hide);
 

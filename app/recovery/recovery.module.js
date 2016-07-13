@@ -9,6 +9,7 @@
           'password.html',
           'password.data',
           'password.button',
-          'password.dialog'
+          'password.dialog',
+          'password.verification'
       ]);
 })();

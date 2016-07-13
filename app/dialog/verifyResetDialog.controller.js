@@ -5,8 +5,9 @@
       .module('password.dialog')
       .controller('VerifyResetDialogController', VerifyResetDialogController);
 
-    function VerifyResetDialogController(sentTo, verifyService, $mdDialog,
-                                         dialogService, $location) {
+    function VerifyResetDialogController(sentTo, $mdDialog, verifyService,
+                                         $routeParams, dialogService,
+                                         $location) {
         var vm = this;
 
         vm.sentTo = sentTo;
@@ -26,7 +27,7 @@
             $mdDialog.hide();
 
             verifyService
-              .verify(vm.verificationCode)
+              .verifyReset($routeParams.resetId, vm.verificationCode)
               .then(valid, invalid)
               .finally($mdDialog.hide);
 
