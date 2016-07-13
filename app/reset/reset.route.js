@@ -15,8 +15,8 @@
           })
           .when('/reset/:resetId/verify/:verificationCode', {
               title: 'Verify reset code',
-              templateUrl: 'reset/verify.html',
-              controller: 'VerifyController',
+              templateUrl: 'reset/verify-reset.html',
+              controller: 'VerifyResetController',
               controllerAs: 'vm'
           });
     }

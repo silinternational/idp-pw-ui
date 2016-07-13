@@ -3,10 +3,11 @@
 
     angular
       .module('password.reset')
-      .controller('VerifyController', VerifyController);
+      .controller('VerifyResetController', VerifyResetController);
 
-    function VerifyController(dataService, $routeParams, dialogService,
-                             $mdDialog, tokenService, $location) {
+    function VerifyResetController(dataService, $routeParams, 
+                                   dialogService, $mdDialog, tokenService, 
+                                   $location) {
         var vm = this;
 
         vm.verification = 'pending';
