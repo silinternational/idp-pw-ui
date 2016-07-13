@@ -8,6 +8,6 @@
           'password.data',
           'password.dialog',
           'password.html',
-          'password.token'
+          'password.verification'
       ]);
 })();

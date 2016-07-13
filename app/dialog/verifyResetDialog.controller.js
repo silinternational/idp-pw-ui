@@ -5,8 +5,7 @@
       .module('password.dialog')
       .controller('VerifyResetDialogController', VerifyResetDialogController);
 
-    function VerifyResetDialogController(sentTo, dataService, $routeParams, 
-                                         tokenService, $mdDialog, 
+    function VerifyResetDialogController(sentTo, verifyService, $mdDialog,
                                          dialogService, $location) {
         var vm = this;
 
@@ -26,25 +25,20 @@
         function verify() {
             $mdDialog.hide();
 
-            dataService
-              .put('reset/' + $routeParams.resetId + '/validate', {
-                  code: vm.verificationCode,
-                  client_id: tokenService.getClientKey()
-              })
+            verifyService
+              .verify(vm.verificationCode)
               .then(valid, invalid)
               .finally($mdDialog.hide);
 
             dialogService.progress();
         }
 
-        function valid(response) {
-            tokenService.setApiToken(response.data.access_token);
-
+        function valid() {
             $location.url('change');
         }
 
-        function invalid(response) {
-            dialogService.fail('Verification failed', response.data);
+        function invalid(error) {
+            dialogService.fail('Verification failed', error);
         }
 
         function cancel() {

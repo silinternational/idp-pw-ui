@@ -5,9 +5,8 @@
       .module('password.reset')
       .controller('VerifyResetController', VerifyResetController);
 
-    function VerifyResetController(dataService, $routeParams, 
-                                   dialogService, $mdDialog, tokenService, 
-                                   $location) {
+    function VerifyResetController($routeParams, dialogService, $mdDialog,
+                                   $location, verifyService) {
         var vm = this;
 
         vm.verification = 'pending';
@@ -17,20 +16,15 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            dataService
-              .put('reset/' + $routeParams.resetId + '/validate', {
-                  code: $routeParams.verificationCode,
-                  client_id: tokenService.getClientKey()
-              })
+            verifyService
+              .verify($routeParams.verificationCode)
               .then(valid, invalid)
               .finally($mdDialog.hide);
 
             dialogService.progress();
         }
 
-        function valid(response) {
-            tokenService.setApiToken(response.data.access_token);
-
+        function valid() {
             $location.url('change');
         }
 
