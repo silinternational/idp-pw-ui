@@ -3,11 +3,11 @@
 
     angular
       .module('password.dialog')
-      .controller('VerifyDialogController', VerifyDialogController);
+      .controller('VerifyResetDialogController', VerifyResetDialogController);
 
-    function VerifyDialogController(sentTo, dataService, $routeParams,
-                                    tokenService, $mdDialog, dialogService,
-                                    $location) {
+    function VerifyResetDialogController(sentTo, dataService, $routeParams, 
+                                         tokenService, $mdDialog, 
+                                         dialogService, $location) {
         var vm = this;
 
         vm.sentTo = sentTo;

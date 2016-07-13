@@ -106,8 +106,8 @@
 
         function verify(sentTo) {
             $mdDialog.show({
-                templateUrl: 'dialog/verify-dialog.html',
-                controller: 'VerifyDialogController',
+                templateUrl: 'dialog/verify-reset-dialog.html',
+                controller: 'VerifyResetDialogController',
                 controllerAs: 'vm',
                 locals: {
                     sentTo: sentTo
