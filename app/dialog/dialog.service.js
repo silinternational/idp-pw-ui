@@ -7,13 +7,15 @@
 
     function dialogService($mdDialog) {
         var service = {
+            close: close,
             fail: fail,
             update: update,
             advice: advice,
             reset: reset,
             help: help,
             areYouSure: areYouSure,
-            progress: progress
+            progress: progress,
+            verify: verify
         };
 
         activate();
@@ -25,6 +27,10 @@
         function activate() {
         }
 
+        function close() {
+            $mdDialog.hide();
+        }
+        
         function fail(summary, error) {
             $mdDialog.show({
                 templateUrl: 'dialog/failed-dialog.html',
@@ -100,6 +106,17 @@
             $mdDialog.show({
                 templateUrl: 'dialog/progress-dialog.html',
                 escapeToClose: false
+            });
+        }
+
+        function verify(sentTo) {
+            $mdDialog.show({
+                templateUrl: 'dialog/verify-reset-dialog.html',
+                controller: 'VerifyResetDialogController',
+                controllerAs: 'vm',
+                locals: {
+                    sentTo: sentTo
+                }
             });
         }
     }

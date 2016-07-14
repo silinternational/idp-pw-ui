@@ -5,6 +5,7 @@
       .module('password.auth', [
           'password.data',
           'ngMaterial',
-          'password.token'
+          'password.token',
+          'password.nav'
       ]);
 })();

@@ -31,8 +31,12 @@
             }
         }
 
-        function failed() {
-            throw new IntruderError();
+        function failed(response) {
+            if (response.status === -1 || response.status === 401) {
+                throw new IntruderError();
+            }
+
+            throw new Error(JSON.stringify(response.data));
         }
 
         function defend(event, targetRoute, currentRoute, error) {

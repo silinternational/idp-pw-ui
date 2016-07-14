@@ -6,7 +6,7 @@
           'ngMaterial',
           /*@@DIST-TEMPLATE-CACHE*/
           'ngRoute',
-          //'password.analytics',
+          'password.analytics',
           'password.title',
           'password.nav',
           'password.welcome',

@@ -4,6 +4,9 @@
     angular
       .module('password.dialog', [
           'ngMaterial',
+          'ngRoute',
+          'ngMessages',
+          'password.verification',
           'password.data'
       ]);
 })();

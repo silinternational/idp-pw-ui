@@ -5,7 +5,7 @@
       .module('password.data')
       .factory('dataService', dataService);
 
-    function dataService($http, DATA_API_BASE_URL, tokenService) {
+    function dataService($http, DATA_API_BASE_URL) {
         var service = {
             get: get,
             put: put,
@@ -24,37 +24,25 @@
         }
 
         function get(url) {
-            return $http.get(buildFullyQualifiedUrl(url),
-                             getConfig());
+            return $http.get(buildFullyQualifiedUrl(url));
         }
 
         function put(url, data) {
             return $http.put(buildFullyQualifiedUrl(url),
-                             data,
-                             getConfig());
+                             data);
         }
 
         function post(url, data) {
             return $http.post(buildFullyQualifiedUrl(url),
-                              data,
-                              getConfig());
+                              data);
         }
 
         function remove(url) {
-            return $http.delete(buildFullyQualifiedUrl(url),
-                                getConfig());
+            return $http.delete(buildFullyQualifiedUrl(url));
         }
 
         function baseUrl() {
             return DATA_API_BASE_URL;
-        }
-
-        function getConfig() {
-            return {
-                headers: {
-                    Authorization: 'Bearer ' + tokenService.getToken()
-                }
-            };
         }
 
         function buildFullyQualifiedUrl(url) {

@@ -5,11 +5,14 @@
       .module('password.auth')
       .factory('userService', userService);
 
-    function userService($q, dataService, $window, tokenService) {
-        var service = {
+    function userService($q, dataService, $window, tokenService,
+                         returnToService) {
+        var authenticated = false,
+            service = {
                 getUser: getUser,
                 login: login,
-                logout: logout
+                logout: logout,
+                isAuthenticated: isAuthenticated
             };
 
         activate();
@@ -39,6 +42,8 @@
                                                            .data
                                                            .idp_username);
                 
+                authenticated = user.isAuthenticated;
+                
                 deferred.resolve(user);
             }
 
@@ -53,7 +58,8 @@
                            tokenService.getClientKey();
 
             if (returnToUrl) {
-                loginUrl += '&ReturnTo=' + returnToUrl;
+                loginUrl += '&ReturnTo=' +
+                            returnToService.buildUrl(returnToUrl);
             }
 
             $window.location = loginUrl;
@@ -65,6 +71,10 @@
                                tokenService.getToken();
 
             tokenService.clear();
+        }
+        
+        function isAuthenticated() {
+            return authenticated;
         }
     }
 })();

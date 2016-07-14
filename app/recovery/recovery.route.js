@@ -15,8 +15,8 @@
           })
           .when('/recovery-method/verify/:methodId', {
               title: 'Verify code',
-              templateUrl: 'recovery/verify.html',
-              controller: 'VerifyController',
+              templateUrl: 'recovery/verify-method.html',
+              controller: 'VerifyMethodController',
               controllerAs: 'vm'
           });
     }

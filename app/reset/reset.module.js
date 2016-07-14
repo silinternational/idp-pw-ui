@@ -5,9 +5,10 @@
       .module('password.reset', [
           'ngMaterial',
           'ngRoute',
+          'ngMessages',
           'password.data',
           'password.dialog',
           'password.html',
-          'password.token'
+          'password.verification'
       ]);
 })();
