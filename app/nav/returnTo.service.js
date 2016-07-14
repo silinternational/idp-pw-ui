@@ -6,10 +6,18 @@
       .factory('returnToService', returnToService);
 
     function returnToService() {
-        var url = null;
+        var service = {
+              url: null,
+              buildUrl: buildUrl
+            };
 
-        return {
-            url: url
-        };
+        return service;
+
+        //////////////////////////////////////////////////////////////////
+
+        function buildUrl(route) {
+            return service.url ? route + '?returnTo=' + service.url :
+                                 route;
+        }
     }
 })();

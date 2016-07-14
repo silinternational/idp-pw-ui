@@ -5,7 +5,8 @@
       .module('password.auth')
       .factory('userService', userService);
 
-    function userService($q, dataService, $window, tokenService) {
+    function userService($q, dataService, $window, tokenService,
+                         returnToService) {
         var authenticated = false,
             service = {
                 getUser: getUser,
@@ -57,7 +58,8 @@
                            tokenService.getClientKey();
 
             if (returnToUrl) {
-                loginUrl += '&ReturnTo=' + returnToUrl;
+                loginUrl += '&ReturnTo=' +
+                            returnToService.buildUrl(returnToUrl);
             }
 
             $window.location = loginUrl;
