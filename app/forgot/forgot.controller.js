@@ -44,10 +44,16 @@
         }
 
         function reset(response) {
-            var primaryEmail = response.data.methods[0].value;
+            var primaryEmail,
+                resetId = response.data.uid;
+
+            if (response.data.methods &&
+                response.data.methods.length > 0) {
+                primaryEmail = response.data.methods[0].value;
+            }
             
             dialogService
-              .reset(primaryEmail, response.data.uid);
+              .reset(primaryEmail, resetId);
         }
 
         function failed(response) {

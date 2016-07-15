@@ -10,6 +10,7 @@
         var vm = this;
 
         vm.sentTo = sentTo;
+        vm.resetId = resetId;
 
         vm.alternates = alternates;
         vm.resend = resend;
@@ -25,14 +26,14 @@
         function alternates() {
             dialogService.close();
 
-            $location.url('reset/' + resetId + '/verify/alternates');
+            $location.url('reset/' + vm.resetId + '/verify/alternates');
         }
 
         function resend() {
             dialogService.close();
 
             dataService
-              .put('reset/' + resetId + '/resend')
+              .put('reset/' + vm.resetId + '/resend')
               .then(sent, failed);
         }
 

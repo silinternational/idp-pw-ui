@@ -5,11 +5,12 @@
 
     <md-dialog-content class="md-dialog-content md-body-1">
         <p>
-            We have sent a reset password email to the following email
-            address:
+            If your account is found, we will send a reset password email
+            to {{ vm.sentTo ? 'the following email address:' :
+                              'your primary email address.' }}
         </p>
 
-        <p class="md-body-2" flex-offset="5">
+        <p ng-if="vm.sentTo" class="md-body-2" flex-offset="5">
             {{ vm.sentTo }}
         </p>
 
@@ -17,30 +18,35 @@
             Click the link in the email to set your new password.
         </p>
 
-        <md-divider></md-divider>
+        <section ng-if="vm.resetId">
+            <md-divider></md-divider>
 
-        <p>
-            If you don’t currently have access to this email account,
-            please use
+            <p>
+                If you don’t currently have access to this email account,
+                please use
 
-            <a href="" ng-click="vm.alternates()">
-                alternate methods</a>
+                <a href="" ng-click="vm.alternates()">
+                    alternate methods</a>
 
-            for verification.
-        </p>
+                for verification.
+            </p>
 
-        <p>
-            Didn't receive the email yet? Please check your spam folder,
-            or click Resend to send the email again.
-        </p>
+            <p>
+                Didn't receive the email yet? Please check your spam
+                folder,
+                or click Resend to send the email again.
+            </p>
+        </section>
     </md-dialog-content>
 
     <md-dialog-actions layout="row">
-        <md-button ng-click="vm.alternates()" class="md-accent">
+        <md-button ng-if="vm.resetId" ng-click="vm.alternates()"
+                   class="md-accent">
             Use alternate methods
         </md-button>
 
-        <md-button ng-click="vm.resend()" class="md-warn">
+        <md-button ng-if="vm.resetId" ng-click="vm.resend()"
+                   class="md-warn">
             Resend
         </md-button>
 
