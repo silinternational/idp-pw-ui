@@ -4,7 +4,7 @@
             {{ vm.user.first_name + ' ' + vm.user.last_name }}
         </h2>
 
-        <p class="md-body-1">
+        <p class="md-body-1 ie11fixes">
             <strong class="md-body-2">
                 {{ vm.config.idpName }} username:
             </strong>
@@ -12,7 +12,7 @@
             {{ vm.user.idp_username }}
         </p>
 
-        <p class="md-body-1">
+        <p class="md-body-1 ie11fixes">
             <strong class="md-body-2">
                 Primary email:
             </strong>
@@ -35,7 +35,7 @@
     </md-list-item>
 
     <md-list-item layout="column" layout-align="center start">
-        <p class="md-body-1">
+        <p class="md-body-1 ie11fixes">
             <strong class="md-body-2">
                 Last changed:
             </strong>
@@ -43,7 +43,7 @@
             {{ vm.user.password_meta.last_changed | date:'medium' }}
         </p>
 
-        <p class="md-body-1">
+        <p class="md-body-1 ie11fixes">
             <strong class="md-body-2">
                 Expires:
             </strong>
