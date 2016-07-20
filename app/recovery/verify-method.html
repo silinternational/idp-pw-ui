@@ -4,8 +4,12 @@
     </h2>
 
     <p class="md-body-1">
-        You should have received a verification code, please enter it
-        below.
+        You should have received
+
+        <span ng-if="! vm.anotherSent">a</span>
+        <span ng-if="vm.anotherSent" class="md-body-2">another</span>
+
+        verification code, please enter it below.
     </p>
 
     <form name="vm.verificationForm" layout="column"
@@ -28,7 +32,13 @@
             </ng-messages>
         </md-input-container>
 
-        <section layout="row" layout-align="end center" layout-fill>
+        <section layout="row" layout-fill>
+            <md-button ng-click="vm.resend()" class="md-raised md-accent">
+                Resend
+            </md-button>
+
+            <span flex></span>
+
             <md-button ng-click="vm.verify()"
                        class="md-raised md-primary">
                 Verify
