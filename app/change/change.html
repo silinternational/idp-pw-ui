@@ -12,8 +12,8 @@
                        zxcvbn="vm.strength"
                        zx-min-score="{{ vm.config.password.zxcvbn.minScore }}"
                        pw-constraints required autofocus name="password"
-                       ng-maxlength="{{ vm.config.password.maxLength.enabled ?
-                                        vm.config.password.maxLength.value   :
+                       ng-maxlength="{{ vm.config.password.maxLength       ?
+                                        vm.config.password.maxLength.value :
                                         -1
                                      }}" id="password" autocomplete="off">
 
@@ -80,27 +80,27 @@
         <section layout="column" layout-align="start center">
             <pw-password-requirements class="md-body-1">
                 <pw-password-requirement
-                        ng-if="vm.config.password.minLength.enabled"
+                        ng-if="vm.config.password.minLength"
                         error="vm.changeForm.password.$error.minLength">
                     Must be at least
                     {{ vm.config.password.minLength.value }}
                     characters long.
                 </pw-password-requirement>
                 <pw-password-requirement
-                        ng-if="vm.config.password.minNum.enabled"
+                        ng-if="vm.config.password.minNum"
                         error="vm.changeForm.password.$error.minNum">
                     Must have at least
                     {{ vm.config.password.minNum.value }} numbers.
                 </pw-password-requirement>
                 <pw-password-requirement
-                        ng-if="vm.config.password.minSpecial.enabled"
+                        ng-if="vm.config.password.minSpecial"
                         error="vm.changeForm.password.$error.minSpecial">
                     Must have at least
                     {{ vm.config.password.minSpecial.value }} special
                     characters.
                 </pw-password-requirement>
                 <pw-password-requirement
-                        ng-if="vm.config.password.minUpper.enabled"
+                        ng-if="vm.config.password.minUpper"
                         error="vm.changeForm.password.$error.minUpper">
                     Must have at least
                     {{ vm.config.password.minUpper.value }} uppercase
