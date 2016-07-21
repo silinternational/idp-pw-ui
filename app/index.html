@@ -44,6 +44,10 @@
         <span flex></span>
 
         <pw-auth layout="row" layout-align="start center"></pw-auth>
+
+        <md-button ng-href="#/help" class="md-icon-button" aria-label="Help center">
+            <md-icon md-svg-src="images/md-icons/ic_help_outline_24px.svg" ng-href="'#/help'"></md-icon>
+        </md-button>
     </md-toolbar>
 
     <md-content ng-view layout="column" layout-align="start center"
@@ -153,6 +157,9 @@
 <script src="reset/verifyReset.controller.js"></script>
 <script src="reset/alternates.controller.js"></script>
 <script src="reset/alternateListItems.directive.js"></script>
+<script src="help/help.module.js"></script>
+<script src="help/help.route.js"></script>
+<script src="help/help.controller.js"></script>
 <!-- endbuild -->
 
 <script type="text/javascript" src="https://www.jira.insitehome.org/s/7c83bd4673fd63aed6b24e9bf54775a6-T/en_USp0n4vn/6345/6/1.4.16/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=bb052186"></script>

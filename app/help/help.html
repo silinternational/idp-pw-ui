@@ -1,0 +1,111 @@
+<section layout="column" layout-align="start start">
+    <h2 class="md-headline">
+        {{ title }}
+    </h2>
+
+    <h3 class="md-title">
+        How do I change my password?
+    </h3>
+
+    <p class="md-body-1">
+        To change your password, simply go to
+        <a ng-href="#/change">Change password</a>, login and enter a new
+        password.
+    </p>
+
+    <h3 class="md-title">
+        I forgot my password, how do I reset it?
+    </h3>
+
+    <p class="md-body-1">
+        There are several ways to reset your password. The main method
+        sends an email with a reset link to your primary email address.
+        If you do not have access to your primary email account you may
+        also choose to have the link sent to you supervisor or spouse. The
+        third option requires setting up recovery methods in advance;
+        these methods can include additional email accounts or phone
+        numbers which you have. It is recommended that you add at least
+        one additional recovery method to your account to help ensure you
+        can reset your password in a time of need. You can reset your
+        password by going to <a ng-href="#/forgot">Forgot password</a>,
+        entering your username or email address and proceeding through the
+        process.
+    </p>
+
+    <h3 class="md-title">
+        What is a recovery method?
+    </h3>
+
+    <p class="md-body-1">
+        Recovery methods are ways for you to verify your identity so that
+        you can set a new password for your account. You are encouraged to
+        set up either email or phone based recovery methods. Then, in the
+        event of forgetting your password, you can use one of these
+        recovery methods for resetting your password. You may either have
+        a link sent by email or a reset code delivered as a text message
+        or voice call to your phone. You can manage your recovery methods
+        by going to <a ng-href="#/profile">My profile</a>.
+    </p>
+
+    <h3 class="md-title">
+        Password tips
+    </h3>
+
+    <p class="md-body-1">
+        Passwords are just like keys to your house and should be treated
+        similarly. Below are some tips that will help you choose good
+        passwords and keep your Insite account safe and secure.
+    </p>
+
+    <ul class="md-body-1">
+        <li>
+            Use unique passwords. Do not use the same password for more
+            than one site. In the same way you do not use the same key for
+            your house, car, office, and safe deposit box, you do not want
+            to use the same password for multiple sites.
+        </li>
+        <li>
+            Use complex passwords that contain a mix of words, numbers,
+            special characters, and both uppercase and lowercase letters.
+            Do not make simple letter/number substitutions like a 3 for
+            the letter E or ! for an I or L, these are common and easily
+            cracked. Long random sentences like “Big smelly frog lives 12
+            years!” are easy to remember and hard to crack.
+        </li>
+        <li>
+            Don’t use family names or special dates like birthdays or
+            anniversaries. This information is not always private and is
+            so commonly used that hackers will use this information in
+            their attempts to crack your password.
+        </li>
+        <li>
+            Use a password manager. Password managers such as
+            <a href="https://lastpass.com" target="_blank">LastPass</a>,
+            <a href="http://www.dobysoft.com/products/keypass"
+               target="_blank">KeyPass</a>, and
+            <a href="https://1password.com" target="_blank">1Password</a>
+            all make it easy to generate highly complex passwords and save
+            them for you so that you do not need to remember them all. A
+            password manager makes it very easy to meet all previous
+            recommendations.
+        </li>
+        <li>
+            Never share your password with anyone!
+        </li>
+    </ul>
+
+    <h3 class="md-title">
+        Getting support
+    </h3>
+
+    <p class="md-body-1">
+        If you are experiencing problems with this system and need further
+        support, or would like to provide feedback about your experience,
+        please use the information below:
+    </p>
+
+    <div ng-repeat="(_key, _value) in vm.config.support" flex-offset="5">
+        <span class="md-body-2">{{ _key | uppercase }}:</span>
+        <span class="md-body-1">{{ _value }}</span>
+    </div>
+</section>
