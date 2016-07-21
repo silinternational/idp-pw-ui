@@ -341,6 +341,10 @@ module.exports = function (grunt) {
                     js: [[
                         /["'=](\S+\.(?:svg|png)).?['"]?/g,
                         'Update new img filenames (within js files)'
+                    ]],
+                    html: [[
+                        /<md-icon[^\>]*[^\>\S]+md-svg-src=['"]([^'"\)#]+)(#.+)?["']/gm,
+                        'Update the HTML with non standard md-svg-src on md-icon'
                     ]]
                 }
             }
