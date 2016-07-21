@@ -6,6 +6,8 @@
           'password.data',
           'ngMaterial',
           'password.token',
-          'password.nav'
+          'password.nav',
+          'ngRoute',
+          'password.dialog'
       ]);
 })();

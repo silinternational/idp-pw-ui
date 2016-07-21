@@ -14,6 +14,7 @@
           'password.recovery',
           'password.change',
           'password.profile',
-          'password.reset'
+          'password.reset',
+          'password.help'
       ]);
 })();
