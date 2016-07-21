@@ -20,25 +20,11 @@
         }
 
         function addValidators(scope, el, attrs, ngModel) {
-            if (config.password.minLength) {
-                ngModel.$validators.minLength = minLength;
-            }
-
-            if (config.password.maxLength) {
-                ngModel.$validators.maxLength = maxLength;
-            }
-
-            if (config.password.minNum) {
-                ngModel.$validators.minNum = minNum;
-            }
-
-            if (config.password.minSpecial) {
-                ngModel.$validators.minSpecial = minSpecial;
-            }
-
-            if (config.password.minUpper) {
-                ngModel.$validators.minUpper = minUpper;
-            }
+            ngModel.$validators.minLength = minLength;
+            ngModel.$validators.maxLength = maxLength;
+            ngModel.$validators.minNum = minNum;
+            ngModel.$validators.minSpecial = minSpecial;
+            ngModel.$validators.minUpper = minUpper;
         }
 
         function minLength(modelValue, viewValue) {
@@ -62,9 +48,13 @@
         }
 
         function validate(rule, value) {
-            return config.password &&
-                   config.password.hasOwnProperty(rule) &&
-                   new RegExp(config.password[rule].pattern).test(value);
+            if (config.password &&
+                config.password.hasOwnProperty(rule)) {
+                return new RegExp(config.password[rule].pattern)
+                           .test(value);
+            }
+
+            return true;
         }
     }
 })();
