@@ -20,37 +20,34 @@
         }
 
         function addValidators(scope, el, attrs, ngModel) {
-            ngModel.$validators.minLength = minLength;
-            ngModel.$validators.maxLength = maxLength;
-            ngModel.$validators.minNum = minNum;
-            ngModel.$validators.minSpecial = minSpecial;
-            ngModel.$validators.minUpper = minUpper;
-        }
+            var rules = [
+                'minLength',
+                'maxLength',
+                'minNum',
+                'minSpecial',
+                'minUpper'
+            ];
 
-        function minLength(modelValue, viewValue) {
-            return validate('minLength', viewValue);
+            rules.forEach(function addValidator(rule) {
+               ngModel.$validators[rule] = validate.bind(scope, rule);
+            });
         }
+        
+        function validate(rule, modelValue, viewValue) {
+            if (isRuleEnforced(rule)) {
+                return isValid(viewValue, rule);
+            }
 
-        function maxLength(modelValue, viewValue) {
-            return validate('maxLength', viewValue);
+            return true;
         }
-
-        function minNum(modelValue, viewValue) {
-            return validate('minNum', viewValue);
-        }
-
-        function minSpecial(modelValue, viewValue) {
-            return validate('minSpecial', viewValue);
-        }
-
-        function minUpper(modelValue, viewValue) {
-            return validate('minUpper', viewValue);
-        }
-
-        function validate(rule, value) {
+        
+        function isRuleEnforced(rule) {
             return config.password &&
-                   config.password.hasOwnProperty(rule) &&
-                   new RegExp(config.password[rule].pattern).test(value);
+                   config.password.hasOwnProperty(rule);
+        }
+        
+        function isValid(viewValue, rule) {
+            return !! viewValue.match(config.password[rule].pattern);
         }
     }
 })();

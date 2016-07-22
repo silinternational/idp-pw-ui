@@ -59,6 +59,16 @@
 
     <ul class="md-body-1">
         <li>
+            Use a password manager. Password managers such as
+            <a href="https://lastpass.com" target="_blank">LastPass</a>,
+            <a href="http://keepass.info" target="_blank">KeePass</a>, and
+            <a href="https://1password.com" target="_blank">1Password</a>
+            all make it easy to generate highly complex passwords and save
+            them for you so that you do not need to remember them all. A
+            password manager makes it very easy to meet all the following
+            recommendations.
+        </li>
+        <li>
             Use unique passwords. Do not use the same password for more
             than one site. In the same way you do not use the same key for
             your house, car, office, and safe deposit box, you do not want
@@ -79,33 +89,27 @@
             their attempts to crack your password.
         </li>
         <li>
-            Use a password manager. Password managers such as
-            <a href="https://lastpass.com" target="_blank">LastPass</a>,
-            <a href="http://www.dobysoft.com/products/keypass"
-               target="_blank">KeyPass</a>, and
-            <a href="https://1password.com" target="_blank">1Password</a>
-            all make it easy to generate highly complex passwords and save
-            them for you so that you do not need to remember them all. A
-            password manager makes it very easy to meet all previous
-            recommendations.
-        </li>
-        <li>
             Never share your password with anyone!
         </li>
     </ul>
 
-    <h3 class="md-title">
-        Getting support
-    </h3>
+    <section class="pw-bottom-bumper">
+        <h3 class="md-title">
+            Getting support
+        </h3>
 
-    <p class="md-body-1">
-        If you are experiencing problems with this system and need further
-        support, or would like to provide feedback about your experience,
-        please use the information below:
-    </p>
+        <p class="md-body-1">
+            If you are experiencing problems with this system and need
+            further
+            support, or would like to provide feedback about your
+            experience,
+            please use the information below:
+        </p>
 
-    <div ng-repeat="(_key, _value) in vm.config.support" flex-offset="5">
-        <span class="md-body-2">{{ _key | uppercase }}:</span>
-        <span class="md-body-1">{{ _value }}</span>
-    </div>
+        <div ng-repeat="(_key, _value) in vm.config.support"
+             flex-offset="5">
+            <span class="md-body-2">{{ _key | uppercase }}:</span>
+            <span class="md-body-1">{{ _value }}</span>
+        </div>
+    </section>
 </section>

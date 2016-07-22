@@ -38,6 +38,7 @@
 
             <div vc-recaptcha
                  on-success="vm.recaptchaAnswered(response)"
+                 on-expire="vm.resetRecaptcha()"
                  key="vm.config.recaptchaKey">
             </div>
         </md-input-container>

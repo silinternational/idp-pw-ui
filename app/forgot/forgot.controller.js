@@ -14,6 +14,7 @@
         vm.config = config;
 
         vm.recaptchaAnswered = recaptchaAnswered;
+        vm.resetRecaptcha = resetRecaptcha;
         vm.submit = submit;
         vm.help = help;
 
@@ -26,6 +27,10 @@
 
         function recaptchaAnswered(response) {
             recaptchaResponse = response;
+        }
+
+        function resetRecaptcha() {
+            vcRecaptchaService.reload();
         }
 
         function submit() {
