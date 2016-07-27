@@ -11,6 +11,7 @@
           'password.data',
           'password.auth',
           'password.button',
-          'password.dialog'
+          'password.dialog',
+          'angularytics'
       ]);
 })();

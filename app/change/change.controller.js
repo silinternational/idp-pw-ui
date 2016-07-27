@@ -5,7 +5,8 @@
       .module('password.change')
       .controller('ChangeController', ChangeController);
 
-    function ChangeController(dataService, dialogService, config) {
+    function ChangeController(dataService, dialogService, config,
+                              Angularytics) {
         var vm = this;
 
         vm.pw = '';
@@ -35,6 +36,8 @@
         function changed() {
             dialogService
               .update('Password changed successfully.');
+
+            Angularytics.trackEvent('zxcvbn score', vm.strength.score);
         }
 
         function failed(response) {

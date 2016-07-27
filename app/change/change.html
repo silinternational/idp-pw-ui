@@ -33,9 +33,10 @@
 
                     <span flex></span>
 
-                    <pw-password-advice warning="vm.strength.feedback.warning"
-                                        suggestions="vm.strength.feedback.suggestions"
-                                        class="md-caption">
+                    <pw-password-advice
+                            warning="vm.strength.feedback.warning"
+                            suggestions="vm.strength.feedback.suggestions"
+                            class="md-caption">
                     </pw-password-advice>
                 </ng-messages>
             </md-input-container>
@@ -73,7 +74,14 @@
                 <md-button ng-click="vm.change()"
                            ng-disabled="vm.changeForm.$invalid"
                            class="md-primary md-raised">
-                    Change
+                    <span>
+                        Change
+
+                        <md-tooltip md-direction="top"
+                                    ng-if="vm.changeForm.$invalid">
+                            You must meet all password requirements first.
+                        </md-tooltip>
+                    </span>
                 </md-button>
             </section>
         </form>
