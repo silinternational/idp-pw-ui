@@ -60,11 +60,3 @@ karma: {
         singleRun: true, // set to false to debug in browser
 ...
 ```
-
-## Issues
-
-TODO: Add JIRA project
-
-## Feedback collector
-
-TODO: Add JIRA project

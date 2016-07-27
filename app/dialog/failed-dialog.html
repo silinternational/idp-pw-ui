@@ -1,6 +1,6 @@
 <md-dialog aria-label="Failure occurred">
     <md-toolbar class="md-toolbar-tools md-warn">
-        <h2>{{ vm.error.name }}</h2>
+        <h2>{{ vm.error.name || 'Error' }}</h2>
     </md-toolbar>
 
     <md-dialog-content layout="column"
