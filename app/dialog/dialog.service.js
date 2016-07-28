@@ -15,7 +15,8 @@
             help: help,
             areYouSure: areYouSure,
             progress: progress,
-            verify: verify
+            verify: verify,
+            noMethods: noMethods
         };
 
         activate();
@@ -117,6 +118,14 @@
                 locals: {
                     sentTo: sentTo
                 }
+            });
+        }
+
+        function noMethods() {
+            $mdDialog.show({
+                templateUrl: 'dialog/noMethods-dialog.html',
+                controller: 'NoMethodsDialogController',
+                controllerAs: 'vm'
             });
         }
     }

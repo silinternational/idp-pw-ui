@@ -41,6 +41,8 @@
         function extractMethods(response) {
             var allMethods = response.data;
 
+            checkForMethods(allMethods);
+
             allMethods
               .forEach(function (method) {
                   switch (method.type) {
@@ -48,7 +50,16 @@
                       case 'phone': vm.method.phones.push(method);
                   }
               });
+        }
 
+        function checkForMethods(methods) {
+            if (methods.filter(excludePrimary).length === 0) {
+                dialogService.noMethods();
+            }
+        }
+
+        function excludePrimary(method) {
+            return method.type !== 'primary';
         }
 
         function navigate(url) {
