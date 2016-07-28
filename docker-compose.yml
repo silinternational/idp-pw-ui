@@ -18,9 +18,6 @@ services:
 
   mock-server:
     image: johnlee/api-mock:latest
-    #command: bash -c "cd blueprints42 && ls"
-    command: bash -c "api-mock mock-server.md"
-    #command: bash -c "cd .. && ls && ./blueprints/mock-server.md && hercule ./blueprints/mock-server.md -o ./blueprints/server.md && pwd && cat ./blueprints/server.md && api-mock ./blueprints/server.md"
     volumes: 
       - ./mock-server:/mock/blueprints44
     ports: 
