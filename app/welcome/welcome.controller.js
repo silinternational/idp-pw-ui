@@ -25,10 +25,6 @@
               });
         }
 
-        function navigate(url) {
-            $location.url(url);
-        }
-
         function login() {
             userService.login('/change');
         }

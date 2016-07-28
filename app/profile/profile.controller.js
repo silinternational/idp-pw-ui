@@ -16,7 +16,6 @@
         };
         vm.config = config;
 
-        vm.navigate = navigate;
         vm.delete = remove;
         
         activate();
@@ -60,10 +59,6 @@
 
         function excludePrimary(method) {
             return method.type !== 'primary';
-        }
-
-        function navigate(url) {
-            $location.url(url);
         }
 
         function remove(method) {
