@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+
+  data:
+    image: silintl/data-volume:latest
+    volumes:
+      - ./:/data
+    privileged: true
+
+  frontend:
+    build: .
+    command: bash -c "grunt serve"
+    volumes_from:
+      - data
+    ports:
+      - "9000:9000"
+
+  mock-server:
+    image: johnlee/api-mock:latest
+    #command: bash -c "cd blueprints42 && ls"
+    command: bash -c "api-mock mock-server.md"
+    #command: bash -c "cd .. && ls && ./blueprints/mock-server.md && hercule ./blueprints/mock-server.md -o ./blueprints/server.md && pwd && cat ./blueprints/server.md && api-mock ./blueprints/server.md"
+    volumes: 
+      - ./mock-server:/mock/blueprints44
+    ports: 
+      - "3000:3000"
