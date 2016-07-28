@@ -11,7 +11,8 @@
               title: 'Add recovery method',
               templateUrl: 'recovery/add-method.html',
               controller: 'AddMethodController',
-              controllerAs: 'vm'
+              controllerAs: 'vm',
+              protected: true
           })
           .when('/recovery-method/verify/:methodId', {
               title: 'Verify code',
