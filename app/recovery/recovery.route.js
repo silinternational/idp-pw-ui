@@ -18,7 +18,8 @@
               title: 'Verify code',
               templateUrl: 'recovery/verify-method.html',
               controller: 'VerifyMethodController',
-              controllerAs: 'vm'
+              controllerAs: 'vm',
+              protected: true
           });
     }
 })();
