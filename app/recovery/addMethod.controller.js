@@ -13,7 +13,6 @@
             type: 'email',
             value: ''
         };
-        vm.addMethodForm = null;
         vm.selectedCountry = null;
         vm.countries = [];
 
@@ -30,20 +29,20 @@
         }
 
         function addPhone() {
-            var digitsOnly = vm.newRecoveryMethod.value.replace(/\D/g, ''),
-                countryPrefix = vm.selectedCountry.prefix;
-
-            vm.newRecoveryMethod.value = countryPrefix + ',' + digitsOnly;
-
-            add();
+            var fullNumber = vm.selectedCountry.prefix + ',' +
+                             vm.newRecoveryMethod.value;
+            add({
+                type: vm.newRecoveryMethod.type,
+                value: fullNumber
+            });
         }
 
-        function add() {
+        function add(newMethod) {
             dataService
-              .post('method', vm.newRecoveryMethod)
+              .post('method', newMethod)
               .then(added, failed)
               .finally(dialogService.close);
-            
+
             dialogService.progress();
         }
 
@@ -54,7 +53,7 @@
         function failed(response) {
             dialogService
               .fail('Attempt to add recovery method failed.',
-                    response.data);
+                response.data);
         }
 
         function verify(method) {
