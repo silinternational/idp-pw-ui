@@ -8,7 +8,6 @@
     function WelcomeController($location, userService) {
         var vm = this;
 
-        vm.navigate = navigate;
         vm.login = login;
 
         activate();
@@ -23,10 +22,6 @@
                       $location.url('profile');
                   }
               });
-        }
-
-        function navigate(url) {
-            $location.url(url);
         }
 
         function login() {
