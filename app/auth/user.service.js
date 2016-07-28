@@ -24,11 +24,13 @@
         function activate() {
         }
 
-        function getUser() {
+        function getUser(withRefresh) {
             var deferred = $q.defer();
 
             dataService
-              .get('user/me')
+              .get('user/me', {
+                  cache: ! withRefresh
+              })
               .then(retrieved, failed);
 
             return deferred.promise;

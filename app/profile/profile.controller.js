@@ -5,8 +5,8 @@
       .module('password.profile')
       .controller('ProfileController', ProfileController);
 
-    function ProfileController(userService, $location, dataService,
-                               $route, dialogService, config) {
+    function ProfileController(userService, dataService, $route,
+                               dialogService, config) {
         var vm = this;
 
         vm.user = null;
@@ -24,7 +24,7 @@
 
         function activate() {
             userService
-              .getUser()
+              .getUser(true)
               .then(function (user) {
                   vm.user = user;
               });
