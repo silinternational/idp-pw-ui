@@ -23,8 +23,8 @@
         function activate() {
         }
 
-        function get(url) {
-            return $http.get(buildFullyQualifiedUrl(url));
+        function get(url, config) {
+            return $http.get(buildFullyQualifiedUrl(url), config);
         }
 
         function put(url, data) {

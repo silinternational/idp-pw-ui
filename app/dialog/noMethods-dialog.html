@@ -1,0 +1,26 @@
+<md-dialog aria-label="Warning">
+    <md-toolbar class="md-toolbar-tools md-warn">
+        <h2>No recovery methods</h2>
+    </md-toolbar>
+
+    <md-dialog-content layout="column"
+                       class="md-dialog-content md-body-1">
+        <p>
+            Additional password recovery methods can be useful during
+            verification when your primary email address is not
+            accessible.  Please add one today.
+        </p>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row" layout-align="center center">
+        <md-button ng-click="vm.close()" class="md-warn">
+            I'll take my chances
+        </md-button>
+
+        <span flex></span>
+
+        <md-button ng-click="vm.add()" class="md-primary">
+            Add now
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

@@ -17,7 +17,9 @@
 
         function activate() {
             dataService
-              .get('config')
+              .get('config', {
+                  cache: true
+              })
               .then(function (response) {
                   angular.copy(response.data, service);
               });
