@@ -5,8 +5,8 @@
       .module('password.profile')
       .controller('ProfileController', ProfileController);
 
-    function ProfileController(userService, $location, dataService,
-                               $route, dialogService, config) {
+    function ProfileController(userService, dataService, $route,
+                               dialogService, config) {
         var vm = this;
 
         vm.user = null;
@@ -16,7 +16,6 @@
         };
         vm.config = config;
 
-        vm.navigate = navigate;
         vm.delete = remove;
         
         activate();
@@ -25,7 +24,7 @@
 
         function activate() {
             userService
-              .getUser()
+              .getUser(true)
               .then(function (user) {
                   vm.user = user;
               });
@@ -41,6 +40,8 @@
         function extractMethods(response) {
             var allMethods = response.data;
 
+            checkForMethods(allMethods);
+
             allMethods
               .forEach(function (method) {
                   switch (method.type) {
@@ -48,11 +49,16 @@
                       case 'phone': vm.method.phones.push(method);
                   }
               });
-
         }
 
-        function navigate(url) {
-            $location.url(url);
+        function checkForMethods(methods) {
+            if (methods.filter(excludePrimary).length === 0) {
+                dialogService.noMethods();
+            }
+        }
+
+        function excludePrimary(method) {
+            return method.type !== 'primary';
         }
 
         function remove(method) {
