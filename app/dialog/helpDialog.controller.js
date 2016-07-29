@@ -5,7 +5,7 @@
       .module('password.dialog')
       .controller('HelpDialogController', HelpDialogController);
 
-    function HelpDialogController($mdDialog, helpInfo) {
+    function HelpDialogController(dialogService, helpInfo) {
         var vm = this;
         
         vm.helpInfo = helpInfo;
@@ -20,7 +20,7 @@
         }
 
         function close() {
-            $mdDialog.hide();
+            dialogService.close();
         }
     }
 })();
