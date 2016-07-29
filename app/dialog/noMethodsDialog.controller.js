@@ -6,7 +6,7 @@
       .controller('NoMethodsDialogController',
                    NoMethodsDialogController);
 
-    function NoMethodsDialogController($mdDialog, $location) {
+    function NoMethodsDialogController(dialogService, $location) {
         var vm = this;
 
         vm.close = close;
@@ -20,11 +20,11 @@
         }
 
         function close() {
-            $mdDialog.hide();
+            dialogService.close();
         }
 
         function add() {
-            close();
+            dialogService.close();
 
             $location.url('recovery-method/add');
         }
