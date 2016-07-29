@@ -6,7 +6,7 @@
       .controller('FailedDialogController',
                    FailedDialogController);
 
-    function FailedDialogController($mdDialog, summary, error) {
+    function FailedDialogController(dialogService, summary, error) {
         var vm = this;
 
         vm.summary = summary;
@@ -22,7 +22,7 @@
         }
 
         function ok() {
-            $mdDialog.hide();
+            dialogService.close();
         }
     }
 })();

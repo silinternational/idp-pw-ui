@@ -6,7 +6,7 @@
       .controller('PasswordAdviceDialogController',
                    PasswordAdviceDialogController);
 
-    function PasswordAdviceDialogController($mdDialog, warning,
+    function PasswordAdviceDialogController(dialogService, warning,
                                             suggestions) {
         var vm = this;
 
@@ -23,7 +23,7 @@
         }
 
         function hideAdvice() {
-            $mdDialog.hide();
+            dialogService.close();
         }
     }
 })();

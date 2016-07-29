@@ -29,11 +29,10 @@
         }
 
         function addPhone() {
-            var fullNumber = vm.selectedCountry.prefix + ',' +
-                             vm.newRecoveryMethod.value;
             add({
                 type: vm.newRecoveryMethod.type,
-                value: fullNumber
+                value: vm.selectedCountry.prefix +
+                       vm.newRecoveryMethod.value
             });
         }
 
