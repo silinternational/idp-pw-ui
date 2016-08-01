@@ -9,6 +9,7 @@ a simple mock api for idp-pw-ui
     + Headers
         Location: /#/profile?access_token=abc123
 
+
 # GET /auth/logout
 + Response 200 (application/json)
     {}

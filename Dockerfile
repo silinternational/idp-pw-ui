@@ -10,4 +10,4 @@ RUN bower install --allow-root
 
 EXPOSE 9000
 
-CMD ["grunt", "docker-serve"]
+CMD ["grunt", "serve"]
