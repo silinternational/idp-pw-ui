@@ -37,30 +37,30 @@ a simple mock api for idp-pw-ui
     }
 + Response 200 (application/json)
     {
-      "uid": "123asdf123lkjfsdfw23",
+      "uid": "QKMQpxYfSm7ZLPt8-0tuK-8CalMcxmcx",
       "methods": [
-          {
-              "type": "primary",
-              "value": "****@sil.com"
-          },
-          {
-              "type": "spouse",
-              "value": "a*******@s**.org"
-          },
-          {
-              "type": "supervisor",
-              "value": "a*******@s**.org"
-          },
-          {
-              "uid": "a4a45eg5h6h7tjy8kaw4w33",
-              "type": "email",
-              "value": "****@compuserve.com"
-          },
-          {
-              "uid": "awf45fae56gsr6hwa4g6h",
-              "type": "phone",
-              "value": "###-###-4567"
-          }
+        {
+          "type": "primary",
+          "value": "p****_c***a@p******.c**"
+        },
+        {
+          "type": "spouse",
+          "value": "d******_*****a@w*******.o**"
+        },
+        {
+          "type": "supervisor",
+          "value": "p***_m***x@p**.c**"
+        },
+        {
+          "uid": "fEAzI5tZTBEN9sqNVAvuEDdtTNnqip2s",
+          "type": "email",
+          "value": "o*************y@c****.c**"
+        },
+        {
+          "uid": "yhjLZVuS7iCZFcsWb00igBftcwRkoYrQ",
+          "type": "phone",
+          "value": "+1 ########123"
+        }
       ]
     }
 
@@ -88,31 +88,31 @@ a simple mock api for idp-pw-ui
 # GET /reset/{uid}
 + Response 200 (application/json)
     {
-        "id": "123asdf123lkjfsdfw23",
-        "methods": [
-          {
-                "type": "primary",
-                "value": "****@sil.com"
-          },
-          {
-                "uid": "a4a45eg5h6h7tjy8kaw4w33",
-                "type": "email",
-                "value": "****@compuserve.com"
-          },
-          {
-                "type": "spouse",
-                "value": "****@sil.com"
-          },
-          {
-                "type": "supervisor",
-                "value": "****@sil.com"
-          },
-          {
-                "uid": "awf45fae56gsr6hwa4g6h",
-                "type": "phone",
-                "value": "###-###-4567"
-          }
-        ]
+      "uid": "QKMQpxYfSm7ZLPt8-0tuK-8CalMcxmcx",
+      "methods": [
+        {
+          "type": "primary",
+          "value": "p****_c***a@p******.c**"
+        },
+        {
+          "type": "spouse",
+          "value": "d******_*****a@w*******.o**"
+        },
+        {
+          "type": "supervisor",
+          "value": "p***_m***x@p**.c**"
+        },
+        {
+          "uid": "fEAzI5tZTBEN9sqNVAvuEDdtTNnqip2s",
+          "type": "email",
+          "value": "o*************y@c****.c**"
+        },
+        {
+          "uid": "yhjLZVuS7iCZFcsWb00igBftcwRkoYrQ",
+          "type": "phone",
+          "value": "+1 ########123"
+        }
+      ]
     }
 
 
@@ -124,14 +124,66 @@ a simple mock api for idp-pw-ui
         "value": "###-###-4567"
     }
 + Response 200 (application/json)
-    {}
+    {
+      "uid": "QKMQpxYfSm7ZLPt8-0tuK-8CalMcxmcx",
+      "methods": [
+        {
+          "type": "primary",
+          "value": "p****_c***a@p******.c**"
+        },
+        {
+          "type": "spouse",
+          "value": "d******_*****a@w*******.o**"
+        },
+        {
+          "type": "supervisor",
+          "value": "p***_m***x@p**.c**"
+        },
+        {
+          "uid": "fEAzI5tZTBEN9sqNVAvuEDdtTNnqip2s",
+          "type": "email",
+          "value": "o*************y@c****.c**"
+        },
+        {
+          "uid": "yhjLZVuS7iCZFcsWb00igBftcwRkoYrQ",
+          "type": "phone",
+          "value": "+1 ########123"
+        }
+      ]
+    }
 
 
 # PUT /reset/{uid}/resend
 + Request (application/json)
     {}
 + Response 200 (application/json)
-    {}
+    {
+      "uid": "QKMQpxYfSm7ZLPt8-0tuK-8CalMcxmcx",
+      "methods": [
+        {
+          "type": "primary",
+          "value": "p****_c***a@p******.c**"
+        },
+        {
+          "type": "spouse",
+          "value": "d******_*****a@w*******.o**"
+        },
+        {
+          "type": "supervisor",
+          "value": "p***_m***x@p**.c**"
+        },
+        {
+          "uid": "fEAzI5tZTBEN9sqNVAvuEDdtTNnqip2s",
+          "type": "email",
+          "value": "o*************y@c****.c**"
+        },
+        {
+          "uid": "yhjLZVuS7iCZFcsWb00igBftcwRkoYrQ",
+          "type": "phone",
+          "value": "+1 ########123"
+        }
+      ]
+    }
 
 
 # PUT /reset/{uid}/validate
@@ -141,12 +193,14 @@ a simple mock api for idp-pw-ui
         "client_id": "some random string"
     }
 + Response 200 (application/json)
-    {}
+    {
+      "access_token": "DlvP8VRwiIsF78jGUO946ohzinmqBfme"
+    }
 
 
 # GET /method
 + Response 200 (application/json)
-    {
+    [
       {
         "id": "asdfvavcaga4a4f4wfgvba4va",
         "type": "email",
@@ -161,7 +215,7 @@ a simple mock api for idp-pw-ui
         "type": "primary",
         "value": "pepsi_cola@pepsico.org"
       }
-    }
+    ]
 
 
 # GET /method/{id}
@@ -232,7 +286,7 @@ a simple mock api for idp-pw-ui
             "displayWarnings": true
           }
       },
-      "recaptchaKey": "6LfL1yQTAAAAACUf1ZtjB4OE_SpWZlaA4AFXz4pZ",
+      "recaptchaKey": "6LfL1yQTAAAAACUf",
       "support": {
           "phone": "123",
           "email": "email",
