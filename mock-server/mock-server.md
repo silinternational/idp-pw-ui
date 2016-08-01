@@ -65,6 +65,14 @@ a simple mock api for idp-pw-ui
     }
 
 
+# GET /password
++ Response 200 (application/json)
+    {
+      "last_changed": "2016-07-23T17:07:53+00:00",
+      "expires": "2017-07-23T17:07:53+00:00"
+    }
+
+
 # PUT /password
 + Request (application/json)
     {
@@ -72,8 +80,8 @@ a simple mock api for idp-pw-ui
     }
 + Response 200 (application/json)
     {
-        "last_changed": "2017-07-27T15:16:15+00:00",
-        "expires":  "2017-07-27T15:16:15+00:00"
+      "last_changed": "2016-07-23T17:07:53+00:00",
+      "expires": "2017-07-23T17:07:53+00:00"
     }
 
 
@@ -136,11 +144,23 @@ a simple mock api for idp-pw-ui
     {}
 
 
-## Mock API [/method]
-### Get mock data [GET]
+# GET /method
 + Response 200 (application/json)
     {
-        "hasSupervisor": "true"
+      {
+        "id": "asdfvavcaga4a4f4wfgvba4va",
+        "type": "email",
+        "value": "pepsi.cola@personal.com"
+      },
+      {
+        "id": "G1d-afbg5shh5revsz56b6jth6hnnh",
+        "type": "phone",
+        "value": "1,7045551212"
+      },
+      {
+        "type": "primary",
+        "value": "pepsi_cola@pepsico.org"
+      }
     }
 
 
@@ -157,9 +177,10 @@ a simple mock api for idp-pw-ui
     }
 + Response 200 (application/json)
     {
-        "id": 3
+      "id": "HjklnW4bXeejKweoOojEeju6a5nLLdHs",
+      "type": "email",
+      "value": "antoheremail@pepsico.com"
     }
-
 
 # PUT /method/{id}
 + Request (application/json)
@@ -167,7 +188,11 @@ a simple mock api for idp-pw-ui
         "code": 1234 
     }
 + Response 200 (application/json)
-    {}
+    {
+      "id": "HjklnW4bXeejKweoOojEeju6a5nLLdHs",
+      "type": "email",
+      "value": "phillip@fillup.io"
+    }
 
 
 # PUT /method/{id}/resend
