@@ -5,7 +5,7 @@ import time
 import os
 
 SAUCE_USERNAME = 'johnlee11'
-SAUCE_ACCESS_KEY = '39f5ab99-afc1-48bb-9295-cecd884492dc'
+SAUCE_ACCESS_KEY = 'e755b5c9-a639-4e34-926d-dff156ea1a62'
 
 
 # The command_executor tells the test to run on Sauce, while the desired_capabilities
@@ -33,12 +33,17 @@ def changePassword():
 	element = driver.find_element_by_id("pwagain")
 	element.send_keys("askldjfiaweurxvk234")
 	driver.find_elements_by_css_selector('button.md-button')[2].click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_elements_by_tag_name('h2')[1]
 	assert name.text == "Update successful" 
 	driver.find_elements_by_css_selector('button.md-button')[3].click() 
 	name = driver.find_element_by_tag_name('h2')
 	assert name.text == "Billy Clark" 
+	driver.find_elements_by_css_selector('a.md-button')[1].click() 
+	driver.find_elements_by_css_selector('button.md-button')[1].click() 
+	time.sleep(7)
+	name = driver.find_element_by_tag_name('h2')
+	assert name.text == "Billy Clark"
 
 # TEST - RESET PASSWORD (USE ALTERNATE METHODS)
 def resetPassword1(): 
@@ -46,20 +51,20 @@ def resetPassword1():
 	element = driver.find_element_by_id("username")
 	element.send_keys("username1")
 	driver.find_elements_by_css_selector('button.md-button')[1].click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_elements_by_tag_name('h2')[1]
 	assert name.text == "Password reset email sent" 
 	driver.find_elements_by_css_selector('button.md-accent')[0].click() 
 	name = driver.find_element_by_tag_name('h2')
 	assert name.text == "Alternate verification" 
 	driver.find_elements_by_css_selector('button.md-icon-button')[0].click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_elements_by_tag_name('h2')[1]
 	assert name.text == "Verification code sent" 
 	element = driver.find_element_by_name("verificationCode")
 	element.send_keys("123")
 	driver.find_elements_by_css_selector('button.md-primary')[0].click() 
-	time.sleep(5)
+	time.sleep(7)
 	changePassword()
 
 # TEST - RESET PASSWORD (RESEND)
@@ -68,7 +73,7 @@ def resetPassword2():
 	element = driver.find_element_by_id("username")
 	element.send_keys("username1")
 	driver.find_elements_by_css_selector('button.md-button')[1].click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_elements_by_tag_name('h2')[1]
 	assert name.text == "Password reset email sent" 
 	driver.find_elements_by_css_selector('button.md-warn')[0].click() 
@@ -81,11 +86,11 @@ def resetPassword3():
 	element = driver.find_element_by_id("username")
 	element.send_keys("username1")
 	driver.find_elements_by_css_selector('button.md-button')[1].click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_elements_by_tag_name('h2')[1]
 	assert name.text == "Password reset email sent" 
 	driver.find_elements_by_css_selector('button.md-primary')[1].click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_element_by_tag_name('h2')
 	assert name.text == "Billy Clark" 
 
@@ -96,18 +101,23 @@ def addEmailRecoveryMethod():
 	element = driver.find_element_by_id("email")
 	element.send_keys("a@b.com")
 	driver.find_elements_by_css_selector('button.md-button')[2].click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_elements_by_tag_name('h2')[0]
 	assert name.text == "Verify code"
 	element = driver.find_element_by_name("verificationCode")
 	element.send_keys("1234")
 	driver.find_elements_by_css_selector('button.md-button')[2].click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_elements_by_tag_name('h2')[1]
 	assert name.text == "Update successful" 
 	driver.find_elements_by_css_selector('button.md-button')[3].click() 
 	name = driver.find_element_by_tag_name('h2')
 	assert name.text == "Billy Clark" 
+	driver.find_elements_by_css_selector('a.md-button')[2].click() 
+	driver.find_elements_by_css_selector('button.md-accent')[0].click() 
+	time.sleep(7)
+	name = driver.find_element_by_tag_name('h2')
+	assert name.text == "Billy Clark"
 
 # TEST - ADD RECOVERY METHOD (PHONE)
 def addPhoneRecoveryMethod():
@@ -117,13 +127,13 @@ def addPhoneRecoveryMethod():
 	element = driver.find_element_by_id("phone")
 	element.send_keys("7777777777")
 	driver.find_elements_by_css_selector('button.md-button')[2].click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_elements_by_tag_name('h2')[0]
 	assert name.text == "Verify code"
 	element = driver.find_element_by_name("verificationCode")
 	element.send_keys("1234")
 	driver.find_elements_by_css_selector('button.md-button')[2].click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_elements_by_tag_name('h2')[1]
 	assert name.text == "Update successful" 
 	driver.find_elements_by_css_selector('button.md-button')[3].click() 
@@ -135,14 +145,14 @@ def deleteRecoveryMethod():
 	name = driver.find_elements_by_tag_name('h2')[1]
 	assert name.text == "Are you sure?" 
 	driver.find_element_by_css_selector('button.md-warn').click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_element_by_tag_name('h2')
 	assert name.text == "Billy Clark" 
 	driver.find_elements_by_css_selector('button.md-icon-button')[0].click() 
 	name = driver.find_elements_by_tag_name('h2')[1]
 	assert name.text == "Are you sure?" 
 	driver.find_element_by_css_selector('button.md-accent').click() 
-	time.sleep(5)
+	time.sleep(7)
 	name = driver.find_element_by_tag_name('h2')
 	assert name.text == "Billy Clark" 
 
@@ -154,25 +164,25 @@ resetPassword3()
 
 # RUN TEST FOR CHANGE PASSWORD
 driver.get("http://192.168.99.100:9000/#/profile")
-time.sleep(5)
+time.sleep(7)
 driver.find_elements_by_css_selector('a.md-button')[1].click() 
 changePassword()
 
 # RUN TEST FOR ADDING EMAIL RECOVERY METHOD 
 driver.get("http://192.168.99.100:9000/#/profile")
-time.sleep(5)
+time.sleep(7)
 driver.find_elements_by_css_selector('a.md-button')[2].click() 
 addEmailRecoveryMethod()
 
 # RUN TEST FOR ADDING PHONE RECOVERY METHOD 
 driver.get("http://192.168.99.100:9000/#/profile")
-time.sleep(5)
+time.sleep(7)
 driver.find_elements_by_css_selector('a.md-button')[2].click() 
 addPhoneRecoveryMethod()
 
 # RUN TEST FOR DELETING RECOVERY METHOD 
 driver.get("http://192.168.99.100:9000/#/profile")
-time.sleep(5)
+time.sleep(7)
 driver.find_elements_by_css_selector('button.md-icon-button')[0].click() 
 deleteRecoveryMethod()
 
