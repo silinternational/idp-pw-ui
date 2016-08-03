@@ -69,11 +69,12 @@
             </md-input-container>
 
             <section layout="row" layout-align="space-between start">
-                <pw-safe-cancel></pw-safe-cancel>
+                <pw-safe-cancel id="cancel-btn"></pw-safe-cancel>
 
                 <md-button ng-click="vm.change()"
                            ng-disabled="vm.changeForm.$invalid"
-                           class="md-primary md-raised">
+                           class="md-primary md-raised"
+                           id="change-btn">
                     <span>
                         Change
 
@@ -90,7 +91,8 @@
             <pw-password-requirements class="md-body-1">
                 <pw-password-requirement
                         ng-if="vm.config.password.minLength"
-                        error="vm.changeForm.password.$error.minLength">
+                        error="vm.changeForm.password.$error.minLength"
+                        id="min-char-requirement">
                     Must be at least
                     {{ vm.config.password.minLength.value }}
                     characters long.

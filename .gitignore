@@ -5,3 +5,8 @@ dist/
 app/bower_components/
 nbproject/
 design_files/temp/
+.cache
+*.testlog
+venv
+.DS_Store
+__pycache__

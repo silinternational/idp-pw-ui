@@ -1,12 +1,13 @@
 <md-dialog aria-label="Status update">
     <md-toolbar class="md-toolbar-tools">
-        <h2>Verification code sent</h2>
+        <h2 id="verification-header">Verification code sent</h2>
 
         <span flex></span>
 
         <md-button class="md-icon-button" ng-click="vm.cancel()">
             <md-icon md-svg-src="images/md-icons/ic_close_24px.svg"
-                     aria-label="Close dialog">
+                     aria-label="Close dialog"
+                     id="close-dialog">
             </md-icon>
         </md-button>
     </md-toolbar>
@@ -41,7 +42,8 @@
 
     <md-dialog-actions>
         <md-button ng-click="vm.verify()" class="md-primary" tabindex="1"
-                   ng-disabled="vm.verificationForm.$invalid">
+                   ng-disabled="vm.verificationForm.$invalid"
+                   id="verify-btn">
             Verify
         </md-button>
     </md-dialog-actions>

@@ -1,6 +1,6 @@
 <md-dialog aria-label="Status update">
     <md-toolbar class="md-toolbar-tools">
-        <h2>Password reset email sent</h2>
+        <h2 id="reset-header">Password reset email sent</h2>
     </md-toolbar>
 
     <md-dialog-content class="md-dialog-content md-body-1">
@@ -41,18 +41,20 @@
 
     <md-dialog-actions layout="row">
         <md-button ng-if="vm.resetId" ng-click="vm.alternates()"
-                   class="md-accent">
+                   class="md-accent"
+                   id="methods-btn">
             Use alternate methods
         </md-button>
 
         <md-button ng-if="vm.resetId" ng-click="vm.resend()"
-                   class="md-warn">
+                   class="md-warn"
+                   id="resend-btn">
             Resend
         </md-button>
 
         <span flex></span>
 
-        <md-button ng-click="vm.done()" class="md-primary" tabindex="1">
+        <md-button ng-click="vm.done()" class="md-primary" tabindex="1" id="done-btn">
             Done
         </md-button>
     </md-dialog-actions>

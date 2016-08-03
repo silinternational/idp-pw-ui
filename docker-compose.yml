@@ -10,7 +10,7 @@ services:
 
   frontend:
     build: .
-    command: bash -c "grunt serve"
+    command: bash -c "grunt dist && grunt serve"
     volumes_from:
       - data
     ports:
