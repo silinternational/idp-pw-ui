@@ -4,38 +4,38 @@ import time
 @on_platforms(browsers)
 class SeTest(BaseTest):
 
-    # def assertTextByTag(self, tag, text):
-    #     max_attempts = 3
-    #     while (max_attempts > 0):
-    #         try:
-    #             name = self.driver.find_element_by_tag_name(tag)
-    #             assert text in name.text
-    #             break
-    #         except:
-    #             time.sleep(2)
-    #             max_attempts -= 1
-    #     raise AssertionError
+    def assertTextByTag(self, tag, text):
+        max_attempts = 3
+        while (max_attempts > 0):
+            try:
+                name = self.driver.find_element_by_tag_name(tag)
+                assert text in name.text
+                break
+            except:
+                time.sleep(2)
+                max_attempts -= 1
+        raise AssertionError
 
-    # def clickButtonById(self, html_id):
-    #     max_attempts = 3
-    #     while (max_attempts > 0):
-    #         try:
-    #             print "yo"
-    #             self.driver.find_element_by_id(html_id).click()
-    #             break
-    #         except:
-    #             print sys.exc_info()
-    #             time.sleep(2)
-    #             max_attempts -= 1
-    #     raise AssertionError
+    def clickButtonById(self, html_id):
+        max_attempts = 3
+        while (max_attempts > 0):
+            try:
+                print "yo"
+                self.driver.find_element_by_id(html_id).click()
+                break
+            except:
+                print sys.exc_info()
+                time.sleep(2)
+                max_attempts -= 1
+        raise AssertionError
 
     @classmethod
     def setup_class(cls):
         BaseTest.setup_class()
         global profileUrl
         global forgotUrl
-        profileUrl = "http://192.168.99.100:9000/#/profile"
-        forgotUrl = "http://192.168.99.100:9000/#/forgot"
+        profileUrl = "http://localhost:9000/#/profile"
+        forgotUrl = "http://localhost:9000/#/forgot"
 
     # TEST - CHANGE PASSWORD
     def test_changePassword(self):
@@ -99,7 +99,7 @@ class SeTest(BaseTest):
     #     name = self.driver.find_element_by_tag_name('h2')
     #     assert name.text == "Change password" 
 
-    # # TEST - RESET PASSWORD (RESEND)
+    # TEST - RESET PASSWORD (RESEND)
     # def test_resetPassword2(self): 
     #     self.driver.get(forgotUrl)
     #     time.sleep(2)

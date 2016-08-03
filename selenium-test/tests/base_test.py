@@ -6,8 +6,8 @@ from selenium import webdriver
 from sauceclient import SauceClient
 
 browsers = [{
-       'platform': "OS X 10.10",
-       'browserName': "safari",
+       'platform': "Windows 10",
+       'browserName': "chrome",
        'version': "latest",
     }]
 
