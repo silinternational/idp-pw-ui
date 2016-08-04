@@ -9,6 +9,10 @@ browsers = [{
        'platform': "Windows 10",
        'browserName': "MicrosoftEdge",
        'version': "latest",
+    }, {
+       'platform': "Windows 7",
+       'browserName': "internet explorer",
+       'version': "latest",
     }]
 
 # This decorator is required to iterate over browsers
