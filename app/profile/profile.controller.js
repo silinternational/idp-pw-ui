@@ -33,12 +33,12 @@
               .get('method')
               .then(extractMethods)
               .finally(dialogService.close);
-            console.log('asdf');
+            window.console.dir('asdf');
             dialogService.progress();
         }
 
         function extractMethods(response) {
-            console.log('noway');
+            window.console.dir('noway');
             var allMethods = response.data;
 
             checkForMethods(allMethods);
@@ -51,7 +51,7 @@
                   }
               });
 
-            dialogService.progress();
+            dialogService.close();
         }
 
         function checkForMethods(methods) {
