@@ -23,7 +23,6 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            console.log('dinosaurs');
             dataService
               .get('reset/' + $routeParams.resetId)
               .then(retrievedMethods, failedToRetrieveMethods)
@@ -33,9 +32,8 @@
         }
 
         function retrievedMethods(response) {
-            console.log('maybe');
             vm.allMethods = response.data.methods;
-            console.log('hawaii');
+
             vm.allMethods.forEach(function (method) {
                 switch (method.type) {
                     case 'primary'   : vm.primary.push(method); break;
@@ -45,7 +43,7 @@
                     default          : vm.emails.push(method) ;
                 }
             });
-            console.log('gottem2.0');
+            
             dialogService.close();
         }
 

@@ -33,11 +33,13 @@
               .get('method')
               .then(extractMethods)
               .finally(dialogService.close());
-              
-            dialogService.progress();
+
+            // dialogService.progress();
         }
 
         function extractMethods(response) {
+            dialogService.progress();
+
             var allMethods = response.data;
 
             checkForMethods(allMethods);

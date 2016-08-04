@@ -34,7 +34,6 @@
         }
 
         function submit() {
-            console.log('hey there');
             dataService
               .post('reset', {
                   username: vm.username,
@@ -50,7 +49,6 @@
         }
 
         function reset(response) {
-            console.log('cc octopus');
             var primaryEmail,
                 resetId = response.data.uid;
 
@@ -58,7 +56,7 @@
                 response.data.methods.length > 0) {
                 primaryEmail = response.data.methods[0].value;
             }
-            console.log('octopus and cat');
+            
             dialogService.close();
             
             dialogService
