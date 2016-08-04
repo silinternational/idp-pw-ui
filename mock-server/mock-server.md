@@ -23,8 +23,8 @@ a simple mock api for idp-pw-ui
         "idp_username": "username",
         "email": "a@b.com",
         "password_meta": {
-            "last_changed": "timestamp",
-            "expires": "timestamp"
+            "last_changed": "2016-07-23T17:07:53+00:00",
+            "expires": "2017-07-23T17:07:53+00:00"
         }
     }
 
