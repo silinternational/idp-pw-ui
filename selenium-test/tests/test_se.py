@@ -5,7 +5,7 @@ import time
 class SeTest(BaseTest):
 
     def assertTextByTag(self, tag, text):
-        max_attempts = 50
+        max_attempts = 51
         while (max_attempts > 0):
             try:
                 name = self.driver.find_element_by_tag_name(tag)
