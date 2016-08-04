@@ -12,7 +12,7 @@ class SeTest(BaseTest):
                 assert text in name.text
                 return True
             except:
-                time.sleep(2)
+                time.sleep(1)
                 max_attempts -= 1
         raise AssertionError
 
@@ -24,7 +24,7 @@ class SeTest(BaseTest):
                 assert text in name.text
                 return True
             except:
-                time.sleep(2)
+                time.sleep(1)
                 max_attempts -= 1
         raise AssertionError
 
@@ -35,7 +35,7 @@ class SeTest(BaseTest):
                 self.driver.find_element_by_id(html_id).click()
                 return True
             except:
-                time.sleep(2)
+                time.sleep(1)
                 max_attempts -= 1
         raise AssertionError
 
@@ -46,7 +46,7 @@ class SeTest(BaseTest):
                 self.driver.find_elements_by_css_selector(css_selector)[index].click() 
                 return True
             except:
-                time.sleep(2)
+                time.sleep(1)
                 max_attempts -= 1
         raise AssertionError
 
