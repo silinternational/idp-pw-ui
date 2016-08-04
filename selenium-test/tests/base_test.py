@@ -7,15 +7,7 @@ from sauceclient import SauceClient
 
 browsers = [{
        'platform': "Windows 10",
-       'browserName': "chrome",
-       'version': "latest",
-    }, {
-       'platform': "Windows 10",
-       'browserName': "firefox",
-       'version': "latest",
-    }, {
-       'platform': "OS X 10.11",
-       'browserName': "chrome",
+       'browserName': "MicrosoftEdge",
        'version': "latest",
     }]
 
