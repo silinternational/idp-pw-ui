@@ -39,6 +39,8 @@
 
         function extractMethods(response) {
 
+            dialogService.progress();
+
             var allMethods = response.data;
 
             checkForMethods(allMethods);
