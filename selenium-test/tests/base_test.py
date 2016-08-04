@@ -17,10 +17,6 @@ browsers = [{
        'platform': "OS X 10.11",
        'browserName': "chrome",
        'version': "latest",
-    }, {
-       'platform': "Linux",
-       'browserName': "firefox",
-       'version': "latest",
     }]
 
 # This decorator is required to iterate over browsers
