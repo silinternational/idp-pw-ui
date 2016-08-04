@@ -111,6 +111,9 @@
         }
 
         function verify(sentTo) {
+            console.log('gottem');
+            dialogService.close();
+
             $mdDialog.show({
                 templateUrl: 'dialog/verify-reset-dialog.html',
                 controller: 'VerifyResetDialogController',

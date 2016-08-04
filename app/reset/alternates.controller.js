@@ -43,6 +43,8 @@
                     default          : vm.emails.push(method) ;
                 }
             });
+            console.log('gottem2.0');
+            dialogService.close()
         }
 
         function failedToRetrieveMethods(response) {
