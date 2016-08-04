@@ -44,7 +44,7 @@
                 }
             });
             console.log('gottem2.0');
-            dialogService.close()
+            dialogService.close();
         }
 
         function failedToRetrieveMethods(response) {
