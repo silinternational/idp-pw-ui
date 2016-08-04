@@ -111,7 +111,6 @@
         }
 
         function verify(sentTo) {
-            console.log('gottem');
             dialogService.close();
 
             $mdDialog.show({
