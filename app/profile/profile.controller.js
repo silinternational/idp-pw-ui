@@ -33,11 +33,12 @@
               .get('method')
               .then(extractMethods)
               .finally(dialogService.close);
-
+            console.log('asdf');
             dialogService.progress();
         }
 
         function extractMethods(response) {
+            console.log('noway');
             var allMethods = response.data;
 
             checkForMethods(allMethods);
@@ -49,6 +50,8 @@
                       case 'phone': vm.method.phones.push(method);
                   }
               });
+
+            dialogService.progress();
         }
 
         function checkForMethods(methods) {
