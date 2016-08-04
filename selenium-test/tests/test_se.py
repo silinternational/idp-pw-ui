@@ -17,7 +17,7 @@ class SeTest(BaseTest):
         raise AssertionError
 
     def assertTextById(self, html_id, text):
-        max_attempts = 50
+        max_attempts = 51
         while (max_attempts > 0):
             try:
                 name = self.driver.find_element_by_id(html_id)
