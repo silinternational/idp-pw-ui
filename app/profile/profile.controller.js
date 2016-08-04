@@ -43,6 +43,8 @@
 
             var allMethods = response.data;
 
+            dialogService.close();
+
             checkForMethods(allMethods);
 
             allMethods
