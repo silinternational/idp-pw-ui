@@ -11,10 +11,6 @@ browsers = [{
        'version': "latest",
     }, {
        'platform': "Windows 10",
-       'browserName': "MicrosoftEdge",
-       'version': "latest",
-    }, {
-       'platform': "Windows 10",
        'browserName': "firefox",
        'version': "latest",
     }, {
