@@ -6,10 +6,6 @@ from selenium import webdriver
 from sauceclient import SauceClient
 
 browsers = [{
-       'platform': "Windows 10",
-       'browserName': "MicrosoftEdge",
-       'version': "latest",
-    }, {
        'platform': "Windows 7",
        'browserName': "internet explorer",
        'version': "latest",
