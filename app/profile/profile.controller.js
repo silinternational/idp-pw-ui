@@ -23,6 +23,7 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
+            dialogService.progress();
             userService
               .getUser(true)
               .then(function (user) {
@@ -39,9 +40,6 @@
 
         function extractMethods(response) {
 
-            dialogService.progress();
-            dialogService.close();
-
             var allMethods = response.data;
 
             checkForMethods(allMethods);
@@ -53,8 +51,6 @@
                       case 'phone': vm.method.phones.push(method);
                   }
               });
-
-            dialogService.close();
         }
 
         function checkForMethods(methods) {

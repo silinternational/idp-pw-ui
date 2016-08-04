@@ -29,7 +29,7 @@
         }
 
         function close() {
-            $mdDialog.cancel();
+            $mdDialog.hide();
         }
         
         function fail(summary, error) {
