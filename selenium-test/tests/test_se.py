@@ -5,7 +5,7 @@ import time
 class SeTest(BaseTest):
 
     def assertTextByTag(self, tag, text):
-        max_attempts = 10
+        max_attempts = 30
         while (max_attempts > 0):
             try:
                 name = self.driver.find_element_by_tag_name(tag)
@@ -17,7 +17,7 @@ class SeTest(BaseTest):
         raise AssertionError
 
     def assertTextById(self, html_id, text):
-        max_attempts = 10
+        max_attempts = 30
         while (max_attempts > 0):
             try:
                 name = self.driver.find_element_by_id(html_id)
@@ -29,7 +29,7 @@ class SeTest(BaseTest):
         raise AssertionError
 
     def clickButtonById(self, html_id):
-        max_attempts = 10
+        max_attempts = 30
         while (max_attempts > 0):
             try:
                 self.driver.find_element_by_id(html_id).click()
@@ -40,7 +40,7 @@ class SeTest(BaseTest):
         raise AssertionError
 
     def clickButtonByCssSelector(self, css_selector, index):
-        max_attempts = 10
+        max_attempts = 30
         while (max_attempts > 0):
             try:
                 self.driver.find_elements_by_css_selector(css_selector)[index].click() 
