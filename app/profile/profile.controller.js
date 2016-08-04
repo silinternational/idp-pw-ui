@@ -32,7 +32,7 @@
             dataService
               .get('method')
               .then(extractMethods)
-              .finally(dialogService.close);
+              .finally(dialogService.close());
             window.console.dir('asdf');
             dialogService.progress();
         }
@@ -51,7 +51,7 @@
                   }
               });
 
-            dialogService.close();
+            // dialogService.close();
         }
 
         function checkForMethods(methods) {

@@ -27,7 +27,7 @@
             dataService
               .get('reset/' + $routeParams.resetId)
               .then(retrievedMethods, failedToRetrieveMethods)
-              .finally(dialogService.close);
+              .finally(dialogService.close());
 
             dialogService.progress();
         }
