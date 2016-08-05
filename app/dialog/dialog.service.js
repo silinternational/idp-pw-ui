@@ -105,7 +105,8 @@
 
         function progress() {
             var isIE = /*@cc_on!@*/false || !!document.documentMode;
-            if (!isIE) {
+            var isEdge = !isIE && !!window.StyleMedia;
+            if (!isIE && !isEdge) {
                 $mdDialog.show({
                     templateUrl: 'dialog/progress-dialog.html',
                     escapeToClose: false

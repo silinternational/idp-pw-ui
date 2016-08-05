@@ -21,6 +21,22 @@ browsers = [{
        'platform': "Windows 7",
        'browserName': "internet explorer",
        'version': "latest",
+    }, {
+       'platform': "OS X 10.11",
+       'browserName': "chrome",
+       'version': "latest",
+    }, {
+       'platform': "OS X 10.11",
+       'browserName': "safari",
+       'version': "latest",
+    }, {
+       'platform': "OS X 10.10",
+       'browserName': "safari",
+       'version': "latest",
+    }, {
+       'platform': "Linux",
+       'browserName': "firefox",
+       'version': "latest",
     }]
 
 # This decorator is required to iterate over browsers
