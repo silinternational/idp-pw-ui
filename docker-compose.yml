@@ -19,6 +19,6 @@ services:
   mock-server:
     image: johnlee/api-mock:latest
     volumes: 
-      - ./mock-server:/mock/
+      - ./selenium-test/mock-server:/mock/
     ports: 
       - "3000:3000"
