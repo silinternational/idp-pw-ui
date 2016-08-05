@@ -104,10 +104,13 @@
         }
 
         function progress() {
-            $mdDialog.show({
-                templateUrl: 'dialog/progress-dialog.html',
-                escapeToClose: false
-            });
+            var isIE = /*@cc_on!@*/false || !!document.documentMode;
+            if (!isIE) {
+                $mdDialog.show({
+                    templateUrl: 'dialog/progress-dialog.html',
+                    escapeToClose: false
+                });
+            }
         }
 
         function verify(sentTo) {

@@ -23,7 +23,6 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            dialogService.progress();
             userService
               .getUser(true)
               .then(function (user) {
@@ -33,13 +32,12 @@
             dataService
               .get('method')
               .then(extractMethods)
-              .finally(dialogService.close());
+              .finally(dialogService.close);
 
-            // dialogService.progress();
+            dialogService.progress();
         }
 
         function extractMethods(response) {
-
             var allMethods = response.data;
 
             checkForMethods(allMethods);
