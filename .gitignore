@@ -10,3 +10,4 @@ design_files/temp/
 venv
 .DS_Store
 __pycache__
+.pyc
