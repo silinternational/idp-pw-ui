@@ -94,7 +94,8 @@
         </md-button>
     </md-list-item>
 
-    <md-list-item ng-if="vm.method.emails.length < 1">
+    <md-list-item ng-if="vm.method.emails.length < 1"
+                  ng-href="#/recovery-method/add">
         <md-icon md-svg-src="images/md-icons/ic_warning_24px.svg"
                  class="md-avatar-icon">
         </md-icon>
@@ -106,7 +107,7 @@
 
     <md-subheader class="md-no-sticky">Phone</md-subheader>
 
-    <md-list-item ng-repeat="_method in vm.method.phones ">
+    <md-list-item ng-repeat="_method in vm.method.phones">
         <md-icon md-svg-src="images/md-icons/ic_phone_24px.svg"
                  class="md-avatar-icon">
         </md-icon>
@@ -123,7 +124,8 @@
         </md-button>
     </md-list-item>
 
-    <md-list-item ng-if="vm.method.phones.length < 1">
+    <md-list-item ng-if="vm.method.phones.length < 1"
+                  ng-href="#/recovery-method/add-phone">
         <md-icon md-svg-src="images/md-icons/ic_warning_24px.svg"
                  class="md-avatar-icon">
         </md-icon>
