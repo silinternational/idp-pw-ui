@@ -26,7 +26,7 @@
             dataService
               .get('reset/' + $routeParams.resetId)
               .then(retrievedMethods, failedToRetrieveMethods)
-              .finally(dialogService.close());
+              .finally(dialogService.close);
 
             dialogService.progress();
         }
@@ -34,17 +34,17 @@
         function retrievedMethods(response) {
             vm.allMethods = response.data.methods;
 
-            vm.allMethods.forEach(function (method) {
-                switch (method.type) {
-                    case 'primary'   : vm.primary.push(method); break;
-                    case 'phone'     : vm.phones.push(method) ; break;
-                    case 'spouse'    : vm.spouse.push(method) ; break;
-                    case 'supervisor': vm.super.push(method)  ; break;
-                    default          : vm.emails.push(method) ;
-                }
-            });
-            
-            dialogService.close();
+            vm.allMethods.forEach(separateTypes);
+        }
+
+        function separateTypes(method) {
+            switch (method.type) {
+                case 'primary'   : vm.primary.push(method); break;
+                case 'phone'     : vm.phones.push(method) ; break;
+                case 'spouse'    : vm.spouse.push(method) ; break;
+                case 'supervisor': vm.super.push(method)  ; break;
+                default          : vm.emails.push(method) ;
+            }
         }
 
         function failedToRetrieveMethods(response) {

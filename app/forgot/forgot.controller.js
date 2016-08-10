@@ -39,7 +39,8 @@
                   username: vm.username,
                   verification_token: recaptchaResponse
               })
-              .then(reset, failed);
+              .then(reset, failed)
+              .finally(dialogService.close);
 
             dialogService.progress();
         }
@@ -56,9 +57,7 @@
                 response.data.methods.length > 0) {
                 primaryEmail = response.data.methods[0].value;
             }
-            
-            dialogService.close();
-            
+
             dialogService
               .reset(primaryEmail, resetId);
         }
