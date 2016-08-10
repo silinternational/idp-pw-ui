@@ -10,7 +10,9 @@
 
     <form name="vm.forgotForm" layout="column" autocomplete="off">
         <md-input-container>
-            <label for="username" id="hint-label">{{ vm.config.idpUsernameHint }}</label>
+            <label for="username" id="hint-label">
+                {{ vm.config.idpUsernameHint }}
+            </label>
 
             <input type="text" ng-model="vm.username" name="username"
                    required autofocus id="username"
@@ -46,8 +48,7 @@
         <section layout="row" layout-align="end center">
             <md-button ng-click="vm.submit()"
                        ng-disabled="vm.forgotForm.$invalid"
-                       class="md-primary md-raised"
-                       id="continue-btn">
+                       class="md-primary md-raised" id="continue-btn">
                 Continue
             </md-button>
         </section>
