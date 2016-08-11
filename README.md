@@ -34,12 +34,14 @@ location.
 
 ## Testing
 
+### Unit testing
+
 There are 2 test targets:
 
 1.  `app` for the working copy of the application
 2.  `dist` for the optimized distributable
 
-### One-time runs
+#### One-time runs
 
 Running `grunt test` will run both.
 
@@ -47,7 +49,7 @@ Running `grunt test:app` will just run the app
 
 Running `grunt test:dist` will just run the dist copy
 
-### Continuous testing or Debugging
+#### Continuous testing or Debugging
 
 In order to keep your test running while you're working on them or to debug,
 the `singleRun` configuration needs to be temporarily set to `false` within
@@ -60,3 +62,7 @@ karma: {
         singleRun: true, // set to false to debug in browser
 ...
 ```
+
+### Functional testing
+
+TODO: Need to explain the mock-api and general docker usage.

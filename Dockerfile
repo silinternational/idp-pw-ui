@@ -1,4 +1,4 @@
-FROM node:6.3
+FROM node:4.4
 
 COPY ./ /app
 
@@ -10,4 +10,4 @@ RUN bower install --allow-root
 
 EXPOSE 9000
 
-CMD ["grunt", "serve"]
+CMD ["grunt", "serve:dist"]
