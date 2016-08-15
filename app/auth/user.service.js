@@ -68,9 +68,15 @@
         }
 
         function logout() {
-            $window.location = dataService.baseUrl() +
-                               'auth/logout?access_token=' +
-                               tokenService.getToken();
+            var logoutUrl = dataService.baseUrl() +
+                            'auth/logout?access_token=' +
+                            tokenService.getToken();
+
+            if (returnToService.url) {
+                logoutUrl += '&ReturnTo=' + returnToService.url;
+            }
+
+            $window.location = logoutUrl;
 
             tokenService.clear();
         }
