@@ -45,7 +45,7 @@
                            ng-model-options="{trackBy: '$value.code'}">
                     <md-option ng-repeat="_country in vm.countries"
                                ng-value="_country">
-                        {{ _country.name }}
+                        {{ _country.name }} (+{{ _country.prefix }})
                     </md-option>
                 </md-select>
             </md-input-container>

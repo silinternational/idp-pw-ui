@@ -6,11 +6,11 @@
       .controller('AddMethodController', AddMethodController);
 
     function AddMethodController($location, countryService, dataService,
-                                 dialogService) {
+                                 dialogService, type) {
         var vm = this;
 
         vm.newRecoveryMethod = {
-            type: 'email',
+            type: type,
             value: ''
         };
         vm.selectedCountry = null;
