@@ -9,6 +9,7 @@
                                  dialogService, type) {
         var vm = this;
 
+        vm.addMethodForm = null;
         vm.newRecoveryMethod = {
             type: type,
             value: ''
@@ -37,12 +38,14 @@
         }
 
         function add(newMethod) {
-            dataService
-              .post('method', newMethod)
-              .then(added, failed)
-              .finally(dialogService.close);
+            if (vm.addMethodForm.$valid) {
+                dataService
+                  .post('method', newMethod)
+                  .then(added, failed)
+                  .finally(dialogService.close);
 
-            dialogService.progress();
+                dialogService.progress();
+            }
         }
 
         function added(response) {
