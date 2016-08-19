@@ -43,7 +43,7 @@ class SeTest(BaseTest):
         max_attempts = 60
         while (max_attempts > 0):
             try:
-                self.driver.find_elements_by_css_selector(css_selector)[index].click() 
+                self.driver.find_elements_by_css_selector(css_selector)[index].click()
                 return True
             except:
                 time.sleep(1)
@@ -55,8 +55,8 @@ class SeTest(BaseTest):
         BaseTest.setup_class()
         global profileUrl
         global forgotUrl
-        profileUrl = "http://localhost:9000/#/profile"
-        forgotUrl = "http://localhost:9000/#/forgot"
+        profileUrl = os.environ.get('PROFILE_URL', 'http://localhost:9000/#/profile')
+        forgotUrl = os.environ.get('FORGOT_URL', 'http://localhost:9000/#/forgot')
 
     # TEST - CHANGE PASSWORD
     def test_changePassword(self):
@@ -76,7 +76,7 @@ class SeTest(BaseTest):
         self.assertTextById('name-header', 'Lorem Ipsum')
 
     # TEST - RESET PASSWORD (USE ALTERNATE METHODS)
-    def test_resetPassword1(self): 
+    def test_resetPassword1(self):
         self.driver.get(forgotUrl)
         self.assertTextById('forgot-description', 'ACME Inc')
         self.assertTextById('hint-label', 'Acme username, ex: first_last')
@@ -96,7 +96,7 @@ class SeTest(BaseTest):
         self.assertTextByTag('h2', 'Change password')
 
     # TEST - RESET PASSWORD (RESEND)
-    def test_resetPassword2(self): 
+    def test_resetPassword2(self):
         self.driver.get(forgotUrl)
         self.assertTextById('forgot-description', 'ACME Inc')
         element = self.driver.find_element_by_id("username")
@@ -104,10 +104,10 @@ class SeTest(BaseTest):
         self.clickButtonById('continue-btn')
         self.assertTextById('reset-header', 'Password reset email sent')
         self.clickButtonById('resend-btn')
-        self.assertTextById('reset-header', 'Password reset email sent') 
+        self.assertTextById('reset-header', 'Password reset email sent')
 
-    # TEST - RESET PASSWORD 
-    def test_resetPassword3(self): 
+    # TEST - RESET PASSWORD
+    def test_resetPassword3(self):
         self.driver.get(forgotUrl)
         self.assertTextById('forgot-description', 'ACME Inc')
         element = self.driver.find_element_by_id("username")
@@ -156,16 +156,16 @@ class SeTest(BaseTest):
         self.clickButtonById('ok-btn')
         self.assertTextById('name-header', 'Lorem Ipsum')
 
-    # TEST - DELETE RECOVERY METHOD 
+    # TEST - DELETE RECOVERY METHOD
     def test_deleteRecoveryMethod(self):
         self.driver.get(profileUrl)
         self.clickButtonByCssSelector('button.md-icon-button', 0)
         self.assertTextById('sure-header', 'Are you sure?')
-        self.driver.find_element_by_css_selector('button.md-warn').click() 
+        self.driver.find_element_by_css_selector('button.md-warn').click()
         self.assertTextById('name-header', 'Lorem Ipsum')
         self.clickButtonByCssSelector('button.md-icon-button', 0)
         self.assertTextById('sure-header', 'Are you sure?')
-        self.driver.find_element_by_css_selector('button.md-accent').click() 
+        self.driver.find_element_by_css_selector('button.md-accent').click()
         self.assertTextById('name-header', 'Lorem Ipsum')
 
     # TEST - HELP CENTER
