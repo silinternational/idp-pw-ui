@@ -2,23 +2,22 @@ version: '2'
 
 services:
 
-  data:
-    image: silintl/data-volume:latest
-    volumes:
-      - ./:/data
-    privileged: true
-
   frontend:
     build: .
-    command: bash -c "grunt serve:dist"
-    volumes_from:
-      - data
+    working_dir: /data
     ports:
       - "9000:9000"
 
+  frontend-mock:
+    build: .
+    working_dir: /data
+    ports:
+      - "9000:9000"
+    command: ["grunt", "init", "backend:mock", "serve"]
+
   mock-server:
-    image: johnlee/api-mock:latest
-    volumes: 
+    image: silintl/api-mock:latest
+    volumes:
       - ./selenium-test/mock-server:/mock/
-    ports: 
+    ports:
       - "3000:3000"

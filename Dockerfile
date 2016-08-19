@@ -1,13 +1,13 @@
 FROM node:6.3.1
 
-COPY ./ /app
+RUN mkdir -p /data
+COPY ./ /data
+WORKDIR /data
 
-WORKDIR /app
-
-RUN npm install
 RUN npm install -g grunt-cli bower
+RUN npm install
 RUN bower install --allow-root
 
 EXPOSE 9000
 
-CMD ["grunt", "backend:mock", "serve:dist"]
+CMD ["grunt", "serve:dist"]
