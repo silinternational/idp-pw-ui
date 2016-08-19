@@ -66,3 +66,6 @@ karma: {
 ### Functional testing
 
 TODO: Need to explain the mock-api and general docker usage.
+grunt backend:mock will put mock configs in place within UI
+grunt backend will put defaults back into place
+grunt backend:mock dist should be used for functional test.

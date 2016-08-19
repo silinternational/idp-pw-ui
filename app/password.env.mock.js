@@ -1,4 +1,5 @@
 window.passwordEnv = {
     'apiBaseUrl': '//localhost:3000/',
-    'gaId': ''
+    'gaId': '',
+     apiWithCredentials: false
 };

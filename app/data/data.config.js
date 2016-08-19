@@ -5,8 +5,8 @@
       .module('password.data')
       .config(configureDataCalls);
 
-    function configureDataCalls($httpProvider) {
-        $httpProvider.defaults.withCredentials = true;
+    function configureDataCalls($httpProvider, DATA_API_WITH_CREDENTIALS) {
+        $httpProvider.defaults.withCredentials = DATA_API_WITH_CREDENTIALS;
 
         $httpProvider.interceptors.push(addTokenToRequests);
 
