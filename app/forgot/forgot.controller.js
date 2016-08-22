@@ -30,6 +30,7 @@
         }
 
         function resetRecaptcha() {
+            recaptchaResponse = '';
             vcRecaptchaService.reload();
         }
 
