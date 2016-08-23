@@ -1,5 +1,5 @@
 window.passwordEnv = {
-    'apiBaseUrl': '//localhost:3000/',
+    'apiBaseUrl': '//mock-server:3000/',
     'gaId': '',
      apiWithCredentials: false
 };

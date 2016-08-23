@@ -13,7 +13,7 @@ services:
     working_dir: /data
     ports:
       - "9000:9000"
-    command: ["grunt", "init", "backend:mock", "serve"]
+    command: ["grunt", "init", "backend:mock", "serve:dist"]
 
   mock-server:
     image: silintl/api-mock:latest
