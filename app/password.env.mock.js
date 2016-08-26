@@ -1,5 +1,5 @@
 window.passwordEnv = {
-    'apiBaseUrl': '//mock-server:3000/',
+    'apiBaseUrl': '//idp-pw-api.gtis.guru/',
     'gaId': '',
      apiWithCredentials: false
 };
