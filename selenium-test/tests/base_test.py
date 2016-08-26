@@ -6,37 +6,37 @@ from selenium import webdriver
 from sauceclient import SauceClient
 
 browsers = [{
-       'platform': "Windows 10",
-       'browserName': "chrome",
-       'version': "latest",
-    }, {
-       'platform': "Windows 10",
-       'browserName': "MicrosoftEdge",
-       'version': "latest",
-    }, {
-       'platform': "Windows 10",
-       'browserName': "firefox",
-       'version': "latest",
-    }, {
-       'platform': "Windows 7",
-       'browserName': "internet explorer",
-       'version': "latest",
-    }, {
+#       'platform': "Windows 10",
+#       'browserName': "chrome",
+#       'version': "latest",
+#    }, {
+#       'platform': "Windows 10",
+#       'browserName': "MicrosoftEdge",
+#       'version': "latest",
+#    }, {
+#       'platform': "Windows 10",
+#       'browserName': "firefox",
+#       'version': "latest",
+#    }, {
+#       'platform': "Windows 7",
+#       'browserName': "internet explorer",
+#       'version': "latest",
+#    }, {
        'platform': "OS X 10.11",
        'browserName': "chrome",
        'version': "latest",
-    }, {
-       'platform': "OS X 10.11",
-       'browserName': "safari",
-       'version': "latest",
-    }, {
-       'platform': "OS X 10.10",
-       'browserName': "safari",
-       'version': "latest",
-    }, {
-       'platform': "Linux",
-       'browserName': "firefox",
-       'version': "latest",
+#    }, {
+#       'platform': "OS X 10.11",
+#       'browserName': "safari",
+#       'version': "latest",
+#    }, {
+#       'platform': "OS X 10.10",
+#       'browserName': "safari",
+#       'version': "latest",
+#    }, {
+#       'platform': "Linux",
+#       'browserName': "firefox",
+#       'version': "latest",
     }]
 
 # This decorator is required to iterate over browsers
@@ -55,8 +55,8 @@ def on_platforms(platforms):
 class BaseTest(unittest.TestCase):
     username = os.environ.get('SAUCE_USERNAME')
     access_key = os.environ.get('SAUCE_ACCESS_KEY')
-    selenium_port = 'localhost'
-    selenium_host = '4445'
+    #selenium_port = 'localhost'
+    #selenium_host = '4445'
     upload = True
     tunnel_id = None
     build_tag = None
