@@ -146,7 +146,7 @@ class SeTest(BaseTest):
         self.assertTextByTag('h2', 'Add recovery method')
         self.driver.find_elements_by_tag_name('md-radio-button')[1].click()
         element = self.driver.find_element_by_id("phone")
-        element.send_keys("7777777")
+        element.send_keys("7777777777")
         self.clickButtonById('add-btn')
         self.assertTextByTag('h2', 'Verify code')
         element = self.driver.find_element_by_name("verificationCode")
