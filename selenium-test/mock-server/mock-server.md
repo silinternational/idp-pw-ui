@@ -268,7 +268,6 @@ a simple mock api for idp-pw-ui
     {
       "idpName": "ACME Inc",
       "idpUsernameHint": "Acme username, ex: first_last",
-      "recaptchaKey": "6L",
       "support": {
         "email": "info@acmeinc.org"
       },
