@@ -172,7 +172,7 @@ module.exports = function (grunt) {
 
               grunt.task.run(['init']);
 
-              grunt.log.ok('defaul backend in place.');
+              grunt.log.ok('default backend in place.');
           }
     });
 
