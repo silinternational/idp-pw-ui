@@ -10,6 +10,6 @@ exports.config = {
             version: 'latest'
         }
     ],
-    sauceUser: 'fillup',
-    sauceKey: 'afd825cd-e866-47c4-8d11-f915ee9ff635'
+    sauceUser: process.env.SAUCE_USERNAME,
+    sauceKey: process.env.SAUCE_ACCESS_KEY
 };
