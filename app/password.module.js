@@ -15,6 +15,7 @@
           'password.change',
           'password.profile',
           'password.reset',
-          'password.help'
+          'password.help',
+          'password.logo'
       ]);
 })();
