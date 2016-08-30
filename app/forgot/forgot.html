@@ -3,14 +3,16 @@
         {{ title }}
     </h2>
 
-    <p class="md-body-1">
+    <p class="md-body-1" id="forgot-description">
         Enter your {{ vm.config.idpName }} username or email below and we
         will send you an email with instructions to reset your password.
     </p>
 
     <form name="vm.forgotForm" layout="column" autocomplete="off">
         <md-input-container>
-            <label for="username">{{ vm.config.idpUsernameHint }}</label>
+            <label for="username" id="hint-label">
+                {{ vm.config.idpUsernameHint }}
+            </label>
 
             <input type="text" ng-model="vm.username" name="username"
                    required autofocus id="username"
@@ -46,7 +48,7 @@
         <section layout="row" layout-align="end center">
             <md-button ng-click="vm.submit()"
                        ng-disabled="vm.forgotForm.$invalid"
-                       class="md-primary md-raised">
+                       class="md-primary md-raised" id="continue-btn">
                 Continue
             </md-button>
         </section>

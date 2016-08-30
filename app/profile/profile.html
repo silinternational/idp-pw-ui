@@ -1,6 +1,6 @@
 <md-list>
     <md-list-item layout="column" layout-align="center start">
-        <h2 class="md-display-2">
+        <h2 class="md-display-2" id="name-header">
             {{ vm.user.first_name + ' ' + vm.user.last_name }}
         </h2>
 
@@ -29,7 +29,8 @@
         </h3>
 
         <md-button ng-href="#/change" autofocus
-                   class="md-secondary md-primary md-raised">
+                   class="md-secondary md-primary md-raised"
+                   id="change-btn">
             Change
         </md-button>
     </md-list-item>
@@ -61,7 +62,7 @@
         </h3>
 
         <md-button ng-href="#/recovery-method/add"
-                   class="md-secondary md-primary md-raised">
+                   class="md-secondary md-primary md-raised" id="add-btn">
             Add
         </md-button>
     </md-list-item>
@@ -85,9 +86,8 @@
             {{ _method.value }}
         </p>
 
-        <md-button ng-click="vm.delete(_method)"
-                   class="md-icon-button md-secondary"
-                   aria-label="Delete">
+        <md-button ng-click="vm.delete(_method)" aria-label="Delete"
+                   class="md-icon-button md-secondary">
             <md-icon md-svg-src="images/md-icons/ic_delete_24px.svg">
             </md-icon>
         </md-button>
@@ -115,9 +115,8 @@
             {{ _method.value}}
         </p>
 
-        <md-button ng-click="vm.delete(_method)"
-                   class="md-icon-button md-secondary"
-                   aria-label="Delete">
+        <md-button ng-click="vm.delete(_method)" aria-label="Delete"
+                   class="md-icon-button md-secondary">
             <md-icon md-svg-src="images/md-icons/ic_delete_24px.svg">
             </md-icon>
         </md-button>

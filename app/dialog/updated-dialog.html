@@ -1,16 +1,16 @@
 <md-dialog aria-label="Status update">
     <md-toolbar class="md-toolbar-tools">
-        <h2>Update successful</h2>
+        <h2 id="successful-header">Update successful</h2>
     </md-toolbar>
 
     <md-dialog-content class="md-dialog-content md-body-1">
         <p>
-            {{  vm.message }}
+            {{ vm.message }}
         </p>
     </md-dialog-content>
 
     <md-dialog-actions layout="row" layout-align="end center">
-        <md-button ng-click="vm.ok()" class="md-primary">
+        <md-button ng-click="vm.ok()" class="md-primary" id="ok-btn">
             Ok
         </md-button>
     </md-dialog-actions>

@@ -7,6 +7,13 @@ module.exports = function (grunt) {
         'serve'
     ]);
 
+    grunt.registerTask('init', 'ensure customizable files are in place', function () {
+        initialize('/favicon.ico');
+        initialize('/images/logo.png');
+        initialize('/password.env.js');
+        initialize('/password.config.theme.js');
+    });
+
     grunt.registerTask('test', 'tests the app in different states, e.g., app or dist forms', function (appState) {
         grunt.task.run('jshint:testFiles');
         grunt.task.run('karma' + (appState ? ':' + appState : ''));
@@ -154,27 +161,35 @@ module.exports = function (grunt) {
         }
     };
 
-    grunt.registerTask('init', 'ensure theme-specific files are in place', function () {
-        if (! grunt.file.exists(appConfig.app.root + '/favicon.ico')) {
-            grunt.file.copy(appConfig.app.root + '/favicon.default.ico',
-              appConfig.app.root + '/favicon.ico');
-        }
+    grunt.registerTask('backend', 'determine which backend to put in place', function (type) {
+          if (type === 'mock') {
+              grunt.file.copy(appConfig.app.root + '/password.env.mock.js',
+                              appConfig.app.root + '/password.env.js');
 
-        if (! grunt.file.exists(appConfig.app.root + '/images/logo.png')) {
-            grunt.file.copy(appConfig.app.root + '/images/logo.default.png',
-              appConfig.app.root + '/images/logo.png');
-        }
+              grunt.log.ok('mock backend in place.');
+          } else {
+              grunt.file.delete(appConfig.app.root + '/password.env.js');
 
-        if (! grunt.file.exists(appConfig.app.root + '/password.env.js')) {
-            grunt.file.copy(appConfig.app.root + '/password.env.default.js',
-              appConfig.app.root + '/password.env.js');
-        }
+              grunt.task.run(['init']);
 
-        if (! grunt.file.exists(appConfig.app.root + '/password.config.theme.js')) {
-            grunt.file.copy(appConfig.app.root + '/password.config.theme.default.js',
-              appConfig.app.root + '/password.config.theme.js');
-        }
+              grunt.log.ok('default backend in place.');
+          }
     });
+
+    function initialize(file) {
+        var destpath = appConfig.app.root + file;
+
+        if (grunt.file.exists(destpath)) {
+            grunt.log.error(destpath + ' already initialized.');
+        } else {
+            var lastDot = /\.(?=[^.]*$)/,
+                defaultFile = destpath.replace(lastDot, '.default.');
+
+            grunt.file.copy(defaultFile,  destpath);
+
+            grunt.log.ok(destpath + ' absent, initialized from ' + defaultFile + '.');
+        }
+    }
 
     require('load-grunt-tasks')(grunt);
 
