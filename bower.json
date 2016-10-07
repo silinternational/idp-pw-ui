@@ -9,8 +9,8 @@
     "angular-route": "1.5.8",
     "angular-material": "1.1.1",
     "angular-recaptcha": "2.3.x",
-    "zxcvbn": "4.2.0",
-    "angular-zxcvbn": "3.2.0",
+    "zxcvbn": "4.4.0",
+    "angular-zxcvbn": "3.2.2",
     "angularytics": "0.4.0"
   },
   "devDependencies": {
