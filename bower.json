@@ -1,7 +1,7 @@
 {
   "name": "idp-pw-ui",
   "dependencies": {
-    "normalize-css": "4.2.0",
+    "normalize-css": "5.0.0",
     "angular": "1.5.8",
     "angular-animate": "1.5.8",
     "angular-aria": "1.5.8",
