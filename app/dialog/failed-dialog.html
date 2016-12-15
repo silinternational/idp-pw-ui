@@ -14,7 +14,13 @@
         </blockquote>
     </md-dialog-content>
 
-    <md-dialog-actions layout="row" layout-align="end center">
+    <md-dialog-actions layout="row">
+        <md-button ng-click="vm.help()" class="md-accent">
+            Help
+        </md-button>
+
+        <span flex></span>
+
         <md-button ng-click="vm.ok()" class="md-primary">
             Ok
         </md-button>
