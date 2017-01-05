@@ -4,8 +4,14 @@
     </h2>
 
     <form name="vm.addMethodForm" layout="column" class="md-body-1"
-          layout-margin autocomplete="off">
-        <p>What kind of recovery method would you like to add?</p>
+          layout-margin autocomplete="off">        
+        <p class="md-caption">
+            Please note you must have access to your email or phone 
+            right now so we can send you a verification code.
+        </p>
+        <p>
+            What kind of recovery method would you like to add?
+        </p>
 
         <md-radio-group ng-model="vm.newRecoveryMethod.type"
                         ng-change="vm.newRecoveryMethod.value = null">
@@ -83,7 +89,7 @@
                                  vm.addPhone()                         :
                                  vm.add(vm.newRecoveryMethod)"
                        class="md-primary md-raised" id="add-btn">
-                Add
+                Send Code
             </md-button>
         </section>
     </form>
