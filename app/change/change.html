@@ -54,16 +54,16 @@
 
                 <input type="password" ng-model="vm.pwagain"
                        name="pwagain" required pw-must-match="{{ vm.pw }}"
-                       id="pwagain" ng-disabled="! vm.pw"
-                       autocomplete="off">
-
+                       id="pwagain" ng-disabled="! vm.pw" autocomplete="off" 
+                       ng-model-options="{ allowInvalid: true, debounce: 1000 }">
+                
                 <md-tooltip md-direction="top" ng-if="! vm.pw">
                     You must enter an acceptable password first.
                 </md-tooltip>
 
                 <ng-messages for="vm.changeForm.pwagain.$error"
                              role="alert" md-auto-hide="false"
-                             ng-show="vm.changeForm.pwagain.$touched">
+                             ng-show="vm.changeForm.pwagain.$dirty">
                     <ng-message when="required">
                         Required.
                     </ng-message>
