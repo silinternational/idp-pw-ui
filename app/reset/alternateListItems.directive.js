@@ -11,7 +11,8 @@
             scope: {
                 header: '@',
                 methods: '=',
-                icon: '@'
+                icon: '@',
+                helpUrl: '@'
             },
             controller: AlternateListItemsController,
             controllerAs: 'vm',

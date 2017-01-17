@@ -1,5 +1,20 @@
 <md-subheader ng-if="vm.methods.length > 0" class="md-no-sticky">
-    {{ vm.header }}
+        <div layout="row" layout-align="space-around center">
+            <span>
+                {{ vm.header }}
+            </span>
+            
+            <md-button ng-if="vm.helpUrl" ng-href="{{ vm.helpUrl }}" target="_blank"
+                       class="md-icon-button md-secondary" aria-label="Learn more">
+                <md-icon md-svg-src="images/md-icons/ic_help_outline_24px.svg">
+                    <md-tooltip md-direction="top">
+                        <span>Learn more about how phones are used</span>
+                    </md-tooltip>
+                </md-icon>
+            </md-button>
+            
+            <span flex></span>
+        </div>
 </md-subheader>
 
 <md-list-item ng-repeat="_method in vm.methods" layout="row"
@@ -12,7 +27,7 @@
 
     <md-button ng-click="vm.send(_method)"
                class="md-icon-button md-secondary" aria-label="Send code">
-        <md-tooltip md-direction="left">
+        <md-tooltip md-direction="top">
             <span>
                 Send code
             </span>
