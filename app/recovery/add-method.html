@@ -85,6 +85,12 @@
 
             <span flex></span>
 
+            <md-button ng-if="vm.newRecoveryMethod.type === 'phone'" 
+                       ng-href="#/help#phone" target="_blank"
+                       class="md-accent md-raised">
+                Learn more
+            </md-button>
+
             <md-button ng-click="vm.newRecoveryMethod.type === 'phone' ?
                                  vm.addPhone()                         :
                                  vm.add(vm.newRecoveryMethod)"

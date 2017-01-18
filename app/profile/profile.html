@@ -104,7 +104,24 @@
         </p>
     </md-list-item>
 
-    <md-subheader class="md-no-sticky">Phone</md-subheader>
+    <md-subheader class="md-no-sticky">
+        <div layout="row" layout-align="space-around center">
+            <span>
+                Phone
+            </span>
+            
+            <md-button ng-href="#/help#phone" target="_blank"
+                       class="md-icon-button md-secondary" aria-label="Learn more">
+                <md-icon md-svg-src="images/md-icons/ic_help_outline_24px.svg">
+                    <md-tooltip md-direction="top">
+                        <span>Learn more about how phones are used</span>
+                    </md-tooltip>
+                </md-icon>
+            </md-button>
+            
+            <span flex></span>
+        </div>
+    </md-subheader>
 
     <md-list-item ng-repeat="_method in vm.method.phones">
         <md-icon md-svg-src="images/md-icons/ic_phone_24px.svg"
