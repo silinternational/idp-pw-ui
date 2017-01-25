@@ -50,7 +50,9 @@
                  from resizing when something is entered.  Width is the
                  length of the longest error message present in the form -->
             <md-input-container style="width: 30ch">
-                <label for="pwagain">Enter new password (again)</label>
+                <label ng-show="vm.changeForm.password.$valid" for="pwagain">
+                    Enter new password (again)
+                </label>
 
                 <input type="password" ng-model="vm.pwagain"
                        name="pwagain" required pw-must-match="{{ vm.pw }}"
