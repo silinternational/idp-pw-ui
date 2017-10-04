@@ -4,8 +4,10 @@
     </h2>
 
     <h3 class="md-title">1. Download</h3>
-    <p>Download an app</p>
-
+    <p>
+        Download a 2-step verification app, e.g., Google Authenticator or Authy, onto your mobile
+        device.
+    </p>
 
     <h3 class="md-title">2. Connect</h3>
     <p>Either scan or enter this code into your app</p>
@@ -23,10 +25,11 @@
     <h3 class="md-title">3. Verify</h3>
     <p>Enter the code created by your app and click verify</p>
 
-    <form  ng-if="vm.mfa.data" layout="row" layout-align="start center" name="verifyForm">
+    <form ng-if="vm.mfa.data" layout="row" layout-align="start center" name="verifyForm">
         <md-input-container>
             <label for="tempPassword">Enter code</label>
-            <input ng-model="vm.tempPassword" required autofocus id="tempPassword" name="tempPassword">
+            <input ng-model="vm.tempPassword" required autofocus id="tempPassword"
+                   name="tempPassword">
             <ng-messages for="verifyForm.tempPassword.$error" role="alert">
                 <ng-message when="required">
                     Required
