@@ -1,56 +1,114 @@
 <md-list>
-    <md-list-item layout="column" layout-align="center start">
-        <h2 class="md-display-2" id="name-header">
-            {{ vm.user.first_name + ' ' + vm.user.last_name }}
-        </h2>
+    <md-list-item>
+        <div class="md-list-item-text">
+            <h2 class="md-display-2" id="name-header">
+                {{ vm.user.first_name + ' ' + vm.user.last_name }}
+            </h2>
 
-        <p class="md-body-1 ie11fixes">
-            <strong class="md-body-2">
-                {{ vm.config.idpName }} username:
-            </strong>
+            <p class="md-body-1 ie11fixes"> <!-- TODO: is this fix still needed? -->
+                <strong class="md-body-2">
+                    {{ vm.config.idpName }} username:
+                </strong>
 
-            {{ vm.user.idp_username }}
-        </p>
+                {{ vm.user.idp_username }}
+            </p>
 
-        <p class="md-body-1 ie11fixes">
-            <strong class="md-body-2">
-                Primary email:
-            </strong>
+            <p class="md-body-1 ie11fixes">
+                <strong class="md-body-2">
+                    Primary email:
+                </strong>
 
-            {{ vm.user.email }}
-        </p>
+                {{ vm.user.email }}
+            </p>
+        </div>
+    </md-list-item>
+
+    <md-divider></md-divider>
+
+    <md-list-item>
+        <div class="md-list-item-text">
+            <h3 class="md-display-1 avoid-text-button-overlap">
+                Password
+            </h3>
+        </div>
+
+        <md-button ng-href="#/change" class="md-secondary md-primary md-raised" id="change-btn">
+            Change
+        </md-button>
+    </md-list-item>
+
+    <md-list-item>
+        <div class="md-list-item-text">
+            <p class="md-body-1 ie11fixes">
+                <strong class="md-body-2">
+                    Last changed:
+                </strong>
+
+                {{ vm.user.password_meta.last_changed | date:'medium' }}
+            </p>
+
+            <p class="md-body-1 ie11fixes">
+                <strong class="md-body-2">
+                    Expires:
+                </strong>
+
+                {{ vm.user.password_meta.expires | date:'mediumDate' }}
+            </p>
+        </div>
     </md-list-item>
 
     <md-divider></md-divider>
 
     <md-list-item>
         <h3 class="md-display-1 avoid-text-button-overlap">
-            Password
+            2-step verification
         </h3>
+    </md-list-item>
 
-        <md-button ng-href="#/change" autofocus
-                   class="md-secondary md-primary md-raised"
-                   id="change-btn">
-            Change
+    <md-list-item>
+        <p class="md-list-item-text md-body-1">
+            After entering your password, you will be asked for a secondary verification.
+            <a ng-href="#/help">Learn more</a>
+        </p>
+    </md-list-item>
+
+    <md-list-item class="md-2-line">
+        <img src="images/usb-key.png" alt="Security key" class="md-avatar">
+
+        <div class="md-list-item-text">
+            <h3>Security key</h3>
+            <p>Get codes from a USB key</p>
+        </div>
+
+        <md-button ng-href="#/mfa/key" class="md-primary md-raised md-secondary">
+            Setup
         </md-button>
     </md-list-item>
 
-    <md-list-item layout="column" layout-align="center start">
-        <p class="md-body-1 ie11fixes">
-            <strong class="md-body-2">
-                Last changed:
-            </strong>
+    <md-list-item class="md-2-line">
+        <md-icon md-svg-src="images/totp-app.svg" class="md-avatar-icon"></md-icon>
 
-            {{ vm.user.password_meta.last_changed | date:'medium' }}
-        </p>
+        <div class="md-list-item-text">
+            <h3>App</h3>
+            <p>Get codes on mobile device</p>
+        </div>
 
-        <p class="md-body-1 ie11fixes">
-            <strong class="md-body-2">
-                Expires:
-            </strong>
+        <md-button ng-href="#/mfa/app" class="md-primary md-raised md-secondary">
+            Setup
+        </md-button>
+    </md-list-item>
 
-            {{ vm.user.password_meta.expires | date:'mediumDate' }}
-        </p>
+    <md-list-item class="md-2-line">
+        <md-icon md-svg-src="images/backup-codes.svg" class="md-avatar-icon"></md-icon>
+
+        <div class="md-list-item-text">
+            <h3>Backup codes</h3>
+            <p>Get printable codes</p>
+        </div>
+
+        <md-button ng-href="#/mfa/codes" class="md-primary md-raised md-secondary">
+            Create
+        </md-button>
     </md-list-item>
 
     <md-divider></md-divider>
@@ -61,14 +119,13 @@
             Recovery methods
         </h3>
 
-        <md-button ng-href="#/recovery-method/add"
-                   class="md-secondary md-primary md-raised" id="add-btn">
+        <md-button ng-href="#/recovery-method/add" class="md-secondary md-primary md-raised"
+                   id="add-btn">
             Add
         </md-button>
     </md-list-item>
 
-    <md-list-item layout="column" layout-align="center start"
-                  class="md-body-1">
+    <md-list-item layout="column" layout-align="center start" class="md-body-1">
         <p>
             Adding password recovery methods can help you reset your
             password if you ever forget it.
@@ -78,9 +135,7 @@
     <md-subheader class="md-no-sticky">Email</md-subheader>
 
     <md-list-item ng-repeat="_method in vm.method.emails">
-        <md-icon md-svg-src="images/md-icons/ic_email_24px.svg"
-                 class="md-avatar-icon">
-        </md-icon>
+        <md-icon md-svg-src="images/md-icons/ic_email_24px.svg" class="md-avatar-icon"></md-icon>
 
         <p class="md-body-1 avoid-text-icon-overlap">
             {{ _method.value }}
@@ -88,16 +143,12 @@
 
         <md-button ng-click="vm.delete(_method)" aria-label="Delete"
                    class="md-icon-button md-secondary">
-            <md-icon md-svg-src="images/md-icons/ic_delete_24px.svg">
-            </md-icon>
+            <md-icon md-svg-src="images/md-icons/ic_delete_24px.svg"></md-icon>
         </md-button>
     </md-list-item>
 
-    <md-list-item ng-if="vm.method.emails.length < 1"
-                  ng-href="#/recovery-method/add">
-        <md-icon md-svg-src="images/md-icons/ic_warning_24px.svg"
-                 class="md-avatar-icon">
-        </md-icon>
+    <md-list-item ng-if="vm.method.emails.length < 1" ng-href="#/recovery-method/add">
+        <md-icon md-svg-src="images/md-icons/ic_warning_24px.svg" class="md-avatar-icon"></md-icon>
 
         <p class="md-body-1 avoid-text-icon-overlap">
             Please consider adding at least one email.
@@ -109,24 +160,22 @@
             <span>
                 Phone
             </span>
-            
-            <md-button ng-href="#/help#phone" target="_blank"
-                       class="md-icon-button md-secondary" aria-label="Learn more">
+
+            <md-button ng-href="#/help#phone" target="_blank" class="md-icon-button md-secondary"
+                       aria-label="Learn more">
                 <md-icon md-svg-src="images/md-icons/ic_help_outline_24px.svg">
                     <md-tooltip md-direction="top">
                         <span>Learn more about how phones are used</span>
                     </md-tooltip>
                 </md-icon>
             </md-button>
-            
+
             <span flex></span>
         </div>
     </md-subheader>
 
     <md-list-item ng-repeat="_method in vm.method.phones">
-        <md-icon md-svg-src="images/md-icons/ic_phone_24px.svg"
-                 class="md-avatar-icon">
-        </md-icon>
+        <md-icon md-svg-src="images/md-icons/ic_phone_24px.svg" class="md-avatar-icon"></md-icon>
 
         <p class="md-body-1 avoid-text-icon-overlap">
             {{ _method.value}}
@@ -134,16 +183,12 @@
 
         <md-button ng-click="vm.delete(_method)" aria-label="Delete"
                    class="md-icon-button md-secondary">
-            <md-icon md-svg-src="images/md-icons/ic_delete_24px.svg">
-            </md-icon>
+            <md-icon md-svg-src="images/md-icons/ic_delete_24px.svg"></md-icon>
         </md-button>
     </md-list-item>
 
-    <md-list-item ng-if="vm.method.phones.length < 1"
-                  ng-href="#/recovery-method/add-phone">
-        <md-icon md-svg-src="images/md-icons/ic_warning_24px.svg"
-                 class="md-avatar-icon">
-        </md-icon>
+    <md-list-item ng-if="vm.method.phones.length < 1" ng-href="#/recovery-method/add-phone">
+        <md-icon md-svg-src="images/md-icons/ic_warning_24px.svg" class="md-avatar-icon"></md-icon>
 
         <p class="md-body-1 avoid-text-icon-overlap">
             Please consider adding at least one phone number.

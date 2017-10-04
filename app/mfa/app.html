@@ -1,0 +1,42 @@
+<section layout="column" layout-align="start start" class="md-body-1">
+    <h2 class="md-headline">
+        {{ title }}
+    </h2>
+
+    <h3 class="md-title">1. Download</h3>
+    <p>Download an app</p>
+
+
+    <h3 class="md-title">2. Connect</h3>
+    <p>Either scan or enter this code into your app</p>
+
+    <div layout="row" layout-align="center center" layout-padding>
+        <img src="{{ vm.mfa.data.imageUrl }}" alt="QR Code">
+
+        <p layout="column" layout-align="center center">
+            <strong class="md-body-2">Code:</strong>
+
+            <code>{{ vm.mfa.data.totpKey }}</code>
+        </p>
+    </div>
+
+    <h3 class="md-title">3. Verify</h3>
+    <p>Enter the code created by your app and click verify</p>
+
+    <form  ng-if="vm.mfa.data" layout="row" layout-align="start center" name="verifyForm">
+        <md-input-container>
+            <label for="tempPassword">Enter code</label>
+            <input ng-model="vm.tempPassword" required autofocus id="tempPassword" name="tempPassword">
+            <ng-messages for="verifyForm.tempPassword.$error" role="alert">
+                <ng-message when="required">
+                    Required
+                </ng-message>
+            </ng-messages>
+        </md-input-container>
+
+        <md-button ng-click="vm.verify()" class="md-primary md-raised" type="submit">
+            Verify
+        </md-button>
+    </form>
+</section>
+
