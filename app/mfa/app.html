@@ -10,13 +10,16 @@
     </p>
 
     <h3 class="md-title">2. Connect</h3>
-    <p>Either scan or enter this code into your app</p>
+    <p>Scan this QR code into your verification app</p>
 
     <div layout="row" layout-align="center center" layout-padding>
-        <img src="{{ vm.mfa.data.imageUrl }}" alt="QR Code">
+        <img ng-src="{{ vm.mfa.data.imageUrl }}" alt="QR Code">
 
         <p layout="column" layout-align="center center">
-            <strong class="md-body-2">Code:</strong>
+            <span>
+                <strong class="md-body-2">Can't scan the code?</strong>
+                Enter the following key into your verification app:
+            </span>
 
             <code>{{ vm.mfa.data.totpKey }}</code>
         </p>
