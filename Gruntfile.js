@@ -46,7 +46,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'wiredep',
-            'connect:livereload',
+            'connect:dev',
             'watch'
         ]);
     });
@@ -214,41 +214,26 @@ module.exports = function (grunt) {
         watch: {
             js: {
                 files: appConfig.app.files.js.all,
-                tasks: ['newer:jshint:appFiles'],
-                options: {
-                    livereload: '<%= connect.options.livereload %>'
-                }
+                tasks: ['newer:jshint:appFiles']
             },
             test: {
                 files: appConfig.app.files.spec,
                 tasks: ['newer:jshint:testFiles', 'test:app']
-            },
-            livereload: {
-                options: {
-                    livereload: '<%= connect.options.livereload %>'
-                },
-                files: [
-                    appConfig.app.files.html.all,
-                    appConfig.app.files.css,
-                    appConfig.app.files.images.full
-                ]
             }
         },
 
         connect: {
             options: {
                 port: 9000,
-                livereload: 35729
+                open: true
             },
-            livereload: {
+            dev: {
                 options: {
-                    open: true,
                     base: appConfig.app.root
                 }
             },
             dist: {
                 options: {
-                    open: true,
                     base: appConfig.dist.root
                 }
             }
