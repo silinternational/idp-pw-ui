@@ -16,7 +16,8 @@
             areYouSure: areYouSure,
             progress: progress,
             verify: verify,
-            noMethods: noMethods
+            noMethods: noMethods,
+            info: info
         };
 
         activate();
@@ -31,7 +32,7 @@
         function close() {
             $mdDialog.hide();
         }
-        
+
         function fail(summary, error) {
             $mdDialog.show({
                 templateUrl: 'dialog/failed-dialog.html',
@@ -130,6 +131,17 @@
                 templateUrl: 'dialog/noMethods-dialog.html',
                 controller: 'NoMethodsDialogController',
                 controllerAs: 'vm'
+            });
+        }
+
+        function info(message) {
+            $mdDialog.show({
+                templateUrl: 'dialog/info-dialog.html',
+                controller: 'InfoDialogController',
+                controllerAs: 'vm',
+                locals: {
+                    message: message
+                }
             });
         }
     }

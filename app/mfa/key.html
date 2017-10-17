@@ -1,5 +1,37 @@
-<section layout="column" layout-align="start start">
-    <h2 class="md-headline">
-        {{ title }}
-    </h2>
+<h2 class="md-headline">
+    {{ title }}
+</h2>
+
+<section ng-if="! vm.u2fIsSupported()" layout="column" layout-align="center center">
+    <h3 class="md-title" layout="row" layout-align="center center" layout-margin>
+        <md-icon md-svg-src="images/md-icons/ic_warning_24px.svg" class="md-icon md-warn"></md-icon>
+
+        <span>Unsupported in your current browser</span>
+    </h3>
+
+    <p class="md-body-1">
+        Please consider a more secure browser like
+        <a href="https://www.google.com/chrome/browser" target="_blank">
+            Google Chrome
+        </a>
+    </p>
+</section>
+
+<span ng-if="vm.u2fIsSupported()" ng-init="vm.createU2fConfig()"></span>
+
+<section ng-if="vm.mfa" layout="column" layout-align="start start">
+    <h3 class="md-title">Insert your key and click connect</h3>
+    <section ng-if="vm.mfa.data.challenge" layout="row" layout-align="center center" layout-fill>
+        <md-button ng-click="vm.register()" class="md-primary md-raised">
+            Connect
+        </md-button>
+    </section>
+</section>
+
+<span layout-padding layout-margin></span>
+
+<section layout="row" layout-align="center center">
+    <md-button ng-href="#/profile" class="md-primary md-raised">
+        Back to my profile
+    </md-button>
 </section>

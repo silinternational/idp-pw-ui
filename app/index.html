@@ -55,7 +55,7 @@
 
     <md-content ng-view layout="column" layout-align="start center"
                 layout-padding flex>
-        <p class="md-body-1">loading...</p>
+        <p class="md-body-1 md-padding">loading...</p>
     </md-content>
 </main>
 
@@ -75,8 +75,10 @@
 <!-- endbuild -->
 
 <!-- google's recaptcha script must be loaded AFTER the angular-recaptcha lib -->
-<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"
-        async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"></script>
+
+<!--TODO: need to figure out where to get this from going forward. -->
+<script src="https://demo.yubico.com/js/u2f-api.js"></script>
 
 <!-- build:js scripts/password.env.js -->
 <!-- must appear before any files that rely on its config's and remain
@@ -116,6 +118,7 @@
 <script src="dialog/areYouSureDialog.controller.js"></script>
 <script src="dialog/verifyResetDialog.controller.js"></script>
 <script src="dialog/noMethodsDialog.controller.js"></script>
+<script src="dialog/infoDialog.controller.js"></script>
 <script src="auth/auth.module.js"></script>
 <script src="auth/user.service.js"></script>
 <script src="auth/auth.directive.js"></script>
@@ -157,6 +160,7 @@
 <script src="profile/profile.controller.js"></script>
 <script src="mfa/mfa.module.js"></script>
 <script src="mfa/mfa.route.js"></script>
+<script src="mfa/u2f.service.js"></script>
 <script src="mfa/key.controller.js"></script>
 <script src="mfa/app.controller.js"></script>
 <script src="mfa/codes.controller.js"></script>

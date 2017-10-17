@@ -1,8 +1,8 @@
-<section layout="column" layout-align="start start">
-    <h2 class="md-headline">
-        {{ title }}
-    </h2>
+<h2 class="md-headline">
+    {{ title }}
+</h2>
 
+<section layout="column" layout-align="start start">
     <p class="md-body-1">
         Backup codes should be treated with the same level of attention as any password.
         <strong class="md-body-2">Each code may only be used once.</strong>
@@ -13,7 +13,7 @@
     <md-card-content>
         <!--TODO: > 15 codes starts to look bad...ng-style with a derived max-height didn't work as easily as hoped, needs more thought to get this one right for any number of codes.  Card's width is fixed so calculation needs to force 3 columns in order to stay in card.-->
         <p layout="column" layout-align="center center" layout-wrap style="max-height: 6em">
-            <code ng-repeat="_code in vm.mfa.data" style="padding: 0 1em 0 1em">
+            <code ng-repeat="_code in vm.mfa.data" style="padding: 0 1em 0 1em"> <!-- TODO: move this styling external -->
                 {{ _code }}
             </code>
         </p>

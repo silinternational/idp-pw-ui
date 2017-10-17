@@ -10,6 +10,7 @@
 
         vm.mfa = {};
         vm.tempPassword = '';
+
         vm.verify = verify;
 
         activate();
@@ -25,14 +26,15 @@
                 .post('mfa', {
                     type: 'totp'
                 })
-                .then(created, failedCreation)
-                .finally(dialogService.close);
+                .then(created, failedCreation);
 
             dialogService.progress();
         }
 
         function created(response) {
             vm.mfa = response.data;
+
+            dialogService.close();
         }
 
         function failedCreation(response) {

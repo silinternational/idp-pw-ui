@@ -24,7 +24,7 @@
                     type: 'backupcode'
                 })
                 .then(created, failed)
-                .finally(dialogService.close);
+                .finally(dialogService.close); //TODO: dialog shouldn't automatically close on failure.
 
             dialogService.progress();
         }
