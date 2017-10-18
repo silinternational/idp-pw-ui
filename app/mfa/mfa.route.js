@@ -12,17 +12,14 @@
               templateUrl: 'mfa/key.html',
               controller: 'KeyController',
               controllerAs: 'vm',
-              resolve : {
-                  u2fService: 'u2fService'
-              }
-              //TODO: needs to be protected.
+              protected: true
           })
           .when('/mfa/app', {
               title: 'Mobile application setup',
               templateUrl: 'mfa/app.html',
               controller: 'AppController',
-              controllerAs: 'vm'
-              //TODO: needs to be protected.
+              controllerAs: 'vm',
+              protected: true
           })
           .when('/mfa/codes', {
               title: 'Backup codes',
