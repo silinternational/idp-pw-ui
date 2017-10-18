@@ -10,8 +10,10 @@
 
         vm.mfa = {};
         vm.tempPassword = '';
+        vm.showQrCode = true;
 
         vm.verify = verify;
+        vm.toggleQrCode = toggleQrCode;
 
         activate();
 
@@ -60,6 +62,10 @@
         function failedVerification(response) {
             dialogService
                 .fail('That code was not correct, please try again.', response.data);
+        }
+
+        function toggleQrCode() {
+            vm.showQrCode = ! vm.showQrCode;
         }
     }
 })();

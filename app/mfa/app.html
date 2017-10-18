@@ -12,19 +12,21 @@
 
 <h3 class="md-title" layout="column" layout-align="center center">
     2. Connect
-    <span class="md-body-1">Scan this QR code into your verification app</span>
+   <span ng-if="vm.showQrCode" class="md-body-1">
+       Scan this QR code into your verification app
+   </span>
+   <span ng-if="! vm.showQrCode" class="md-body-1">
+       Enter the following key into your verification app
+   </span>
 </h3>
 
-<img ng-src="{{ vm.mfa.data.imageUrl }}" ng-if="showQr" alt="QR Code">
-<p ng-if="showQr" layout="column" layout-align="center center" class="md-body-1">
-    Enter the following key into your verification app:
-    <code>{{ vm.mfa.data.totpKey }}</code>
-</p>
-<p layout="row" layout-align="end start">
-    <a class="md-caption">Can't scan the code?</a>
-</p>
+<img ng-if="vm.showQrCode" ng-src="{{ vm.mfa.data.imageUrl }}" class="md-whiteframe-3dp"
+     alt="QR Code">
+<code ng-if="! vm.showQrCode" class="md-whiteframe-3dp md-padding">{{ vm.mfa.data.totpKey }}</code>
 
-
+<md-button ng-click="vm.toggleQrCode()" class="md-button md-warn">
+    {{ vm.showQrCode ? "Can't scan the code?" : 'Try to scan again?'; }}
+</md-button>
 
 <h3 class="md-title" layout="column" layout-align="center center">
     3. Verify
