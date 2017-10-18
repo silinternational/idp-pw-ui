@@ -27,7 +27,6 @@
             // when u2f is supported in browser, the callback will be called no matter what.
             u2f.sign('', '', [], function () {
                 available = true;
-                console.info('u2f IS available');
             });
         }
 
