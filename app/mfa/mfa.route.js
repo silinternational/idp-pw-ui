@@ -21,10 +21,10 @@
               controllerAs: 'vm',
               protected: true
           })
-          .when('/mfa/codes', {
+          .when('/mfa/backup-codes', {
               title: 'Backup codes',
-              templateUrl: 'mfa/codes.html',
-              controller: 'CodesController',
+              templateUrl: 'mfa/backup-codes.html',
+              controller: 'BackupCodesController',
               controllerAs: 'vm',
               protected: true
           });

@@ -3,12 +3,12 @@
 
     angular
       .module('password.mfa')
-      .controller('CodesController', CodesController);
+      .controller('BackupCodesController', BackupCodesController);
 
-    function CodesController(dataService, dialogService) {
+    function BackupCodesController(dataService, dialogService) {
         var vm = this;
 
-        vm.mfa = {};
+        vm.mfa = null;
 
         activate();
 
@@ -23,14 +23,15 @@
                 .post('mfa', {
                     type: 'backupcode'
                 })
-                .then(created, failed)
-                .finally(dialogService.close); //TODO: dialog shouldn't automatically close on failure.
+                .then(created, failed);
 
             dialogService.progress();
         }
 
         function created(response) {
             vm.mfa = response.data;
+
+            dialogService.close();
         }
 
         function failed(response) {
