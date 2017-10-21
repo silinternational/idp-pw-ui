@@ -19,8 +19,7 @@
             Download
         </a>
 
-        <!--TODO: review https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Interact_with_the_clipboard, also check out https://clipboardjs.com or http://sachinchoolur.github.io/ngclipboard/-->
-        <md-button ng-disabled="true" class="md-primary" title="Not implemented yet">
+        <md-button class="md-primary" pw-clipboard-copy="{{ vm.codes.join() }}">
             Copy
         </md-button>
     </md-card-actions>
