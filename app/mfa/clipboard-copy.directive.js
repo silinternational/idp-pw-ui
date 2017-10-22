@@ -22,7 +22,7 @@
                 el.on('click', function() {
                     textarea.select();
                     document.execCommand('copy');
-                    dialogService.info('Copied!');
+                    dialogService.info('Your codes have now been copied to your clipboard.');
                 })
             }
         };
