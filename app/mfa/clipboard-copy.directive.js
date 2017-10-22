@@ -8,23 +8,40 @@
     function pwClipboardCopy(dialogService) {
         return {
             restrict: 'A',
-            link: function (scope, el, attrs) {
-                var textarea = document.createElement('textarea');
+            link: function (scope, button, attrs) {
+                var textarea = createTextareaOutOfSight(button);
 
-                textarea.style.position = 'absolute';
-                textarea.style.right = '100%';
-                el.append(textarea);
+                attrs.$observe('pwClipboardCopy', insertCodes(textarea));
 
-                attrs.$observe('pwClipboardCopy', function(value) {
-                    textarea.value = value;
-                });
-
-                el.on('click', function() {
-                    textarea.select();
-                    document.execCommand('copy');
-                    dialogService.info('Your codes have now been copied to your clipboard.');
-                })
+                button.on('click', copyCodesToClipboard(textarea));
             }
         };
+
+        function createTextareaOutOfSight(button) {
+            var textarea = document.createElement('textarea');
+
+            textarea.style.position = 'absolute';
+            textarea.style.right = '100%';
+
+            button.append(textarea);
+
+            return textarea;
+        }
+
+        function insertCodes(textarea) {
+            return function(value) {
+                textarea.value = value;
+            };
+        }
+
+        function copyCodesToClipboard(textarea) {
+            return function() {
+                textarea.select();
+
+                document.execCommand('copy');
+
+                dialogService.info('Your codes have now been copied to your clipboard.');
+            };
+        }
     }
 })();
