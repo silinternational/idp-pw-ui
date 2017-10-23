@@ -24,7 +24,7 @@
 
             vm.codes = vm.codes || [];
 
-            vm.calculateMaxHeight =  calculateMaxHeight;
+            vm.calculateMaxHeight = calculateMaxHeight;
 
             activate();
 
