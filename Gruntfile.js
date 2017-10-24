@@ -77,7 +77,8 @@ module.exports = function (grunt) {
                 js: {
                     all: [
                         '<%= passwordConfig.app.root %>/*.js',
-                        '<%= passwordConfig.app.root %>/!(bower_components)/**/*.js'
+                        '<%= passwordConfig.app.root %>/!(bower_components)/**/*.js',
+                        '! <%= passwordConfig.app.root %>/mfa/u2f-api.js'
                     ],
                     modules: [
                         '<%= passwordConfig.app.root %>/*.module.js',
