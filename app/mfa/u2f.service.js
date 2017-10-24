@@ -1,12 +1,16 @@
-/*global u2f*/ //TODO: currently coming from https://demo.yubico.com/js/u2f-api.js
 (function () {
     'use strict';
 
     angular
       .module('password.mfa')
-      .factory('u2fService', u2fService);
+        .factory('u2f', config)
+        .factory('u2fService', u2fService);
 
-    function u2fService($q, $location, bowser) {
+    function config($window) {
+        return $window.u2f;
+    }
+
+    function u2fService($q, $location, bowser, u2f) {
         var service = {
                 available: false,
                 register: register
@@ -32,7 +36,6 @@
             var deferred = $q.defer(),
                 appId = challenge.appId || $location.protocol() + '://' + $location.host();
 
-            //TODO: put u2f in DI
             u2f.register(appId, [challenge], [], handleKeyResponse);
 
             return deferred.promise;

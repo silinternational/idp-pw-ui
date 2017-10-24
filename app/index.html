@@ -80,8 +80,9 @@
 <!-- google's recaptcha script must be loaded AFTER the angular-recaptcha lib -->
 <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"></script>
 
-<!--TODO: need to figure out where to get this from going forward. -->
-<script src="https://demo.yubico.com/js/u2f-api.js"></script>
+<!-- build:js scripts/u2f-api.js -->
+<script src="mfa/u2f-api.js"></script>
+<!-- endbuild -->
 
 <!-- build:js scripts/password.env.js -->
 <!-- must appear before any files that rely on its config's and remain
