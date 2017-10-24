@@ -9,8 +9,8 @@
         var vm = this;
 
         vm.mfa = null;
+        vm.u2fIsSupported = u2fService.available;
 
-        vm.u2fIsSupported = u2fService.isAvailable;
         vm.createU2fConfig = createU2fConfig;
         vm.register = register;
 

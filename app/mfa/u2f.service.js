@@ -6,10 +6,9 @@
       .module('password.mfa')
       .factory('u2fService', u2fService);
 
-    function u2fService($q, $location) {
-        var available = false,
-            service = {
-                isAvailable: isAvailable,
+    function u2fService($q, $location, bowser) {
+        var service = {
+                available: false,
                 register: register
             };
 
@@ -24,20 +23,16 @@
         }
 
         function sniffFeature() {
-            // when u2f is supported in browser, the callback will be called no matter what.
-            u2f.sign('', '', [], function () {
-                available = true;
-            });
-        }
-
-        function isAvailable() {
-            return available;
+            service.available = (bowser.chrome  && bowser.version >= 41) ||
+                                (bowser.firefox && bowser.version >= 48) ||
+                                (bowser.opera   && bowser.version >= 39);
         }
 
         function register(challenge) {
             var deferred = $q.defer(),
                 appId = challenge.appId || $location.protocol() + '://' + $location.host();
 
+            //TODO: put u2f in DI
             u2f.register(appId, [challenge], [], handleKeyResponse);
 
             return deferred.promise;

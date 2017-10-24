@@ -2,7 +2,7 @@
     {{ title }}
 </h2>
 
-<section ng-if="! vm.u2fIsSupported()" layout="column" layout-align="center center">
+<section ng-if="! vm.u2fIsSupported" layout="column" layout-align="center center">
     <h3 class="md-title" layout="row" layout-align="center center" layout-margin>
         <md-icon md-svg-src="images/md-icons/ic_warning_24px.svg" class="md-icon md-warn"></md-icon>
 
@@ -17,7 +17,7 @@
     </p>
 </section>
 
-<span ng-if="vm.u2fIsSupported()" ng-init="vm.createU2fConfig()"></span>
+<span ng-if="vm.u2fIsSupported" ng-init="vm.createU2fConfig()"></span>
 
 <section ng-if="vm.mfa" layout="column" layout-align="start start">
     <h3 class="md-title">Insert your key and click connect</h3>
