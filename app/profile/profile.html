@@ -78,10 +78,20 @@
         <div class="md-list-item-text">
             <h3>Security key</h3>
             <p>Get codes from a USB key</p>
+            <span ng-if="vm.mfa.u2f[0].last_used_utc" class="md-caption">
+                Last used: {{ vm.mfa.u2f[0].last_used_utc | date:'mediumDate' }}
+            </span>
         </div>
 
-        <md-button ng-href="#/mfa/key" class="md-primary md-raised md-secondary">
+        <md-button ng-if="vm.mfa.u2f.length < 1" ng-href="#/mfa/key"
+                   aria-label="Set up security key"
+                   class="md-primary md-raised md-secondary">
             Setup
+        </md-button>
+        <md-button ng-if="vm.mfa.u2f.length > 0" class="md-warn md-raised md-secondary"
+                   aria-label="Remove security key"
+                   ng-click="vm.remove('mfa/' + vm.mfa.u2f[0].id)">
+            Remove
         </md-button>
     </md-list-item>
 
@@ -91,23 +101,46 @@
         <div class="md-list-item-text">
             <h3>App</h3>
             <p>Get codes on a mobile device</p>
+            <span ng-if="vm.mfa.totp[0].last_used_utc" class="md-caption">
+                Last used: {{ vm.mfa.totp[0].last_used_utc | date:'mediumDate' }}
+            </span>
         </div>
 
-        <md-button ng-href="#/mfa/app" class="md-primary md-raised md-secondary">
+        <md-button ng-if="vm.mfa.totp.length < 1" ng-href="#/mfa/app"
+                   aria-label="Set up verification app"
+                   class="md-primary md-raised md-secondary">
             Setup
+        </md-button>
+        <md-button ng-if="vm.mfa.totp.length > 0" class="md-warn md-raised md-secondary"
+                   aria-label="Remove verification app"
+                   ng-click="vm.remove('mfa/' + vm.mfa.totp[0].id)">
+            Remove
         </md-button>
     </md-list-item>
 
-    <md-list-item class="md-2-line">
+    <md-list-item class="md-3-line">
         <md-icon md-svg-src="images/backup-codes.svg" class="md-avatar-icon"></md-icon>
 
-        <div class="md-list-item-text">
+        <div class="md-list-item-text" layout="column">
             <h3>Backup codes</h3>
             <p>Get printable codes</p>
+            <span ng-if="vm.mfa.backupcode[0].last_used_utc" class="md-caption">
+                Last used: {{ vm.mfa.backupcode[0].last_used_utc | date:'mediumDate' }}
+            </span>
+            <span ng-if="vm.mfa.backupcode[0].data.count" class="md-caption">
+                Remaining: {{ vm.mfa.backupcode[0].data.count }}
+            </span>
         </div>
 
-        <md-button ng-href="#/mfa/backup-codes" class="md-primary md-raised md-secondary">
+        <md-button ng-if="vm.mfa.backupcode.length < 1" ng-href="#/mfa/backup-codes"
+                   aria-label="Create codes"
+                   class="md-primary md-raised md-secondary">
             Create
+        </md-button>
+        <md-button ng-if="vm.mfa.backupcode.length > 0" class="md-warn md-raised md-secondary"
+                   aria-label="Remove codes"
+                   ng-click="vm.remove('mfa/' + vm.mfa.backupcode[0].id)">
+            Remove
         </md-button>
     </md-list-item>
 
@@ -120,7 +153,7 @@
         </h3>
 
         <md-button ng-href="#/recovery-method/add" class="md-secondary md-primary md-raised"
-                   id="add-btn">
+                   id="add-btn" aria-label="Add a recovery method">
             Add
         </md-button>
     </md-list-item>
@@ -141,7 +174,7 @@
             {{ _method.value }}
         </p>
 
-        <md-button ng-click="vm.delete(_method)" aria-label="Delete"
+        <md-button ng-click="vm.remove('method/' + _method.id)" aria-label="Delete email method"
                    class="md-icon-button md-secondary">
             <md-icon md-svg-src="images/md-icons/ic_delete_24px.svg"></md-icon>
         </md-button>
@@ -181,7 +214,7 @@
             {{ _method.value}}
         </p>
 
-        <md-button ng-click="vm.delete(_method)" aria-label="Delete"
+        <md-button ng-click="vm.remove('method/' + _method.id)" aria-label="Delete phone method"
                    class="md-icon-button md-secondary">
             <md-icon md-svg-src="images/md-icons/ic_delete_24px.svg"></md-icon>
         </md-button>
@@ -195,3 +228,4 @@
         </p>
     </md-list-item>
 </md-list>
+
