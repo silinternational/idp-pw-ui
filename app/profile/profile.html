@@ -61,7 +61,7 @@
 
     <md-list-item>
         <h3 class="md-display-1 avoid-text-button-overlap">
-            2-step verification
+            2-Step Verification
         </h3>
     </md-list-item>
 
@@ -107,12 +107,12 @@
         </div>
 
         <md-button ng-if="vm.mfa.totp.length < 1" ng-href="#/mfa/app"
-                   aria-label="Set up verification app"
+                   aria-label="Set up smartphone app"
                    class="md-primary md-raised md-secondary">
             Setup
         </md-button>
         <md-button ng-if="vm.mfa.totp.length > 0" class="md-warn md-raised md-secondary"
-                   aria-label="Remove verification app"
+                   aria-label="Remove smartphone app"
                    ng-click="vm.remove('mfa/' + vm.mfa.totp[0].id)">
             Remove
         </md-button>

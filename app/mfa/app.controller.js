@@ -56,7 +56,7 @@
 
         function verified() {
             dialogService
-                .update('Congratulations, that is the correct code!  You have successfully set up your 2-step verification.');
+                .update('Congratulations, that is the correct code!  You have successfully set up your 2-Step Verification.');
         }
 
         function failedVerification(response) {
