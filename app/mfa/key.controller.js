@@ -42,7 +42,7 @@
                 .register(vm.mfa.data.challenge)
                 .then(verify, failed('Attempt to connect key failed.'));
 
-            dialogService.info('Your key is ready, go ahead and click it.');
+            dialogService.info('Your key is ready and should be blinking. Go ahead and press it.');
         }
 
         function verify(response) {
@@ -58,7 +58,7 @@
         function verified() {
             dialogService.close();
 
-            dialogService.update('Congratulations, your key is now connected to your account.');
+            dialogService.update('Congratulations, your key is now connected to your account.  You may either leave your security key plugged in or not, it is up to you.');
         }
 
         function failed(message) {
