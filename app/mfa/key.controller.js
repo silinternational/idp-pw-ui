@@ -42,7 +42,7 @@
                 .register(vm.mfa.data.challenge)
                 .then(verify, failed('Attempt to connect key failed.'));
 
-            dialogService.info('Your key is ready and should be blinking. Go ahead and press it.');
+            dialogService.infoWithNoButton('Your key is ready and should be blinking. Go ahead and press it.');
         }
 
         function verify(response) {

@@ -17,7 +17,8 @@
             progress: progress,
             verify: verify,
             noMethods: noMethods,
-            info: info
+            info: info,
+            infoWithNoButton: infoWithNoButton
         };
 
         activate();
@@ -137,6 +138,17 @@
         function info(message) {
             $mdDialog.show({
                 templateUrl: 'dialog/info-dialog.html',
+                controller: 'InfoDialogController',
+                controllerAs: 'vm',
+                locals: {
+                    message: message
+                }
+            });
+        }
+
+        function infoWithNoButton(message) {
+            $mdDialog.show({
+                templateUrl: 'dialog/info-dialog-no-button.html',
                 controller: 'InfoDialogController',
                 controllerAs: 'vm',
                 locals: {
