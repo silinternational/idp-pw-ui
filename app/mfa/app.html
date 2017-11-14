@@ -12,10 +12,10 @@
 <h3 class="md-title" layout="column" layout-align="center center">
     2. Connect
    <span ng-if="vm.showQrCode" class="md-body-1">
-       Scan this QR code into your smartphone app
+       Open your smartphone app and scan this QR code into it.
    </span>
    <span ng-if="! vm.showQrCode" class="md-body-1">
-       Enter the following key into your smartphone app
+       Open your smartphone app and enter the following code into it.
    </span>
 </h3>
 
@@ -29,7 +29,7 @@
 
 <h3 class="md-title" layout="column" layout-align="center center">
     3. Verify
-    <span class="md-body-1">Enter the code created by your app and click verify</span>
+    <span class="md-body-1">Enter the code created by your app and click verify.</span>
 </h3>
 <form ng-if="vm.mfa.data" layout="row" layout-align="start center" name="verifyForm">
     <md-input-container>
