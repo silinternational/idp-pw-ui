@@ -128,32 +128,29 @@
                 Last used: {{ vm.mfa.backupcode[0].last_used_utc | date:'mediumDate' }}
             </span>
             <span ng-if="vm.mfa.backupcode[0].data.count" class="md-caption">
-                Remaining: {{ vm.mfa.backupcode[0].data.count }}
+                Remaining: {{ vm.mfa.backupcode[0].data.count }} <a ng-click="vm.remove('mfa/' + vm.mfa.backupcode[0].id)">delete</a>
             </span>
         </div>
 
         <md-button ng-if="vm.mfa.backupcode.length < 1" ng-href="#/mfa/backup-codes"
-                   aria-label="Create codes"
-                   class="md-primary md-raised md-secondary">
+                   aria-label="Create codes" class="md-primary md-raised md-secondary">
             Create
         </md-button>
         <md-button ng-if="vm.mfa.backupcode.length > 0" class="md-warn md-raised md-secondary"
-                   aria-label="Remove codes" aria-label="Remove codes that were previously generated"
-                   ng-click="vm.remove('mfa/' + vm.mfa.backupcode[0].id)">
-            Disable
+                   ng-href="#/mfa/backup-codes" aria-label="Create new backup codes">
+            Create new
         </md-button>
     </md-list-item>
 
     <md-divider></md-divider>
 
     <md-list-item>
-        <h3 class="md-display-1 avoid-text-button-overlap"
-            id="methods"> <!-- id for fragment identifier used in nav menu -->
-            Recovery methods
+        <h3 class="md-display-1 avoid-text-button-overlap" id="methods"> <!-- id for fragment identifier used in nav menu -->
+            Password recovery methods
         </h3>
 
         <md-button ng-href="#/recovery-method/add" class="md-secondary md-primary md-raised"
-                   id="add-btn" aria-label="Add a recovery method">
+                   id="add-btn" aria-label="Add a password recovery method">
             Add
         </md-button>
     </md-list-item>
