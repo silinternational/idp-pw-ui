@@ -15,7 +15,7 @@
               protected: true
           })
           .when('/mfa/app', {
-              title: 'Mobile application setup',
+              title: 'Smartphone app setup',
               templateUrl: 'mfa/app.html',
               controller: 'AppController',
               controllerAs: 'vm',

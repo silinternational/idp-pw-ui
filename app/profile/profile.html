@@ -100,7 +100,7 @@
 
         <div class="md-list-item-text">
             <h3>Smartphone app</h3>
-            <p>Get codes on a mobile device</p>
+            <p>Get codes on your smartphone</p>
             <span ng-if="vm.mfa.totp[0].last_used_utc" class="md-caption">
                 Last used: {{ vm.mfa.totp[0].last_used_utc | date:'mediumDate' }}
             </span>
@@ -123,7 +123,7 @@
 
         <div class="md-list-item-text" layout="column">
             <h3>Backup codes</h3>
-            <p>Get printable codes</p>
+            <p>Get printable codes in case you do not have your phone or security key</p>
             <span ng-if="vm.mfa.backupcode[0].last_used_utc" class="md-caption">
                 Last used: {{ vm.mfa.backupcode[0].last_used_utc | date:'mediumDate' }}
             </span>
