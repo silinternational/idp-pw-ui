@@ -91,7 +91,7 @@
         <md-button ng-if="vm.mfa.u2f.length > 0" class="md-warn md-raised md-secondary"
                    aria-label="Remove security key"
                    ng-click="vm.remove('mfa/' + vm.mfa.u2f[0].id)">
-            Remove
+            Disable
         </md-button>
     </md-list-item>
 
@@ -114,7 +114,7 @@
         <md-button ng-if="vm.mfa.totp.length > 0" class="md-warn md-raised md-secondary"
                    aria-label="Remove smartphone app"
                    ng-click="vm.remove('mfa/' + vm.mfa.totp[0].id)">
-            Remove
+            Turn off
         </md-button>
     </md-list-item>
 
@@ -140,7 +140,7 @@
         <md-button ng-if="vm.mfa.backupcode.length > 0" class="md-warn md-raised md-secondary"
                    aria-label="Remove codes"
                    ng-click="vm.remove('mfa/' + vm.mfa.backupcode[0].id)">
-            Remove
+            Delete
         </md-button>
     </md-list-item>
 
