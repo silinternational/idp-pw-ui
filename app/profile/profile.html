@@ -128,7 +128,8 @@
                 Last used: {{ vm.mfa.backupcode[0].last_used_utc | date:'mediumDate' }}
             </span>
             <span ng-if="vm.mfa.backupcode[0].data.count" class="md-caption">
-                Remaining: {{ vm.mfa.backupcode[0].data.count }} <a ng-click="vm.remove('mfa/' + vm.mfa.backupcode[0].id)">delete</a>
+                Remaining: {{ vm.mfa.backupcode[0].data.count }}
+                <a href="" ng-click="vm.remove('mfa/' + vm.mfa.backupcode[0].id)">delete</a>
             </span>
         </div>
 
@@ -136,7 +137,7 @@
                    aria-label="Create codes" class="md-primary md-raised md-secondary">
             Create
         </md-button>
-        <md-button ng-if="vm.mfa.backupcode.length > 0" class="md-warn md-raised md-secondary"
+        <md-button ng-if="vm.mfa.backupcode.length > 0" class="md-raised md-secondary"
                    ng-href="#/mfa/backup-codes" aria-label="Create new backup codes">
             Create new
         </md-button>
