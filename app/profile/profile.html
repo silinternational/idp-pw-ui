@@ -89,7 +89,7 @@
             Setup
         </md-button>
         <md-button ng-if="vm.mfa.u2f.length > 0" class="md-warn md-raised md-secondary"
-                   aria-label="Remove security key"
+                   aria-label="Remove security key" title="Disable security key"
                    ng-click="vm.remove('mfa/' + vm.mfa.u2f[0].id)">
             Disable
         </md-button>
@@ -112,9 +112,9 @@
             Setup
         </md-button>
         <md-button ng-if="vm.mfa.totp.length > 0" class="md-warn md-raised md-secondary"
-                   aria-label="Remove smartphone app"
+                   aria-label="Remove smartphone app" title="Disable the smartphone app requirement on your account"
                    ng-click="vm.remove('mfa/' + vm.mfa.totp[0].id)">
-            Turn off
+            Disable
         </md-button>
     </md-list-item>
 
@@ -138,9 +138,9 @@
             Create
         </md-button>
         <md-button ng-if="vm.mfa.backupcode.length > 0" class="md-warn md-raised md-secondary"
-                   aria-label="Remove codes"
+                   aria-label="Remove codes" aria-label="Remove codes that were previously generated"
                    ng-click="vm.remove('mfa/' + vm.mfa.backupcode[0].id)">
-            Delete
+            Disable
         </md-button>
     </md-list-item>
 

@@ -40,7 +40,7 @@
         function register() {
             u2fService
                 .register(vm.mfa.data.challenge)
-                .then(verify, failed('Attempt to connect key failed.'));
+                .then(verify, failed('Attempt to connect key failed.  It may be inserted upside down.'));
 
             dialogService.infoWithNoButton('Your key is ready and should be blinking. Go ahead and press it.');
         }
