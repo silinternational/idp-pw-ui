@@ -22,7 +22,7 @@
               protected: true
           })
           .when('/mfa/backup-codes', {
-              title: 'Backup codes',
+              title: 'Printable codes',
               templateUrl: 'mfa/backup-codes.html',
               controller: 'BackupCodesController',
               controllerAs: 'vm',
