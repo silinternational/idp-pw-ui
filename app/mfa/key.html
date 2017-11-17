@@ -19,19 +19,30 @@
 
 <span ng-if="vm.u2fIsSupported" ng-init="vm.createU2fConfig()"></span>
 
-<section ng-if="vm.mfa" layout="column" layout-align="start start">
-    <h3 class="md-title">Insert your key and click connect</h3>
-    <section ng-if="vm.mfa.data.challenge" layout="row" layout-align="center center" layout-fill>
+<md-card ng-if="vm.mfa.data.challenge">
+    <md-card-header>
+        <md-card-header-text class="md-title">
+            Insert your key and click connect
+        </md-card-header-text>
+    </md-card-header>
+
+    <md-card-title layout="column" layout-align="center center">
+        <md-card-title-media layout="column" layout-align="center center">
+            <img src="images/security_key_laptop.gif" class="limit-width">
+        </md-card-title-media>
+    </md-card-title>
+
+    <md-card-actions layout="row" layout-align="end center">
         <md-button ng-click="vm.register()" class="md-primary md-raised">
             Connect
         </md-button>
-    </section>
-</section>
+    </md-card-actions>
+</md-card>
 
 <span layout-padding layout-margin></span>
 
 <section layout="row" layout-align="center center">
-    <md-button ng-href="#/profile" class="md-primary md-raised">
+    <md-button ng-href="#/profile" class="md-primary">
         Back to my profile
     </md-button>
 </section>
