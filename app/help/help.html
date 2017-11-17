@@ -1,109 +1,122 @@
-<section layout="column" layout-align="start start" class="md-body-1">
+<section layout="column" layout-align="start center">
     <h1 class="md-display-2" id="help-header">
         {{ title }}
     </h1>
-<!--TODO: There's a lot of information, probably warrants a menu or links -->
-    <h2 class="md-display-1" id="passwords">Passwords</h2>
 
-    <h3 class="md-title" id="change">How do I change my password?</h3>
-    <p>Go to <a ng-href="#/change">Change password</a>, log in and then enter a new password.</p>
+    <md-tabs md-dynamic-height md-border-bottom md-center-tabs md-selected="vm.selectedTab">
+        <md-tab label="Passwords" id="passwords">
+            <h3 class="md-title">How do I change my password?</h3>
+            <p class="md-body-1">Go to <a ng-href="#/change">Change password</a>, log in and then enter a new password.</p>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
 
-    <h3 class="md-title" id="reset">I forgot my password, how do I reset it?</h3>
-    <p>Go to <a ng-href="#/forgot">Forgot password</a> and enter your username or email address, check the box that says “I’m not a robot” and click continue. From here you will have multiple methods to reset your password:</p>
-    <ul>
-        <li>Click the link that was sent to your primary email address</li>
-        <li>Send the link to your supervisor or spouse if the options are available</li>
-        <li>Use one of your previously set up recovery methods</li>
-    </ul>
+            <h3 class="md-title">I forgot my password, how do I reset it?</h3>
+            <p class="md-body-1">Go to <a ng-href="#/forgot">Forgot password</a> and enter your username or email address, check the box that says “I’m not a robot” and click continue. From here you will have multiple methods to reset your password:</p>
+            <ul class="md-body-1">
+                <li>Click the link that was sent to your primary email address</li>
+                <li>Send the link to your supervisor or spouse if the options are available</li>
+                <li>Use one of your previously set up recovery methods</li>
+            </ul>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
 
-    <h3 class="md-title" id="recovery">What is a recovery method?</h3>
-    <p>Recovery methods are ways for you to verify your identity so that you can set a new password for your account. You are encouraged to set up either email or phone-based recovery methods. Then, in the event you forgot your password, you can use one of these recovery methods for resetting your password. You may either have a link sent by email, a reset code delivered as a text message or a voice call to your phone. You can manage your recovery methods by going to <a ng-href="#/profile">My profile</a>.</p>
+            <h3 class="md-title">What is a recovery method?</h3>
+            <p class="md-body-1">Recovery methods are ways for you to verify your identity so that you can set a new password for your account. You are encouraged to set up either email or phone-based recovery methods. Then, in the event you forgot your password, you can use one of these recovery methods for resetting your password. You may either have a link sent by email, a reset code delivered as a text message or a voice call to your phone. You can manage your recovery methods by going to <a ng-href="#/profile">My profile</a>.</p>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
 
-    <h3 class="md-title" id="phone">How is my phone used in the verification process?</h3>
-    <p>Verification codes are sent via SMS. If the code is not used within a few minutes a phone call will be made in an additional attempt to provide you with your verification code. While we will cover the cost of sending the text message and making the phone call, you may be expected to cover the costs of receiving the text or phone call if that is how your plan is set up.</p>
+            <h3 class="md-title">How is my phone used in the verification process?</h3>
+            <p class="md-body-1">Verification codes are sent via SMS. If the code is not used within a few minutes a phone call will be made in an additional attempt to provide you with your verification code. While we will cover the cost of sending the text message and making the phone call, you may be expected to cover the costs of receiving the text or phone call if that is how your plan is set up.</p>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
 
-    <h3 class="md-title" id="tips">Password tips</h3>
-    <p>Passwords are just like keys to your house and should be treated similarly. Below are some tips that will help you choose good passwords and keep your Insite account safe and secure.</p>
-    <ul>
-        <li><span class="md-body-2">Use a password manager.</span> Password managers such as <a href="https://lastpass.com" target="_blank">LastPass</a>, <a href="http://keepass.info" target="_blank">KeePass</a> and <a href="https://1password.com" target="_blank">1Password</a> all make it easy to generate highly complex passwords and save them for you so that you do not need to remember them all. A password manager makes it very easy to meet all the following recommendations.</li>
-        <li><span class="md-body-2">Use unique passwords.</span> Do not use the same password for more than one site. In the same way you do not use the same key for your house, car, office and safe deposit box, you do not want to use the same password for multiple sites.</li>
-        <li><span class="md-body-2">Use complex passwords.</span> Complex passwords contain a mix of words, numbers, special characters and both uppercase and lowercase letters. Do not make simple letter/number substitutions like a 3 for the letter E or ! for an I or L, these are common and easily cracked. Long, random sentences like “Big smelly frog lives 12 years!” are easy to remember and hard to crack.</li>
-        <li><span class="md-body-2">Do not use easy to find information.</span> Information like family names or special dates like birthdays or anniversaries is not always private and is so commonly used that hackers will use this information in their attempts to crack your password.</li>
-        <li><span class="md-body-2">Never share your password with anyone!</span></li>
-    </ul>
+            <h3 class="md-title">Password tips</h3>
+            <p class="md-body-1">Passwords are just like keys to your house and should be treated similarly. Below are some tips that will help you choose good passwords and keep your Insite account safe and secure.</p>
+            <ul class="md-body-1">
+                <li><span class="md-body-2">Use a password manager.</span> Password managers such as <a href="https://lastpass.com" target="_blank">LastPass</a>, <a href="http://keepass.info" target="_blank">KeePass</a> and <a href="https://1password.com" target="_blank">1Password</a> all make it easy to generate highly complex passwords and save them for you so that you do not need to remember them all. A password manager makes it very easy to meet all the following recommendations.</li>
+                <li><span class="md-body-2">Use unique passwords.</span> Do not use the same password for more than one site. In the same way you do not use the same key for your house, car, office and safe deposit box, you do not want to use the same password for multiple sites.</li>
+                <li><span class="md-body-2">Use complex passwords.</span> Complex passwords contain a mix of words, numbers, special characters and both uppercase and lowercase letters. Do not make simple letter/number substitutions like a 3 for the letter E or ! for an I or L, these are common and easily cracked. Long, random sentences like “Big smelly frog lives 12 years!” are easy to remember and hard to crack.</li>
+                <li><span class="md-body-2">Do not use easy to find information.</span> Information like family names or special dates like birthdays or anniversaries is not always private and is so commonly used that hackers will use this information in their attempts to crack your password.</li>
+                <li><span class="md-body-2">Never share your password with anyone!</span></li>
+            </ul>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
 
-    <h3 class="md-title" id="nojoy">I cannot login or change my password</h3>
-    <p>Here are some common reasons users experience errors when attempting to change or reset their password:</p>
-    <ul>
-        <li>The username is not correct.</li>
-        <li>The password is not correct.</li>
-        <li>The user has made too many attempts in a short period of time. In this case wait a few hours and try again.</li>
-        <li>The user account is missing important information such as an email address.</li>
-        <li>The user account is not fully provisioned, such is often the case for brand new accounts.</li>
-    </ul>
+            <h3 class="md-title">I cannot login or change my password</h3>
+            <p class="md-body-1">Here are some common reasons users experience errors when attempting to change or reset their password:</p>
+            <ul class="md-body-1">
+                <li>The username is not correct.</li>
+                <li>The password is not correct.</li>
+                <li>The user has made too many attempts in a short period of time. In this case wait a few hours and try again.</li>
+                <li>The user account is missing important information such as an email address.</li>
+                <li>The user account is not fully provisioned, such is often the case for brand new accounts.</li>
+            </ul>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
 
-    <h3 class="md-title" id="error">Why is the error I receive so unhelpful?</h3>
-    <p>We are intentionally vague in our error messages because we do not want to give away too much information to people or robots with malicious intent. Bad guys often use information from error messages to refine and improve their attacks and we do not want to help them with that process.</p>
+            <h3 class="md-title">Why is the error I receive so unhelpful?</h3>
+            <p class="md-body-1">We are intentionally vague in our error messages because we do not want to give away too much information to people or robots with malicious intent. Bad guys often use information from error messages to refine and improve their attacks and we do not want to help them with that process.</p>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
+        </md-tab>
+        <md-tab label="2-Step Verification" id="2sv">
+            <h3 class="md-title">It is easier than you think for someone to steal your password</h3>
+            <p class="md-body-1">Any of these common actions could put you at risk of having your password stolen:</p>
+            <ul class="md-body-1">
+                <li>Using the same password on more than one site</li>
+                <li>Downloading software from the Internet</li>
+                <li>Clicking on links in email messages</li>
+            </ul>
+            <p class="md-body-1">2-Step Verification can help keep bad guys out, even if they have your password.</p>
+            <p class="md-body-1">Login requires something you know and something you have. With 2-Step Verification, you will protect your account with something you know (your password) and something you have (your phone or Security Key).</p>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
 
-    <h2 class="md-display-1" id="2sv">2-Step Verification</h2>
+            <h3 class="md-title">Video introduction to 2-Step Verification</h3>
+            <p class="md-body-1">Duo Security Inc., a technology security company, has produced a short video that helps introduce the concept of 2-Step Verification. They use the term <em>Two-Factor Authentication</em> but it means the same thing as 2-Step Verification: <a ng-href="https://www.youtube.com/watch?v=0mvCeNsTa1g" target="_blank">https://www.youtube.com/watch?v=0mvCeNsTa1g</a></p>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
 
-    <h3 class="md-title" id="easy-target">It is easier than you think for someone to steal your password</h3>
-    <p>Any of these common actions could put you at risk of having your password stolen:</p>
-    <ul>
-        <li>Using the same password on more than one site</li>
-        <li>Downloading software from the Internet</li>
-        <li>Clicking on links in email messages</li>
-    </ul>
-    <p>2-Step Verification can help keep bad guys out, even if they have your password.</p>
-    <p>Login requires something you know and something you have. With 2-Step Verification, you will protect your account with something you know (your password) and something you have (your phone or Security Key).</p>
-
-    <h3 class="md-title" id="2sv-video">Video introduction to 2-Step Verification</h3>
-    <p>Duo Security Inc., a technology security company, has produced a short video that helps introduce the concept of 2-Step Verification. They use the term <em>Two-Factor Authentication</em> but it means the same thing as 2-Step Verification: <a ng-href="https://www.youtube.com/watch?v=0mvCeNsTa1g" target="_blank">https://www.youtube.com/watch?v=0mvCeNsTa1g</a></p>
-
-    <h3 class="md-title" id="how-2sv-works">How 2-Step Verification works</h3>
-    <p>Logging in to your account will work a little differently:</p>
-    <ol>
-        <li>You still enter your password as usual.</li>
-        <li>But with 2-Step Verification, <span class="md-body-2">you will also be asked for something else.</span>  You will either use a Smartphone app to get a unique code or, if you have a physical Security Key, you will insert it into your computer's USB port.</li>
-    </ol>
-    <p>During login, you can choose not to use 2-Step Verification again on that particular computer for a month at a time. From then on, that computer will <span class="md-body-2">only</span> ask for your password when you log in. You will still be safe because when you or anyone else tries to log in to your account from another computer, 2-Step Verification will be required. <em>Logging out will cause 2-Step Verification to be required again on that computer the next time you log in.</em></p>
-
-    <h3 class="md-title" id="2sv-protects">How 2-Step Verification protects you</h3>
-    <h4 class="md-subhead">An extra layer of security</h4>
-    <p>Single-step verification requires only one layer—a password—to access an account. With 2-Step Verification, if a bad guy hacks through your password layer, he will still need your smartphone or Security Key to get into your account.</p>
-
-    <h3 class="md-title" id="2sv-options">2-Step Verification options</h3>
-    <p>You have various options when configuring 2-Step Verification:</p>
-    <ol>
-        <li>
-            <span class="md-body-2">Security Key</span>—A security key is a physical USB device that you plug into your computer and when prompted, press a button to verify you have the key present with you. There are several factors to consider when deciding if a security key is best for you:
-            <ol>
-                <li>Security Keys require a modern browser such as Chrome or Firefox 58+. It does not work with less secure browsers like Internet Explorer, Edge, and Safari.</li>
-                <li>For use with a mobile device, a special security key is required that can be used with Bluetooth Low Energy or NFC.</li>
-                <li>With a security key you do not have to enter codes to log in, but you do need to carry the device with you anywhere you want to be able to log in.</li>
-                <li>We recommend YubiKey brand devices which start at $18. We use the FIDO U2F standard for security keys, so any brand that supports FIDO U2F should work.</li>
+            <h3 class="md-title">How 2-Step Verification works</h3>
+            <p class="md-body-1">Logging in to your account will work a little differently:</p>
+            <ol class="md-body-1">
+                <li>You still enter your password as usual.</li>
+                <li>But with 2-Step Verification, <span class="md-body-2">you will also be asked for something else.</span>  You will either use a Smartphone app to get a unique code or, if you have a physical Security Key, you will insert it into your computer's USB port.</li>
             </ol>
-        </li>
-        <li><span class="md-body-2">Smartphone app</span>—Apps like Authy (recommended) and Google Authenticator use a common algorithm for generating codes that rotate every 30 seconds and are unique to you. We recommend Authy because it has the ability to set a master password for backing up all the accounts you add to it. This is helpful if you need to replace your phone as it allows you to restore your accounts by entering the master password on a new device. These apps are free and designed to be easy to use.</li>
-        <li><span class="md-body-2">Backup codes</span>—You can generate up to 10 one-time use codes as a backup option for times when your phone or security key is unavailable. A new set of these can be regenerated when needed.</li>
-    </ol>
+            <p class="md-body-1">During login, you can choose not to use 2-Step Verification again on that particular computer for a month at a time. From then on, that computer will <span class="md-body-2">only</span> ask for your password when you log in. You will still be safe because when you or anyone else tries to log in to your account from another computer, 2-Step Verification will be required. <em>Logging out will cause 2-Step Verification to be required again on that computer the next time you log in.</em></p>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
 
-    <h3 class="md-title" id="2sv-tips">2-Step Verification tips</h3>
-    <p>The following tips can be helpful when using 2-Step Verification:</p>
-    <ul>
-        <li>Set up multiple options. If you are using a Security Key, also configure a Smartphone app in case you lose your key.</li>
-        <li>Download backup codes and keep them in a safe place.</li>
-        <li>Use an app that can back up your accounts. Some Smartphone apps like Authy allow you to set a master password that is used to encrypt/decrypt your accounts so that your data can be stored on their server. Then using that password you can access your unique 2-Step Verification login codes from more than one device.</li>
-        <li>2-Step Verification is also sometimes referred to as Two-Factor Authentication (2FA) or Multi-Factor Authentication (MFA). These all refer to the same concept and can be considered synonymous.</li>
-    </ul>
+            <h3 class="md-title">How 2-Step Verification protects you</h3>
+            <h4 class="md-subhead">An extra layer of security</h4>
+            <p class="md-body-1">Single-step verification requires only one layer—a password—to access an account. With 2-Step Verification, if a bad guy hacks through your password layer, he will still need your smartphone or Security Key to get into your account.</p>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
 
-    <section class="pw-bottom-bumper">
-        <h3 class="md-title" id="support">Getting support</h3>
-        <p>If you are experiencing problems with this system and need further support or would like to provide feedback about your experience, please use the information below:</p>
+            <h3 class="md-title">2-Step Verification options</h3>
+            <p class="md-body-1">You have various options when configuring 2-Step Verification:</p>
+            <ol class="md-body-1">
+                <li>
+                    <span class="md-body-2">Security Key</span>—A security key is a physical USB device that you plug into your computer and when prompted, press a button to verify you have the key present with you. There are several factors to consider when deciding if a security key is best for you:
+                    <ol>
+                        <li>Security Keys require a modern browser such as Chrome or Firefox 58+. It does not work with less secure browsers like Internet Explorer, Edge, and Safari.</li>
+                        <li>For use with a mobile device, a special security key is required that can be used with Bluetooth Low Energy or NFC.</li>
+                        <li>With a security key you do not have to enter codes to log in, but you do need to carry the device with you anywhere you want to be able to log in.</li>
+                        <li>We recommend YubiKey brand devices which start at $18. We use the FIDO U2F standard for security keys, so any brand that supports FIDO U2F should work.</li>
+                    </ol>
+                </li>
+                <li><span class="md-body-2">Smartphone app</span>—Apps like Authy (recommended) and Google Authenticator use a common algorithm for generating codes that rotate every 30 seconds and are unique to you. We recommend Authy because it has the ability to set a master password for backing up all the accounts you add to it. This is helpful if you need to replace your phone as it allows you to restore your accounts by entering the master password on a new device. These apps are free and designed to be easy to use.</li>
+                <li><span class="md-body-2">Backup codes</span>—You can generate up to 10 one-time use codes as a backup option for times when your phone or security key is unavailable. A new set of these can be regenerated when needed.</li>
+            </ol>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
 
-        <div ng-repeat="(_key, _value) in vm.config.support" flex-offset="5">
-            <span class="md-body-2">{{ _key | uppercase }}:</span>
-            <span>{{ _value }}</span>
-        </div>
-    </section>
+            <h3 class="md-title">2-Step Verification tips</h3>
+            <p class="md-body-1">The following tips can be helpful when using 2-Step Verification:</p>
+            <ul class="md-body-1">
+                <li>Set up multiple options. If you are using a Security Key, also configure a Smartphone app in case you lose your key.</li>
+                <li>Download backup codes and keep them in a safe place.</li>
+                <li>Use an app that can back up your accounts. Some Smartphone apps like Authy allow you to set a master password that is used to encrypt/decrypt your accounts so that your data can be stored on their server. Then using that password you can access your unique 2-Step Verification login codes from more than one device.</li>
+                <li>2-Step Verification is also sometimes referred to as Two-Factor Authentication (2FA) or Multi-Factor Authentication (MFA). These all refer to the same concept and can be considered synonymous.</li>
+            </ul>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
+        </md-tab>
+        <md-tab label="Getting support" id="support">
+            <p class="md-body-1">If you are experiencing problems with this system and need further support or would like to provide feedback about your experience, please use the information below:</p>
+
+            <div ng-repeat="(_key, _value) in vm.config.support" flex-offset="5" class="md-body-1">
+                <span class="md-body-2">{{ _key | uppercase }}:</span>
+                <span>{{ _value }}</span>
+            </div>
+            <a ng-click="vm.history.back()" class="md-caption" href>back</a>
+        </md-tab>
+    </md-tabs>
 </section>
