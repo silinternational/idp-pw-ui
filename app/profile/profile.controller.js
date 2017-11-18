@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-
+    //TODO: add a timer to this page, 3 mins maybe (check GA for resting duration), that will automatically log the user out.
     angular
       .module('password.profile')
       .controller('ProfileController', ProfileController);
@@ -28,7 +28,7 @@
 
         function activate() {
             userService
-              .getUser(true)
+              .getUser(/*true*/)
               .then(function (user) {
                   vm.user = user;
               });

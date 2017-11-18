@@ -10,8 +10,9 @@
         $rootScope.$on('$routeChangeError', defend);
 
         //////////////////////////////////////////////////////////////////
-        
+
         function protect(event, targetRoute) {
+            //TODO: should really default to true here, i.e., protect every page unless explicitly marked protected == false
             if (targetRoute.protected) {
                 targetRoute.resolve = targetRoute.resolve || {};
 
