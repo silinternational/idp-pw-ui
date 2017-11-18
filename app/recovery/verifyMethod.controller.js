@@ -43,13 +43,14 @@
         function resend() {
             dataService
               .put('method/' + $routeParams.methodId + '/resend')
-              .then(sent, failed)
-              .finally(dialogService.close);
+              .then(sent, failed);
 
             dialogService.progress();
         }
 
         function sent() {
+            dialogService.close();
+
             $location.url($location.url() + '?anotherSent="true"');
         }
 
