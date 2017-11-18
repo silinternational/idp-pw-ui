@@ -2,11 +2,11 @@
     <h2 class="md-headline">
         {{ title }}
     </h2>
-
+<!--TODO: left alignment is off between title and form, looks bad -->
     <form name="vm.addMethodForm" layout="column" class="md-body-1"
-          layout-margin autocomplete="off">        
+          layout-margin autocomplete="off">
         <p class="md-caption">
-            Please note you must have access to your email or phone 
+            Please note you must have access to your email or phone
             right now so we can send you a verification code.
         </p>
         <p>
@@ -85,7 +85,7 @@
 
             <span flex></span>
 
-            <md-button ng-if="vm.newRecoveryMethod.type === 'phone'" 
+            <md-button ng-if="vm.newRecoveryMethod.type === 'phone'"
                        ng-href="#/help#phone" target="_blank"
                        class="md-accent md-raised">
                 Learn more
