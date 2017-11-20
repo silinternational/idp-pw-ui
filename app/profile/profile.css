@@ -1,0 +1,16 @@
+/* not quite enough whitespace above these dividers */
+md-list-item + md-divider {
+    margin-top: 1em;
+}
+
+.bottom-pad-only {
+    padding-bottom: 1em;
+}
+
+.top-pad-only {
+    padding-top: 1em;
+}
+
+.no-left-margin {
+    margin-left: initial;
+}
