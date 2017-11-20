@@ -93,9 +93,10 @@
     <md-list-item class="md-3-line">
         <md-icon md-svg-src="images/backup-codes.svg" class="md-avatar-icon"></md-icon>
 
-        <div class="md-list-item-text" layout="column">
+        <div class="md-list-item-text" class="md-body-1">
             <h3>Printable codes</h3>
-            <p>Great as a backup when your phone or security key are not handy</p>
+            <p>Great as a backup when your phone or</p>
+            <p>security key are not handy</p>
             <span ng-if="vm.mfa.backupcode[0].last_used_utc" class="md-caption">
                 Last used: {{ vm.mfa.backupcode[0].last_used_utc | date:'mediumDate' }}
             </span>
@@ -117,17 +118,16 @@
 
     <md-divider></md-divider>
 
-    <md-list-item>
+    <md-list-item layout="column" layout-align="start start" class="reset-min-height">
         <h3 class="md-display-1">Password recovery methods</h3>
+        <p class="md-body-1">
+            In the event you have forgotten your password, having password recovery methods can help get you back into the systems you are trying to access.
+        </p>
     </md-list-item>
 
     <md-list-item>
-        <p class="md-body-1">
-            Adding password recovery methods can help you reset your password if you ever forget it.
-        </p>
-
         <md-button ng-href="#/recovery-method/add" class="md-secondary md-primary md-raised"
-                   id="add-btn" aria-label="Add a password recovery method">
+                   aria-label="Add a password recovery method">
             Add
         </md-button>
     </md-list-item>

@@ -14,3 +14,7 @@ md-list-item + md-divider {
 .no-left-margin {
     margin-left: initial;
 }
+
+md-list-item.reset-min-height::before {
+    min-height: initial;
+}
