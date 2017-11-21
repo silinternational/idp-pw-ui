@@ -67,10 +67,10 @@ module.exports = function (grunt) {
                     views: '<%= passwordConfig.app.root %>/!(bower_components)/**/*.html'
                 },
                 images: {
-                    full: '<%= passwordConfig.app.root %>/images/**/*.{png,svg}',
+                    full: '<%= passwordConfig.app.root %>/images/**/*.{png,svg,jpg}',
                     relative: [
                         '*.ico',
-                        'images/**/*.{png,svg}'
+                        'images/**/*.{png,svg,jpg}'
                     ]
                 },
                 index: '<%= passwordConfig.app.root %>/index.html',
@@ -114,7 +114,7 @@ module.exports = function (grunt) {
                 images: {
                     full: [
                         '<%= passwordConfig.dist.root %>/*.ico',
-                        '<%= passwordConfig.dist.root %>/images/**/*.{png,svg}'
+                        '<%= passwordConfig.dist.root %>/images/**/*.{png,svg,jpg}'
                     ],
                     relative: [
                         '*.ico',
@@ -340,7 +340,7 @@ module.exports = function (grunt) {
                 assetsDirs: appConfig.dist.root,
                 patterns: {
                     js: [[
-                        /["'=](\S+\.(?:svg|png)).?['"]?/g,
+                        /["'=](\S+\.(?:svg|png|jpg)).?['"]?/g,
                         'Update new img filenames (within js files)'
                     ]],
                     html: [[
