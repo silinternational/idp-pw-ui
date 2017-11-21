@@ -12,6 +12,7 @@ module.exports = function (grunt) {
         initialize('/images/logo.png');
         initialize('/password.env.js');
         initialize('/password.config.theme.js');
+        initialize('/app-id.json');
     });
 
     grunt.registerTask('test', 'tests the app in different states, e.g., app or dist forms', function (appState) {
