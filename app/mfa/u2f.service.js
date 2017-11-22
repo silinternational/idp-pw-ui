@@ -43,9 +43,11 @@
             //////////////////////////////////////////////////////////////
 
             function handleKeyResponse(response) {
-                return response.errorCode        ?
-                       deferred.reject(response) :
-                       deferred.resolve(response);
+                if (u2f.isU2fError(response)) {
+                    return deferred.reject(u2f.convertToCommonErrorFormat(response));
+                }
+
+                return deferred.resolve(response);
             }
         }
     }
