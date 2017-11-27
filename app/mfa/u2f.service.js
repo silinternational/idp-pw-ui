@@ -36,7 +36,7 @@
 
         function sniffFeature() {
             service.available = (bowser.chrome  && bowser.version >= 41) ||
-                                (bowser.firefox && bowser.version >= 48) ||
+                                (bowser.firefox && bowser.version >= 58) ||
                                 (bowser.opera   && bowser.version >= 39);
         }
 
