@@ -396,7 +396,7 @@ u2f.WrappedChromeRuntimePort_.prototype.addEventListener =
 u2f.WrappedAuthenticatorPort_ = function() {
     this.requestId_ = -1;
     this.requestObject_ = null;
-}
+};
 
 /**
  * Launch the Authenticator intent.
@@ -610,41 +610,6 @@ u2f.responseHandler_ = function(message) {
     var cb = u2f.callbackMap_[reqId];
     delete u2f.callbackMap_[reqId];
     cb(response['responseData']);
-};
-
-/**
- * @param {u2f.Error|u2f.SignResponse=} response
- */
-u2f.isU2fError = function (response) {
-    return !!response.errorCode;
-};
-
-/**
- * @param {u2f.Error=} error
- */
-u2f.convertToCommonErrorFormat = function (error) {
-    return {
-        data: {
-            name: Object.keys(u2f.ErrorCodes)[error.errorCode],
-            code: error.errorCode,
-            message: error.errorMessage || u2f.createMessage_(error.errorCode)
-        }
-    };
-};
-
-/**
- * https://developers.yubico.com/U2F/Libraries/Client_error_codes.html
- * @param {u2f.ErrorCodes} code
- * @private
- */
-u2f.createMessage_ = function (code) {
-    switch (code) {
-        case 1:
-        case 2:
-        case 3: return 'Something unknown went wrong with that request, unable to set this up for you at this time.';
-        case 4: return 'This key may already be registered on this site.';
-        case 5: return 'That took a little too long, check to make sure your key is inserted right-side up.';
-    }
 };
 
 /**

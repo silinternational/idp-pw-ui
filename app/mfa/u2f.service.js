@@ -13,7 +13,15 @@
     function u2fService($q, $location, bowser, u2f) {
         var service = {
                 available: false,
-                register: register
+                register: register,
+                ErrorCodes: u2f.ErrorCodes || {
+                    'OK': 0,
+                    'OTHER_ERROR': 1,
+                    'BAD_REQUEST': 2,
+                    'CONFIGURATION_UNSUPPORTED': 3,
+                    'DEVICE_INELIGIBLE': 4,
+                    'TIMEOUT': 5
+                }
             };
 
         activate();
@@ -43,12 +51,47 @@
             //////////////////////////////////////////////////////////////
 
             function handleKeyResponse(response) {
-                if (u2f.isU2fError(response)) {
-                    return deferred.reject(u2f.convertToCommonErrorFormat(response));
+                if (isU2fError(response)) {
+                    return deferred.reject(convertToCommonErrorFormat(response));
                 }
 
                 return deferred.resolve(response);
             }
+
+            /**
+             * @param {u2f.Error|u2f.SignResponse=} response
+             */
+            function isU2fError (response) {
+                return !!response.errorCode;
+            }
+
+            /**
+             * @param {u2f.Error=} error
+             */
+            function convertToCommonErrorFormat (error) {
+                return {
+                    data: {
+                        name: Object.keys(service.ErrorCodes)[error.errorCode],
+                        code: error.errorCode,
+                        message: error.errorMessage || createMessage(error.errorCode)
+                    }
+                };
+            }
+
+            /**
+             * https://developers.yubico.com/U2F/Libraries/Client_error_codes.html
+             * @param {u2f.ErrorCodes=} code
+             */
+            function createMessage (code) {
+                switch (code) {
+                    case 1:
+                    case 2:
+                    case 3: return 'Something unknown went wrong with that request, unable to set this up for you at this time.';
+                    case 4: return 'This key may already be registered on this site.';
+                    case 5: return 'That took a little too long, check to make sure your key is inserted right-side up.';
+                }
+            }
+
         }
     }
 })();
