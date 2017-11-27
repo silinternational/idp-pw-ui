@@ -26,7 +26,10 @@
     <link rel="stylesheet" href="change/password-requirements.css">
     <link rel="stylesheet" href="forgot/forgot.css">
     <link rel="stylesheet" href="help/help.css">
+    <link rel="stylesheet" href="profile/profile.css">
     <link rel="stylesheet" href="logo/logo.css">
+    <link rel="stylesheet" href="mfa/codes.css">
+    <link rel="stylesheet" href="mfa/print.css">
     <!-- endbuild -->
 </head>
 <!-- added layout here to ensure 'display: flex' so md-content will
@@ -55,7 +58,7 @@
 
     <md-content ng-view layout="column" layout-align="start center"
                 layout-padding flex>
-        <p class="md-body-1">loading...</p>
+        <p class="md-body-1 md-padding">loading...</p>
     </md-content>
 </main>
 
@@ -71,12 +74,16 @@
 <script src="bower_components/zxcvbn/dist/zxcvbn.js"></script>
 <script src="bower_components/angular-zxcvbn/dist/angular-zxcvbn.js"></script>
 <script src="bower_components/angularytics/dist/angularytics.min.js"></script>
+<script src="bower_components/bowser/src/bowser.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- google's recaptcha script must be loaded AFTER the angular-recaptcha lib -->
-<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"
-        async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit"></script>
+
+<!-- build:js scripts/u2f-api.js -->
+<script src="mfa/u2f-api.js"></script>
+<!-- endbuild -->
 
 <!-- build:js scripts/password.env.js -->
 <!-- must appear before any files that rely on its config's and remain
@@ -116,6 +123,7 @@
 <script src="dialog/areYouSureDialog.controller.js"></script>
 <script src="dialog/verifyResetDialog.controller.js"></script>
 <script src="dialog/noMethodsDialog.controller.js"></script>
+<script src="dialog/infoDialog.controller.js"></script>
 <script src="auth/auth.module.js"></script>
 <script src="auth/user.service.js"></script>
 <script src="auth/auth.directive.js"></script>
@@ -155,6 +163,17 @@
 <script src="profile/profile.module.js"></script>
 <script src="profile/profile.route.js"></script>
 <script src="profile/profile.controller.js"></script>
+<script src="mfa/mfa.module.js"></script>
+<script src="mfa/mfa.route.js"></script>
+<script src="mfa/bowser.service.js"></script>
+<script src="mfa/u2f.service.js"></script>
+<script src="mfa/key.controller.js"></script>
+<script src="mfa/app.controller.js"></script>
+<script src="mfa/allow-data-url.directive.js"></script>
+<script src="mfa/clipboard-copy.directive.js"></script>
+<script src="mfa/print.directive.js"></script>
+<script src="mfa/codes.directive.js"></script>
+<script src="mfa/backup-codes.controller.js"></script>
 <script src="reset/reset.module.js"></script>
 <script src="reset/reset.route.js"></script>
 <script src="reset/verifyReset.controller.js"></script>

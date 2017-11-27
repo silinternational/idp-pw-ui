@@ -1,3 +1,3 @@
-.pw-bottom-bumper {
-    padding-bottom: 10%;
+ol > li > ol {
+    list-style-type: lower-alpha;
 }

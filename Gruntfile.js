@@ -12,6 +12,7 @@ module.exports = function (grunt) {
         initialize('/images/logo.png');
         initialize('/password.env.js');
         initialize('/password.config.theme.js');
+        initialize('/app-id.json');
     });
 
     grunt.registerTask('test', 'tests the app in different states, e.g., app or dist forms', function (appState) {
@@ -46,7 +47,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'wiredep',
-            'connect:livereload',
+            'connect:dev',
             'watch'
         ]);
     });
@@ -67,17 +68,18 @@ module.exports = function (grunt) {
                     views: '<%= passwordConfig.app.root %>/!(bower_components)/**/*.html'
                 },
                 images: {
-                    full: '<%= passwordConfig.app.root %>/images/**/*.{png,svg}',
+                    full: '<%= passwordConfig.app.root %>/images/**/*.{png,svg,gif}',
                     relative: [
                         '*.ico',
-                        'images/**/*.{png,svg}'
+                        'images/**/*.{png,svg,gif}'
                     ]
                 },
                 index: '<%= passwordConfig.app.root %>/index.html',
                 js: {
                     all: [
                         '<%= passwordConfig.app.root %>/*.js',
-                        '<%= passwordConfig.app.root %>/!(bower_components)/**/*.js'
+                        '<%= passwordConfig.app.root %>/!(bower_components)/**/*.js',
+                        '! <%= passwordConfig.app.root %>/mfa/u2f-api.js'
                     ],
                     modules: [
                         '<%= passwordConfig.app.root %>/*.module.js',
@@ -113,7 +115,7 @@ module.exports = function (grunt) {
                 images: {
                     full: [
                         '<%= passwordConfig.dist.root %>/*.ico',
-                        '<%= passwordConfig.dist.root %>/images/**/*.{png,svg}'
+                        '<%= passwordConfig.dist.root %>/images/**/*.{png,svg,gif}'
                     ],
                     relative: [
                         '*.ico',
@@ -214,41 +216,26 @@ module.exports = function (grunt) {
         watch: {
             js: {
                 files: appConfig.app.files.js.all,
-                tasks: ['newer:jshint:appFiles'],
-                options: {
-                    livereload: '<%= connect.options.livereload %>'
-                }
+                tasks: ['newer:jshint:appFiles']
             },
             test: {
                 files: appConfig.app.files.spec,
                 tasks: ['newer:jshint:testFiles', 'test:app']
-            },
-            livereload: {
-                options: {
-                    livereload: '<%= connect.options.livereload %>'
-                },
-                files: [
-                    appConfig.app.files.html.all,
-                    appConfig.app.files.css,
-                    appConfig.app.files.images.full
-                ]
             }
         },
 
         connect: {
             options: {
                 port: 9000,
-                livereload: 35729
+                open: true
             },
-            livereload: {
+            dev: {
                 options: {
-                    open: true,
                     base: appConfig.app.root
                 }
             },
             dist: {
                 options: {
-                    open: true,
                     base: appConfig.dist.root
                 }
             }
@@ -354,7 +341,7 @@ module.exports = function (grunt) {
                 assetsDirs: appConfig.dist.root,
                 patterns: {
                     js: [[
-                        /["'=](\S+\.(?:svg|png)).?['"]?/g,
+                        /["'=](\S+\.(?:svg|png|gif)).?['"]?/g,
                         'Update new img filenames (within js files)'
                     ]],
                     html: [[

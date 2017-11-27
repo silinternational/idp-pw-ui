@@ -27,13 +27,14 @@
 
             verifyService
               .verifyReset($routeParams.resetId, vm.verificationCode)
-              .then(valid, invalid)
-              .finally(dialogService.close);
+              .then(valid, invalid);
 
             dialogService.progress();
         }
 
         function valid() {
+            dialogService.close();
+
             $location.url('change');
         }
 

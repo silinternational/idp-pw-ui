@@ -1,81 +1,58 @@
-<section layout="column">
+<section layout="column" class="start start">
     <h2 class="md-headline">
         {{ title }}
     </h2>
+    <p class="md-body-1">
+        Please note you must have access to your email or phone right now so we can send you a verification code.
+    </p>
 
-    <form name="vm.addMethodForm" layout="column" class="md-body-1"
-          layout-margin autocomplete="off">        
-        <p class="md-caption">
-            Please note you must have access to your email or phone 
-            right now so we can send you a verification code.
-        </p>
-        <p>
+    <form name="vm.addMethodForm" layout="column" autocomplete="off">
+        <p class="md-body-2">
             What kind of recovery method would you like to add?
         </p>
 
-        <md-radio-group ng-model="vm.newRecoveryMethod.type"
-                        ng-change="vm.newRecoveryMethod.value = null">
-            <md-radio-button value="email" class="md-primary">
-                Email
-            </md-radio-button>
-            <md-radio-button value="phone">
-                Phone
-            </md-radio-button>
-        </md-radio-group>
+        <md-input-container class="md-body-1">
+            <md-radio-group ng-model="vm.newRecoveryMethod.type"
+                            ng-change="vm.newRecoveryMethod.value = null" layout="row">
+                <md-radio-button value="email" class="md-primary">Email</md-radio-button>
+                <md-radio-button value="phone">Phone</md-radio-button>
+            </md-radio-group>
+        </md-input-container>
 
         <md-input-container ng-if="vm.newRecoveryMethod.type === 'email'">
             <label for="email">Email address</label>
-
-            <input type="email" ng-model="vm.newRecoveryMethod.value"
-                   autofocus required id="email" name="email"
-                   autocomplete="off">
-
+            <input type="email" ng-model="vm.newRecoveryMethod.value" autofocus required id="email"
+                   name="email" autocomplete="off">
             <ng-messages for="vm.addMethodForm.email.$error" role="alert"
-                         md-auto-hide="false"
                          ng-show="vm.addMethodForm.email.$touched">
-                <ng-message when="required">
-                    Required.
-                </ng-message>
-                <ng-message when="email">
-                    Not a valid email address.
-                </ng-message>
+                <ng-message when="required">Required.</ng-message>
+                <ng-message when="email">Not a valid email address.</ng-message>
             </ng-messages>
         </md-input-container>
 
-        <section ng-if="vm.newRecoveryMethod.type === 'phone'"
-                 layout-gt-xs="row" layout-align-gt-xs="start start">
-            <md-input-container>
+        <section ng-if="vm.newRecoveryMethod.type === 'phone'" layout-gt-xs="row"
+                 layout-align-gt-xs="start start">
+            <md-input-container class="md-body-1">
                 <label>Country code</label>
 
-                <md-select ng-model="vm.selectedCountry"
-                           ng-model-options="{trackBy: '$value.code'}">
-                    <md-option ng-repeat="_country in vm.countries"
-                               ng-value="_country">
+                <md-select ng-model="vm.selectedCountry" ng-model-options="{trackBy: '$value.code'}">
+                    <md-option ng-repeat="_country in vm.countries" ng-value="_country">
                         {{ _country.name }} (+{{ _country.prefix }})
                     </md-option>
                 </md-select>
             </md-input-container>
 
-            <!-- TODO: couldn't figure out a better way to keep the input
-                 from resizing when something is entered.  Width is the
-                 length of the longest phone number that could be input -->
-            <md-input-container style="width: 30ch">
+            <!-- TODO: couldn't figure out a better way to keep the input from resizing when something is entered.  Width is the length of the longest phone number that could be input -->
+            <md-input-container class="md-body-1" style="width: 30ch">
                 <label for="phone">Phone number</label>
-                <!-- min and maxlengths based upon
-                     https://en.wikipedia.org/wiki/E.164 -->
-                <input type="tel" ng-model="vm.newRecoveryMethod.value"
-                       required minlength="8" maxlength="14" id="phone"
-                       name="phone" autofocus autocomplete="off">
+                <!-- min and maxlengths based upon https://en.wikipedia.org/wiki/E.164 -->
+                <input type="tel" ng-model="vm.newRecoveryMethod.value"minlength="8" maxlength="14"
+                       required id="phone" name="phone" autofocus autocomplete="off">
 
-                <ng-messages for="vm.addMethodForm.phone.$error"
-                             role="alert" md-auto-hide="false"
+                <ng-messages for="vm.addMethodForm.phone.$error" role="alert"
                              ng-show="vm.addMethodForm.phone.$touched">
-                    <ng-message when="required">
-                        Required.
-                    </ng-message>
-                    <ng-message when-exp="['minlength', 'maxlength']">
-                        Invalid number.
-                    </ng-message>
+                    <ng-message when="required">Required.</ng-message>
+                    <ng-message when-exp="['minlength', 'maxlength']">Invalid number.</ng-message>
                 </ng-messages>
             </md-input-container>
         </section>
@@ -85,16 +62,15 @@
 
             <span flex></span>
 
-            <md-button ng-if="vm.newRecoveryMethod.type === 'phone'" 
-                       ng-href="#/help#phone" target="_blank"
-                       class="md-accent md-raised">
+            <md-button ng-if="vm.newRecoveryMethod.type === 'phone'" ng-href="#/help#phone"
+                       target="_blank" class="md-accent md-raised">
                 Learn more
             </md-button>
 
             <md-button ng-click="vm.newRecoveryMethod.type === 'phone' ?
                                  vm.addPhone()                         :
                                  vm.add(vm.newRecoveryMethod)"
-                       class="md-primary md-raised" id="add-btn">
+                       class="md-primary md-raised">
                 Send Code
             </md-button>
         </section>

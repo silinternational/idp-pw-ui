@@ -1,0 +1,57 @@
+<h2 class="md-headline">
+    2-Step Verification—{{ title }}
+</h2>
+
+<h3 class="md-title" layout="column" layout-align="center center">
+    1. Download
+    <span class="md-body-1">
+        Download a smartphone app, e.g., Google Authenticator or Authy, onto your mobile device.
+    </span>
+</h3>
+
+<h3 class="md-title" layout="column" layout-align="center center">
+    2. Connect
+   <span ng-if="vm.showQrCode" class="md-body-1">
+       Open your smartphone app and scan this QR code into it.
+   </span>
+   <span ng-if="! vm.showQrCode" class="md-body-1">
+       Open your smartphone app and enter the following code into it.
+   </span>
+</h3>
+
+<img ng-if="vm.showQrCode" ng-src="{{ vm.mfa.data.imageUrl }}" class="md-whiteframe-3dp"
+     alt="QR Code">
+<code ng-if="! vm.showQrCode" class="md-whiteframe-3dp md-padding">{{ vm.mfa.data.totpKey }}</code>
+
+<md-button ng-click="vm.toggleQrCode()" class="md-button md-warn">
+    {{ vm.showQrCode ? "Can't scan the code?" : 'Try to scan again?'; }}
+</md-button>
+
+<h3 class="md-title" layout="column" layout-align="center center">
+    3. Verify
+    <span class="md-body-1">Enter the code created by your app and click verify.</span>
+</h3>
+<form ng-if="vm.mfa.data" layout="row" layout-align="start center" name="verifyForm">
+    <md-input-container>
+        <label for="tempPassword">Enter code</label>
+        <input ng-model="vm.tempPassword" required autofocus id="tempPassword"
+               name="tempPassword">
+        <ng-messages for="verifyForm.tempPassword.$error" role="alert">
+            <ng-message when="required">
+                Required
+            </ng-message>
+        </ng-messages>
+    </md-input-container>
+
+    <md-button ng-click="vm.verify()" class="md-primary md-raised" type="submit">
+        Verify
+    </md-button>
+</form>
+
+<span layout-padding layout-margin></span>
+
+<section layout="row" layout-align="center center">
+    <md-button ng-href="#/profile" class="md-primary">
+        Back to my profile
+    </md-button>
+</section>

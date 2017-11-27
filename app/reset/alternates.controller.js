@@ -17,7 +17,7 @@
         vm.primary = [];
 
         vm.getHelp = getHelp;
-        
+
         activate();
 
         //////////////////////////////////////////////////////////////////
@@ -25,13 +25,14 @@
         function activate() {
             dataService
               .get('reset/' + $routeParams.resetId)
-              .then(retrievedMethods, failedToRetrieveMethods)
-              .finally(dialogService.close);
+              .then(retrievedMethods, failedToRetrieveMethods);
 
             dialogService.progress();
         }
 
         function retrievedMethods(response) {
+            dialogService.close();
+
             vm.allMethods = response.data.methods;
 
             vm.allMethods.forEach(separateTypes);

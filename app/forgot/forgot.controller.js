@@ -40,8 +40,7 @@
                   username: vm.username,
                   verification_token: recaptchaResponse
               })
-              .then(reset, failed)
-              .finally(dialogService.close);
+              .then(reset, failed);
 
             dialogService.progress();
         }

@@ -19,17 +19,20 @@
             verifyService
               .verifyReset($routeParams.resetId,
                            $routeParams.verificationCode)
-              .then(valid, invalid)
-              .finally(dialogService.close);
+              .then(valid, invalid);
 
             dialogService.progress();
         }
 
         function valid() {
+            dialogService.close();
+
             $location.url('change');
         }
 
         function invalid() {
+            dialogService.close();
+
             vm.verification = 'invalid';
         }
     }
