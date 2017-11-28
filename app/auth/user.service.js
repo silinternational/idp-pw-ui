@@ -24,28 +24,26 @@
         function activate() {
         }
 
-        function getUser(withRefresh) {
+        function getUser() {
             var deferred = $q.defer();
 
             dataService
-              .get('user/me', {
-                  cache: ! withRefresh
-              })
+              .get('user/me')
               .then(retrieved, failed);
 
             return deferred.promise;
 
             //////////////////////////////////////////////////////////////
-            
+
             function retrieved(response) {
                 var user = response.data;
-                
+
                 user.isAuthenticated = angular.isDefined(response
                                                            .data
                                                            .idp_username);
-                
+
                 authenticated = user.isAuthenticated;
-                
+
                 deferred.resolve(user);
             }
 
@@ -80,7 +78,7 @@
 
             tokenService.clear();
         }
-        
+
         function isAuthenticated() {
             return authenticated;
         }

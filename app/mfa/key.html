@@ -1,0 +1,44 @@
+<h2 class="md-headline">
+    2-Step Verification—{{ title }}
+</h2>
+
+<section ng-if="! vm.u2fIsSupported" layout="column" layout-align="center center">
+    <h3 class="md-title" layout="row" layout-align="center center" layout-margin>
+        <md-icon md-svg-src="images/md-icons/ic_warning_24px.svg" class="md-icon md-warn"></md-icon>
+
+        <span>Unsupported in your current browser</span>
+    </h3>
+
+    <p class="md-body-1">
+        Please consider a more secure browser like
+        <a href="https://www.google.com/chrome/browser" target="_blank">
+            Google Chrome
+        </a>
+    </p>
+</section>
+
+<span ng-if="vm.u2fIsSupported" ng-init="vm.createU2fConfig()"></span>
+
+<md-card ng-if="vm.mfa.data.challenge">
+    <md-card-header>
+        <md-card-header-text class="md-title">
+            Insert your key and click connect
+        </md-card-header-text>
+    </md-card-header>
+
+    <md-card-content layout="column" layout-align="center center">
+        <img src="images/security_key_laptop.gif">
+    </md-card-content>
+
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="vm.register()" class="md-primary">Connect</md-button>
+    </md-card-actions>
+</md-card>
+
+<span layout-padding layout-margin></span>
+
+<section layout="row" layout-align="center center">
+    <md-button ng-href="#/profile" class="md-primary">
+        Back to my profile
+    </md-button>
+</section>

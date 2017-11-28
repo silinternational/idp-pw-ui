@@ -1,0 +1,14 @@
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .pw-print {
+        position: absolute;
+        top: 0;
+        left: 10%;
+    }
+    .pw-print, .pw-print * {
+        visibility: visible;
+    }
+}

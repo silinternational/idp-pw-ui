@@ -41,14 +41,15 @@
             if (vm.addMethodForm.$valid) {
                 dataService
                   .post('method', newMethod)
-                  .then(added, failed)
-                  .finally(dialogService.close);
+                  .then(added, failed);
 
                 dialogService.progress();
             }
         }
 
         function added(response) {
+            dialogService.close();
+
             verify(response.data);
         }
 

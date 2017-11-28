@@ -14,6 +14,7 @@
           'password.recovery',
           'password.change',
           'password.profile',
+          'password.mfa',
           'password.reset',
           'password.help',
           'password.logo'

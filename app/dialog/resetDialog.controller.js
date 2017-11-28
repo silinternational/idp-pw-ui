@@ -35,6 +35,8 @@
             dataService
               .put('reset/' + vm.resetId + '/resend')
               .then(sent, failed);
+
+            dialogService.progress();
         }
 
         function sent(response) {
@@ -48,10 +50,10 @@
             dialogService
               .fail('Unable to resend verification.', response.data);
         }
-        
+
         function done() {
             dialogService.close();
-            
+
             $location.url('/');
         }
     }

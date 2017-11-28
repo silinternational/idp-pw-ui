@@ -1,0 +1,25 @@
+<md-card>
+    <md-card-content>
+        <p layout="column" layout-align="center center" layout-wrap
+           ng-style="vm.calculateMaxHeight(vm.codes)">
+            <code ng-repeat="_code in vm.codes">
+                {{ _code }}
+            </code>
+        </p>
+    </md-card-content>
+
+    <md-card-actions layout="row" layout-align="center center">
+        <md-button class="md-primary" pw-print="p[ng-style]">
+            Print
+        </md-button>
+
+        <a ng-href="data:text/plain,{{ vm.codes.join() }}" download="codes.txt" pw-allow-data-url
+           class="md-button md-primary">
+            Download
+        </a>
+
+        <md-button class="md-primary" pw-clipboard-copy="{{ vm.codes.join() }}">
+            Copy
+        </md-button>
+    </md-card-actions>
+</md-card>
