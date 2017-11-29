@@ -21,7 +21,7 @@
               controllerAs: 'vm',
               protected: true
           })
-          .when('/mfa/backup-codes', {
+          .when('/mfa/backup-codes/:recreate?', {
               title: 'Printable codes',
               templateUrl: 'mfa/backup-codes.html',
               controller: 'BackupCodesController',

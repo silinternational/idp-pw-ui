@@ -5,10 +5,11 @@
       .module('password.mfa')
       .controller('BackupCodesController', BackupCodesController);
 
-    function BackupCodesController(dataService, dialogService) {
+    function BackupCodesController(dataService, dialogService, $routeParams) {
         var vm = this;
 
         vm.mfa = null;
+        vm.hadPreviousCodes = $routeParams.recreate;
 
         activate();
 
