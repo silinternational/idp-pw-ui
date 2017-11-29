@@ -35,7 +35,7 @@
 
         function changed() {
             dialogService
-              .update('Password changed successfully, please wait 5-10 minutes before trying to login again.');
+              .update('Password changed successfully, you may log in immediately with your new password.');
 
             Angularytics.trackEvent('zxcvbn score', vm.strength.score);
         }
