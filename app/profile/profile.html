@@ -93,7 +93,7 @@
     <md-list-item class="md-3-line">
         <md-icon md-svg-src="images/backup-codes.svg" class="md-avatar-icon"></md-icon>
 
-        <div class="md-list-item-text" class="md-body-1">
+        <div class="md-list-item-text" class="md-body-1" layout="column">
             <h3>Printable codes</h3>
             <p>Great as a backup when your phone or</p>
             <p>security key are not handy</p>
@@ -111,7 +111,7 @@
             Create
         </md-button>
         <md-button ng-if="vm.mfa.backupcode.length > 0" class="md-primary md-raised md-secondary"
-                   ng-href="#/mfa/backup-codes" aria-label="Create new backup codes">
+                   ng-href="#/mfa/backup-codes/recreate" aria-label="Create new backup codes">
             Create new
         </md-button>
     </md-list-item>

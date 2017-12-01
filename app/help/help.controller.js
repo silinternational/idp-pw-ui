@@ -5,7 +5,7 @@
       .module('password.help')
       .controller('HelpController', HelpController);
 
-    function HelpController(config, $window, $location) {
+    function HelpController(config, $window, $location, $rootScope) {
         var vm = this;
 
         vm.config = config;
@@ -17,17 +17,18 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            checkForRequestedSection();
+            $rootScope.$on('$viewContentLoaded', checkForRequestedSection);
         }
 
         function checkForRequestedSection() {
-            document
-                .querySelectorAll('md-tab')
-                .forEach(function (tab, i) {
-                    if (tab.id === $location.hash()) {
-                        vm.selectedTab = i;
-                    }
-                });
+            // NodeList.forEach won't work on IE11
+            var tabs = Array.prototype.slice.call(document.querySelectorAll('md-tab'));
+
+            tabs.forEach(function (tab, i) {
+                if (tab.id === $location.hash()) {
+                    vm.selectedTab = i;
+                }
+            });
         }
     }
 })();

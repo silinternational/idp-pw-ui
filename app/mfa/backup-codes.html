@@ -2,6 +2,10 @@
     2-Step Verification—{{ title }}
 </h2>
 
+<em ng-if="vm.hadPreviousCodes" class="md-subhead">
+    You may discard your previous codes, they have been deleted.
+</em>
+
 <p class="md-body-1">
     Printable codes should be treated with the same level of attention as any password.
     <strong class="md-body-2">Each code may only be used once.</strong>

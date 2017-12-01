@@ -5,7 +5,7 @@
       .module('password.mfa')
       .directive('pwAllowDataUrl', pwAllowDataUrl);
 
-    function pwAllowDataUrl($timeout) {
+    function pwAllowDataUrl($timeout, bowser) {
         activate();
 
         return {
@@ -19,7 +19,16 @@
         }
 
         function monitorHref(scope, el, attrs) {
-            attrs.$observe('href', isMarkedUnsafe);
+            if (isDataUrlSupported()) {
+                attrs.$observe('href', isMarkedUnsafe);
+            } else {
+                el.attr('disabled', true);
+                el.attr('title', 'Not supported in this browser');
+            }
+        }
+
+        function isDataUrlSupported() {
+            return ! (bowser.msie || bowser.msedge);
         }
 
         function isMarkedUnsafe(value) {
