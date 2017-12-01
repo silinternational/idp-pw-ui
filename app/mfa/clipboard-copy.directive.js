@@ -40,7 +40,7 @@
 
                 document.execCommand('copy');
 
-                dialogService.info('Your codes have now been copied to your clipboard.');
+                dialogService.update('Your codes have now been copied to your clipboard.');
             };
         }
     }
