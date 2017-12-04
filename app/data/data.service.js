@@ -28,13 +28,11 @@
         }
 
         function put(url, data) {
-            return $http.put(buildFullyQualifiedUrl(url),
-                             data);
+            return $http.put(buildFullyQualifiedUrl(url), data);
         }
 
         function post(url, data) {
-            return $http.post(buildFullyQualifiedUrl(url),
-                              data);
+            return $http.post(buildFullyQualifiedUrl(url), data);
         }
 
         function remove(url) {
@@ -46,11 +44,7 @@
         }
 
         function buildFullyQualifiedUrl(url) {
-            if (isNotFullyQualifiedAlready(url)) {
-                return DATA_API_BASE_URL + url;
-            }
-
-            return url;
+            return isNotFullyQualifiedAlready(url) ? DATA_API_BASE_URL + url : url;
         }
 
         function isNotFullyQualifiedAlready(url) {
