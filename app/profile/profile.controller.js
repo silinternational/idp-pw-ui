@@ -5,7 +5,8 @@
       .module('password.profile')
       .controller('ProfileController', ProfileController);
 
-    function ProfileController(config, userService, dataService, dialogService, $route) {
+    function ProfileController(config, userService, dataService, dialogService, $route, $location,
+                               backupCodeService) {
         var vm = this;
 
         vm.user = null;
@@ -21,6 +22,8 @@
         };
 
         vm.remove = remove;
+        vm.createCodes = createCodes;
+        vm.recreateCodes = recreateCodes;
 
         activate();
 
@@ -28,7 +31,7 @@
 
         function activate() {
             userService
-              .getUser(/*true*/)
+              .getUser()
               .then(function (user) {
                   vm.user = user;
               });
@@ -86,14 +89,14 @@
         function remove(resource) {
             dialogService
                 .areYouSure('Would you like to remove this?')
-                .then(yes(resource));
+                .then(yesRemove(resource));
         }
 
-        function yes(resource) {
+        function yesRemove(resource) {
             return function deleteIt() {
                 dataService
                     .delete(resource)
-                    .then(deleted, failed);
+                    .then(deleted, failed('Unable to remove that for you.'));
 
                 dialogService.progress();
             };
@@ -105,9 +108,58 @@
             $route.reload();
         }
 
-        function failed(response) {
-            dialogService
-              .fail('Unable to remove that for you.', response.data);
+        function createCodes() {
+            if (hasNoMfaYet()) {
+                dialogService
+                    .areYouSure('This will enable 2-Step Verification on your account requiring you provide a printable code the next time you log in.  Would you still like to continue?')
+                    .then(yesContinue);
+            } else {
+                createBackupCodes('mfa/backup-codes');
+            }
+        }
+
+        function hasNoMfaYet() {
+            for (var type in vm.mfa) {
+                if (vm.mfa[type].length > 0) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function yesContinue() {
+            createBackupCodes('mfa/backup-codes');
+        }
+
+        function createBackupCodes(urlToNextPage) {
+            dataService
+                .post('mfa', {
+                    type: 'backupcode'
+                })
+                .then(created(urlToNextPage), failed('Attempt to create backup codes failed.'));
+
+            dialogService.progress();
+        }
+
+        function created(urlToNextPage) {
+            return function create(response) {
+                dialogService.close();
+
+                backupCodeService.codes = response.data.data;
+
+                $location.url(urlToNextPage);
+            };
+        }
+
+        function failed(message) {
+            return function showFailedDialog(response) {
+                dialogService.fail(message, response.data);
+            };
+        }
+
+        function recreateCodes() {
+            createBackupCodes('mfa/backup-codes/recreated');
         }
     }
 })();

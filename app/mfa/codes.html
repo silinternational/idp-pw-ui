@@ -1,4 +1,4 @@
-<md-card>
+<md-card ng-if="vm.codes.length > 0">
     <md-card-content>
         <p layout="column" layout-align="center center" layout-wrap
            ng-style="vm.calculateMaxHeight(vm.codes)">
@@ -20,6 +20,15 @@
 
         <md-button class="md-primary" pw-clipboard-copy="{{ vm.codes.join('\n') }}">
             Copy
-        </md-button>
+        </md-button> <!--TODO: does this automatically go to profile after copying? -->
     </md-card-actions>
+</md-card>
+
+<md-card ng-if="vm.codes.length < 1">
+    <md-card-content layout="column">
+        <md-icon md-svg-src="images/md-icons/ic_warning_24px.svg" class="md-icon md-warn"></md-icon>
+        <p class="md-body-1">
+            You have reached this page in error, if you do not have a copy of your printable codes you will need to create new ones from your profile page again.
+        </p>
+    </md-card-content>
 </md-card>
