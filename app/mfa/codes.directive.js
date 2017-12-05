@@ -19,12 +19,14 @@
 
         //////////////////////////////////////////////////////////////////
 
-        function CodesController() {
+        function CodesController(config) {
             var vm = this;
 
             vm.codes = vm.codes || [];
+            vm.config = config;
 
             vm.calculateMaxHeight = calculateMaxHeight;
+            vm.now = now;
 
             activate();
 
@@ -35,13 +37,17 @@
 
             function calculateMaxHeight(codes) {
                 var numCodes = codes.length,
-                    numCols = numCodes <= 5 ? 1 : numCodes <= 10 ? 2 : 3,
+                    numCols = numCodes <= 5 ? 1 : 2,
                     numCodesPerRow = Math.ceil(numCodes / numCols);
 
                 return {
                     // the .2 here accounts for px differences in <code> and base em sizes.
                     'max-height': numCodesPerRow * 1.2 + 'em'
                 };
+            }
+
+            function now() {
+                return Date.now();
             }
         }
     }

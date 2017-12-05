@@ -6,8 +6,9 @@
           'ngMaterial',
           'ngRoute',
           'password.auth',
-          'password.data', 
+          'password.data',
           'password.dialog',
-          'password.html'
+          'password.html',
+          'password.mfa'
       ]);
 })();

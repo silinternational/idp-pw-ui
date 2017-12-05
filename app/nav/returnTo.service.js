@@ -16,8 +16,7 @@
         //////////////////////////////////////////////////////////////////
 
         function buildUrl(route) {
-            return service.url ? route + '?returnTo=' + service.url :
-                                 route;
+            return service.url ? route + '?returnTo=' + service.url : route;
         }
     }
 })();
