@@ -93,25 +93,25 @@
     <md-list-item class="md-3-line">
         <md-icon md-svg-src="images/backup-codes.svg" class="md-avatar-icon"></md-icon>
 
-        <div class="md-list-item-text" class="md-body-1" layout="column">
+        <div class="md-list-item-text md-body-1" layout="column">
             <h3>Printable codes</h3>
             <p>Great as a backup when your phone or</p>
             <p>security key are not handy</p>
+
             <span ng-if="vm.mfa.backupcode[0].last_used_utc" class="md-caption">
-                Last used: {{ vm.mfa.backupcode[0].last_used_utc | date:'mediumDate' }}
+                Last used: {{ vm.mfa.backupcode[0].last_used_utc | date:'mediumDate' }}<br>
             </span>
-            <span ng-if="vm.mfa.backupcode[0].data.count" class="md-caption">
-                Remaining: {{ vm.mfa.backupcode[0].data.count }}
-                <a href="" ng-click="vm.remove('mfa/' + vm.mfa.backupcode[0].id)">delete</a>
+            <span ng-if="vm.mfa.backupcode[0]" class="md-caption">
+                Remaining: {{ vm.mfa.backupcode[0].data.count }} <a href="" ng-click="vm.remove('mfa/' + vm.mfa.backupcode[0].id)"> delete</a>
             </span>
         </div>
 
-        <md-button ng-if="vm.mfa.backupcode.length < 1" ng-href="#/mfa/backup-codes"
+        <md-button ng-if="vm.mfa.backupcode.length < 1" ng-click="vm.createCodes()"
                    aria-label="Create codes" class="md-primary md-raised md-secondary">
             Create
         </md-button>
         <md-button ng-if="vm.mfa.backupcode.length > 0" class="md-primary md-raised md-secondary"
-                   ng-href="#/mfa/backup-codes/recreate" aria-label="Create new backup codes">
+                   ng-click="vm.recreateCodes()" aria-label="Recreate backup codes">
             Create new
         </md-button>
     </md-list-item>
