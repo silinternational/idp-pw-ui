@@ -1,6 +1,9 @@
 <md-card ng-if="vm.codes.length > 0">
     <md-card-content layout="column" layout-align="center center">
-        <img src="images/logo.png" alt="logo" class="pw-code-logo">
+        <h3 layout="row" class="md-subhead" layout-fill>
+            <span flex>{{ vm.config.idpName }} account</span>
+            <em class="md-caption">{{ vm.now() | date:'mediumDate'}}</em>
+        </h3>
 
         <p layout="column" layout-align="center center" layout-wrap
            ng-style="vm.calculateMaxHeight(vm.codes)">
@@ -10,7 +13,6 @@
         </p>
 
         <span class="md-caption">Each code may only be used once.</span>
-        <em class="md-caption">(generated on {{ vm.now() | date:'mediumDate'}})</em>
     </md-card-content>
 
     <md-card-actions layout="row" layout-align="center center">
