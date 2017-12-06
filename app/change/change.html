@@ -1,70 +1,54 @@
 <section layout="column">
     <h2 class="md-headline">
-        {{ title }}
+        Change {{ vm.config.idpName }} password for {{ vm.username }}
     </h2>
-
-    <p class="md-body-1">
-        Passwords will automatically expire in 365 days and reminders to
-        change your password will begin 14 days prior to that.
-    </p>
 
     <section layout="row" layout-margin>
         <form name="vm.changeForm" layout="column" autocomplete="off">
             <md-input-container>
                 <label for="password">Enter new password</label>
 
-                <input type="password" ng-model="vm.pw"
-                       zxcvbn="vm.strength"
-                       zx-min-score="{{ vm.config.password.zxcvbn.minScore }}"
-                       pw-constraints required autofocus name="password"
+                <input type="password" ng-model="vm.pw" zxcvbn="vm.strength" pw-constraints required
+                       zx-min-score="{{ vm.config.password.zxcvbn.minScore }}" autofocus
+                       name="password" id="password" autocomplete="off"
                        ng-maxlength="{{ vm.config.password.maxLength       ?
                                         vm.config.password.maxLength.value :
                                         -1
-                                     }}" id="password" autocomplete="off">
+                                     }}">
 
-                <ng-messages for="vm.changeForm.password.$error"
-                             role="alert" layout="row"
-                             layout-align="start center"
-                             md-auto-hide="false">
-                    <ng-message when="required"
-                                ng-show="vm.changeForm.password.$touched">
+                <ng-messages for="vm.changeForm.password.$error" role="alert" layout="row"
+                             layout-align="start center" md-auto-hide="false">
+                    <ng-message when="required" ng-show="vm.changeForm.password.$touched">
                         Required.
                     </ng-message>
                     <ng-message when="maxlength">
-                        No more than
-                        {{ vm.config.password.maxLength.value }}
-                        characters long.
+                        No more than {{ vm.config.password.maxLength.value }} characters long.
                     </ng-message>
 
                     <span flex></span>
 
-                    <pw-password-advice
-                            warning="vm.strength.feedback.warning"
-                            suggestions="vm.strength.feedback.suggestions"
-                            class="md-caption">
+                    <pw-password-advice warning="vm.strength.feedback.warning"
+                                        suggestions="vm.strength.feedback.suggestions"
+                                        class="md-caption">
                     </pw-password-advice>
                 </ng-messages>
             </md-input-container>
 
-            <!-- TODO: couldn't figure out a better way to keep the input
-                 from resizing when something is entered.  Width is the
-                 length of the longest error message present in the form -->
+            <!-- TODO: couldn't figure out a better way to keep the input from resizing when something is entered.  Width is the length of the longest error message present in the form -->
             <md-input-container style="width: 30ch">
                 <label ng-show="vm.changeForm.password.$valid" for="pwagain">
                     Enter new password (again)
                 </label>
 
-                <input type="password" ng-model="vm.pwagain"
-                       name="pwagain" required pw-must-match="{{ vm.pw }}"
-                       id="pwagain" ng-disabled="! vm.pw" autocomplete="off" 
+                <input type="password" ng-model="vm.pwagain" name="pwagain" id="pwagain" required
+                       pw-must-match="{{ vm.pw }}" ng-disabled="! vm.pw" autocomplete="off"
                        ng-model-options="{ allowInvalid: true, debounce: 1000 }">
-                
+
                 <md-tooltip md-direction="top" ng-if="! vm.pw">
                     You must enter an acceptable password first.
                 </md-tooltip>
 
-                <ng-messages for="vm.changeForm.pwagain.$error"
-                             role="alert" md-auto-hide="false"
+                <ng-messages for="vm.changeForm.pwagain.$error" role="alert" md-auto-hide="false"
                              ng-show="vm.changeForm.pwagain.$dirty">
                     <ng-message when="required">
                         Required.
@@ -78,14 +62,12 @@
             <section layout="row" layout-align="space-between start">
                 <pw-safe-cancel></pw-safe-cancel>
 
-                <md-button ng-click="vm.change()"
-                           ng-disabled="vm.changeForm.$invalid"
+                <md-button ng-click="vm.change()" ng-disabled="vm.changeForm.$invalid"
                            class="md-primary md-raised" id="change-btn">
                     <span>
                         Change
 
-                        <md-tooltip md-direction="top"
-                                    ng-if="vm.changeForm.$invalid">
+                        <md-tooltip md-direction="top" ng-if="vm.changeForm.$invalid">
                             You must meet all password requirements first.
                         </md-tooltip>
                     </span>
@@ -95,43 +77,23 @@
 
         <section layout="column" layout-align="start center">
             <pw-password-requirements class="md-body-1">
-                <pw-password-requirement
-                        ng-if="vm.config.password.minLength"
-                        error="vm.changeForm.password.$error.minLength">
-                    Must be at least
-                    {{ vm.config.password.minLength.value }}
-                    characters long.
+                <pw-password-requirement ng-if="vm.config.password.minLength" error="vm.changeForm.password.$error.minLength">
+                    Must be at least {{ vm.config.password.minLength.value }} characters long.
                 </pw-password-requirement>
-                <pw-password-requirement
-                        ng-if="vm.config.password.minNum"
-                        error="vm.changeForm.password.$error.minNum">
-                    Must have at least
-                    {{ vm.config.password.minNum.value }} numbers.
+                <pw-password-requirement ng-if="vm.config.password.minNum" error="vm.changeForm.password.$error.minNum">
+                    Must have at least {{ vm.config.password.minNum.value }} numbers.</pw-password-requirement>
+                <pw-password-requirement ng-if="vm.config.password.minSpecial" error="vm.changeForm.password.$error.minSpecial">
+                    Must have at least {{ vm.config.password.minSpecial.value }} special characters.
                 </pw-password-requirement>
-                <pw-password-requirement
-                        ng-if="vm.config.password.minSpecial"
-                        error="vm.changeForm.password.$error.minSpecial">
-                    Must have at least
-                    {{ vm.config.password.minSpecial.value }} special
-                    characters.
+                <pw-password-requirement ng-if="vm.config.password.minUpper" error="vm.changeForm.password.$error.minUpper">
+                    Must have at least {{ vm.config.password.minUpper.value }} uppercase characters.
                 </pw-password-requirement>
-                <pw-password-requirement
-                        ng-if="vm.config.password.minUpper"
-                        error="vm.changeForm.password.$error.minUpper">
-                    Must have at least
-                    {{ vm.config.password.minUpper.value }} uppercase
-                    characters.
-                </pw-password-requirement>
-                <pw-password-requirement
-                        error="vm.changeForm.password.$error.passwordStrength">
-                    Must have a minimum password strength of
-                    {{ vm.config.password.zxcvbn.minScore }}.
+                <pw-password-requirement error="vm.changeForm.password.$error.passwordStrength">
+                    Must have a minimum password strength of {{ vm.config.password.zxcvbn.minScore }}.
                 </pw-password-requirement>
             </pw-password-requirements>
 
-            <pw-strength-meter strength="vm.strength"
-                               pw-input="vm.changeForm.password">
-            </pw-strength-meter>
+            <pw-strength-meter strength="vm.strength" pw-input="vm.changeForm.password"></pw-strength-meter>
         </section>
     </section>
 </section>
