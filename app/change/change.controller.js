@@ -5,12 +5,12 @@
       .module('password.change')
       .controller('ChangeController', ChangeController);
 
-    function ChangeController(dataService, dialogService, config,
-                              Angularytics) {
+    function ChangeController(dataService, dialogService, config, userService, Angularytics) {
         var vm = this;
 
         vm.pw = '';
         vm.config = config;
+        vm.username = null;
 
         vm.change = change;
 
@@ -19,6 +19,11 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
+            userService
+                .getUser()
+                .then(function (user) {
+                    vm.username = user.idp_username;
+                });
         }
 
         function change() {
@@ -34,8 +39,10 @@
         }
 
         function changed() {
+            dialogService.close();
+
             dialogService
-              .update('Password changed successfully, you may log in immediately with your new password.');
+              .update('Password changed successfully, you may log in immediately with your new password. Please note, this password will automatically expire in 365 days but we will send you a reminder 14 days prior to that.');
 
             Angularytics.trackEvent('zxcvbn score', vm.strength.score);
         }
