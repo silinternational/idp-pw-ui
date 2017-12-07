@@ -5,7 +5,7 @@
       .module('password.help')
       .controller('HelpController', HelpController);
 
-    function HelpController(config, $window, $location, $rootScope) {
+    function HelpController(config, $window, $location, $scope) {
         var vm = this;
 
         vm.config = config;
@@ -17,7 +17,7 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
-            $rootScope.$on('$viewContentLoaded', checkForRequestedSection);
+            $scope.$on('$viewContentLoaded', checkForRequestedSection);
         }
 
         function checkForRequestedSection() {
