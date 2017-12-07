@@ -45,29 +45,6 @@
     </md-list-item>
 
     <md-list-item class="md-2-line">
-        <img src="images/usb-key.png" alt="Security key" class="md-avatar">
-
-        <div class="md-list-item-text">
-            <h3>Security key</h3>
-            <p>Get codes from a USB key</p>
-            <span ng-if="vm.mfa.u2f[0].last_used_utc" class="md-caption">
-                Last used: {{ vm.mfa.u2f[0].last_used_utc | date:'mediumDate' }}
-            </span>
-        </div>
-
-        <md-button ng-if="vm.mfa.u2f.length < 1" ng-href="#/mfa/key"
-                   aria-label="Set up security key"
-                   class="md-primary md-raised md-secondary">
-            Setup
-        </md-button>
-        <md-button ng-if="vm.mfa.u2f.length > 0" class="md-warn md-raised md-secondary"
-                   aria-label="Remove security key" title="Disable security key"
-                   ng-click="vm.remove('mfa/' + vm.mfa.u2f[0].id)">
-            Disable
-        </md-button>
-    </md-list-item>
-
-    <md-list-item class="md-2-line">
         <md-icon md-svg-src="images/totp-app.svg" class="md-avatar-icon"></md-icon>
 
         <div class="md-list-item-text">
@@ -90,7 +67,30 @@
         </md-button>
     </md-list-item>
 
-    <md-list-item class="md-3-line">
+    <md-list-item class="md-2-line top-pad-only">
+        <md-icon md-svg-src="images/usb-key.svg" class="md-avatar-icon"></md-icon>
+
+        <div class="md-list-item-text">
+            <h3>Security key</h3>
+            <p>Get codes from a USB key</p>
+            <span ng-if="vm.mfa.u2f[0].last_used_utc" class="md-caption">
+                Last used: {{ vm.mfa.u2f[0].last_used_utc | date:'mediumDate' }}
+            </span>
+        </div>
+
+        <md-button ng-if="vm.mfa.u2f.length < 1" ng-href="#/mfa/key"
+                   aria-label="Set up security key"
+                   class="md-primary md-raised md-secondary">
+            Setup
+        </md-button>
+        <md-button ng-if="vm.mfa.u2f.length > 0" class="md-warn md-raised md-secondary"
+                   aria-label="Remove security key" title="Disable security key"
+                   ng-click="vm.remove('mfa/' + vm.mfa.u2f[0].id)">
+            Disable
+        </md-button>
+    </md-list-item>
+
+    <md-list-item class="md-3-line top-pad-only">
         <md-icon md-svg-src="images/backup-codes.svg" class="md-avatar-icon"></md-icon>
 
         <div class="md-list-item-text md-body-1" layout="column">
