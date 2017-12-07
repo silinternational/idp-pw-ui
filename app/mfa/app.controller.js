@@ -5,7 +5,7 @@
       .module('password.mfa')
       .controller('AppController', AppController);
 
-    function AppController(dataService, dialogService) {
+    function AppController(dataService, dialogService, config) {
         var vm = this;
 
         vm.mfa = {};
@@ -56,7 +56,7 @@
 
         function verified() {
             dialogService
-                .update('Congratulations, that is the correct code!  You have successfully set up your 2-Step Verification.');
+                .update('Congratulations, that is the correct code! The next time you log in to your ' +  config.idpName + ' account you will be prompted for 2-Step Verification.');
         }
 
         function failedVerification(response) {
