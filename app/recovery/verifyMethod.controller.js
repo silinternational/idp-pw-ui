@@ -38,7 +38,7 @@
         }
 
         function displayBadCarrierWarning() {
-            dialogService.info('If you do not receive a text message or phone call within five minutes it could be because your telephone company is not supported. We know Republic Wireless and some VOIP office systems are not supported.');
+            dialogService.info('If you do not receive a text message or phone call within five minutes it could be because your telephone company is not supported. We know Republic Wireless, bandwidth.com and some VOIP office systems are not supported.');
         }
 
         function verify() {
