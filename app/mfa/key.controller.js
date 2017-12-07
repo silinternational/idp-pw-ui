@@ -5,7 +5,7 @@
       .module('password.mfa')
       .controller('KeyController', KeyController);
 
-    function KeyController(dataService, dialogService, u2fService) {
+    function KeyController(dataService, dialogService, u2fService, config) {
         var vm = this;
 
         vm.mfa = null;
@@ -58,7 +58,7 @@
         function verified() {
             dialogService.close();
 
-            dialogService.update('Congratulations, your key is now connected to your account.  You may either leave your security key plugged in or not, it is up to you.');
+            dialogService.update('Congratulations, your key is now connected to your account.  The next time you log in to your ' +  config.idpName + ' account you will be prompted for 2-Step Verification.');
         }
 
         function failed(message) {

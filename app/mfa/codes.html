@@ -26,7 +26,7 @@
             Download
         </a>
 
-        <md-button class="md-primary" pw-clipboard-copy="{{ vm.codes.join('\n') }}">
+        <md-button class="md-primary" pw-clipboard-copy="{{ vm.config.idpName + '\n'}}{{ vm.codes.join('\n') }}">
             Copy
         </md-button>
     </md-card-actions>

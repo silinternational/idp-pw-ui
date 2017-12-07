@@ -5,9 +5,8 @@
       .module('password.recovery')
       .controller('VerifyMethodController', VerifyMethodController);
 
-    function VerifyMethodController($routeParams, verifyService,
-                                    dialogService, dataService,
-                                    $location) {
+    function VerifyMethodController($routeParams, verifyService, dialogService, dataService,
+                                    $location, $scope, $timeout) {
         var vm = this;
 
         vm.verificationCode = null;
@@ -21,18 +20,40 @@
         //////////////////////////////////////////////////////////////////
 
         function activate() {
+            $scope.$on('$viewContentLoaded', startBadCarrierWarningTimer);
+        }
+
+        function startBadCarrierWarningTimer() {
+            var THREE_MINUTES = 180000;
+
+            var promise = $timeout(displayBadCarrierWarning, THREE_MINUTES);
+
+            $scope.$on('$routeChangeStart', stopBadCarrierWarningTimer(promise));
+        }
+
+        function stopBadCarrierWarningTimer(runningTimer) {
+            return function () {
+                $timeout.cancel(runningTimer);
+            };
+        }
+
+        function displayBadCarrierWarning() {
+            dialogService.info('If you do not receive a text message or phone call within five minutes it could be because your telephone company is not supported. We know Republic Wireless, bandwidth.com and some VOIP office systems are not supported.');
         }
 
         function verify() {
             verifyService
               .verifyMethod($routeParams.methodId, vm.verificationCode)
               .then(verified, invalid);
+
+            dialogService.progress();
         }
 
         function verified() {
+            dialogService.close();
+
             dialogService
-              .update('Your code was accepted and your new recovery ' +
-                      'method has been added.');
+              .update('Your code was accepted and your new password recovery method has been added.');
         }
 
         function invalid(error) {
