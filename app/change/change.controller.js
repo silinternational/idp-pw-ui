@@ -42,7 +42,7 @@
             dialogService.close();
 
             dialogService
-              .update('Password changed successfully, you may log in immediately with your new password. Please note, this password will automatically expire in 365 days but we will send you a reminder 14 days prior to that.');
+              .update('Password changed successfully, you may log in immediately with your new password.');
 
             Angularytics.trackEvent('zxcvbn score', vm.strength.score);
         }
