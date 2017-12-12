@@ -22,7 +22,7 @@
         <md-input-container ng-if="vm.newRecoveryMethod.type === 'email'">
             <label for="email">Email address</label>
             <input type="email" ng-model="vm.newRecoveryMethod.value" autofocus required id="email"
-                   name="email" autocomplete="off">
+                   name="email">
             <ng-messages for="vm.addMethodForm.email.$error" role="alert"
                          ng-show="vm.addMethodForm.email.$touched">
                 <ng-message when="required">Required.</ng-message>
@@ -47,7 +47,7 @@
                 <label for="phone">Phone number</label>
                 <!-- min and maxlengths based upon https://en.wikipedia.org/wiki/E.164 -->
                 <input type="tel" ng-model="vm.newRecoveryMethod.value"minlength="8" maxlength="14"
-                       required id="phone" name="phone" autofocus autocomplete="off">
+                       required id="phone" name="phone" autofocus>
 
                 <ng-messages for="vm.addMethodForm.phone.$error" role="alert"
                              ng-show="vm.addMethodForm.phone.$touched">
