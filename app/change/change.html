@@ -10,7 +10,7 @@
 
                 <input type="password" ng-model="vm.pw" zxcvbn="vm.strength" pw-constraints required
                        zx-min-score="{{ vm.config.password.zxcvbn.minScore }}" autofocus
-                       name="password" id="password" autocomplete="off"
+                       name="password" id="password" autocomplete="new-password"
                        ng-maxlength="{{ vm.config.password.maxLength       ?
                                         vm.config.password.maxLength.value :
                                         -1
@@ -41,7 +41,7 @@
                 </label>
 
                 <input type="password" ng-model="vm.pwagain" name="pwagain" id="pwagain" required
-                       pw-must-match="{{ vm.pw }}" ng-disabled="! vm.pw" autocomplete="off"
+                       pw-must-match="{{ vm.pw }}" ng-disabled="! vm.pw" autocomplete="new-password"
                        ng-model-options="{ allowInvalid: true, debounce: 1000 }">
 
                 <md-tooltip md-direction="top" ng-if="! vm.pw">
