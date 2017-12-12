@@ -4,8 +4,7 @@
     </h2>
 
     <p class="md-body-1" id="forgot-description">
-        Enter your {{ vm.config.idpName }} username or email below and we
-        will send you an email with instructions to reset your password.
+        Enter your {{ vm.config.idpName }} username or email below and we will send you an email with instructions to reset your password.
     </p>
 
     <form name="vm.forgotForm" layout="column" autocomplete="off">
@@ -14,9 +13,8 @@
                 {{ vm.config.idpUsernameHint }}
             </label>
 
-            <input type="text" ng-model="vm.username" name="username"
-                   required autofocus id="username"
-                   autocomplete="username">
+            <input type="text" ng-model="vm.username" name="username" required autofocus
+                   id="username" autocomplete="username">
 
             <section>
                 <ng-messages for="vm.forgotForm.username.$error">
@@ -25,8 +23,7 @@
                     </ng-message>
                 </ng-messages>
 
-                <span ng-click="vm.help()" class="pw-help md-caption"
-                      tabindex="-1">
+                <span ng-click="vm.help()" class="pw-help md-caption" tabindex="-1">
                     Not sure what it is?
                 </span>
             </section>
@@ -34,20 +31,15 @@
 
         <md-input-container>
             <p class="md-caption">
-                In order to ensure you are a human, please check the box
-                below:
+                In order to ensure you are a human, please check the box below:
             </p>
 
-            <div vc-recaptcha
-                 on-success="vm.recaptchaAnswered(response)"
-                 on-expire="vm.resetRecaptcha()"
-                 key="vm.config.recaptchaKey">
-            </div>
+            <div vc-recaptcha on-success="vm.recaptchaAnswered(response)"
+                 on-expire="vm.resetRecaptcha()" key="vm.config.recaptchaKey"></div>
         </md-input-container>
 
         <section layout="row" layout-align="end center">
-            <md-button ng-click="vm.submit()"
-                       ng-disabled="vm.forgotForm.$invalid"
+            <md-button ng-click="vm.submit()" ng-disabled="vm.forgotForm.$invalid"
                        class="md-primary md-raised" id="continue-btn">
                 Continue
             </md-button>
