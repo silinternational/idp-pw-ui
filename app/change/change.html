@@ -4,13 +4,13 @@
     </h2>
 
     <section layout="row" layout-margin>
-        <form name="vm.changeForm" layout="column" autocomplete="off">
+        <form name="vm.changeForm" layout="column">
             <md-input-container>
                 <label for="password">Enter new password</label>
 
                 <input type="password" ng-model="vm.pw" zxcvbn="vm.strength" pw-constraints required
                        zx-min-score="{{ vm.config.password.zxcvbn.minScore }}" autofocus
-                       name="password" id="password" autocomplete="off"
+                       name="password" id="password" autocomplete="new-password"
                        ng-maxlength="{{ vm.config.password.maxLength       ?
                                         vm.config.password.maxLength.value :
                                         -1
@@ -41,7 +41,7 @@
                 </label>
 
                 <input type="password" ng-model="vm.pwagain" name="pwagain" id="pwagain" required
-                       pw-must-match="{{ vm.pw }}" ng-disabled="! vm.pw" autocomplete="off"
+                       pw-must-match="{{ vm.pw }}" ng-disabled="! vm.pw" autocomplete="new-password"
                        ng-model-options="{ allowInvalid: true, debounce: 1000 }">
 
                 <md-tooltip md-direction="top" ng-if="! vm.pw">
@@ -63,7 +63,7 @@
                 <pw-safe-cancel></pw-safe-cancel>
 
                 <md-button ng-click="vm.change()" ng-disabled="vm.changeForm.$invalid"
-                           class="md-primary md-raised" id="change-btn">
+                           class="md-primary md-raised" id="change-btn" type="submit">
                     <span>
                         Change
 
