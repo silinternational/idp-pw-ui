@@ -19,7 +19,7 @@
    </span>
 </h3>
 
-<img ng-if="vm.showQrCode" ng-src="{{ vm.mfa.data.imageUrl }}" class="md-whiteframe-3dp"
+<img ng-if="vm.showQrCode" ng-src="{{ vm.mfa.data.imageUrl }}" class="md-whiteframe-3dp pw-qr-code"
      alt="QR Code">
 <code ng-if="! vm.showQrCode" class="md-whiteframe-3dp md-padding">{{ vm.mfa.data.totpKey }}</code>
 
