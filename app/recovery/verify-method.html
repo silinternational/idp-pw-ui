@@ -16,8 +16,7 @@
     <md-input-container style="width: 20ch">
         <label>Code</label>
 
-        <input type="text" name="verificationCode" ng-model="vm.verificationCode" required autofocus
-               autocomplete="off">
+        <input type="text" name="verificationCode" ng-model="vm.verificationCode" required autofocus>
         <ng-messages for="vm.verificationForm.verificationCode.$error" role="alert">
             <ng-message when="required">
                 Required.
@@ -32,7 +31,7 @@
 
         <span flex></span>
 
-        <md-button ng-click="vm.verify()" class="md-raised md-primary" id="verify-btn">
+        <md-button ng-click="vm.verify()" class="md-raised md-primary" id="verify-btn" type="submit">
             Verify
         </md-button>
     </section>

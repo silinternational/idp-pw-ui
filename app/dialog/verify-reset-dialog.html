@@ -5,32 +5,25 @@
         <span flex></span>
 
         <md-button class="md-icon-button" ng-click="vm.cancel()">
-            <md-icon md-svg-src="images/md-icons/ic_close_24px.svg"
-                     aria-label="Close dialog" id="close-dialog">
-            </md-icon>
+            <md-icon md-svg-src="images/md-icons/ic_close_24px.svg" aria-label="Close dialog"
+                     id="close-dialog"></md-icon>
         </md-button>
     </md-toolbar>
 
     <md-dialog-content class="md-dialog-content md-body-1">
         <p>
-            A verification code was sent to {{ vm.sentTo }}, please enter
-            it below.
+            A verification code was sent to {{ vm.sentTo }}, please enter it below.
         </p>
 
-        <form name="vm.verificationForm" layout="column"
-              layout-align="start center" autocomplete="off">
-            <!-- TODO: couldn't figure out a better way to keep the input
-                 from resizing when something is entered.  Width is the
-                 length of the longest code -->
+        <form name="vm.verificationForm" layout="column" layout-align="start center"
+              autocomplete="off">
+            <!-- TODO: couldn't figure out a better way to keep the input from resizing when something is entered.  Width is the length of the longest code -->
             <md-input-container style="width: 35ch">
                 <label>Code</label>
 
-                <input type="text" name="verificationCode" required
-                       ng-model="vm.verificationCode" md-auto-focus
-                       autocomplete="off">
-                <ng-messages
-                        for="vm.verificationForm.verificationCode.$error"
-                        role="alert">
+                <input type="text" name="verificationCode" required ng-model="vm.verificationCode"
+                       md-auto-focus>
+                <ng-messages for="vm.verificationForm.verificationCode.$error" role="alert">
                     <ng-message when="required">
                         Required.
                     </ng-message>
@@ -40,9 +33,7 @@
     </md-dialog-content>
 
     <md-dialog-actions>
-        <md-button ng-click="vm.verify()" class="md-primary" tabindex="1"
-                   ng-disabled="vm.verificationForm.$invalid"
-                   id="verify-btn">
+        <md-button ng-click="vm.verify()" class="md-primary" tabindex="1" ng-disabled="vm.verificationForm.$invalid" id="verify-btn">
             Verify
         </md-button>
     </md-dialog-actions>
