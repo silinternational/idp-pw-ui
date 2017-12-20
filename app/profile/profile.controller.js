@@ -137,7 +137,7 @@
                 .post('mfa', {
                     type: 'backupcode'
                 })
-                .then(created(urlToNextPage), failed('Attempt to create backup codes failed.'));
+                .then(created(urlToNextPage), failed('Attempt to create printable codes failed.'));
 
             dialogService.progress();
         }
