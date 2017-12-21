@@ -9,10 +9,16 @@
         $routeProvider
           .when('/recovery-method/add', buildConfig('email'))
           .when('/recovery-method/add-phone', buildConfig('phone'))
-          .when('/recovery-method/verify/:methodId', {
-              title: 'Verify code',
-              templateUrl: 'recovery/verify-method.html',
-              controller: 'VerifyMethodController',
+          .when('/recovery-method/verify-phone/:methodId', {
+              title: 'Verify phone',
+              templateUrl: 'recovery/verify-phone.html',
+              controller: 'VerifyPhoneController',
+              controllerAs: 'vm',
+              protected: true
+          }).when('/recovery-method/verify-email/:methodId', {
+              title: 'Verify email',
+              templateUrl: 'recovery/verify-email.html',
+              controller: 'VerifyEmailController',
               controllerAs: 'vm',
               protected: true
           });

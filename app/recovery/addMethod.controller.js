@@ -5,8 +5,7 @@
       .module('password.recovery')
       .controller('AddMethodController', AddMethodController);
 
-    function AddMethodController($location, countryService, dataService,
-                                 dialogService, type) {
+    function AddMethodController($location, countryService, dataService, dialogService, type) {
         var vm = this;
 
         vm.addMethodForm = null;
@@ -32,8 +31,7 @@
         function addPhone() {
             add({
                 type: vm.newRecoveryMethod.type,
-                value: vm.selectedCountry.prefix +
-                       vm.newRecoveryMethod.value
+                value: vm.selectedCountry.prefix + vm.newRecoveryMethod.value
             });
         }
 
@@ -50,17 +48,15 @@
         function added(response) {
             dialogService.close();
 
-            verify(response.data);
+            sendToVerifyPage(response.data);
         }
 
         function failed(response) {
-            dialogService
-              .fail('Attempt to add recovery method failed.',
-                response.data);
+            dialogService.fail('Attempt to add recovery method failed.', response.data);
         }
 
-        function verify(method) {
-            $location.url('recovery-method/verify/' + method.id);
+        function sendToVerifyPage(method) {
+            $location.url('recovery-method/verify-' + method.type + '/' + method.id);
         }
     }
 }());
