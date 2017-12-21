@@ -3,9 +3,9 @@
 
     angular
       .module('password.recovery')
-      .controller('VerifyMethodController', VerifyMethodController);
+      .controller('VerifyPhoneController', VerifyPhoneController);
 
-    function VerifyMethodController($routeParams, verifyService, dialogService, dataService,
+    function VerifyPhoneController($routeParams, verifyService, dialogService, dataService,
                                     $location, $scope, $timeout) {
         var vm = this;
 
@@ -52,13 +52,11 @@
         function verified() {
             dialogService.close();
 
-            dialogService
-              .update('Your code was accepted and your new password recovery method has been added.');
+            dialogService.update('Your code was accepted and your phone can now be used to recover your password should you forget it.');
         }
 
         function invalid(error) {
-            dialogService
-              .fail('Incorrect verification code.', error);
+            dialogService.fail('Incorrect verification code.', error);
         }
 
         function resend() {
@@ -76,8 +74,7 @@
         }
 
         function failed(response) {
-            dialogService
-              .fail('Unable to resend code.', response.data);
+            dialogService.fail('Unable to resend code.', response.data);
         }
     }
 }());

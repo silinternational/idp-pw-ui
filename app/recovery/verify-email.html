@@ -6,10 +6,10 @@
     <p class="md-body-1">
         You should be receiving
 
-        <span ng-if="! vm.anotherSent">a</span>
+        <span ng-if="! vm.anotherSent">an</span>
         <span ng-if="vm.anotherSent" class="md-body-2">another</span>
 
-        verification code shortly, please enter it below.
+        email with a verification code shortly, please enter it below.
     </p>
 
     <!-- TODO: couldn't figure out a better way to keep the input from resizing when something is entered.  Width is the length of the longest code -->
@@ -25,13 +25,15 @@
     </md-input-container>
 
     <section layout="row" layout-fill>
-        <md-button ng-click="vm.resend()" class="md-raised md-accent" id="resend-btn">
+        <pw-safe-cancel></pw-safe-cancel>
+
+        <md-button ng-click="vm.resend()" class="md-raised md-accent">
             Resend
         </md-button>
 
         <span flex></span>
 
-        <md-button ng-click="vm.verify()" class="md-raised md-primary" id="verify-btn" type="submit">
+        <md-button type="submit" ng-click="vm.verify()" class="md-raised md-primary">
             Verify
         </md-button>
     </section>

@@ -1,0 +1,41 @@
+<h2 class="md-headline">
+    {{ title }}
+</h2>
+
+<form name="vm.verificationForm" layout="column" layout-align="start center" autocomplete="off">
+    <p class="md-body-1">
+        You should be receiving
+
+        <span ng-if="! vm.anotherSent">a</span>
+        <span ng-if="vm.anotherSent" class="md-body-2">another</span>
+
+        text or phone call with a verification code shortly, please enter it below.
+    </p>
+
+    <!-- TODO: couldn't figure out a better way to keep the input from resizing when something is entered.  Width is the length of the longest code -->
+    <md-input-container style="width: 20ch">
+        <label>Code</label>
+
+        <input type="text" name="verificationCode" ng-model="vm.verificationCode" required autofocus>
+        <ng-messages for="vm.verificationForm.verificationCode.$error" role="alert">
+            <ng-message when="required">
+                Required.
+            </ng-message>
+        </ng-messages>
+    </md-input-container>
+
+    <section layout="row" layout-fill>
+        <pw-safe-cancel></pw-safe-cancel>
+
+        <md-button ng-click="vm.resend()" class="md-raised md-accent" id="resend-btn">
+            Resend
+        </md-button>
+
+        <span flex></span>
+
+        <md-button ng-click="vm.verify()" class="md-raised md-primary" id="verify-btn" type="submit">
+            Verify
+        </md-button>
+    </section>
+</form>
+
