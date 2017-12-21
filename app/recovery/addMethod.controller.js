@@ -52,7 +52,7 @@
         }
 
         function failed(response) {
-            dialogService.fail('Attempt to add recovery method failed.', response.data);
+            dialogService.fail('Attempt to add password recovery method failed.', response.data);
         }
 
         function sendToVerifyPage(method) {

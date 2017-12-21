@@ -27,7 +27,7 @@
 
         function buildConfig(type) {
             return {
-                title: 'Add recovery method',
+                title: 'Add password recovery method',
                 templateUrl: 'recovery/add-method.html',
                 controller: 'AddMethodController',
                 controllerAs: 'vm',
