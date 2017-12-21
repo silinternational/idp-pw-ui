@@ -9,14 +9,14 @@
         <span ng-if="! vm.anotherSent">a</span>
         <span ng-if="vm.anotherSent" class="md-body-2">another</span>
 
-        text or phone call with a verification code shortly, please enter it below.
+        text message or phone call with a 6-digit verification code shortly, please enter it below.
     </p>
 
     <!-- TODO: couldn't figure out a better way to keep the input from resizing when something is entered.  Width is the length of the longest code -->
     <md-input-container style="width: 20ch">
         <label>Code</label>
 
-        <input type="text" name="verificationCode" ng-model="vm.verificationCode" required autofocus>
+        <input name="verificationCode" ng-model="vm.verificationCode" required autofocus maxlength="6">
         <ng-messages for="vm.verificationForm.verificationCode.$error" role="alert">
             <ng-message when="required">
                 Required.
