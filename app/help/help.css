@@ -1,3 +1,7 @@
 ol > li > ol {
     list-style-type: lower-alpha;
 }
+
+h3.md-title {
+    max-width: 60ch;
+}
