@@ -111,7 +111,7 @@
         function createCodes() {
             if (hasNoMfaYet()) {
                 dialogService
-                    .areYouSure('This will enable 2-Step Verification on your account requiring you provide a printable code the next time you log in.  Would you still like to continue?')
+                    .areYouSure('Thank you for choosing to use 2-Step Verification. This will help keep all our data more secure. If you proceed, you will be given 10 one-time use codes. We will occasionally ask you for one when you log in.  Do you still want to proceed?', 'md-primary')
                     .then(yesContinue);
             } else {
                 createBackupCodes('mfa/backup-codes');
