@@ -94,26 +94,23 @@
             });
         }
 
-        function areYouSure(question) {
+        function areYouSure(question, headerClass) {
             return $mdDialog.show({
                        templateUrl: 'dialog/are-you-sure-dialog.html',
                        controller: 'AreYouSureDialogController',
                        controllerAs: 'vm',
                        locals: {
-                           question: question
+                           question: question,
+                           headerClass: headerClass
                        }
                    });
         }
 
         function progress() {
-            // var isIE = /*@cc_on!@*/false || !!document.documentMode;
-            // var isEdge = !isIE && !!window.StyleMedia;
-            // if (!isIE && !isEdge) {
-                $mdDialog.show({
-                    templateUrl: 'dialog/progress-dialog.html',
-                    escapeToClose: false
-                });
-            // }
+            $mdDialog.show({
+                templateUrl: 'dialog/progress-dialog.html',
+                escapeToClose: false
+            });
         }
 
         function verify(sentTo) {
