@@ -35,7 +35,7 @@
         }
 
         function fail(summary, error) {
-            $mdDialog.show({
+            return $mdDialog.show({
                 templateUrl: 'dialog/failed-dialog.html',
                 controller: 'FailedDialogController',
                 controllerAs: 'vm',
@@ -96,14 +96,14 @@
 
         function areYouSure(question, headerClass) {
             return $mdDialog.show({
-                       templateUrl: 'dialog/are-you-sure-dialog.html',
-                       controller: 'AreYouSureDialogController',
-                       controllerAs: 'vm',
-                       locals: {
-                           question: question,
-                           headerClass: headerClass
-                       }
-                   });
+                templateUrl: 'dialog/are-you-sure-dialog.html',
+                controller: 'AreYouSureDialogController',
+                controllerAs: 'vm',
+                locals: {
+                    question: question,
+                    headerClass: headerClass
+                }
+            });
         }
 
         function progress() {
@@ -132,13 +132,14 @@
             });
         }
 
-        function info(message) {
-            $mdDialog.show({
+        function info(message, title) {
+            return $mdDialog.show({
                 templateUrl: 'dialog/info-dialog.html',
                 controller: 'InfoDialogController',
                 controllerAs: 'vm',
                 locals: {
-                    message: message
+                    message: message,
+                    title: title
                 }
             });
         }
