@@ -5,8 +5,7 @@
       .module('password.forgot')
       .controller('ForgotController', ForgotController);
 
-    function ForgotController(dataService, dialogService, config,
-                              vcRecaptchaService) {
+    function ForgotController(dataService, dialogService, config, vcRecaptchaService, $route) {
         var vm = this,
             recaptchaResponse = '';
 
@@ -53,20 +52,25 @@
             var primaryEmail,
                 resetId = response.data.uid;
 
-            if (response.data.methods &&
-                response.data.methods.length > 0) {
+            if (response.data.methods && response.data.methods.length > 0) {
                 primaryEmail = response.data.methods[0].value;
+
+                return dialogService.reset(primaryEmail, resetId);
             }
 
             dialogService
-              .reset(primaryEmail, resetId);
+                .info('An account was not found for the username or email address you provided. Please try again with a different work email address or just your username. If you continue to have problems please contact support at ' + vm.config.support.email + ' or ' + vm.config.support.phone + '.', 'Account not found')
+                .then(function () {
+                    $route.reload();
+                });
         }
 
         function failed(response) {
             dialogService
-              .fail('Attempt to reset password failed.', response.data);
-
-            vcRecaptchaService.reload();
+              .fail('Attempt to reset password failed.', response.data)
+              .then(function () {
+                $route.reload();
+              });
         }
     }
 })();
