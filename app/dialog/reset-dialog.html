@@ -1,14 +1,14 @@
 <md-dialog aria-label="Status update">
     <md-toolbar class="md-toolbar-tools">
-        <h2 id="reset-header">Password reset email sent</h2>
+        <h2>Password reset email</h2>
     </md-toolbar>
 
     <md-dialog-content class="md-dialog-content md-body-1">
         <p>
-            If your account is found, we will send a reset password email to {{ vm.sentTo ? 'the following email address:' : 'your primary email address.' }}
+            We will send a reset password email to the following email address shortly:
         </p>
 
-        <p ng-if="vm.sentTo" class="md-body-2" flex-offset="5">
+        <p class="md-body-2" flex-offset="5">
             {{ vm.sentTo }}
         </p>
 

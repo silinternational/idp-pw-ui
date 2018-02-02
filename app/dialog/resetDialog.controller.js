@@ -5,8 +5,7 @@
       .module('password.dialog')
       .controller('ResetDialogController', ResetDialogController);
 
-    function ResetDialogController($location, sentTo, resetId,
-                                   dataService, dialogService) {
+    function ResetDialogController($location, sentTo, resetId, dataService, dialogService) {
         var vm = this;
 
         vm.sentTo = sentTo;
