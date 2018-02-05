@@ -9,7 +9,7 @@
         <span ng-if="! vm.anotherSent">an</span>
         <span ng-if="vm.anotherSent" class="md-body-2">another</span>
 
-        email with a verification code shortly, please enter it below.
+        email with a verification code in 1 - 2 minutes, please enter it below.
     </p>
 
     <!-- TODO: couldn't figure out a better way to keep the input from resizing when something is entered.  Width is the length of the longest code -->
@@ -24,7 +24,7 @@
         </ng-messages>
     </md-input-container>
 
-    <section layout="row" layout-fill>
+    <section layout="row" class="layout-fill-width-only">
         <pw-safe-cancel></pw-safe-cancel>
 
         <md-button ng-click="vm.resend()" class="md-raised md-accent">
@@ -38,4 +38,3 @@
         </md-button>
     </section>
 </form>
-

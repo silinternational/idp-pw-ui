@@ -5,10 +5,11 @@
       .module('password.dialog')
       .controller('InfoDialogController', InfoDialogController);
 
-    function InfoDialogController(dialogService, message) {
+    function InfoDialogController(dialogService, message, title) {
         var vm = this;
 
         vm.message = message;
+        vm.title = title;
 
         vm.close = close;
 

@@ -1,16 +1,14 @@
 <md-dialog aria-label="Status update">
     <md-toolbar class="md-toolbar-tools">
-        <h2 id="reset-header">Password reset email sent</h2>
+        <h2>Password reset email</h2>
     </md-toolbar>
 
     <md-dialog-content class="md-dialog-content md-body-1">
         <p>
-            If your account is found, we will send a reset password email
-            to {{ vm.sentTo ? 'the following email address:' :
-                              'your primary email address.' }}
+            We will send a reset password email to the following email address in a minute:
         </p>
 
-        <p ng-if="vm.sentTo" class="md-body-2" flex-offset="5">
+        <p class="md-body-2" flex-offset="5">
             {{ vm.sentTo }}
         </p>
 
@@ -22,39 +20,27 @@
             <md-divider></md-divider>
 
             <p>
-                If you don’t currently have access to this email account,
-                please use
-
-                <a href="" ng-click="vm.alternates()">
-                    alternate methods</a>
-
-                for verification.
+                If you don’t currently have access to this email account, please use <a href="" ng-click="vm.alternates()">alternate methods</a> for verification.
             </p>
 
             <p>
-                Didn't receive the email yet? Please check your spam
-                folder,
-                or click Resend to send the email again.
+                Didn't receive the email yet? Please check your spam folder, or click Resend to send the email again.
             </p>
         </section>
     </md-dialog-content>
 
     <md-dialog-actions layout="row">
-        <md-button ng-if="vm.resetId" ng-click="vm.alternates()"
-                   class="md-accent" id="methods-btn">
+        <md-button ng-if="vm.resetId" ng-click="vm.alternates()" class="md-accent">
             Use alternate methods
         </md-button>
 
-        <md-button ng-if="vm.resetId" ng-click="vm.resend()"
-                   class="md-warn"
-                   id="resend-btn">
+        <md-button ng-if="vm.resetId" ng-click="vm.resend()" class="md-warn">
             Resend
         </md-button>
 
         <span flex></span>
 
-        <md-button ng-click="vm.done()" class="md-primary" tabindex="1"
-                   id="done-btn">
+        <md-button ng-click="vm.done()" class="md-primary" tabindex="1">
             Done
         </md-button>
     </md-dialog-actions>
