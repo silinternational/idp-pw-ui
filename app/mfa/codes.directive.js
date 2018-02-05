@@ -3,7 +3,8 @@
 
     angular
       .module('password.mfa')
-      .directive('pwCodes', pwCodes);
+      .directive('pwCodes', pwCodes)
+      .filter('pwEncodeURIComponent', pwEncodeURIComponent);
 
     function pwCodes() {
         return {
@@ -50,5 +51,9 @@
                 return Date.now();
             }
         }
+    }
+
+    function pwEncodeURIComponent($window) {
+        return $window.encodeURIComponent;
     }
 })();
