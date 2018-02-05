@@ -5,8 +5,7 @@
             <em class="md-caption">{{ vm.now() | date:'mediumDate'}}</em>
         </h3>
 
-        <p layout="column" layout-align="center center" layout-wrap
-           ng-style="vm.calculateMaxHeight(vm.codes)">
+        <p layout="column" layout-align="center center" layout-wrap ng-style="vm.calculateMaxHeight(vm.codes)">
             <code ng-repeat="_code in vm.codes">
                 ☐ {{ _code }}
             </code>
@@ -20,9 +19,8 @@
             Print
         </md-button>
 
-        <a ng-href="data:text/plain,{{ vm.config.idpName + '\n'}}{{ vm.codes.join('\n') }}"
-           download="{{ vm.config.idpName }}-printable-codes.txt" pw-allow-data-url
-           class="md-button md-primary">
+        <a ng-href="data:text/plain,{{ vm.config.idpName + '\r\n' + vm.codes.join('\r\n') | pwEncodeURIComponent }}"
+           download="{{ vm.config.idpName }}-printable-codes.txt" pw-allow-data-url class="md-button md-primary">
             Download
         </a>
 
