@@ -150,7 +150,8 @@
                 controller: 'InfoDialogController',
                 controllerAs: 'vm',
                 locals: {
-                    message: message
+                    message: message,
+                    title: null
                 }
             });
         }
