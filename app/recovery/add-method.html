@@ -45,8 +45,8 @@
             <!-- TODO: couldn't figure out a better way to keep the input from resizing when something is entered.  Width is the length of the longest phone number that could be input -->
             <md-input-container class="md-body-1" style="width: 30ch">
                 <label for="phone">Phone number</label>
-                <!-- min and maxlengths based upon https://en.wikipedia.org/wiki/E.164 -->
-                <input type="tel" ng-model="vm.newRecoveryMethod.value"minlength="8" maxlength="14"
+                <!-- min and maxlengths based upon https://en.wikipedia.org/wiki/E.164 (and a special case in Vanuatu where mins are 7) -->
+                <input type="tel" ng-model="vm.newRecoveryMethod.value" minlength="7" maxlength="14"
                        required id="phone" name="phone" autofocus>
 
                 <ng-messages for="vm.addMethodForm.phone.$error" role="alert"
