@@ -62,7 +62,7 @@
             if (typeof vm.config.support.phone === 'undefined') {
               message += '.';
             } else {
-              message += ' or ' + phone + '.';
+              message += ' or ' + vm.config.support.phone + '.';
             }
 
             dialogService
