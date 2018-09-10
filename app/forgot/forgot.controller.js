@@ -59,10 +59,10 @@
             }
 
             var message = 'An account was not found for the username or email address you provided. Please try again with a different work email address or just your username. If you continue to have problems please contact support at ' + vm.config.support.email;
-            if (typeof vm.config.support.phone === 'undefined') {
-              message += '.';
+            if (vm.config.support.phone) {
+                message += ' or ' + vm.config.support.phone + '.';
             } else {
-              message += ' or ' + vm.config.support.phone + '.';
+                message += '.';
             }
 
             dialogService
