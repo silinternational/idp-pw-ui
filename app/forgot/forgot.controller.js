@@ -58,8 +58,14 @@
                 return dialogService.reset(primaryEmail, resetId);
             }
 
+            var message = 'An account was not found for the username or email address you provided. Please try again with a different work email address or just your username. If you continue to have problems please contact support at ' + vm.config.support.email;
+            if (vm.config.support.phone) {
+                message += ' or ' + vm.config.support.phone;
+            }
+            message += '.';
+
             dialogService
-                .info('An account was not found for the username or email address you provided. Please try again with a different work email address or just your username. If you continue to have problems please contact support at ' + vm.config.support.email + ' or ' + vm.config.support.phone + '.', 'Account not found')
+                .info(message, 'Account not found')
                 .then(function () {
                     $route.reload();
                 });
