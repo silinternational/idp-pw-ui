@@ -1,4 +1,12 @@
-# idp-pw-ui
+# idp-pw-ui
+
+---
+
+## NOTE: This repo is no longer maintained. ##
+
+See https://github.com/silinternational/idp-profile-ui as a replacement
+
+---
 
 ## Required tools
 
